@@ -86,7 +86,9 @@ void (__stdcall *UnicowsImportError)(const char *, const char *) = StdImportErro
        GetProcAddress from that point on to load all symbols. */
 
 static HMODULE dllHandleKernel32 = 0;
-static FARPROC WINAPI (*ptrGetProcAddress)(HINSTANCE,LPCSTR) = 0;
+
+typedef FARPROC (WINAPI *GetProcAddressPtrType)(HINSTANCE,LPCSTR);
+static GetProcAddressPtrType ptrGetProcAddress = 0;
     
 /* DMC doesn't have UINT_PTR: */
 #ifdef __DMC__
@@ -142,7 +144,7 @@ static void LoadGetProcAddress()
     dllHandleKernel32 = LoadLibraryA("kernel32.dll");
     if (!dllHandleKernel32)
         UnicowsImportError("kernel32.dll", NULL);
-    ptrGetProcAddress = (FARPROC WINAPI (*)(HINSTANCE,LPCSTR))
+    ptrGetProcAddress = (GetProcAddressPtrType)
         InternalGetProcAddress(dllHandleKernel32, "GetProcAddress");
     if (!ptrGetProcAddress)
         UnicowsImportError("kernel32.dll", "GetProcAddress");
