@@ -37,6 +37,7 @@
      gdi32 GetCharABCWidthsW@16
      gdi32 GetCharWidthFloatW@16
      gdi32 GetCharWidthW@16
+     gdi32 GetCharWidth32W@16
      gdi32 GetCharacterPlacementW@24
      gdi32 GetEnhMetaFileDescriptionW@12
      gdi32 GetEnhMetaFileW@4
@@ -254,6 +255,14 @@
    version VerInstallFileW@32
    version VerLanguageNameW@12
    version VerQueryValueW@16
+  advapi32 CryptAcquireContextW@20
+  advapi32 CryptEnumProvidersW@24
+  advapi32 CryptEnumProviderTypesW@24
+  advapi32 CryptGetDefaultProviderW@20
+  advapi32 CryptSetProviderExW@16
+  advapi32 CryptSetProviderW@8
+  advapi32 CryptSignHashW@24
+  advapi32 CryptVerifySignatureW@24
   advapi32 GetCurrentHwProfileW@4
   advapi32 GetUserNameW@8
   advapi32 IsTextUnicode@12
@@ -287,6 +296,7 @@
   comdlg32 PrintDlgW@4
   comdlg32 ReplaceTextW@4
   kernel32 AddAtomW@4
+  kernel32 BeginUpdateResourceA@8
   kernel32 BeginUpdateResourceW@8
   kernel32 BuildCommDCBAndTimeoutsW@12
   kernel32 BuildCommDCBW@8
@@ -307,6 +317,7 @@
   kernel32 CreateSemaphoreW@16
   kernel32 CreateWaitableTimerW@12
   kernel32 DeleteFileW@4
+  kernel32 EndUpdateResourceA@8
   kernel32 EndUpdateResourceW@8
   kernel32 EnumCalendarInfoExW@16
   kernel32 EnumCalendarInfoW@16
@@ -405,6 +416,7 @@
   kernel32 SetFileAttributesW@8
   kernel32 SetLocaleInfoW@12
   kernel32 SetVolumeLabelW@8
+  kernel32 UpdateResourceA@24
   kernel32 UpdateResourceW@24
   kernel32 WaitNamedPipeW@8
   kernel32 WideCharToMultiByte@32
@@ -436,6 +448,7 @@
   rasapi32 RasGetEntryDialParamsW@12
   rasapi32 RasGetEntryPropertiesW@24
   rasapi32 RasGetErrorStringW@12
+  rasapi32 RasGetProjectionInfoW@16
   rasapi32 RasHangUpW@4
   rasapi32 RasRenameEntryW@12
   rasapi32 RasSetEntryDialParamsW@12
