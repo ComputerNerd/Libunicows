@@ -20,7 +20,7 @@ extern void (__stdcall *UnicowsImportError)(const char *dll, const char *symbol)
 
 /* --- Internal stuff for runtime loading --- */
 
-extern void LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC *output);
+extern void __cdecl LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC *output);
 
 
 #endif // __UNICOWS_IMPORT_H__

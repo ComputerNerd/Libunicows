@@ -1,3 +1,7 @@
+Version 0.6.4
+-------------
+- native (Open)Watcom C/C++ import library (Thiadmer Riemersma)
+
 Version 0.6.3
 -------------
 - fixed winspool.drv loading (Tom Bishop)

@@ -7,7 +7,7 @@ static void my_strcat(char *dst, const char *src)
 {
 	char *cd;
 	const char *cs;
-	
+
 	for (cd = dst; *cd; cd++) {}
 	for (cs = src; *cs; ) *(cd++) = *(cs++);
 	*cd = 0;
@@ -21,7 +21,7 @@ void UnicowsReportFatalError(const char *msg)
 	buffer[0] = 0;
     my_strcat(buffer, msg);
 	my_strcat(buffer, "\nThe application will terminate now.");
-    
+
     MessageBoxA(NULL, buffer, "Fatal error", MB_ICONSTOP);
     ExitProcess(1);
 }
@@ -38,7 +38,7 @@ static void __stdcall StdImportError(const char *dll, const char *symbol)
 {
     char buffer[4096];
 	buffer[0] = 0;
-    
+
     if (symbol)
 	{
 		my_strcat(buffer, "Error while importing symbol '");
@@ -88,7 +88,7 @@ void (__stdcall *UnicowsImportError)(const char *, const char *) = StdImportErro
 static HMODULE dllHandles[DLLS_COUNT] = {0};
 static HMODULE dllUnicowsHandle = 0;
 static const char *dllNames[DLLS_COUNT] =
-    { 
+    {
       "kernel32.dll", "user32.dll", "gdi32.dll", "comdlg32.dll",
       "winspool.drv", "shell32.dll", "winmm.dll", "advapi32.dll",
       "version.dll", "mpr.dll", "oleacc.dll", "oledlg.dll", "rasapi32.dll",
@@ -100,8 +100,8 @@ static int useUnicows = 0;
 static void FreeDLLs(void)
 {
     size_t i;
-    
-    if (!dllsLoaded) return;    
+
+    if (!dllsLoaded) return;
     if (useUnicows)
     {
         FreeLibrary(dllUnicowsHandle);
@@ -116,7 +116,7 @@ static void FreeDLLs(void)
             dllHandles[i] = 0;
         }
     }
-    
+
     dllsLoaded = 0;
 }
 
@@ -124,8 +124,8 @@ static void FreeDLLs(void)
 static void LoadDLLs(void)
 {
     size_t i;
-    
-    if (GetVersion() < 0x80000000) 
+
+    if (GetVersion() < 0x80000000)
     {
         /* Windows NT/2000/XP */
         for (i = 0; i < DLLS_COUNT; i++)
@@ -146,7 +146,7 @@ static void LoadDLLs(void)
     dllsLoaded = 1;
 }
 
-void LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC *output)
+void __cdecl LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC *output)
 {
     if (!dllsLoaded)
     {
@@ -168,7 +168,7 @@ void LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC *output)
     {
         *output = GetProcAddress(dllHandles[dll], name);
     }
-    
+
     if (!(*output))
     {
         UnicowsImportError(useUnicows ? UnicowsDllName : dllNames[dll], name);
