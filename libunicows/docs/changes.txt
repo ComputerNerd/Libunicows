@@ -1,3 +1,7 @@
+Version 0.6.5
+-------------
+- native DigitalMars import library (Masashi Ktamura)
+
 Version 0.6.4
 -------------
 - native (Open)Watcom C/C++ import library (Thiadmer Riemersma)

@@ -1,0 +1,44 @@
+# unicows.lib for DM-C 
+# This makefile for MS nmake or OpenWatcom wmake.
+#  nmake -f makefile.dmc.nmake
+#  wmake -m -ms -f makefile.dmc.nmake
+
+CC=dmc -Pz -D_UNICODE
+NASM=nasmw
+LIB=lib
+
+LIBTARGET=..\lib\dmc\unicows.lib
+
+all: build\dmc ..\lib\dmc $(LIBTARGET)
+
+!include "makefile.dmc.nmake.include"
+
+
+{}.c{build\dmc}.obj:
+	$(CC) -c -o$@ $<
+
+{gen_asm}.asm{build\dmc}.obj:
+	$(NASM) -dDIGITALMARS -f obj -o $@ $<
+
+build\dmc:
+	if not exist .\build\dmc mkdir .\build\dmc
+
+..\lib\dmc:
+	if not exist .\..\lib\dmc mkdir .\..\lib\dmc
+
+
+LIBOBJECTS = $(WRAPPERS) build\dmc\unicows_import.obj
+
+$(LIBTARGET): $(LIBOBJECTS) makefile.dmc.nmake
+	-del $(LIBTARGET)
+	$(LIB) -p32 -c $(LIBTARGET) $(LIBOBJECTS)
+
+#for BORLAND make
+#	$(LIB) -p32 -c $(LIBTARGET) @&&|
+#		$(LIBOBJECTS)
+#	|
+
+
+clean:
+	-del build\dmc\*.obj
+	-del $(LIBTARGET)
