@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegReplaceKeyW@16
-                    global RegReplaceKeyW
-                    global _RegReplaceKeyW@16
-                    global _Unicows_RegReplaceKeyW
+                    global __imp__RegEnumKeyW@16
+                    global RegEnumKeyW
+                    global _RegEnumKeyW@16
+                    global _Unicows_RegEnumKeyW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegReplaceKeyW:
+unicows_initial_stub_RegEnumKeyW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegReplaceKeyW@16     ; place to save the pointer
-                    push dword [_Unicows_RegReplaceKeyW]      ; default proc, if any
+                    push dword __imp__RegEnumKeyW@16     ; place to save the pointer
+                    push dword [_Unicows_RegEnumKeyW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegReplaceKeyW      ; name of the function
+                    push dword namestring_RegEnumKeyW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegReplaceKeyW:
-_RegReplaceKeyW@16:
-                    jmp [__imp__RegReplaceKeyW@16]
+RegEnumKeyW:
+_RegEnumKeyW@16:
+                    jmp [__imp__RegEnumKeyW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegReplaceKeyW@16:
                     section .data
 %endif
 
-__imp__RegReplaceKeyW@16:   dd unicows_initial_stub_RegReplaceKeyW
-_Unicows_RegReplaceKeyW:      dd 0
-namestring_RegReplaceKeyW:    db 'RegReplaceKeyW',0
+__imp__RegEnumKeyW@16:   dd unicows_initial_stub_RegEnumKeyW
+_Unicows_RegEnumKeyW:      dd 0
+namestring_RegEnumKeyW:    db 'RegEnumKeyW',0

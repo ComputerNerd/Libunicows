@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SetCalendarInfoW@16
-                    global SetCalendarInfoW
-                    global _SetCalendarInfoW@16
-                    global _Unicows_SetCalendarInfoW
+                    global __imp__OpenWaitableTimerW@12
+                    global OpenWaitableTimerW
+                    global _OpenWaitableTimerW@12
+                    global _Unicows_OpenWaitableTimerW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SetCalendarInfoW:
+unicows_initial_stub_OpenWaitableTimerW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetCalendarInfoW@16     ; place to save the pointer
-                    push dword [_Unicows_SetCalendarInfoW]      ; default proc, if any
+                    push dword __imp__OpenWaitableTimerW@12     ; place to save the pointer
+                    push dword [_Unicows_OpenWaitableTimerW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_SetCalendarInfoW      ; name of the function
+                    push dword namestring_OpenWaitableTimerW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetCalendarInfoW:
-_SetCalendarInfoW@16:
-                    jmp [__imp__SetCalendarInfoW@16]
+OpenWaitableTimerW:
+_OpenWaitableTimerW@12:
+                    jmp [__imp__OpenWaitableTimerW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SetCalendarInfoW@16:
                     section .data
 %endif
 
-__imp__SetCalendarInfoW@16:   dd unicows_initial_stub_SetCalendarInfoW
-_Unicows_SetCalendarInfoW:      dd 0
-namestring_SetCalendarInfoW:    db 'SetCalendarInfoW',0
+__imp__OpenWaitableTimerW@12:   dd unicows_initial_stub_OpenWaitableTimerW
+_Unicows_OpenWaitableTimerW:      dd 0
+namestring_OpenWaitableTimerW:    db 'OpenWaitableTimerW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ExtractIconExW@20
-                    global ExtractIconExW
-                    global _ExtractIconExW@20
-                    global _Unicows_ExtractIconExW
+                    global __imp__DragQueryFileW@16
+                    global DragQueryFileW
+                    global _DragQueryFileW@16
+                    global _Unicows_DragQueryFileW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ExtractIconExW:
+unicows_initial_stub_DragQueryFileW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ExtractIconExW@20     ; place to save the pointer
-                    push dword [_Unicows_ExtractIconExW]      ; default proc, if any
+                    push dword __imp__DragQueryFileW@16     ; place to save the pointer
+                    push dword [_Unicows_DragQueryFileW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_ExtractIconExW      ; name of the function
+                    push dword namestring_DragQueryFileW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ExtractIconExW:
-_ExtractIconExW@20:
-                    jmp [__imp__ExtractIconExW@20]
+DragQueryFileW:
+_DragQueryFileW@16:
+                    jmp [__imp__DragQueryFileW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ExtractIconExW@20:
                     section .data
 %endif
 
-__imp__ExtractIconExW@20:   dd unicows_initial_stub_ExtractIconExW
-_Unicows_ExtractIconExW:      dd 0
-namestring_ExtractIconExW:    db 'ExtractIconExW',0
+__imp__DragQueryFileW@16:   dd unicows_initial_stub_DragQueryFileW
+_Unicows_DragQueryFileW:      dd 0
+namestring_DragQueryFileW:    db 'DragQueryFileW',0

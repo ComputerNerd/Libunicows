@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DdeInitializeW@16
-                    global DdeInitializeW
-                    global _DdeInitializeW@16
-                    global _Unicows_DdeInitializeW
+                    global __imp__DdeCreateStringHandleW@12
+                    global DdeCreateStringHandleW
+                    global _DdeCreateStringHandleW@12
+                    global _Unicows_DdeCreateStringHandleW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DdeInitializeW:
+unicows_initial_stub_DdeCreateStringHandleW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DdeInitializeW@16     ; place to save the pointer
-                    push dword [_Unicows_DdeInitializeW]      ; default proc, if any
+                    push dword __imp__DdeCreateStringHandleW@12     ; place to save the pointer
+                    push dword [_Unicows_DdeCreateStringHandleW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DdeInitializeW      ; name of the function
+                    push dword namestring_DdeCreateStringHandleW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DdeInitializeW:
-_DdeInitializeW@16:
-                    jmp [__imp__DdeInitializeW@16]
+DdeCreateStringHandleW:
+_DdeCreateStringHandleW@12:
+                    jmp [__imp__DdeCreateStringHandleW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DdeInitializeW@16:
                     section .data
 %endif
 
-__imp__DdeInitializeW@16:   dd unicows_initial_stub_DdeInitializeW
-_Unicows_DdeInitializeW:      dd 0
-namestring_DdeInitializeW:    db 'DdeInitializeW',0
+__imp__DdeCreateStringHandleW@12:   dd unicows_initial_stub_DdeCreateStringHandleW
+_Unicows_DdeCreateStringHandleW:      dd 0
+namestring_DdeCreateStringHandleW:    db 'DdeCreateStringHandleW',0

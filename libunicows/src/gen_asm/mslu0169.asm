@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetTabbedTextExtentW@20
-                    global GetTabbedTextExtentW
-                    global _GetTabbedTextExtentW@20
-                    global _Unicows_GetTabbedTextExtentW
+                    global __imp__GetPropW@8
+                    global GetPropW
+                    global _GetPropW@8
+                    global _Unicows_GetPropW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetTabbedTextExtentW:
+unicows_initial_stub_GetPropW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetTabbedTextExtentW@20     ; place to save the pointer
-                    push dword [_Unicows_GetTabbedTextExtentW]      ; default proc, if any
+                    push dword __imp__GetPropW@8     ; place to save the pointer
+                    push dword [_Unicows_GetPropW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_GetTabbedTextExtentW      ; name of the function
+                    push dword namestring_GetPropW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTabbedTextExtentW:
-_GetTabbedTextExtentW@20:
-                    jmp [__imp__GetTabbedTextExtentW@20]
+GetPropW:
+_GetPropW@8:
+                    jmp [__imp__GetPropW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetTabbedTextExtentW@20:
                     section .data
 %endif
 
-__imp__GetTabbedTextExtentW@20:   dd unicows_initial_stub_GetTabbedTextExtentW
-_Unicows_GetTabbedTextExtentW:      dd 0
-namestring_GetTabbedTextExtentW:    db 'GetTabbedTextExtentW',0
+__imp__GetPropW@8:   dd unicows_initial_stub_GetPropW
+_Unicows_GetPropW:      dd 0
+namestring_GetPropW:    db 'GetPropW',0

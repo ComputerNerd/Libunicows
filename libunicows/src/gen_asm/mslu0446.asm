@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__AddMonitorW@12
-                    global AddMonitorW
-                    global _AddMonitorW@12
-                    global _Unicows_AddMonitorW
+                    global __imp__RasEnumEntriesW@20
+                    global RasEnumEntriesW
+                    global _RasEnumEntriesW@20
+                    global _Unicows_RasEnumEntriesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_AddMonitorW:
+unicows_initial_stub_RasEnumEntriesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AddMonitorW@12     ; place to save the pointer
-                    push dword [_Unicows_AddMonitorW]      ; default proc, if any
-                    push dword WINSPOOL                  ; dll id
-                    push dword namestring_AddMonitorW      ; name of the function
+                    push dword __imp__RasEnumEntriesW@20     ; place to save the pointer
+                    push dword [_Unicows_RasEnumEntriesW]      ; default proc, if any
+                    push dword RASAPI32                  ; dll id
+                    push dword namestring_RasEnumEntriesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddMonitorW:
-_AddMonitorW@12:
-                    jmp [__imp__AddMonitorW@12]
+RasEnumEntriesW:
+_RasEnumEntriesW@20:
+                    jmp [__imp__RasEnumEntriesW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _AddMonitorW@12:
                     section .data
 %endif
 
-__imp__AddMonitorW@12:   dd unicows_initial_stub_AddMonitorW
-_Unicows_AddMonitorW:      dd 0
-namestring_AddMonitorW:    db 'AddMonitorW',0
+__imp__RasEnumEntriesW@20:   dd unicows_initial_stub_RasEnumEntriesW
+_Unicows_RasEnumEntriesW:      dd 0
+namestring_RasEnumEntriesW:    db 'RasEnumEntriesW',0

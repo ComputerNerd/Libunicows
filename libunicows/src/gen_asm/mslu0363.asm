@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetStartupInfoW@4
-                    global GetStartupInfoW
-                    global _GetStartupInfoW@4
-                    global _Unicows_GetStartupInfoW
+                    global __imp__GetNamedPipeHandleStateW@28
+                    global GetNamedPipeHandleStateW
+                    global _GetNamedPipeHandleStateW@28
+                    global _Unicows_GetNamedPipeHandleStateW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetStartupInfoW:
+unicows_initial_stub_GetNamedPipeHandleStateW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetStartupInfoW@4     ; place to save the pointer
-                    push dword [_Unicows_GetStartupInfoW]      ; default proc, if any
+                    push dword __imp__GetNamedPipeHandleStateW@28     ; place to save the pointer
+                    push dword [_Unicows_GetNamedPipeHandleStateW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetStartupInfoW      ; name of the function
+                    push dword namestring_GetNamedPipeHandleStateW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetStartupInfoW:
-_GetStartupInfoW@4:
-                    jmp [__imp__GetStartupInfoW@4]
+GetNamedPipeHandleStateW:
+_GetNamedPipeHandleStateW@28:
+                    jmp [__imp__GetNamedPipeHandleStateW@28]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetStartupInfoW@4:
                     section .data
 %endif
 
-__imp__GetStartupInfoW@4:   dd unicows_initial_stub_GetStartupInfoW
-_Unicows_GetStartupInfoW:      dd 0
-namestring_GetStartupInfoW:    db 'GetStartupInfoW',0
+__imp__GetNamedPipeHandleStateW@28:   dd unicows_initial_stub_GetNamedPipeHandleStateW
+_Unicows_GetNamedPipeHandleStateW:      dd 0
+namestring_GetNamedPipeHandleStateW:    db 'GetNamedPipeHandleStateW',0

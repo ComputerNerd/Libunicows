@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__OleUIChangeSourceW@4
-                    global OleUIChangeSourceW
-                    global _OleUIChangeSourceW@4
-                    global _Unicows_OleUIChangeSourceW
+                    global __imp__OleUIChangeIconW@4
+                    global OleUIChangeIconW
+                    global _OleUIChangeIconW@4
+                    global _Unicows_OleUIChangeIconW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_OleUIChangeSourceW:
+unicows_initial_stub_OleUIChangeIconW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__OleUIChangeSourceW@4     ; place to save the pointer
-                    push dword [_Unicows_OleUIChangeSourceW]      ; default proc, if any
+                    push dword __imp__OleUIChangeIconW@4     ; place to save the pointer
+                    push dword [_Unicows_OleUIChangeIconW]      ; default proc, if any
                     push dword OLEDLG                  ; dll id
-                    push dword namestring_OleUIChangeSourceW      ; name of the function
+                    push dword namestring_OleUIChangeIconW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIChangeSourceW:
-_OleUIChangeSourceW@4:
-                    jmp [__imp__OleUIChangeSourceW@4]
+OleUIChangeIconW:
+_OleUIChangeIconW@4:
+                    jmp [__imp__OleUIChangeIconW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _OleUIChangeSourceW@4:
                     section .data
 %endif
 
-__imp__OleUIChangeSourceW@4:   dd unicows_initial_stub_OleUIChangeSourceW
-_Unicows_OleUIChangeSourceW:      dd 0
-namestring_OleUIChangeSourceW:    db 'OleUIChangeSourceW',0
+__imp__OleUIChangeIconW@4:   dd unicows_initial_stub_OleUIChangeIconW
+_Unicows_OleUIChangeIconW:      dd 0
+namestring_OleUIChangeIconW:    db 'OleUIChangeIconW',0

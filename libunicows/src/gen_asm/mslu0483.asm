@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__capCreateCaptureWindowW
-                    global capCreateCaptureWindowW
-                    global _capCreateCaptureWindowW
-                    global _Unicows_capCreateCaptureWindowW
+                    global __imp__GetPrinterDriverDirectoryW@24
+                    global GetPrinterDriverDirectoryW
+                    global _GetPrinterDriverDirectoryW@24
+                    global _Unicows_GetPrinterDriverDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_capCreateCaptureWindowW:
+unicows_initial_stub_GetPrinterDriverDirectoryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__capCreateCaptureWindowW     ; place to save the pointer
-                    push dword [_Unicows_capCreateCaptureWindowW]      ; default proc, if any
-                    push dword AVICAP32                  ; dll id
-                    push dword namestring_capCreateCaptureWindowW      ; name of the function
+                    push dword __imp__GetPrinterDriverDirectoryW@24     ; place to save the pointer
+                    push dword [_Unicows_GetPrinterDriverDirectoryW]      ; default proc, if any
+                    push dword WINSPOOL                  ; dll id
+                    push dword namestring_GetPrinterDriverDirectoryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-capCreateCaptureWindowW:
-_capCreateCaptureWindowW:
-                    jmp [__imp__capCreateCaptureWindowW]
+GetPrinterDriverDirectoryW:
+_GetPrinterDriverDirectoryW@24:
+                    jmp [__imp__GetPrinterDriverDirectoryW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _capCreateCaptureWindowW:
                     section .data
 %endif
 
-__imp__capCreateCaptureWindowW:   dd unicows_initial_stub_capCreateCaptureWindowW
-_Unicows_capCreateCaptureWindowW:      dd 0
-namestring_capCreateCaptureWindowW:    db 'capCreateCaptureWindowW',0
+__imp__GetPrinterDriverDirectoryW@24:   dd unicows_initial_stub_GetPrinterDriverDirectoryW
+_Unicows_GetPrinterDriverDirectoryW:      dd 0
+namestring_GetPrinterDriverDirectoryW:    db 'GetPrinterDriverDirectoryW',0

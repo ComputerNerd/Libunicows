@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SetWindowsHookW@8
-                    global SetWindowsHookW
-                    global _SetWindowsHookW@8
-                    global _Unicows_SetWindowsHookW
+                    global __imp__SetWindowsHookExW@16
+                    global SetWindowsHookExW
+                    global _SetWindowsHookExW@16
+                    global _Unicows_SetWindowsHookExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SetWindowsHookW:
+unicows_initial_stub_SetWindowsHookExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetWindowsHookW@8     ; place to save the pointer
-                    push dword [_Unicows_SetWindowsHookW]      ; default proc, if any
+                    push dword __imp__SetWindowsHookExW@16     ; place to save the pointer
+                    push dword [_Unicows_SetWindowsHookExW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_SetWindowsHookW      ; name of the function
+                    push dword namestring_SetWindowsHookExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetWindowsHookW:
-_SetWindowsHookW@8:
-                    jmp [__imp__SetWindowsHookW@8]
+SetWindowsHookExW:
+_SetWindowsHookExW@16:
+                    jmp [__imp__SetWindowsHookExW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SetWindowsHookW@8:
                     section .data
 %endif
 
-__imp__SetWindowsHookW@8:   dd unicows_initial_stub_SetWindowsHookW
-_Unicows_SetWindowsHookW:      dd 0
-namestring_SetWindowsHookW:    db 'SetWindowsHookW',0
+__imp__SetWindowsHookExW@16:   dd unicows_initial_stub_SetWindowsHookExW
+_Unicows_SetWindowsHookExW:      dd 0
+namestring_SetWindowsHookExW:    db 'SetWindowsHookExW',0

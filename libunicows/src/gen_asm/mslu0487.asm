@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FreeContextBuffer@4
-                    global FreeContextBuffer
-                    global _FreeContextBuffer@4
-                    global _Unicows_FreeContextBuffer
+                    global __imp__ResetPrinterW@8
+                    global ResetPrinterW
+                    global _ResetPrinterW@8
+                    global _Unicows_ResetPrinterW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FreeContextBuffer:
+unicows_initial_stub_ResetPrinterW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FreeContextBuffer@4     ; place to save the pointer
-                    push dword [_Unicows_FreeContextBuffer]      ; default proc, if any
-                    push dword SECUR32                  ; dll id
-                    push dword namestring_FreeContextBuffer      ; name of the function
+                    push dword __imp__ResetPrinterW@8     ; place to save the pointer
+                    push dword [_Unicows_ResetPrinterW]      ; default proc, if any
+                    push dword WINSPOOL                  ; dll id
+                    push dword namestring_ResetPrinterW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FreeContextBuffer:
-_FreeContextBuffer@4:
-                    jmp [__imp__FreeContextBuffer@4]
+ResetPrinterW:
+_ResetPrinterW@8:
+                    jmp [__imp__ResetPrinterW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FreeContextBuffer@4:
                     section .data
 %endif
 
-__imp__FreeContextBuffer@4:   dd unicows_initial_stub_FreeContextBuffer
-_Unicows_FreeContextBuffer:      dd 0
-namestring_FreeContextBuffer:    db 'FreeContextBuffer',0
+__imp__ResetPrinterW@8:   dd unicows_initial_stub_ResetPrinterW
+_Unicows_ResetPrinterW:      dd 0
+namestring_ResetPrinterW:    db 'ResetPrinterW',0

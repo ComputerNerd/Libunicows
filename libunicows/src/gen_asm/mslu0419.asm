@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__WriteProfileStringW@12
-                    global WriteProfileStringW
-                    global _WriteProfileStringW@12
-                    global _Unicows_WriteProfileStringW
+                    global __imp__UpdateResourceA@24
+                    global UpdateResourceA
+                    global _UpdateResourceA@24
+                    global _Unicows_UpdateResourceA
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_WriteProfileStringW:
+unicows_initial_stub_UpdateResourceA:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WriteProfileStringW@12     ; place to save the pointer
-                    push dword [_Unicows_WriteProfileStringW]      ; default proc, if any
+                    push dword __imp__UpdateResourceA@24     ; place to save the pointer
+                    push dword [_Unicows_UpdateResourceA]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WriteProfileStringW      ; name of the function
+                    push dword namestring_UpdateResourceA      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-WriteProfileStringW:
-_WriteProfileStringW@12:
-                    jmp [__imp__WriteProfileStringW@12]
+UpdateResourceA:
+_UpdateResourceA@24:
+                    jmp [__imp__UpdateResourceA@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _WriteProfileStringW@12:
                     section .data
 %endif
 
-__imp__WriteProfileStringW@12:   dd unicows_initial_stub_WriteProfileStringW
-_Unicows_WriteProfileStringW:      dd 0
-namestring_WriteProfileStringW:    db 'WriteProfileStringW',0
+__imp__UpdateResourceA@24:   dd unicows_initial_stub_UpdateResourceA
+_Unicows_UpdateResourceA:      dd 0
+namestring_UpdateResourceA:    db 'UpdateResourceA',0

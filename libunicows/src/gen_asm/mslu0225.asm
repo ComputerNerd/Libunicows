@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SetWindowTextW@8
-                    global SetWindowTextW
-                    global _SetWindowTextW@8
-                    global _Unicows_SetWindowTextW
+                    global __imp__SetWindowLongW@12
+                    global SetWindowLongW
+                    global _SetWindowLongW@12
+                    global _Unicows_SetWindowLongW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SetWindowTextW:
+unicows_initial_stub_SetWindowLongW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetWindowTextW@8     ; place to save the pointer
-                    push dword [_Unicows_SetWindowTextW]      ; default proc, if any
+                    push dword __imp__SetWindowLongW@12     ; place to save the pointer
+                    push dword [_Unicows_SetWindowLongW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_SetWindowTextW      ; name of the function
+                    push dword namestring_SetWindowLongW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetWindowTextW:
-_SetWindowTextW@8:
-                    jmp [__imp__SetWindowTextW@8]
+SetWindowLongW:
+_SetWindowLongW@12:
+                    jmp [__imp__SetWindowLongW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SetWindowTextW@8:
                     section .data
 %endif
 
-__imp__SetWindowTextW@8:   dd unicows_initial_stub_SetWindowTextW
-_Unicows_SetWindowTextW:      dd 0
-namestring_SetWindowTextW:    db 'SetWindowTextW',0
+__imp__SetWindowLongW@12:   dd unicows_initial_stub_SetWindowLongW
+_Unicows_SetWindowLongW:      dd 0
+namestring_SetWindowLongW:    db 'SetWindowLongW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CreateFileMappingW@24
-                    global CreateFileMappingW
-                    global _CreateFileMappingW@24
-                    global _Unicows_CreateFileMappingW
+                    global __imp__BuildCommDCBAndTimeoutsW@12
+                    global BuildCommDCBAndTimeoutsW
+                    global _BuildCommDCBAndTimeoutsW@12
+                    global _Unicows_BuildCommDCBAndTimeoutsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CreateFileMappingW:
+unicows_initial_stub_BuildCommDCBAndTimeoutsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CreateFileMappingW@24     ; place to save the pointer
-                    push dword [_Unicows_CreateFileMappingW]      ; default proc, if any
+                    push dword __imp__BuildCommDCBAndTimeoutsW@12     ; place to save the pointer
+                    push dword [_Unicows_BuildCommDCBAndTimeoutsW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_CreateFileMappingW      ; name of the function
+                    push dword namestring_BuildCommDCBAndTimeoutsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateFileMappingW:
-_CreateFileMappingW@24:
-                    jmp [__imp__CreateFileMappingW@24]
+BuildCommDCBAndTimeoutsW:
+_BuildCommDCBAndTimeoutsW@12:
+                    jmp [__imp__BuildCommDCBAndTimeoutsW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CreateFileMappingW@24:
                     section .data
 %endif
 
-__imp__CreateFileMappingW@24:   dd unicows_initial_stub_CreateFileMappingW
-_Unicows_CreateFileMappingW:      dd 0
-namestring_CreateFileMappingW:    db 'CreateFileMappingW',0
+__imp__BuildCommDCBAndTimeoutsW@12:   dd unicows_initial_stub_BuildCommDCBAndTimeoutsW
+_Unicows_BuildCommDCBAndTimeoutsW:      dd 0
+namestring_BuildCommDCBAndTimeoutsW:    db 'BuildCommDCBAndTimeoutsW',0

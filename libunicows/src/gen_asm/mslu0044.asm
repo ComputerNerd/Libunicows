@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetICMProfileW@12
-                    global GetICMProfileW
-                    global _GetICMProfileW@12
-                    global _Unicows_GetICMProfileW
+                    global __imp__GetGlyphOutlineW@28
+                    global GetGlyphOutlineW
+                    global _GetGlyphOutlineW@28
+                    global _Unicows_GetGlyphOutlineW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetICMProfileW:
+unicows_initial_stub_GetGlyphOutlineW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetICMProfileW@12     ; place to save the pointer
-                    push dword [_Unicows_GetICMProfileW]      ; default proc, if any
+                    push dword __imp__GetGlyphOutlineW@28     ; place to save the pointer
+                    push dword [_Unicows_GetGlyphOutlineW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_GetICMProfileW      ; name of the function
+                    push dword namestring_GetGlyphOutlineW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetICMProfileW:
-_GetICMProfileW@12:
-                    jmp [__imp__GetICMProfileW@12]
+GetGlyphOutlineW:
+_GetGlyphOutlineW@28:
+                    jmp [__imp__GetGlyphOutlineW@28]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetICMProfileW@12:
                     section .data
 %endif
 
-__imp__GetICMProfileW@12:   dd unicows_initial_stub_GetICMProfileW
-_Unicows_GetICMProfileW:      dd 0
-namestring_GetICMProfileW:    db 'GetICMProfileW',0
+__imp__GetGlyphOutlineW@28:   dd unicows_initial_stub_GetGlyphOutlineW
+_Unicows_GetGlyphOutlineW:      dd 0
+namestring_GetGlyphOutlineW:    db 'GetGlyphOutlineW',0

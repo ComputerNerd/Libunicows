@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetUserNameW@8
-                    global GetUserNameW
-                    global _GetUserNameW@8
-                    global _Unicows_GetUserNameW
+                    global __imp__CryptAcquireContextW@20
+                    global CryptAcquireContextW
+                    global _CryptAcquireContextW@20
+                    global _Unicows_CryptAcquireContextW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetUserNameW:
+unicows_initial_stub_CryptAcquireContextW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetUserNameW@8     ; place to save the pointer
-                    push dword [_Unicows_GetUserNameW]      ; default proc, if any
+                    push dword __imp__CryptAcquireContextW@20     ; place to save the pointer
+                    push dword [_Unicows_CryptAcquireContextW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_GetUserNameW      ; name of the function
+                    push dword namestring_CryptAcquireContextW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetUserNameW:
-_GetUserNameW@8:
-                    jmp [__imp__GetUserNameW@8]
+CryptAcquireContextW:
+_CryptAcquireContextW@20:
+                    jmp [__imp__CryptAcquireContextW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetUserNameW@8:
                     section .data
 %endif
 
-__imp__GetUserNameW@8:   dd unicows_initial_stub_GetUserNameW
-_Unicows_GetUserNameW:      dd 0
-namestring_GetUserNameW:    db 'GetUserNameW',0
+__imp__CryptAcquireContextW@20:   dd unicows_initial_stub_CryptAcquireContextW
+_Unicows_CryptAcquireContextW:      dd 0
+namestring_CryptAcquireContextW:    db 'CryptAcquireContextW',0

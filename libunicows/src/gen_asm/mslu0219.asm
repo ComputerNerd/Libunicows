@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SetDlgItemTextW@12
-                    global SetDlgItemTextW
-                    global _SetDlgItemTextW@12
-                    global _Unicows_SetDlgItemTextW
+                    global __imp__SetClassLongW@12
+                    global SetClassLongW
+                    global _SetClassLongW@12
+                    global _Unicows_SetClassLongW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SetDlgItemTextW:
+unicows_initial_stub_SetClassLongW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetDlgItemTextW@12     ; place to save the pointer
-                    push dword [_Unicows_SetDlgItemTextW]      ; default proc, if any
+                    push dword __imp__SetClassLongW@12     ; place to save the pointer
+                    push dword [_Unicows_SetClassLongW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_SetDlgItemTextW      ; name of the function
+                    push dword namestring_SetClassLongW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetDlgItemTextW:
-_SetDlgItemTextW@12:
-                    jmp [__imp__SetDlgItemTextW@12]
+SetClassLongW:
+_SetClassLongW@12:
+                    jmp [__imp__SetClassLongW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SetDlgItemTextW@12:
                     section .data
 %endif
 
-__imp__SetDlgItemTextW@12:   dd unicows_initial_stub_SetDlgItemTextW
-_Unicows_SetDlgItemTextW:      dd 0
-namestring_SetDlgItemTextW:    db 'SetDlgItemTextW',0
+__imp__SetClassLongW@12:   dd unicows_initial_stub_SetClassLongW
+_Unicows_SetClassLongW:      dd 0
+namestring_SetClassLongW:    db 'SetClassLongW',0

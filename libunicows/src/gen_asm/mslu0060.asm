@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__TextOutW@20
-                    global TextOutW
-                    global _TextOutW@20
-                    global _Unicows_TextOutW
+                    global __imp__StartDocW@8
+                    global StartDocW
+                    global _StartDocW@8
+                    global _Unicows_StartDocW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_TextOutW:
+unicows_initial_stub_StartDocW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__TextOutW@20     ; place to save the pointer
-                    push dword [_Unicows_TextOutW]      ; default proc, if any
+                    push dword __imp__StartDocW@8     ; place to save the pointer
+                    push dword [_Unicows_StartDocW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_TextOutW      ; name of the function
+                    push dword namestring_StartDocW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-TextOutW:
-_TextOutW@20:
-                    jmp [__imp__TextOutW@20]
+StartDocW:
+_StartDocW@8:
+                    jmp [__imp__StartDocW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _TextOutW@20:
                     section .data
 %endif
 
-__imp__TextOutW@20:   dd unicows_initial_stub_TextOutW
-_Unicows_TextOutW:      dd 0
-namestring_TextOutW:    db 'TextOutW',0
+__imp__StartDocW@8:   dd unicows_initial_stub_StartDocW
+_Unicows_StartDocW:      dd 0
+namestring_StartDocW:    db 'StartDocW',0

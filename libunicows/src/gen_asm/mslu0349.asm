@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetLongPathNameW@12
-                    global GetLongPathNameW
-                    global _GetLongPathNameW@12
-                    global _Unicows_GetLongPathNameW
+                    global __imp__GetDefaultCommConfigW@12
+                    global GetDefaultCommConfigW
+                    global _GetDefaultCommConfigW@12
+                    global _Unicows_GetDefaultCommConfigW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetLongPathNameW:
+unicows_initial_stub_GetDefaultCommConfigW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetLongPathNameW@12     ; place to save the pointer
-                    push dword [_Unicows_GetLongPathNameW]      ; default proc, if any
+                    push dword __imp__GetDefaultCommConfigW@12     ; place to save the pointer
+                    push dword [_Unicows_GetDefaultCommConfigW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetLongPathNameW      ; name of the function
+                    push dword namestring_GetDefaultCommConfigW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetLongPathNameW:
-_GetLongPathNameW@12:
-                    jmp [__imp__GetLongPathNameW@12]
+GetDefaultCommConfigW:
+_GetDefaultCommConfigW@12:
+                    jmp [__imp__GetDefaultCommConfigW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetLongPathNameW@12:
                     section .data
 %endif
 
-__imp__GetLongPathNameW@12:   dd unicows_initial_stub_GetLongPathNameW
-_Unicows_GetLongPathNameW:      dd 0
-namestring_GetLongPathNameW:    db 'GetLongPathNameW',0
+__imp__GetDefaultCommConfigW@12:   dd unicows_initial_stub_GetDefaultCommConfigW
+_Unicows_GetDefaultCommConfigW:      dd 0
+namestring_GetDefaultCommConfigW:    db 'GetDefaultCommConfigW',0

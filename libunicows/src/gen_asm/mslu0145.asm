@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumDisplaySettingsExW@16
-                    global EnumDisplaySettingsExW
-                    global _EnumDisplaySettingsExW@16
-                    global _Unicows_EnumDisplaySettingsExW
+                    global __imp__EnumDisplayDevicesW@16
+                    global EnumDisplayDevicesW
+                    global _EnumDisplayDevicesW@16
+                    global _Unicows_EnumDisplayDevicesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumDisplaySettingsExW:
+unicows_initial_stub_EnumDisplayDevicesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumDisplaySettingsExW@16     ; place to save the pointer
-                    push dword [_Unicows_EnumDisplaySettingsExW]      ; default proc, if any
+                    push dword __imp__EnumDisplayDevicesW@16     ; place to save the pointer
+                    push dword [_Unicows_EnumDisplayDevicesW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_EnumDisplaySettingsExW      ; name of the function
+                    push dword namestring_EnumDisplayDevicesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumDisplaySettingsExW:
-_EnumDisplaySettingsExW@16:
-                    jmp [__imp__EnumDisplaySettingsExW@16]
+EnumDisplayDevicesW:
+_EnumDisplayDevicesW@16:
+                    jmp [__imp__EnumDisplayDevicesW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumDisplaySettingsExW@16:
                     section .data
 %endif
 
-__imp__EnumDisplaySettingsExW@16:   dd unicows_initial_stub_EnumDisplaySettingsExW
-_Unicows_EnumDisplaySettingsExW:      dd 0
-namestring_EnumDisplaySettingsExW:    db 'EnumDisplaySettingsExW',0
+__imp__EnumDisplayDevicesW@16:   dd unicows_initial_stub_EnumDisplayDevicesW
+_Unicows_EnumDisplayDevicesW:      dd 0
+namestring_EnumDisplayDevicesW:    db 'EnumDisplayDevicesW',0

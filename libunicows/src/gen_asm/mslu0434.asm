@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasEnumEntriesW@20
-                    global RasEnumEntriesW
-                    global _RasEnumEntriesW@20
-                    global _Unicows_RasEnumEntriesW
+                    global __imp__lstrcmpiW@8
+                    global lstrcmpiW
+                    global _lstrcmpiW@8
+                    global _Unicows_lstrcmpiW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasEnumEntriesW:
+unicows_initial_stub_lstrcmpiW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasEnumEntriesW@20     ; place to save the pointer
-                    push dword [_Unicows_RasEnumEntriesW]      ; default proc, if any
-                    push dword RASAPI32                  ; dll id
-                    push dword namestring_RasEnumEntriesW      ; name of the function
+                    push dword __imp__lstrcmpiW@8     ; place to save the pointer
+                    push dword [_Unicows_lstrcmpiW]      ; default proc, if any
+                    push dword KERNEL32                  ; dll id
+                    push dword namestring_lstrcmpiW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasEnumEntriesW:
-_RasEnumEntriesW@20:
-                    jmp [__imp__RasEnumEntriesW@20]
+lstrcmpiW:
+_lstrcmpiW@8:
+                    jmp [__imp__lstrcmpiW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasEnumEntriesW@20:
                     section .data
 %endif
 
-__imp__RasEnumEntriesW@20:   dd unicows_initial_stub_RasEnumEntriesW
-_Unicows_RasEnumEntriesW:      dd 0
-namestring_RasEnumEntriesW:    db 'RasEnumEntriesW',0
+__imp__lstrcmpiW@8:   dd unicows_initial_stub_lstrcmpiW
+_Unicows_lstrcmpiW:      dd 0
+namestring_lstrcmpiW:    db 'lstrcmpiW',0

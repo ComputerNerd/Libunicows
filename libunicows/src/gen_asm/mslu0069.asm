@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__midiInGetDevCapsW@12
-                    global midiInGetDevCapsW
-                    global _midiInGetDevCapsW@12
-                    global _Unicows_midiInGetDevCapsW
+                    global __imp__mciSendStringW@16
+                    global mciSendStringW
+                    global _mciSendStringW@16
+                    global _Unicows_mciSendStringW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_midiInGetDevCapsW:
+unicows_initial_stub_mciSendStringW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__midiInGetDevCapsW@12     ; place to save the pointer
-                    push dword [_Unicows_midiInGetDevCapsW]      ; default proc, if any
+                    push dword __imp__mciSendStringW@16     ; place to save the pointer
+                    push dword [_Unicows_mciSendStringW]      ; default proc, if any
                     push dword WINMM                  ; dll id
-                    push dword namestring_midiInGetDevCapsW      ; name of the function
+                    push dword namestring_mciSendStringW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-midiInGetDevCapsW:
-_midiInGetDevCapsW@12:
-                    jmp [__imp__midiInGetDevCapsW@12]
+mciSendStringW:
+_mciSendStringW@16:
+                    jmp [__imp__mciSendStringW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _midiInGetDevCapsW@12:
                     section .data
 %endif
 
-__imp__midiInGetDevCapsW@12:   dd unicows_initial_stub_midiInGetDevCapsW
-_Unicows_midiInGetDevCapsW:      dd 0
-namestring_midiInGetDevCapsW:    db 'midiInGetDevCapsW',0
+__imp__mciSendStringW@16:   dd unicows_initial_stub_mciSendStringW
+_Unicows_mciSendStringW:      dd 0
+namestring_mciSendStringW:    db 'mciSendStringW',0

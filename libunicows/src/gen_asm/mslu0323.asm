@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FindFirstFileW@8
-                    global FindFirstFileW
-                    global _FindFirstFileW@8
-                    global _Unicows_FindFirstFileW
+                    global __imp__EnumCalendarInfoW@16
+                    global EnumCalendarInfoW
+                    global _EnumCalendarInfoW@16
+                    global _Unicows_EnumCalendarInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FindFirstFileW:
+unicows_initial_stub_EnumCalendarInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FindFirstFileW@8     ; place to save the pointer
-                    push dword [_Unicows_FindFirstFileW]      ; default proc, if any
+                    push dword __imp__EnumCalendarInfoW@16     ; place to save the pointer
+                    push dword [_Unicows_EnumCalendarInfoW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_FindFirstFileW      ; name of the function
+                    push dword namestring_EnumCalendarInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindFirstFileW:
-_FindFirstFileW@8:
-                    jmp [__imp__FindFirstFileW@8]
+EnumCalendarInfoW:
+_EnumCalendarInfoW@16:
+                    jmp [__imp__EnumCalendarInfoW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FindFirstFileW@8:
                     section .data
 %endif
 
-__imp__FindFirstFileW@8:   dd unicows_initial_stub_FindFirstFileW
-_Unicows_FindFirstFileW:      dd 0
-namestring_FindFirstFileW:    db 'FindFirstFileW',0
+__imp__EnumCalendarInfoW@16:   dd unicows_initial_stub_EnumCalendarInfoW
+_Unicows_EnumCalendarInfoW:      dd 0
+namestring_EnumCalendarInfoW:    db 'EnumCalendarInfoW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SHChangeNotify@16
-                    global SHChangeNotify
-                    global _SHChangeNotify@16
-                    global _Unicows_SHChangeNotify
+                    global __imp__SHBrowseForFolderW@4
+                    global SHBrowseForFolderW
+                    global _SHBrowseForFolderW@4
+                    global _Unicows_SHBrowseForFolderW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SHChangeNotify:
+unicows_initial_stub_SHBrowseForFolderW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SHChangeNotify@16     ; place to save the pointer
-                    push dword [_Unicows_SHChangeNotify]      ; default proc, if any
+                    push dword __imp__SHBrowseForFolderW@4     ; place to save the pointer
+                    push dword [_Unicows_SHBrowseForFolderW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_SHChangeNotify      ; name of the function
+                    push dword namestring_SHBrowseForFolderW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHChangeNotify:
-_SHChangeNotify@16:
-                    jmp [__imp__SHChangeNotify@16]
+SHBrowseForFolderW:
+_SHBrowseForFolderW@4:
+                    jmp [__imp__SHBrowseForFolderW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SHChangeNotify@16:
                     section .data
 %endif
 
-__imp__SHChangeNotify@16:   dd unicows_initial_stub_SHChangeNotify
-_Unicows_SHChangeNotify:      dd 0
-namestring_SHChangeNotify:    db 'SHChangeNotify',0
+__imp__SHBrowseForFolderW@4:   dd unicows_initial_stub_SHBrowseForFolderW
+_Unicows_SHBrowseForFolderW:      dd 0
+namestring_SHBrowseForFolderW:    db 'SHBrowseForFolderW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__mmioInstallIOProcW@12
-                    global mmioInstallIOProcW
-                    global _mmioInstallIOProcW@12
-                    global _Unicows_mmioInstallIOProcW
+                    global __imp__mixerGetLineInfoW@12
+                    global mixerGetLineInfoW
+                    global _mixerGetLineInfoW@12
+                    global _Unicows_mixerGetLineInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_mmioInstallIOProcW:
+unicows_initial_stub_mixerGetLineInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__mmioInstallIOProcW@12     ; place to save the pointer
-                    push dword [_Unicows_mmioInstallIOProcW]      ; default proc, if any
+                    push dword __imp__mixerGetLineInfoW@12     ; place to save the pointer
+                    push dword [_Unicows_mixerGetLineInfoW]      ; default proc, if any
                     push dword WINMM                  ; dll id
-                    push dword namestring_mmioInstallIOProcW      ; name of the function
+                    push dword namestring_mixerGetLineInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-mmioInstallIOProcW:
-_mmioInstallIOProcW@12:
-                    jmp [__imp__mmioInstallIOProcW@12]
+mixerGetLineInfoW:
+_mixerGetLineInfoW@12:
+                    jmp [__imp__mixerGetLineInfoW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _mmioInstallIOProcW@12:
                     section .data
 %endif
 
-__imp__mmioInstallIOProcW@12:   dd unicows_initial_stub_mmioInstallIOProcW
-_Unicows_mmioInstallIOProcW:      dd 0
-namestring_mmioInstallIOProcW:    db 'mmioInstallIOProcW',0
+__imp__mixerGetLineInfoW@12:   dd unicows_initial_stub_mixerGetLineInfoW
+_Unicows_mixerGetLineInfoW:      dd 0
+namestring_mixerGetLineInfoW:    db 'mixerGetLineInfoW',0

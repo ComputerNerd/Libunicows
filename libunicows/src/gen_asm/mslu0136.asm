@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DlgDirListW@20
-                    global DlgDirListW
-                    global _DlgDirListW@20
-                    global _Unicows_DlgDirListW
+                    global __imp__DlgDirListComboBoxW@20
+                    global DlgDirListComboBoxW
+                    global _DlgDirListComboBoxW@20
+                    global _Unicows_DlgDirListComboBoxW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DlgDirListW:
+unicows_initial_stub_DlgDirListComboBoxW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DlgDirListW@20     ; place to save the pointer
-                    push dword [_Unicows_DlgDirListW]      ; default proc, if any
+                    push dword __imp__DlgDirListComboBoxW@20     ; place to save the pointer
+                    push dword [_Unicows_DlgDirListComboBoxW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DlgDirListW      ; name of the function
+                    push dword namestring_DlgDirListComboBoxW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DlgDirListW:
-_DlgDirListW@20:
-                    jmp [__imp__DlgDirListW@20]
+DlgDirListComboBoxW:
+_DlgDirListComboBoxW@20:
+                    jmp [__imp__DlgDirListComboBoxW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DlgDirListW@20:
                     section .data
 %endif
 
-__imp__DlgDirListW@20:   dd unicows_initial_stub_DlgDirListW
-_Unicows_DlgDirListW:      dd 0
-namestring_DlgDirListW:    db 'DlgDirListW',0
+__imp__DlgDirListComboBoxW@20:   dd unicows_initial_stub_DlgDirListComboBoxW
+_Unicows_DlgDirListComboBoxW:      dd 0
+namestring_DlgDirListComboBoxW:    db 'DlgDirListComboBoxW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetAtomNameW@12
-                    global GetAtomNameW
-                    global _GetAtomNameW@12
-                    global _Unicows_GetAtomNameW
+                    global __imp__ExpandEnvironmentStringsW@12
+                    global ExpandEnvironmentStringsW
+                    global _ExpandEnvironmentStringsW@12
+                    global _Unicows_ExpandEnvironmentStringsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetAtomNameW:
+unicows_initial_stub_ExpandEnvironmentStringsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetAtomNameW@12     ; place to save the pointer
-                    push dword [_Unicows_GetAtomNameW]      ; default proc, if any
+                    push dword __imp__ExpandEnvironmentStringsW@12     ; place to save the pointer
+                    push dword [_Unicows_ExpandEnvironmentStringsW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetAtomNameW      ; name of the function
+                    push dword namestring_ExpandEnvironmentStringsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetAtomNameW:
-_GetAtomNameW@12:
-                    jmp [__imp__GetAtomNameW@12]
+ExpandEnvironmentStringsW:
+_ExpandEnvironmentStringsW@12:
+                    jmp [__imp__ExpandEnvironmentStringsW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetAtomNameW@12:
                     section .data
 %endif
 
-__imp__GetAtomNameW@12:   dd unicows_initial_stub_GetAtomNameW
-_Unicows_GetAtomNameW:      dd 0
-namestring_GetAtomNameW:    db 'GetAtomNameW',0
+__imp__ExpandEnvironmentStringsW@12:   dd unicows_initial_stub_ExpandEnvironmentStringsW
+_Unicows_ExpandEnvironmentStringsW:      dd 0
+namestring_ExpandEnvironmentStringsW:    db 'ExpandEnvironmentStringsW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__OpenEventW@12
-                    global OpenEventW
-                    global _OpenEventW@12
-                    global _Unicows_OpenEventW
+                    global __imp__GetWindowsDirectoryW@8
+                    global GetWindowsDirectoryW
+                    global _GetWindowsDirectoryW@8
+                    global _Unicows_GetWindowsDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_OpenEventW:
+unicows_initial_stub_GetWindowsDirectoryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__OpenEventW@12     ; place to save the pointer
-                    push dword [_Unicows_OpenEventW]      ; default proc, if any
+                    push dword __imp__GetWindowsDirectoryW@8     ; place to save the pointer
+                    push dword [_Unicows_GetWindowsDirectoryW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_OpenEventW      ; name of the function
+                    push dword namestring_GetWindowsDirectoryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenEventW:
-_OpenEventW@12:
-                    jmp [__imp__OpenEventW@12]
+GetWindowsDirectoryW:
+_GetWindowsDirectoryW@8:
+                    jmp [__imp__GetWindowsDirectoryW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _OpenEventW@12:
                     section .data
 %endif
 
-__imp__OpenEventW@12:   dd unicows_initial_stub_OpenEventW
-_Unicows_OpenEventW:      dd 0
-namestring_OpenEventW:    db 'OpenEventW',0
+__imp__GetWindowsDirectoryW@8:   dd unicows_initial_stub_GetWindowsDirectoryW
+_Unicows_GetWindowsDirectoryW:      dd 0
+namestring_GetWindowsDirectoryW:    db 'GetWindowsDirectoryW',0

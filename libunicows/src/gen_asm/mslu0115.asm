@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CharUpperW@4
-                    global CharUpperW
-                    global _CharUpperW@4
-                    global _Unicows_CharUpperW
+                    global __imp__CharUpperBuffW@8
+                    global CharUpperBuffW
+                    global _CharUpperBuffW@8
+                    global _Unicows_CharUpperBuffW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CharUpperW:
+unicows_initial_stub_CharUpperBuffW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CharUpperW@4     ; place to save the pointer
-                    push dword [_Unicows_CharUpperW]      ; default proc, if any
+                    push dword __imp__CharUpperBuffW@8     ; place to save the pointer
+                    push dword [_Unicows_CharUpperBuffW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_CharUpperW      ; name of the function
+                    push dword namestring_CharUpperBuffW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CharUpperW:
-_CharUpperW@4:
-                    jmp [__imp__CharUpperW@4]
+CharUpperBuffW:
+_CharUpperBuffW@8:
+                    jmp [__imp__CharUpperBuffW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CharUpperW@4:
                     section .data
 %endif
 
-__imp__CharUpperW@4:   dd unicows_initial_stub_CharUpperW
-_Unicows_CharUpperW:      dd 0
-namestring_CharUpperW:    db 'CharUpperW',0
+__imp__CharUpperBuffW@8:   dd unicows_initial_stub_CharUpperBuffW
+_Unicows_CharUpperBuffW:      dd 0
+namestring_CharUpperBuffW:    db 'CharUpperBuffW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__OutputDebugStringW@4
-                    global OutputDebugStringW
-                    global _OutputDebugStringW@4
-                    global _Unicows_OutputDebugStringW
+                    global __imp__IsValidCodePage@4
+                    global IsValidCodePage
+                    global _IsValidCodePage@4
+                    global _Unicows_IsValidCodePage
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_OutputDebugStringW:
+unicows_initial_stub_IsValidCodePage:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__OutputDebugStringW@4     ; place to save the pointer
-                    push dword [_Unicows_OutputDebugStringW]      ; default proc, if any
+                    push dword __imp__IsValidCodePage@4     ; place to save the pointer
+                    push dword [_Unicows_IsValidCodePage]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_OutputDebugStringW      ; name of the function
+                    push dword namestring_IsValidCodePage      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-OutputDebugStringW:
-_OutputDebugStringW@4:
-                    jmp [__imp__OutputDebugStringW@4]
+IsValidCodePage:
+_IsValidCodePage@4:
+                    jmp [__imp__IsValidCodePage@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _OutputDebugStringW@4:
                     section .data
 %endif
 
-__imp__OutputDebugStringW@4:   dd unicows_initial_stub_OutputDebugStringW
-_Unicows_OutputDebugStringW:      dd 0
-namestring_OutputDebugStringW:    db 'OutputDebugStringW',0
+__imp__IsValidCodePage@4:   dd unicows_initial_stub_IsValidCodePage
+_Unicows_IsValidCodePage:      dd 0
+namestring_IsValidCodePage:    db 'IsValidCodePage',0

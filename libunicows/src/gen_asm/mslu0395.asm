@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ReadConsoleW@20
-                    global ReadConsoleW
-                    global _ReadConsoleW@20
-                    global _Unicows_ReadConsoleW
+                    global __imp__OpenEventW@12
+                    global OpenEventW
+                    global _OpenEventW@12
+                    global _Unicows_OpenEventW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ReadConsoleW:
+unicows_initial_stub_OpenEventW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ReadConsoleW@20     ; place to save the pointer
-                    push dword [_Unicows_ReadConsoleW]      ; default proc, if any
+                    push dword __imp__OpenEventW@12     ; place to save the pointer
+                    push dword [_Unicows_OpenEventW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_ReadConsoleW      ; name of the function
+                    push dword namestring_OpenEventW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ReadConsoleW:
-_ReadConsoleW@20:
-                    jmp [__imp__ReadConsoleW@20]
+OpenEventW:
+_OpenEventW@12:
+                    jmp [__imp__OpenEventW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ReadConsoleW@20:
                     section .data
 %endif
 
-__imp__ReadConsoleW@20:   dd unicows_initial_stub_ReadConsoleW
-_Unicows_ReadConsoleW:      dd 0
-namestring_ReadConsoleW:    db 'ReadConsoleW',0
+__imp__OpenEventW@12:   dd unicows_initial_stub_OpenEventW
+_Unicows_OpenEventW:      dd 0
+namestring_OpenEventW:    db 'OpenEventW',0

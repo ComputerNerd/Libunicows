@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumDateFormatsW@12
-                    global EnumDateFormatsW
-                    global _EnumDateFormatsW@12
-                    global _Unicows_EnumDateFormatsW
+                    global __imp__CreateMutexW@12
+                    global CreateMutexW
+                    global _CreateMutexW@12
+                    global _Unicows_CreateMutexW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumDateFormatsW:
+unicows_initial_stub_CreateMutexW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumDateFormatsW@12     ; place to save the pointer
-                    push dword [_Unicows_EnumDateFormatsW]      ; default proc, if any
+                    push dword __imp__CreateMutexW@12     ; place to save the pointer
+                    push dword [_Unicows_CreateMutexW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_EnumDateFormatsW      ; name of the function
+                    push dword namestring_CreateMutexW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumDateFormatsW:
-_EnumDateFormatsW@12:
-                    jmp [__imp__EnumDateFormatsW@12]
+CreateMutexW:
+_CreateMutexW@12:
+                    jmp [__imp__CreateMutexW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumDateFormatsW@12:
                     section .data
 %endif
 
-__imp__EnumDateFormatsW@12:   dd unicows_initial_stub_EnumDateFormatsW
-_Unicows_EnumDateFormatsW:      dd 0
-namestring_EnumDateFormatsW:    db 'EnumDateFormatsW',0
+__imp__CreateMutexW@12:   dd unicows_initial_stub_CreateMutexW
+_Unicows_CreateMutexW:      dd 0
+namestring_CreateMutexW:    db 'CreateMutexW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__LoadImageW@24
-                    global LoadImageW
-                    global _LoadImageW@24
-                    global _Unicows_LoadImageW
+                    global __imp__LoadIconW@8
+                    global LoadIconW
+                    global _LoadIconW@8
+                    global _Unicows_LoadIconW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_LoadImageW:
+unicows_initial_stub_LoadIconW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__LoadImageW@24     ; place to save the pointer
-                    push dword [_Unicows_LoadImageW]      ; default proc, if any
+                    push dword __imp__LoadIconW@8     ; place to save the pointer
+                    push dword [_Unicows_LoadIconW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_LoadImageW      ; name of the function
+                    push dword namestring_LoadIconW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadImageW:
-_LoadImageW@24:
-                    jmp [__imp__LoadImageW@24]
+LoadIconW:
+_LoadIconW@8:
+                    jmp [__imp__LoadIconW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _LoadImageW@24:
                     section .data
 %endif
 
-__imp__LoadImageW@24:   dd unicows_initial_stub_LoadImageW
-_Unicows_LoadImageW:      dd 0
-namestring_LoadImageW:    db 'LoadImageW',0
+__imp__LoadIconW@8:   dd unicows_initial_stub_LoadIconW
+_Unicows_LoadIconW:      dd 0
+namestring_LoadIconW:    db 'LoadIconW',0

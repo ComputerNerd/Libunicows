@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetClassInfoExW@12
-                    global GetClassInfoExW
-                    global _GetClassInfoExW@12
-                    global _Unicows_GetClassInfoExW
+                    global __imp__GetAltTabInfoW@20
+                    global GetAltTabInfoW
+                    global _GetAltTabInfoW@20
+                    global _Unicows_GetAltTabInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetClassInfoExW:
+unicows_initial_stub_GetAltTabInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetClassInfoExW@12     ; place to save the pointer
-                    push dword [_Unicows_GetClassInfoExW]      ; default proc, if any
+                    push dword __imp__GetAltTabInfoW@20     ; place to save the pointer
+                    push dword [_Unicows_GetAltTabInfoW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_GetClassInfoExW      ; name of the function
+                    push dword namestring_GetAltTabInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetClassInfoExW:
-_GetClassInfoExW@12:
-                    jmp [__imp__GetClassInfoExW@12]
+GetAltTabInfoW:
+_GetAltTabInfoW@20:
+                    jmp [__imp__GetAltTabInfoW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetClassInfoExW@12:
                     section .data
 %endif
 
-__imp__GetClassInfoExW@12:   dd unicows_initial_stub_GetClassInfoExW
-_Unicows_GetClassInfoExW:      dd 0
-namestring_GetClassInfoExW:    db 'GetClassInfoExW',0
+__imp__GetAltTabInfoW@20:   dd unicows_initial_stub_GetAltTabInfoW
+_Unicows_GetAltTabInfoW:      dd 0
+namestring_GetAltTabInfoW:    db 'GetAltTabInfoW',0

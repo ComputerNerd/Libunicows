@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ShellExecuteW@24
-                    global ShellExecuteW
-                    global _ShellExecuteW@24
-                    global _Unicows_ShellExecuteW
+                    global __imp__ShellExecuteExW@4
+                    global ShellExecuteExW
+                    global _ShellExecuteExW@4
+                    global _Unicows_ShellExecuteExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ShellExecuteW:
+unicows_initial_stub_ShellExecuteExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ShellExecuteW@24     ; place to save the pointer
-                    push dword [_Unicows_ShellExecuteW]      ; default proc, if any
+                    push dword __imp__ShellExecuteExW@4     ; place to save the pointer
+                    push dword [_Unicows_ShellExecuteExW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_ShellExecuteW      ; name of the function
+                    push dword namestring_ShellExecuteExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ShellExecuteW:
-_ShellExecuteW@24:
-                    jmp [__imp__ShellExecuteW@24]
+ShellExecuteExW:
+_ShellExecuteExW@4:
+                    jmp [__imp__ShellExecuteExW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ShellExecuteW@24:
                     section .data
 %endif
 
-__imp__ShellExecuteW@24:   dd unicows_initial_stub_ShellExecuteW
-_Unicows_ShellExecuteW:      dd 0
-namestring_ShellExecuteW:    db 'ShellExecuteW',0
+__imp__ShellExecuteExW@4:   dd unicows_initial_stub_ShellExecuteExW
+_Unicows_ShellExecuteExW:      dd 0
+namestring_ShellExecuteExW:    db 'ShellExecuteExW',0

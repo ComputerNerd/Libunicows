@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetClassInfoW@12
-                    global GetClassInfoW
-                    global _GetClassInfoW@12
-                    global _Unicows_GetClassInfoW
+                    global __imp__GetClassInfoExW@12
+                    global GetClassInfoExW
+                    global _GetClassInfoExW@12
+                    global _Unicows_GetClassInfoExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetClassInfoW:
+unicows_initial_stub_GetClassInfoExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetClassInfoW@12     ; place to save the pointer
-                    push dword [_Unicows_GetClassInfoW]      ; default proc, if any
+                    push dword __imp__GetClassInfoExW@12     ; place to save the pointer
+                    push dword [_Unicows_GetClassInfoExW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_GetClassInfoW      ; name of the function
+                    push dword namestring_GetClassInfoExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetClassInfoW:
-_GetClassInfoW@12:
-                    jmp [__imp__GetClassInfoW@12]
+GetClassInfoExW:
+_GetClassInfoExW@12:
+                    jmp [__imp__GetClassInfoExW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetClassInfoW@12:
                     section .data
 %endif
 
-__imp__GetClassInfoW@12:   dd unicows_initial_stub_GetClassInfoW
-_Unicows_GetClassInfoW:      dd 0
-namestring_GetClassInfoW:    db 'GetClassInfoW',0
+__imp__GetClassInfoExW@12:   dd unicows_initial_stub_GetClassInfoExW
+_Unicows_GetClassInfoExW:      dd 0
+namestring_GetClassInfoExW:    db 'GetClassInfoExW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__LoadMenuIndirectW@4
-                    global LoadMenuIndirectW
-                    global _LoadMenuIndirectW@4
-                    global _Unicows_LoadMenuIndirectW
+                    global __imp__LoadKeyboardLayoutW@8
+                    global LoadKeyboardLayoutW
+                    global _LoadKeyboardLayoutW@8
+                    global _Unicows_LoadKeyboardLayoutW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_LoadMenuIndirectW:
+unicows_initial_stub_LoadKeyboardLayoutW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__LoadMenuIndirectW@4     ; place to save the pointer
-                    push dword [_Unicows_LoadMenuIndirectW]      ; default proc, if any
+                    push dword __imp__LoadKeyboardLayoutW@8     ; place to save the pointer
+                    push dword [_Unicows_LoadKeyboardLayoutW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_LoadMenuIndirectW      ; name of the function
+                    push dword namestring_LoadKeyboardLayoutW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadMenuIndirectW:
-_LoadMenuIndirectW@4:
-                    jmp [__imp__LoadMenuIndirectW@4]
+LoadKeyboardLayoutW:
+_LoadKeyboardLayoutW@8:
+                    jmp [__imp__LoadKeyboardLayoutW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _LoadMenuIndirectW@4:
                     section .data
 %endif
 
-__imp__LoadMenuIndirectW@4:   dd unicows_initial_stub_LoadMenuIndirectW
-_Unicows_LoadMenuIndirectW:      dd 0
-namestring_LoadMenuIndirectW:    db 'LoadMenuIndirectW',0
+__imp__LoadKeyboardLayoutW@8:   dd unicows_initial_stub_LoadKeyboardLayoutW
+_Unicows_LoadKeyboardLayoutW:      dd 0
+namestring_LoadKeyboardLayoutW:    db 'LoadKeyboardLayoutW',0

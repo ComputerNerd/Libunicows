@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DrawTextExW@24
-                    global DrawTextExW
-                    global _DrawTextExW@24
-                    global _Unicows_DrawTextExW
+                    global __imp__DrawStateW@40
+                    global DrawStateW
+                    global _DrawStateW@40
+                    global _Unicows_DrawStateW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DrawTextExW:
+unicows_initial_stub_DrawStateW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DrawTextExW@24     ; place to save the pointer
-                    push dword [_Unicows_DrawTextExW]      ; default proc, if any
+                    push dword __imp__DrawStateW@40     ; place to save the pointer
+                    push dword [_Unicows_DrawStateW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DrawTextExW      ; name of the function
+                    push dword namestring_DrawStateW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DrawTextExW:
-_DrawTextExW@24:
-                    jmp [__imp__DrawTextExW@24]
+DrawStateW:
+_DrawStateW@40:
+                    jmp [__imp__DrawStateW@40]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DrawTextExW@24:
                     section .data
 %endif
 
-__imp__DrawTextExW@24:   dd unicows_initial_stub_DrawTextExW
-_Unicows_DrawTextExW:      dd 0
-namestring_DrawTextExW:    db 'DrawTextExW',0
+__imp__DrawStateW@40:   dd unicows_initial_stub_DrawStateW
+_Unicows_DrawStateW:      dd 0
+namestring_DrawStateW:    db 'DrawStateW',0

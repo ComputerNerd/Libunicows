@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RemovePropA@8
-                    global RemovePropA
-                    global _RemovePropA@8
-                    global _Unicows_RemovePropA
+                    global __imp__RegisterWindowMessageW@4
+                    global RegisterWindowMessageW
+                    global _RegisterWindowMessageW@4
+                    global _Unicows_RegisterWindowMessageW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RemovePropA:
+unicows_initial_stub_RegisterWindowMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RemovePropA@8     ; place to save the pointer
-                    push dword [_Unicows_RemovePropA]      ; default proc, if any
+                    push dword __imp__RegisterWindowMessageW@4     ; place to save the pointer
+                    push dword [_Unicows_RegisterWindowMessageW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_RemovePropA      ; name of the function
+                    push dword namestring_RegisterWindowMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RemovePropA:
-_RemovePropA@8:
-                    jmp [__imp__RemovePropA@8]
+RegisterWindowMessageW:
+_RegisterWindowMessageW@4:
+                    jmp [__imp__RegisterWindowMessageW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RemovePropA@8:
                     section .data
 %endif
 
-__imp__RemovePropA@8:   dd unicows_initial_stub_RemovePropA
-_Unicows_RemovePropA:      dd 0
-namestring_RemovePropA:    db 'RemovePropA',0
+__imp__RegisterWindowMessageW@4:   dd unicows_initial_stub_RegisterWindowMessageW
+_Unicows_RegisterWindowMessageW:      dd 0
+namestring_RegisterWindowMessageW:    db 'RegisterWindowMessageW',0

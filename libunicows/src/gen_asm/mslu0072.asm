@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__midiOutGetErrorTextW@12
-                    global midiOutGetErrorTextW
-                    global _midiOutGetErrorTextW@12
-                    global _Unicows_midiOutGetErrorTextW
+                    global __imp__midiOutGetDevCapsW@12
+                    global midiOutGetDevCapsW
+                    global _midiOutGetDevCapsW@12
+                    global _Unicows_midiOutGetDevCapsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_midiOutGetErrorTextW:
+unicows_initial_stub_midiOutGetDevCapsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__midiOutGetErrorTextW@12     ; place to save the pointer
-                    push dword [_Unicows_midiOutGetErrorTextW]      ; default proc, if any
+                    push dword __imp__midiOutGetDevCapsW@12     ; place to save the pointer
+                    push dword [_Unicows_midiOutGetDevCapsW]      ; default proc, if any
                     push dword WINMM                  ; dll id
-                    push dword namestring_midiOutGetErrorTextW      ; name of the function
+                    push dword namestring_midiOutGetDevCapsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-midiOutGetErrorTextW:
-_midiOutGetErrorTextW@12:
-                    jmp [__imp__midiOutGetErrorTextW@12]
+midiOutGetDevCapsW:
+_midiOutGetDevCapsW@12:
+                    jmp [__imp__midiOutGetDevCapsW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _midiOutGetErrorTextW@12:
                     section .data
 %endif
 
-__imp__midiOutGetErrorTextW@12:   dd unicows_initial_stub_midiOutGetErrorTextW
-_Unicows_midiOutGetErrorTextW:      dd 0
-namestring_midiOutGetErrorTextW:    db 'midiOutGetErrorTextW',0
+__imp__midiOutGetDevCapsW@12:   dd unicows_initial_stub_midiOutGetDevCapsW
+_Unicows_midiOutGetDevCapsW:      dd 0
+namestring_midiOutGetDevCapsW:    db 'midiOutGetDevCapsW',0

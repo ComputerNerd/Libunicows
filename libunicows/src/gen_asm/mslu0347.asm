@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetLocaleInfoW@16
-                    global GetLocaleInfoW
-                    global _GetLocaleInfoW@16
-                    global _Unicows_GetLocaleInfoW
+                    global __imp__GetCurrentDirectoryW@8
+                    global GetCurrentDirectoryW
+                    global _GetCurrentDirectoryW@8
+                    global _Unicows_GetCurrentDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetLocaleInfoW:
+unicows_initial_stub_GetCurrentDirectoryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetLocaleInfoW@16     ; place to save the pointer
-                    push dword [_Unicows_GetLocaleInfoW]      ; default proc, if any
+                    push dword __imp__GetCurrentDirectoryW@8     ; place to save the pointer
+                    push dword [_Unicows_GetCurrentDirectoryW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetLocaleInfoW      ; name of the function
+                    push dword namestring_GetCurrentDirectoryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetLocaleInfoW:
-_GetLocaleInfoW@16:
-                    jmp [__imp__GetLocaleInfoW@16]
+GetCurrentDirectoryW:
+_GetCurrentDirectoryW@8:
+                    jmp [__imp__GetCurrentDirectoryW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetLocaleInfoW@16:
                     section .data
 %endif
 
-__imp__GetLocaleInfoW@16:   dd unicows_initial_stub_GetLocaleInfoW
-_Unicows_GetLocaleInfoW:      dd 0
-namestring_GetLocaleInfoW:    db 'GetLocaleInfoW',0
+__imp__GetCurrentDirectoryW@8:   dd unicows_initial_stub_GetCurrentDirectoryW
+_Unicows_GetCurrentDirectoryW:      dd 0
+namestring_GetCurrentDirectoryW:    db 'GetCurrentDirectoryW',0

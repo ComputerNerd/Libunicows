@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__PrintDlgW@4
-                    global PrintDlgW
-                    global _PrintDlgW@4
-                    global _Unicows_PrintDlgW
+                    global __imp__RegSetValueW@20
+                    global RegSetValueW
+                    global _RegSetValueW@20
+                    global _Unicows_RegSetValueW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_PrintDlgW:
+unicows_initial_stub_RegSetValueW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__PrintDlgW@4     ; place to save the pointer
-                    push dword [_Unicows_PrintDlgW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_PrintDlgW      ; name of the function
+                    push dword __imp__RegSetValueW@20     ; place to save the pointer
+                    push dword [_Unicows_RegSetValueW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegSetValueW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-PrintDlgW:
-_PrintDlgW@4:
-                    jmp [__imp__PrintDlgW@4]
+RegSetValueW:
+_RegSetValueW@20:
+                    jmp [__imp__RegSetValueW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _PrintDlgW@4:
                     section .data
 %endif
 
-__imp__PrintDlgW@4:   dd unicows_initial_stub_PrintDlgW
-_Unicows_PrintDlgW:      dd 0
-namestring_PrintDlgW:    db 'PrintDlgW',0
+__imp__RegSetValueW@20:   dd unicows_initial_stub_RegSetValueW
+_Unicows_RegSetValueW:      dd 0
+namestring_RegSetValueW:    db 'RegSetValueW',0

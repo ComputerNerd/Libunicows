@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DdeConnect@16
-                    global DdeConnect
-                    global _DdeConnect@16
-                    global _Unicows_DdeConnect
+                    global __imp__CreateWindowExW@48
+                    global CreateWindowExW
+                    global _CreateWindowExW@48
+                    global _Unicows_CreateWindowExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DdeConnect:
+unicows_initial_stub_CreateWindowExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DdeConnect@16     ; place to save the pointer
-                    push dword [_Unicows_DdeConnect]      ; default proc, if any
+                    push dword __imp__CreateWindowExW@48     ; place to save the pointer
+                    push dword [_Unicows_CreateWindowExW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DdeConnect      ; name of the function
+                    push dword namestring_CreateWindowExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DdeConnect:
-_DdeConnect@16:
-                    jmp [__imp__DdeConnect@16]
+CreateWindowExW:
+_CreateWindowExW@48:
+                    jmp [__imp__CreateWindowExW@48]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DdeConnect@16:
                     section .data
 %endif
 
-__imp__DdeConnect@16:   dd unicows_initial_stub_DdeConnect
-_Unicows_DdeConnect:      dd 0
-namestring_DdeConnect:    db 'DdeConnect',0
+__imp__CreateWindowExW@48:   dd unicows_initial_stub_CreateWindowExW
+_Unicows_CreateWindowExW:      dd 0
+namestring_CreateWindowExW:    db 'CreateWindowExW',0

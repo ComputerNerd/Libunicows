@@ -1,1 +1,2 @@
-GetProcAddress (can't do this one!)
+GetProcAddress
+__FreeAllLibrariesInMsluDll

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CallWindowProcW@20
-                    global CallWindowProcW
-                    global _CallWindowProcW@20
-                    global _Unicows_CallWindowProcW
+                    global __imp__CallWindowProcA@20
+                    global CallWindowProcA
+                    global _CallWindowProcA@20
+                    global _Unicows_CallWindowProcA
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CallWindowProcW:
+unicows_initial_stub_CallWindowProcA:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CallWindowProcW@20     ; place to save the pointer
-                    push dword [_Unicows_CallWindowProcW]      ; default proc, if any
+                    push dword __imp__CallWindowProcA@20     ; place to save the pointer
+                    push dword [_Unicows_CallWindowProcA]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_CallWindowProcW      ; name of the function
+                    push dword namestring_CallWindowProcA      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CallWindowProcW:
-_CallWindowProcW@20:
-                    jmp [__imp__CallWindowProcW@20]
+CallWindowProcA:
+_CallWindowProcA@20:
+                    jmp [__imp__CallWindowProcA@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CallWindowProcW@20:
                     section .data
 %endif
 
-__imp__CallWindowProcW@20:   dd unicows_initial_stub_CallWindowProcW
-_Unicows_CallWindowProcW:      dd 0
-namestring_CallWindowProcW:    db 'CallWindowProcW',0
+__imp__CallWindowProcA@20:   dd unicows_initial_stub_CallWindowProcA
+_Unicows_CallWindowProcA:      dd 0
+namestring_CallWindowProcA:    db 'CallWindowProcA',0

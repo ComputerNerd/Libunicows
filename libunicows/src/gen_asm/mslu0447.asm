@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__AddPortW@12
-                    global AddPortW
-                    global _AddPortW@12
-                    global _Unicows_AddPortW
+                    global __imp__RasGetConnectStatusW@8
+                    global RasGetConnectStatusW
+                    global _RasGetConnectStatusW@8
+                    global _Unicows_RasGetConnectStatusW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_AddPortW:
+unicows_initial_stub_RasGetConnectStatusW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AddPortW@12     ; place to save the pointer
-                    push dword [_Unicows_AddPortW]      ; default proc, if any
-                    push dword WINSPOOL                  ; dll id
-                    push dword namestring_AddPortW      ; name of the function
+                    push dword __imp__RasGetConnectStatusW@8     ; place to save the pointer
+                    push dword [_Unicows_RasGetConnectStatusW]      ; default proc, if any
+                    push dword RASAPI32                  ; dll id
+                    push dword namestring_RasGetConnectStatusW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddPortW:
-_AddPortW@12:
-                    jmp [__imp__AddPortW@12]
+RasGetConnectStatusW:
+_RasGetConnectStatusW@8:
+                    jmp [__imp__RasGetConnectStatusW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _AddPortW@12:
                     section .data
 %endif
 
-__imp__AddPortW@12:   dd unicows_initial_stub_AddPortW
-_Unicows_AddPortW:      dd 0
-namestring_AddPortW:    db 'AddPortW',0
+__imp__RasGetConnectStatusW@8:   dd unicows_initial_stub_RasGetConnectStatusW
+_Unicows_RasGetConnectStatusW:      dd 0
+namestring_RasGetConnectStatusW:    db 'RasGetConnectStatusW',0

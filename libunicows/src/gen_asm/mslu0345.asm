@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetFileAttributesW@4
-                    global GetFileAttributesW
-                    global _GetFileAttributesW@4
-                    global _Unicows_GetFileAttributesW
+                    global __imp__GetConsoleTitleW@8
+                    global GetConsoleTitleW
+                    global _GetConsoleTitleW@8
+                    global _Unicows_GetConsoleTitleW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetFileAttributesW:
+unicows_initial_stub_GetConsoleTitleW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetFileAttributesW@4     ; place to save the pointer
-                    push dword [_Unicows_GetFileAttributesW]      ; default proc, if any
+                    push dword __imp__GetConsoleTitleW@8     ; place to save the pointer
+                    push dword [_Unicows_GetConsoleTitleW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetFileAttributesW      ; name of the function
+                    push dword namestring_GetConsoleTitleW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFileAttributesW:
-_GetFileAttributesW@4:
-                    jmp [__imp__GetFileAttributesW@4]
+GetConsoleTitleW:
+_GetConsoleTitleW@8:
+                    jmp [__imp__GetConsoleTitleW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetFileAttributesW@4:
                     section .data
 %endif
 
-__imp__GetFileAttributesW@4:   dd unicows_initial_stub_GetFileAttributesW
-_Unicows_GetFileAttributesW:      dd 0
-namestring_GetFileAttributesW:    db 'GetFileAttributesW',0
+__imp__GetConsoleTitleW@8:   dd unicows_initial_stub_GetConsoleTitleW
+_Unicows_GetConsoleTitleW:      dd 0
+namestring_GetConsoleTitleW:    db 'GetConsoleTitleW',0

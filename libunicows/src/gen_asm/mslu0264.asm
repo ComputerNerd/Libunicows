@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegDeleteValueW@8
-                    global RegDeleteValueW
-                    global _RegDeleteValueW@8
-                    global _Unicows_RegDeleteValueW
+                    global __imp__CryptSignHashW@24
+                    global CryptSignHashW
+                    global _CryptSignHashW@24
+                    global _Unicows_CryptSignHashW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegDeleteValueW:
+unicows_initial_stub_CryptSignHashW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegDeleteValueW@8     ; place to save the pointer
-                    push dword [_Unicows_RegDeleteValueW]      ; default proc, if any
+                    push dword __imp__CryptSignHashW@24     ; place to save the pointer
+                    push dword [_Unicows_CryptSignHashW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegDeleteValueW      ; name of the function
+                    push dword namestring_CryptSignHashW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegDeleteValueW:
-_RegDeleteValueW@8:
-                    jmp [__imp__RegDeleteValueW@8]
+CryptSignHashW:
+_CryptSignHashW@24:
+                    jmp [__imp__CryptSignHashW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegDeleteValueW@8:
                     section .data
 %endif
 
-__imp__RegDeleteValueW@8:   dd unicows_initial_stub_RegDeleteValueW
-_Unicows_RegDeleteValueW:      dd 0
-namestring_RegDeleteValueW:    db 'RegDeleteValueW',0
+__imp__CryptSignHashW@24:   dd unicows_initial_stub_CryptSignHashW
+_Unicows_CryptSignHashW:      dd 0
+namestring_CryptSignHashW:    db 'CryptSignHashW',0

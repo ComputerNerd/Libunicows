@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CopyFileExW@24
-                    global CopyFileExW
-                    global _CopyFileExW@24
-                    global _Unicows_CopyFileExW
+                    global __imp__PrintDlgW@4
+                    global PrintDlgW
+                    global _PrintDlgW@4
+                    global _Unicows_PrintDlgW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CopyFileExW:
+unicows_initial_stub_PrintDlgW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CopyFileExW@24     ; place to save the pointer
-                    push dword [_Unicows_CopyFileExW]      ; default proc, if any
-                    push dword KERNEL32                  ; dll id
-                    push dword namestring_CopyFileExW      ; name of the function
+                    push dword __imp__PrintDlgW@4     ; place to save the pointer
+                    push dword [_Unicows_PrintDlgW]      ; default proc, if any
+                    push dword COMDLG32                  ; dll id
+                    push dword namestring_PrintDlgW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CopyFileExW:
-_CopyFileExW@24:
-                    jmp [__imp__CopyFileExW@24]
+PrintDlgW:
+_PrintDlgW@4:
+                    jmp [__imp__PrintDlgW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CopyFileExW@24:
                     section .data
 %endif
 
-__imp__CopyFileExW@24:   dd unicows_initial_stub_CopyFileExW
-_Unicows_CopyFileExW:      dd 0
-namestring_CopyFileExW:    db 'CopyFileExW',0
+__imp__PrintDlgW@4:   dd unicows_initial_stub_PrintDlgW
+_Unicows_PrintDlgW:      dd 0
+namestring_PrintDlgW:    db 'PrintDlgW',0

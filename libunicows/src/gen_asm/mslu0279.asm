@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegUnLoadKeyW@8
-                    global RegUnLoadKeyW
-                    global _RegUnLoadKeyW@8
-                    global _Unicows_RegUnLoadKeyW
+                    global __imp__RegOpenKeyW@12
+                    global RegOpenKeyW
+                    global _RegOpenKeyW@12
+                    global _Unicows_RegOpenKeyW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegUnLoadKeyW:
+unicows_initial_stub_RegOpenKeyW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegUnLoadKeyW@8     ; place to save the pointer
-                    push dword [_Unicows_RegUnLoadKeyW]      ; default proc, if any
+                    push dword __imp__RegOpenKeyW@12     ; place to save the pointer
+                    push dword [_Unicows_RegOpenKeyW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegUnLoadKeyW      ; name of the function
+                    push dword namestring_RegOpenKeyW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegUnLoadKeyW:
-_RegUnLoadKeyW@8:
-                    jmp [__imp__RegUnLoadKeyW@8]
+RegOpenKeyW:
+_RegOpenKeyW@12:
+                    jmp [__imp__RegOpenKeyW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegUnLoadKeyW@8:
                     section .data
 %endif
 
-__imp__RegUnLoadKeyW@8:   dd unicows_initial_stub_RegUnLoadKeyW
-_Unicows_RegUnLoadKeyW:      dd 0
-namestring_RegUnLoadKeyW:    db 'RegUnLoadKeyW',0
+__imp__RegOpenKeyW@12:   dd unicows_initial_stub_RegOpenKeyW
+_Unicows_RegOpenKeyW:      dd 0
+namestring_RegOpenKeyW:    db 'RegOpenKeyW',0

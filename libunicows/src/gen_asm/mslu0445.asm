@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__AddJobW@20
-                    global AddJobW
-                    global _AddJobW@20
-                    global _Unicows_AddJobW
+                    global __imp__RasEnumDevicesW@12
+                    global RasEnumDevicesW
+                    global _RasEnumDevicesW@12
+                    global _Unicows_RasEnumDevicesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_AddJobW:
+unicows_initial_stub_RasEnumDevicesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AddJobW@20     ; place to save the pointer
-                    push dword [_Unicows_AddJobW]      ; default proc, if any
-                    push dword WINSPOOL                  ; dll id
-                    push dword namestring_AddJobW      ; name of the function
+                    push dword __imp__RasEnumDevicesW@12     ; place to save the pointer
+                    push dword [_Unicows_RasEnumDevicesW]      ; default proc, if any
+                    push dword RASAPI32                  ; dll id
+                    push dword namestring_RasEnumDevicesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddJobW:
-_AddJobW@20:
-                    jmp [__imp__AddJobW@20]
+RasEnumDevicesW:
+_RasEnumDevicesW@12:
+                    jmp [__imp__RasEnumDevicesW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _AddJobW@20:
                     section .data
 %endif
 
-__imp__AddJobW@20:   dd unicows_initial_stub_AddJobW
-_Unicows_AddJobW:      dd 0
-namestring_AddJobW:    db 'AddJobW',0
+__imp__RasEnumDevicesW@12:   dd unicows_initial_stub_RasEnumDevicesW
+_Unicows_RasEnumDevicesW:      dd 0
+namestring_RasEnumDevicesW:    db 'RasEnumDevicesW',0

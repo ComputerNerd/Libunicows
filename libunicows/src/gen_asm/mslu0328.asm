@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FreeEnvironmentStringsW@4
-                    global FreeEnvironmentStringsW
-                    global _FreeEnvironmentStringsW@4
-                    global _Unicows_FreeEnvironmentStringsW
+                    global __imp__EnumTimeFormatsW@12
+                    global EnumTimeFormatsW
+                    global _EnumTimeFormatsW@12
+                    global _Unicows_EnumTimeFormatsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FreeEnvironmentStringsW:
+unicows_initial_stub_EnumTimeFormatsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FreeEnvironmentStringsW@4     ; place to save the pointer
-                    push dword [_Unicows_FreeEnvironmentStringsW]      ; default proc, if any
+                    push dword __imp__EnumTimeFormatsW@12     ; place to save the pointer
+                    push dword [_Unicows_EnumTimeFormatsW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_FreeEnvironmentStringsW      ; name of the function
+                    push dword namestring_EnumTimeFormatsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FreeEnvironmentStringsW:
-_FreeEnvironmentStringsW@4:
-                    jmp [__imp__FreeEnvironmentStringsW@4]
+EnumTimeFormatsW:
+_EnumTimeFormatsW@12:
+                    jmp [__imp__EnumTimeFormatsW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FreeEnvironmentStringsW@4:
                     section .data
 %endif
 
-__imp__FreeEnvironmentStringsW@4:   dd unicows_initial_stub_FreeEnvironmentStringsW
-_Unicows_FreeEnvironmentStringsW:      dd 0
-namestring_FreeEnvironmentStringsW:    db 'FreeEnvironmentStringsW',0
+__imp__EnumTimeFormatsW@12:   dd unicows_initial_stub_EnumTimeFormatsW
+_Unicows_EnumTimeFormatsW:      dd 0
+namestring_EnumTimeFormatsW:    db 'EnumTimeFormatsW',0

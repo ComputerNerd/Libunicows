@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CopyFileW@12
-                    global CopyFileW
-                    global _CopyFileW@12
-                    global _Unicows_CopyFileW
+                    global __imp__ReplaceTextW@4
+                    global ReplaceTextW
+                    global _ReplaceTextW@4
+                    global _Unicows_ReplaceTextW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CopyFileW:
+unicows_initial_stub_ReplaceTextW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CopyFileW@12     ; place to save the pointer
-                    push dword [_Unicows_CopyFileW]      ; default proc, if any
-                    push dword KERNEL32                  ; dll id
-                    push dword namestring_CopyFileW      ; name of the function
+                    push dword __imp__ReplaceTextW@4     ; place to save the pointer
+                    push dword [_Unicows_ReplaceTextW]      ; default proc, if any
+                    push dword COMDLG32                  ; dll id
+                    push dword namestring_ReplaceTextW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CopyFileW:
-_CopyFileW@12:
-                    jmp [__imp__CopyFileW@12]
+ReplaceTextW:
+_ReplaceTextW@4:
+                    jmp [__imp__ReplaceTextW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CopyFileW@12:
                     section .data
 %endif
 
-__imp__CopyFileW@12:   dd unicows_initial_stub_CopyFileW
-_Unicows_CopyFileW:      dd 0
-namestring_CopyFileW:    db 'CopyFileW',0
+__imp__ReplaceTextW@4:   dd unicows_initial_stub_ReplaceTextW
+_Unicows_ReplaceTextW:      dd 0
+namestring_ReplaceTextW:    db 'ReplaceTextW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasRenameEntryW@12
-                    global RasRenameEntryW
-                    global _RasRenameEntryW@12
-                    global _Unicows_RasRenameEntryW
+                    global __imp__RasDeleteEntryW@8
+                    global RasDeleteEntryW
+                    global _RasDeleteEntryW@8
+                    global _Unicows_RasDeleteEntryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasRenameEntryW:
+unicows_initial_stub_RasDeleteEntryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasRenameEntryW@12     ; place to save the pointer
-                    push dword [_Unicows_RasRenameEntryW]      ; default proc, if any
+                    push dword __imp__RasDeleteEntryW@8     ; place to save the pointer
+                    push dword [_Unicows_RasDeleteEntryW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasRenameEntryW      ; name of the function
+                    push dword namestring_RasDeleteEntryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasRenameEntryW:
-_RasRenameEntryW@12:
-                    jmp [__imp__RasRenameEntryW@12]
+RasDeleteEntryW:
+_RasDeleteEntryW@8:
+                    jmp [__imp__RasDeleteEntryW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasRenameEntryW@12:
                     section .data
 %endif
 
-__imp__RasRenameEntryW@12:   dd unicows_initial_stub_RasRenameEntryW
-_Unicows_RasRenameEntryW:      dd 0
-namestring_RasRenameEntryW:    db 'RasRenameEntryW',0
+__imp__RasDeleteEntryW@8:   dd unicows_initial_stub_RasDeleteEntryW
+_Unicows_RasDeleteEntryW:      dd 0
+namestring_RasDeleteEntryW:    db 'RasDeleteEntryW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetTempFileNameW@16
-                    global GetTempFileNameW
-                    global _GetTempFileNameW@16
-                    global _Unicows_GetTempFileNameW
+                    global __imp__GetPrivateProfileStringW@24
+                    global GetPrivateProfileStringW
+                    global _GetPrivateProfileStringW@24
+                    global _Unicows_GetPrivateProfileStringW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetTempFileNameW:
+unicows_initial_stub_GetPrivateProfileStringW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetTempFileNameW@16     ; place to save the pointer
-                    push dword [_Unicows_GetTempFileNameW]      ; default proc, if any
+                    push dword __imp__GetPrivateProfileStringW@24     ; place to save the pointer
+                    push dword [_Unicows_GetPrivateProfileStringW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetTempFileNameW      ; name of the function
+                    push dword namestring_GetPrivateProfileStringW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTempFileNameW:
-_GetTempFileNameW@16:
-                    jmp [__imp__GetTempFileNameW@16]
+GetPrivateProfileStringW:
+_GetPrivateProfileStringW@24:
+                    jmp [__imp__GetPrivateProfileStringW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetTempFileNameW@16:
                     section .data
 %endif
 
-__imp__GetTempFileNameW@16:   dd unicows_initial_stub_GetTempFileNameW
-_Unicows_GetTempFileNameW:      dd 0
-namestring_GetTempFileNameW:    db 'GetTempFileNameW',0
+__imp__GetPrivateProfileStringW@24:   dd unicows_initial_stub_GetPrivateProfileStringW
+_Unicows_GetPrivateProfileStringW:      dd 0
+namestring_GetPrivateProfileStringW:    db 'GetPrivateProfileStringW',0

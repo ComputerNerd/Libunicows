@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__InsertMenuItemW@16
-                    global InsertMenuItemW
-                    global _InsertMenuItemW@16
-                    global _Unicows_InsertMenuItemW
+                    global __imp__GrayStringW@36
+                    global GrayStringW
+                    global _GrayStringW@36
+                    global _Unicows_GrayStringW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_InsertMenuItemW:
+unicows_initial_stub_GrayStringW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__InsertMenuItemW@16     ; place to save the pointer
-                    push dword [_Unicows_InsertMenuItemW]      ; default proc, if any
+                    push dword __imp__GrayStringW@36     ; place to save the pointer
+                    push dword [_Unicows_GrayStringW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_InsertMenuItemW      ; name of the function
+                    push dword namestring_GrayStringW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-InsertMenuItemW:
-_InsertMenuItemW@16:
-                    jmp [__imp__InsertMenuItemW@16]
+GrayStringW:
+_GrayStringW@36:
+                    jmp [__imp__GrayStringW@36]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _InsertMenuItemW@16:
                     section .data
 %endif
 
-__imp__InsertMenuItemW@16:   dd unicows_initial_stub_InsertMenuItemW
-_Unicows_InsertMenuItemW:      dd 0
-namestring_InsertMenuItemW:    db 'InsertMenuItemW',0
+__imp__GrayStringW@36:   dd unicows_initial_stub_GrayStringW
+_Unicows_GrayStringW:      dd 0
+namestring_GrayStringW:    db 'GrayStringW',0

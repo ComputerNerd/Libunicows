@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__VerFindFileW@32
-                    global VerFindFileW
-                    global _VerFindFileW@32
-                    global _Unicows_VerFindFileW
+                    global __imp__GetFileVersionInfoW@16
+                    global GetFileVersionInfoW
+                    global _GetFileVersionInfoW@16
+                    global _Unicows_GetFileVersionInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_VerFindFileW:
+unicows_initial_stub_GetFileVersionInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__VerFindFileW@32     ; place to save the pointer
-                    push dword [_Unicows_VerFindFileW]      ; default proc, if any
+                    push dword __imp__GetFileVersionInfoW@16     ; place to save the pointer
+                    push dword [_Unicows_GetFileVersionInfoW]      ; default proc, if any
                     push dword VERSION                  ; dll id
-                    push dword namestring_VerFindFileW      ; name of the function
+                    push dword namestring_GetFileVersionInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-VerFindFileW:
-_VerFindFileW@32:
-                    jmp [__imp__VerFindFileW@32]
+GetFileVersionInfoW:
+_GetFileVersionInfoW@16:
+                    jmp [__imp__GetFileVersionInfoW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _VerFindFileW@32:
                     section .data
 %endif
 
-__imp__VerFindFileW@32:   dd unicows_initial_stub_VerFindFileW
-_Unicows_VerFindFileW:      dd 0
-namestring_VerFindFileW:    db 'VerFindFileW',0
+__imp__GetFileVersionInfoW@16:   dd unicows_initial_stub_GetFileVersionInfoW
+_Unicows_GetFileVersionInfoW:      dd 0
+namestring_GetFileVersionInfoW:    db 'GetFileVersionInfoW',0

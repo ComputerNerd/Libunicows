@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetKerningPairsW@12
-                    global GetKerningPairsW
-                    global _GetKerningPairsW@12
-                    global _Unicows_GetKerningPairsW
+                    global __imp__GetICMProfileW@12
+                    global GetICMProfileW
+                    global _GetICMProfileW@12
+                    global _Unicows_GetICMProfileW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetKerningPairsW:
+unicows_initial_stub_GetICMProfileW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetKerningPairsW@12     ; place to save the pointer
-                    push dword [_Unicows_GetKerningPairsW]      ; default proc, if any
+                    push dword __imp__GetICMProfileW@12     ; place to save the pointer
+                    push dword [_Unicows_GetICMProfileW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_GetKerningPairsW      ; name of the function
+                    push dword namestring_GetICMProfileW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetKerningPairsW:
-_GetKerningPairsW@12:
-                    jmp [__imp__GetKerningPairsW@12]
+GetICMProfileW:
+_GetICMProfileW@12:
+                    jmp [__imp__GetICMProfileW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetKerningPairsW@12:
                     section .data
 %endif
 
-__imp__GetKerningPairsW@12:   dd unicows_initial_stub_GetKerningPairsW
-_Unicows_GetKerningPairsW:      dd 0
-namestring_GetKerningPairsW:    db 'GetKerningPairsW',0
+__imp__GetICMProfileW@12:   dd unicows_initial_stub_GetICMProfileW
+_Unicows_GetICMProfileW:      dd 0
+namestring_GetICMProfileW:    db 'GetICMProfileW',0

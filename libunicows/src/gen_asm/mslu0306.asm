@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CreateProcessW@40
-                    global CreateProcessW
-                    global _CreateProcessW@40
-                    global _Unicows_CreateProcessW
+                    global __imp__CopyFileExW@24
+                    global CopyFileExW
+                    global _CopyFileExW@24
+                    global _Unicows_CopyFileExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CreateProcessW:
+unicows_initial_stub_CopyFileExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CreateProcessW@40     ; place to save the pointer
-                    push dword [_Unicows_CreateProcessW]      ; default proc, if any
+                    push dword __imp__CopyFileExW@24     ; place to save the pointer
+                    push dword [_Unicows_CopyFileExW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_CreateProcessW      ; name of the function
+                    push dword namestring_CopyFileExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateProcessW:
-_CreateProcessW@40:
-                    jmp [__imp__CreateProcessW@40]
+CopyFileExW:
+_CopyFileExW@24:
+                    jmp [__imp__CopyFileExW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CreateProcessW@40:
                     section .data
 %endif
 
-__imp__CreateProcessW@40:   dd unicows_initial_stub_CreateProcessW
-_Unicows_CreateProcessW:      dd 0
-namestring_CreateProcessW:    db 'CreateProcessW',0
+__imp__CopyFileExW@24:   dd unicows_initial_stub_CopyFileExW
+_Unicows_CopyFileExW:      dd 0
+namestring_CopyFileExW:    db 'CopyFileExW',0

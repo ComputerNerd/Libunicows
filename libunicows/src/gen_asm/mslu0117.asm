@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CreateAcceleratorTableW@8
-                    global CreateAcceleratorTableW
-                    global _CreateAcceleratorTableW@8
-                    global _Unicows_CreateAcceleratorTableW
+                    global __imp__CopyAcceleratorTableW@12
+                    global CopyAcceleratorTableW
+                    global _CopyAcceleratorTableW@12
+                    global _Unicows_CopyAcceleratorTableW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CreateAcceleratorTableW:
+unicows_initial_stub_CopyAcceleratorTableW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CreateAcceleratorTableW@8     ; place to save the pointer
-                    push dword [_Unicows_CreateAcceleratorTableW]      ; default proc, if any
+                    push dword __imp__CopyAcceleratorTableW@12     ; place to save the pointer
+                    push dword [_Unicows_CopyAcceleratorTableW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_CreateAcceleratorTableW      ; name of the function
+                    push dword namestring_CopyAcceleratorTableW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateAcceleratorTableW:
-_CreateAcceleratorTableW@8:
-                    jmp [__imp__CreateAcceleratorTableW@8]
+CopyAcceleratorTableW:
+_CopyAcceleratorTableW@12:
+                    jmp [__imp__CopyAcceleratorTableW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CreateAcceleratorTableW@8:
                     section .data
 %endif
 
-__imp__CreateAcceleratorTableW@8:   dd unicows_initial_stub_CreateAcceleratorTableW
-_Unicows_CreateAcceleratorTableW:      dd 0
-namestring_CreateAcceleratorTableW:    db 'CreateAcceleratorTableW',0
+__imp__CopyAcceleratorTableW@12:   dd unicows_initial_stub_CopyAcceleratorTableW
+_Unicows_CopyAcceleratorTableW:      dd 0
+namestring_CopyAcceleratorTableW:    db 'CopyAcceleratorTableW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__IsValidCodePage@4
-                    global IsValidCodePage
-                    global _IsValidCodePage@4
-                    global _Unicows_IsValidCodePage
+                    global __imp__GetSystemWindowsDirectoryW@8
+                    global GetSystemWindowsDirectoryW
+                    global _GetSystemWindowsDirectoryW@8
+                    global _Unicows_GetSystemWindowsDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_IsValidCodePage:
+unicows_initial_stub_GetSystemWindowsDirectoryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__IsValidCodePage@4     ; place to save the pointer
-                    push dword [_Unicows_IsValidCodePage]      ; default proc, if any
+                    push dword __imp__GetSystemWindowsDirectoryW@8     ; place to save the pointer
+                    push dword [_Unicows_GetSystemWindowsDirectoryW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_IsValidCodePage      ; name of the function
+                    push dword namestring_GetSystemWindowsDirectoryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsValidCodePage:
-_IsValidCodePage@4:
-                    jmp [__imp__IsValidCodePage@4]
+GetSystemWindowsDirectoryW:
+_GetSystemWindowsDirectoryW@8:
+                    jmp [__imp__GetSystemWindowsDirectoryW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _IsValidCodePage@4:
                     section .data
 %endif
 
-__imp__IsValidCodePage@4:   dd unicows_initial_stub_IsValidCodePage
-_Unicows_IsValidCodePage:      dd 0
-namestring_IsValidCodePage:    db 'IsValidCodePage',0
+__imp__GetSystemWindowsDirectoryW@8:   dd unicows_initial_stub_GetSystemWindowsDirectoryW
+_Unicows_GetSystemWindowsDirectoryW:      dd 0
+namestring_GetSystemWindowsDirectoryW:    db 'GetSystemWindowsDirectoryW',0

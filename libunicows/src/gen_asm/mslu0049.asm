@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetOutlineTextMetricsW@12
-                    global GetOutlineTextMetricsW
-                    global _GetOutlineTextMetricsW@12
-                    global _Unicows_GetOutlineTextMetricsW
+                    global __imp__GetObjectW@12
+                    global GetObjectW
+                    global _GetObjectW@12
+                    global _Unicows_GetObjectW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetOutlineTextMetricsW:
+unicows_initial_stub_GetObjectW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetOutlineTextMetricsW@12     ; place to save the pointer
-                    push dword [_Unicows_GetOutlineTextMetricsW]      ; default proc, if any
+                    push dword __imp__GetObjectW@12     ; place to save the pointer
+                    push dword [_Unicows_GetObjectW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_GetOutlineTextMetricsW      ; name of the function
+                    push dword namestring_GetObjectW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetOutlineTextMetricsW:
-_GetOutlineTextMetricsW@12:
-                    jmp [__imp__GetOutlineTextMetricsW@12]
+GetObjectW:
+_GetObjectW@12:
+                    jmp [__imp__GetObjectW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetOutlineTextMetricsW@12:
                     section .data
 %endif
 
-__imp__GetOutlineTextMetricsW@12:   dd unicows_initial_stub_GetOutlineTextMetricsW
-_Unicows_GetOutlineTextMetricsW:      dd 0
-namestring_GetOutlineTextMetricsW:    db 'GetOutlineTextMetricsW',0
+__imp__GetObjectW@12:   dd unicows_initial_stub_GetObjectW
+_Unicows_GetObjectW:      dd 0
+namestring_GetObjectW:    db 'GetObjectW',0

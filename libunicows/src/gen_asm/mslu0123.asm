@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DdeConnectList@20
-                    global DdeConnectList
-                    global _DdeConnectList@20
-                    global _Unicows_DdeConnectList
+                    global __imp__DdeConnect@16
+                    global DdeConnect
+                    global _DdeConnect@16
+                    global _Unicows_DdeConnect
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DdeConnectList:
+unicows_initial_stub_DdeConnect:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DdeConnectList@20     ; place to save the pointer
-                    push dword [_Unicows_DdeConnectList]      ; default proc, if any
+                    push dword __imp__DdeConnect@16     ; place to save the pointer
+                    push dword [_Unicows_DdeConnect]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DdeConnectList      ; name of the function
+                    push dword namestring_DdeConnect      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DdeConnectList:
-_DdeConnectList@20:
-                    jmp [__imp__DdeConnectList@20]
+DdeConnect:
+_DdeConnect@16:
+                    jmp [__imp__DdeConnect@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DdeConnectList@20:
                     section .data
 %endif
 
-__imp__DdeConnectList@20:   dd unicows_initial_stub_DdeConnectList
-_Unicows_DdeConnectList:      dd 0
-namestring_DdeConnectList:    db 'DdeConnectList',0
+__imp__DdeConnect@16:   dd unicows_initial_stub_DdeConnect
+_Unicows_DdeConnect:      dd 0
+namestring_DdeConnect:    db 'DdeConnect',0

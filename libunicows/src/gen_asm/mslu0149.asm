@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumPropsExW@12
-                    global EnumPropsExW
-                    global _EnumPropsExW@12
-                    global _Unicows_EnumPropsExW
+                    global __imp__EnumPropsExA@12
+                    global EnumPropsExA
+                    global _EnumPropsExA@12
+                    global _Unicows_EnumPropsExA
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumPropsExW:
+unicows_initial_stub_EnumPropsExA:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumPropsExW@12     ; place to save the pointer
-                    push dword [_Unicows_EnumPropsExW]      ; default proc, if any
+                    push dword __imp__EnumPropsExA@12     ; place to save the pointer
+                    push dword [_Unicows_EnumPropsExA]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_EnumPropsExW      ; name of the function
+                    push dword namestring_EnumPropsExA      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumPropsExW:
-_EnumPropsExW@12:
-                    jmp [__imp__EnumPropsExW@12]
+EnumPropsExA:
+_EnumPropsExA@12:
+                    jmp [__imp__EnumPropsExA@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumPropsExW@12:
                     section .data
 %endif
 
-__imp__EnumPropsExW@12:   dd unicows_initial_stub_EnumPropsExW
-_Unicows_EnumPropsExW:      dd 0
-namestring_EnumPropsExW:    db 'EnumPropsExW',0
+__imp__EnumPropsExA@12:   dd unicows_initial_stub_EnumPropsExA
+_Unicows_EnumPropsExA:      dd 0
+namestring_EnumPropsExA:    db 'EnumPropsExA',0

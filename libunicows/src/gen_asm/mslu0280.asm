@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ChooseColorW@4
-                    global ChooseColorW
-                    global _ChooseColorW@4
-                    global _Unicows_ChooseColorW
+                    global __imp__RegQueryInfoKeyW@48
+                    global RegQueryInfoKeyW
+                    global _RegQueryInfoKeyW@48
+                    global _Unicows_RegQueryInfoKeyW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ChooseColorW:
+unicows_initial_stub_RegQueryInfoKeyW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ChooseColorW@4     ; place to save the pointer
-                    push dword [_Unicows_ChooseColorW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_ChooseColorW      ; name of the function
+                    push dword __imp__RegQueryInfoKeyW@48     ; place to save the pointer
+                    push dword [_Unicows_RegQueryInfoKeyW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegQueryInfoKeyW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ChooseColorW:
-_ChooseColorW@4:
-                    jmp [__imp__ChooseColorW@4]
+RegQueryInfoKeyW:
+_RegQueryInfoKeyW@48:
+                    jmp [__imp__RegQueryInfoKeyW@48]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ChooseColorW@4:
                     section .data
 %endif
 
-__imp__ChooseColorW@4:   dd unicows_initial_stub_ChooseColorW
-_Unicows_ChooseColorW:      dd 0
-namestring_ChooseColorW:    db 'ChooseColorW',0
+__imp__RegQueryInfoKeyW@48:   dd unicows_initial_stub_RegQueryInfoKeyW
+_Unicows_RegQueryInfoKeyW:      dd 0
+namestring_RegQueryInfoKeyW:    db 'RegQueryInfoKeyW',0

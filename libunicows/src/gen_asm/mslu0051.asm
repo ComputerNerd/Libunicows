@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetTextExtentPoint32W@16
-                    global GetTextExtentPoint32W
-                    global _GetTextExtentPoint32W@16
-                    global _Unicows_GetTextExtentPoint32W
+                    global __imp__GetTextExtentExPointW@28
+                    global GetTextExtentExPointW
+                    global _GetTextExtentExPointW@28
+                    global _Unicows_GetTextExtentExPointW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetTextExtentPoint32W:
+unicows_initial_stub_GetTextExtentExPointW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetTextExtentPoint32W@16     ; place to save the pointer
-                    push dword [_Unicows_GetTextExtentPoint32W]      ; default proc, if any
+                    push dword __imp__GetTextExtentExPointW@28     ; place to save the pointer
+                    push dword [_Unicows_GetTextExtentExPointW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_GetTextExtentPoint32W      ; name of the function
+                    push dword namestring_GetTextExtentExPointW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTextExtentPoint32W:
-_GetTextExtentPoint32W@16:
-                    jmp [__imp__GetTextExtentPoint32W@16]
+GetTextExtentExPointW:
+_GetTextExtentExPointW@28:
+                    jmp [__imp__GetTextExtentExPointW@28]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetTextExtentPoint32W@16:
                     section .data
 %endif
 
-__imp__GetTextExtentPoint32W@16:   dd unicows_initial_stub_GetTextExtentPoint32W
-_Unicows_GetTextExtentPoint32W:      dd 0
-namestring_GetTextExtentPoint32W:    db 'GetTextExtentPoint32W',0
+__imp__GetTextExtentExPointW@28:   dd unicows_initial_stub_GetTextExtentExPointW
+_Unicows_GetTextExtentExPointW:      dd 0
+namestring_GetTextExtentExPointW:    db 'GetTextExtentExPointW',0

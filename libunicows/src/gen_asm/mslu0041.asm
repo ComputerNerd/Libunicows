@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetEnhMetaFileDescriptionW@12
-                    global GetEnhMetaFileDescriptionW
-                    global _GetEnhMetaFileDescriptionW@12
-                    global _Unicows_GetEnhMetaFileDescriptionW
+                    global __imp__GetCharacterPlacementW@24
+                    global GetCharacterPlacementW
+                    global _GetCharacterPlacementW@24
+                    global _Unicows_GetCharacterPlacementW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetEnhMetaFileDescriptionW:
+unicows_initial_stub_GetCharacterPlacementW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetEnhMetaFileDescriptionW@12     ; place to save the pointer
-                    push dword [_Unicows_GetEnhMetaFileDescriptionW]      ; default proc, if any
+                    push dword __imp__GetCharacterPlacementW@24     ; place to save the pointer
+                    push dword [_Unicows_GetCharacterPlacementW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_GetEnhMetaFileDescriptionW      ; name of the function
+                    push dword namestring_GetCharacterPlacementW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetEnhMetaFileDescriptionW:
-_GetEnhMetaFileDescriptionW@12:
-                    jmp [__imp__GetEnhMetaFileDescriptionW@12]
+GetCharacterPlacementW:
+_GetCharacterPlacementW@24:
+                    jmp [__imp__GetCharacterPlacementW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetEnhMetaFileDescriptionW@12:
                     section .data
 %endif
 
-__imp__GetEnhMetaFileDescriptionW@12:   dd unicows_initial_stub_GetEnhMetaFileDescriptionW
-_Unicows_GetEnhMetaFileDescriptionW:      dd 0
-namestring_GetEnhMetaFileDescriptionW:    db 'GetEnhMetaFileDescriptionW',0
+__imp__GetCharacterPlacementW@24:   dd unicows_initial_stub_GetCharacterPlacementW
+_Unicows_GetCharacterPlacementW:      dd 0
+namestring_GetCharacterPlacementW:    db 'GetCharacterPlacementW',0

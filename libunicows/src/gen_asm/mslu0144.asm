@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumDisplayDevicesW@16
-                    global EnumDisplayDevicesW
-                    global _EnumDisplayDevicesW@16
-                    global _Unicows_EnumDisplayDevicesW
+                    global __imp__EnumClipboardFormats@4
+                    global EnumClipboardFormats
+                    global _EnumClipboardFormats@4
+                    global _Unicows_EnumClipboardFormats
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumDisplayDevicesW:
+unicows_initial_stub_EnumClipboardFormats:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumDisplayDevicesW@16     ; place to save the pointer
-                    push dword [_Unicows_EnumDisplayDevicesW]      ; default proc, if any
+                    push dword __imp__EnumClipboardFormats@4     ; place to save the pointer
+                    push dword [_Unicows_EnumClipboardFormats]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_EnumDisplayDevicesW      ; name of the function
+                    push dword namestring_EnumClipboardFormats      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumDisplayDevicesW:
-_EnumDisplayDevicesW@16:
-                    jmp [__imp__EnumDisplayDevicesW@16]
+EnumClipboardFormats:
+_EnumClipboardFormats@4:
+                    jmp [__imp__EnumClipboardFormats@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumDisplayDevicesW@16:
                     section .data
 %endif
 
-__imp__EnumDisplayDevicesW@16:   dd unicows_initial_stub_EnumDisplayDevicesW
-_Unicows_EnumDisplayDevicesW:      dd 0
-namestring_EnumDisplayDevicesW:    db 'EnumDisplayDevicesW',0
+__imp__EnumClipboardFormats@4:   dd unicows_initial_stub_EnumClipboardFormats
+_Unicows_EnumClipboardFormats:      dd 0
+namestring_EnumClipboardFormats:    db 'EnumClipboardFormats',0

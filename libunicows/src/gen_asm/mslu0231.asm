@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__UnregisterClassW@8
-                    global UnregisterClassW
-                    global _UnregisterClassW@8
-                    global _Unicows_UnregisterClassW
+                    global __imp__TranslateAcceleratorW@12
+                    global TranslateAcceleratorW
+                    global _TranslateAcceleratorW@12
+                    global _Unicows_TranslateAcceleratorW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_UnregisterClassW:
+unicows_initial_stub_TranslateAcceleratorW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__UnregisterClassW@8     ; place to save the pointer
-                    push dword [_Unicows_UnregisterClassW]      ; default proc, if any
+                    push dword __imp__TranslateAcceleratorW@12     ; place to save the pointer
+                    push dword [_Unicows_TranslateAcceleratorW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_UnregisterClassW      ; name of the function
+                    push dword namestring_TranslateAcceleratorW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-UnregisterClassW:
-_UnregisterClassW@8:
-                    jmp [__imp__UnregisterClassW@8]
+TranslateAcceleratorW:
+_TranslateAcceleratorW@12:
+                    jmp [__imp__TranslateAcceleratorW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _UnregisterClassW@8:
                     section .data
 %endif
 
-__imp__UnregisterClassW@8:   dd unicows_initial_stub_UnregisterClassW
-_Unicows_UnregisterClassW:      dd 0
-namestring_UnregisterClassW:    db 'UnregisterClassW',0
+__imp__TranslateAcceleratorW@12:   dd unicows_initial_stub_TranslateAcceleratorW
+_Unicows_TranslateAcceleratorW:      dd 0
+namestring_TranslateAcceleratorW:    db 'TranslateAcceleratorW',0

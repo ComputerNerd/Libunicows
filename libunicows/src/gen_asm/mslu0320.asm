@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FillConsoleOutputCharacterW@20
-                    global FillConsoleOutputCharacterW
-                    global _FillConsoleOutputCharacterW@20
-                    global _Unicows_FillConsoleOutputCharacterW
+                    global __imp__EndUpdateResourceA@8
+                    global EndUpdateResourceA
+                    global _EndUpdateResourceA@8
+                    global _Unicows_EndUpdateResourceA
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FillConsoleOutputCharacterW:
+unicows_initial_stub_EndUpdateResourceA:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FillConsoleOutputCharacterW@20     ; place to save the pointer
-                    push dword [_Unicows_FillConsoleOutputCharacterW]      ; default proc, if any
+                    push dword __imp__EndUpdateResourceA@8     ; place to save the pointer
+                    push dword [_Unicows_EndUpdateResourceA]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_FillConsoleOutputCharacterW      ; name of the function
+                    push dword namestring_EndUpdateResourceA      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FillConsoleOutputCharacterW:
-_FillConsoleOutputCharacterW@20:
-                    jmp [__imp__FillConsoleOutputCharacterW@20]
+EndUpdateResourceA:
+_EndUpdateResourceA@8:
+                    jmp [__imp__EndUpdateResourceA@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FillConsoleOutputCharacterW@20:
                     section .data
 %endif
 
-__imp__FillConsoleOutputCharacterW@20:   dd unicows_initial_stub_FillConsoleOutputCharacterW
-_Unicows_FillConsoleOutputCharacterW:      dd 0
-namestring_FillConsoleOutputCharacterW:    db 'FillConsoleOutputCharacterW',0
+__imp__EndUpdateResourceA@8:   dd unicows_initial_stub_EndUpdateResourceA
+_Unicows_EndUpdateResourceA:      dd 0
+namestring_EndUpdateResourceA:    db 'EndUpdateResourceA',0

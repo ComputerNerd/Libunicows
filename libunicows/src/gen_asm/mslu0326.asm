@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FindResourceW@12
-                    global FindResourceW
-                    global _FindResourceW@12
-                    global _Unicows_FindResourceW
+                    global __imp__EnumSystemCodePagesW@8
+                    global EnumSystemCodePagesW
+                    global _EnumSystemCodePagesW@8
+                    global _Unicows_EnumSystemCodePagesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FindResourceW:
+unicows_initial_stub_EnumSystemCodePagesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FindResourceW@12     ; place to save the pointer
-                    push dword [_Unicows_FindResourceW]      ; default proc, if any
+                    push dword __imp__EnumSystemCodePagesW@8     ; place to save the pointer
+                    push dword [_Unicows_EnumSystemCodePagesW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_FindResourceW      ; name of the function
+                    push dword namestring_EnumSystemCodePagesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindResourceW:
-_FindResourceW@12:
-                    jmp [__imp__FindResourceW@12]
+EnumSystemCodePagesW:
+_EnumSystemCodePagesW@8:
+                    jmp [__imp__EnumSystemCodePagesW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FindResourceW@12:
                     section .data
 %endif
 
-__imp__FindResourceW@12:   dd unicows_initial_stub_FindResourceW
-_Unicows_FindResourceW:      dd 0
-namestring_FindResourceW:    db 'FindResourceW',0
+__imp__EnumSystemCodePagesW@8:   dd unicows_initial_stub_EnumSystemCodePagesW
+_Unicows_EnumSystemCodePagesW:      dd 0
+namestring_EnumSystemCodePagesW:    db 'EnumSystemCodePagesW',0

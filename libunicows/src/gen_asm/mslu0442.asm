@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasSetEntryPropertiesW@24
-                    global RasSetEntryPropertiesW
-                    global _RasSetEntryPropertiesW@24
-                    global _Unicows_RasSetEntryPropertiesW
+                    global __imp__RasDialW@24
+                    global RasDialW
+                    global _RasDialW@24
+                    global _Unicows_RasDialW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasSetEntryPropertiesW:
+unicows_initial_stub_RasDialW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasSetEntryPropertiesW@24     ; place to save the pointer
-                    push dword [_Unicows_RasSetEntryPropertiesW]      ; default proc, if any
+                    push dword __imp__RasDialW@24     ; place to save the pointer
+                    push dword [_Unicows_RasDialW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasSetEntryPropertiesW      ; name of the function
+                    push dword namestring_RasDialW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasSetEntryPropertiesW:
-_RasSetEntryPropertiesW@24:
-                    jmp [__imp__RasSetEntryPropertiesW@24]
+RasDialW:
+_RasDialW@24:
+                    jmp [__imp__RasDialW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasSetEntryPropertiesW@24:
                     section .data
 %endif
 
-__imp__RasSetEntryPropertiesW@24:   dd unicows_initial_stub_RasSetEntryPropertiesW
-_Unicows_RasSetEntryPropertiesW:      dd 0
-namestring_RasSetEntryPropertiesW:    db 'RasSetEntryPropertiesW',0
+__imp__RasDialW@24:   dd unicows_initial_stub_RasDialW
+_Unicows_RasDialW:      dd 0
+namestring_RasDialW:    db 'RasDialW',0

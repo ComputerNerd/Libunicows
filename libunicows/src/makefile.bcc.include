@@ -492,4 +492,17 @@ WRAPPERS = \
            build\bcc32\mslu0489.obj \
            build\bcc32\mslu0490.obj \
            build\bcc32\mslu0491.obj \
-           build\bcc32\mslu0492.obj 
+           build\bcc32\mslu0492.obj \
+           build\bcc32\mslu0493.obj \
+           build\bcc32\mslu0494.obj \
+           build\bcc32\mslu0495.obj \
+           build\bcc32\mslu0496.obj \
+           build\bcc32\mslu0497.obj \
+           build\bcc32\mslu0498.obj \
+           build\bcc32\mslu0499.obj \
+           build\bcc32\mslu0500.obj \
+           build\bcc32\mslu0501.obj \
+           build\bcc32\mslu0502.obj \
+           build\bcc32\mslu0503.obj \
+           build\bcc32\mslu0504.obj \
+           build\bcc32\mslu0505.obj 

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasSetEntryDialParamsW@12
-                    global RasSetEntryDialParamsW
-                    global _RasSetEntryDialParamsW@12
-                    global _Unicows_RasSetEntryDialParamsW
+                    global __imp__RasDeleteSubEntryW@12
+                    global RasDeleteSubEntryW
+                    global _RasDeleteSubEntryW@12
+                    global _Unicows_RasDeleteSubEntryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasSetEntryDialParamsW:
+unicows_initial_stub_RasDeleteSubEntryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasSetEntryDialParamsW@12     ; place to save the pointer
-                    push dword [_Unicows_RasSetEntryDialParamsW]      ; default proc, if any
+                    push dword __imp__RasDeleteSubEntryW@12     ; place to save the pointer
+                    push dword [_Unicows_RasDeleteSubEntryW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasSetEntryDialParamsW      ; name of the function
+                    push dword namestring_RasDeleteSubEntryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasSetEntryDialParamsW:
-_RasSetEntryDialParamsW@12:
-                    jmp [__imp__RasSetEntryDialParamsW@12]
+RasDeleteSubEntryW:
+_RasDeleteSubEntryW@12:
+                    jmp [__imp__RasDeleteSubEntryW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasSetEntryDialParamsW@12:
                     section .data
 %endif
 
-__imp__RasSetEntryDialParamsW@12:   dd unicows_initial_stub_RasSetEntryDialParamsW
-_Unicows_RasSetEntryDialParamsW:      dd 0
-namestring_RasSetEntryDialParamsW:    db 'RasSetEntryDialParamsW',0
+__imp__RasDeleteSubEntryW@12:   dd unicows_initial_stub_RasDeleteSubEntryW
+_Unicows_RasDeleteSubEntryW:      dd 0
+namestring_RasDeleteSubEntryW:    db 'RasDeleteSubEntryW',0

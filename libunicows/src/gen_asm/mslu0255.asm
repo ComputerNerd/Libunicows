@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__VerLanguageNameW@12
-                    global VerLanguageNameW
-                    global _VerLanguageNameW@12
-                    global _Unicows_VerLanguageNameW
+                    global __imp__VerInstallFileW@32
+                    global VerInstallFileW
+                    global _VerInstallFileW@32
+                    global _Unicows_VerInstallFileW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_VerLanguageNameW:
+unicows_initial_stub_VerInstallFileW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__VerLanguageNameW@12     ; place to save the pointer
-                    push dword [_Unicows_VerLanguageNameW]      ; default proc, if any
+                    push dword __imp__VerInstallFileW@32     ; place to save the pointer
+                    push dword [_Unicows_VerInstallFileW]      ; default proc, if any
                     push dword VERSION                  ; dll id
-                    push dword namestring_VerLanguageNameW      ; name of the function
+                    push dword namestring_VerInstallFileW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-VerLanguageNameW:
-_VerLanguageNameW@12:
-                    jmp [__imp__VerLanguageNameW@12]
+VerInstallFileW:
+_VerInstallFileW@32:
+                    jmp [__imp__VerInstallFileW@32]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _VerLanguageNameW@12:
                     section .data
 %endif
 
-__imp__VerLanguageNameW@12:   dd unicows_initial_stub_VerLanguageNameW
-_Unicows_VerLanguageNameW:      dd 0
-namestring_VerLanguageNameW:    db 'VerLanguageNameW',0
+__imp__VerInstallFileW@32:   dd unicows_initial_stub_VerInstallFileW
+_Unicows_VerInstallFileW:      dd 0
+namestring_VerInstallFileW:    db 'VerInstallFileW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CharToOemW@8
-                    global CharToOemW
-                    global _CharToOemW@8
-                    global _Unicows_CharToOemW
+                    global __imp__CharToOemBuffW@12
+                    global CharToOemBuffW
+                    global _CharToOemBuffW@12
+                    global _Unicows_CharToOemBuffW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CharToOemW:
+unicows_initial_stub_CharToOemBuffW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CharToOemW@8     ; place to save the pointer
-                    push dword [_Unicows_CharToOemW]      ; default proc, if any
+                    push dword __imp__CharToOemBuffW@12     ; place to save the pointer
+                    push dword [_Unicows_CharToOemBuffW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_CharToOemW      ; name of the function
+                    push dword namestring_CharToOemBuffW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CharToOemW:
-_CharToOemW@8:
-                    jmp [__imp__CharToOemW@8]
+CharToOemBuffW:
+_CharToOemBuffW@12:
+                    jmp [__imp__CharToOemBuffW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CharToOemW@8:
                     section .data
 %endif
 
-__imp__CharToOemW@8:   dd unicows_initial_stub_CharToOemW
-_Unicows_CharToOemW:      dd 0
-namestring_CharToOemW:    db 'CharToOemW',0
+__imp__CharToOemBuffW@12:   dd unicows_initial_stub_CharToOemBuffW
+_Unicows_CharToOemBuffW:      dd 0
+namestring_CharToOemBuffW:    db 'CharToOemBuffW',0

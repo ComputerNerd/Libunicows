@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__mciGetDeviceIDW@4
-                    global mciGetDeviceIDW
-                    global _mciGetDeviceIDW@4
-                    global _Unicows_mciGetDeviceIDW
+                    global __imp__joyGetDevCapsW@12
+                    global joyGetDevCapsW
+                    global _joyGetDevCapsW@12
+                    global _Unicows_joyGetDevCapsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_mciGetDeviceIDW:
+unicows_initial_stub_joyGetDevCapsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__mciGetDeviceIDW@4     ; place to save the pointer
-                    push dword [_Unicows_mciGetDeviceIDW]      ; default proc, if any
+                    push dword __imp__joyGetDevCapsW@12     ; place to save the pointer
+                    push dword [_Unicows_joyGetDevCapsW]      ; default proc, if any
                     push dword WINMM                  ; dll id
-                    push dword namestring_mciGetDeviceIDW      ; name of the function
+                    push dword namestring_joyGetDevCapsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-mciGetDeviceIDW:
-_mciGetDeviceIDW@4:
-                    jmp [__imp__mciGetDeviceIDW@4]
+joyGetDevCapsW:
+_joyGetDevCapsW@12:
+                    jmp [__imp__joyGetDevCapsW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _mciGetDeviceIDW@4:
                     section .data
 %endif
 
-__imp__mciGetDeviceIDW@4:   dd unicows_initial_stub_mciGetDeviceIDW
-_Unicows_mciGetDeviceIDW:      dd 0
-namestring_mciGetDeviceIDW:    db 'mciGetDeviceIDW',0
+__imp__joyGetDevCapsW@12:   dd unicows_initial_stub_joyGetDevCapsW
+_Unicows_joyGetDevCapsW:      dd 0
+namestring_joyGetDevCapsW:    db 'joyGetDevCapsW',0

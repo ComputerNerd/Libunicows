@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SendMessageW@16
-                    global SendMessageW
-                    global _SendMessageW@16
-                    global _Unicows_SendMessageW
+                    global __imp__SendMessageTimeoutW@28
+                    global SendMessageTimeoutW
+                    global _SendMessageTimeoutW@28
+                    global _Unicows_SendMessageTimeoutW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SendMessageW:
+unicows_initial_stub_SendMessageTimeoutW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SendMessageW@16     ; place to save the pointer
-                    push dword [_Unicows_SendMessageW]      ; default proc, if any
+                    push dword __imp__SendMessageTimeoutW@28     ; place to save the pointer
+                    push dword [_Unicows_SendMessageTimeoutW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_SendMessageW      ; name of the function
+                    push dword namestring_SendMessageTimeoutW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SendMessageW:
-_SendMessageW@16:
-                    jmp [__imp__SendMessageW@16]
+SendMessageTimeoutW:
+_SendMessageTimeoutW@28:
+                    jmp [__imp__SendMessageTimeoutW@28]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SendMessageW@16:
                     section .data
 %endif
 
-__imp__SendMessageW@16:   dd unicows_initial_stub_SendMessageW
-_Unicows_SendMessageW:      dd 0
-namestring_SendMessageW:    db 'SendMessageW',0
+__imp__SendMessageTimeoutW@28:   dd unicows_initial_stub_SendMessageTimeoutW
+_Unicows_SendMessageTimeoutW:      dd 0
+namestring_SendMessageTimeoutW:    db 'SendMessageTimeoutW',0

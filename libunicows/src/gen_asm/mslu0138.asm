@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DlgDirSelectExW@16
-                    global DlgDirSelectExW
-                    global _DlgDirSelectExW@16
-                    global _Unicows_DlgDirSelectExW
+                    global __imp__DlgDirSelectComboBoxExW@16
+                    global DlgDirSelectComboBoxExW
+                    global _DlgDirSelectComboBoxExW@16
+                    global _Unicows_DlgDirSelectComboBoxExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DlgDirSelectExW:
+unicows_initial_stub_DlgDirSelectComboBoxExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DlgDirSelectExW@16     ; place to save the pointer
-                    push dword [_Unicows_DlgDirSelectExW]      ; default proc, if any
+                    push dword __imp__DlgDirSelectComboBoxExW@16     ; place to save the pointer
+                    push dword [_Unicows_DlgDirSelectComboBoxExW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DlgDirSelectExW      ; name of the function
+                    push dword namestring_DlgDirSelectComboBoxExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DlgDirSelectExW:
-_DlgDirSelectExW@16:
-                    jmp [__imp__DlgDirSelectExW@16]
+DlgDirSelectComboBoxExW:
+_DlgDirSelectComboBoxExW@16:
+                    jmp [__imp__DlgDirSelectComboBoxExW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DlgDirSelectExW@16:
                     section .data
 %endif
 
-__imp__DlgDirSelectExW@16:   dd unicows_initial_stub_DlgDirSelectExW
-_Unicows_DlgDirSelectExW:      dd 0
-namestring_DlgDirSelectExW:    db 'DlgDirSelectExW',0
+__imp__DlgDirSelectComboBoxExW@16:   dd unicows_initial_stub_DlgDirSelectComboBoxExW
+_Unicows_DlgDirSelectComboBoxExW:      dd 0
+namestring_DlgDirSelectComboBoxExW:    db 'DlgDirSelectComboBoxExW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetConsoleTitleW@8
-                    global GetConsoleTitleW
-                    global _GetConsoleTitleW@8
-                    global _Unicows_GetConsoleTitleW
+                    global __imp__FindFirstFileW@8
+                    global FindFirstFileW
+                    global _FindFirstFileW@8
+                    global _Unicows_FindFirstFileW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetConsoleTitleW:
+unicows_initial_stub_FindFirstFileW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetConsoleTitleW@8     ; place to save the pointer
-                    push dword [_Unicows_GetConsoleTitleW]      ; default proc, if any
+                    push dword __imp__FindFirstFileW@8     ; place to save the pointer
+                    push dword [_Unicows_FindFirstFileW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetConsoleTitleW      ; name of the function
+                    push dword namestring_FindFirstFileW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetConsoleTitleW:
-_GetConsoleTitleW@8:
-                    jmp [__imp__GetConsoleTitleW@8]
+FindFirstFileW:
+_FindFirstFileW@8:
+                    jmp [__imp__FindFirstFileW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetConsoleTitleW@8:
                     section .data
 %endif
 
-__imp__GetConsoleTitleW@8:   dd unicows_initial_stub_GetConsoleTitleW
-_Unicows_GetConsoleTitleW:      dd 0
-namestring_GetConsoleTitleW:    db 'GetConsoleTitleW',0
+__imp__FindFirstFileW@8:   dd unicows_initial_stub_FindFirstFileW
+_Unicows_FindFirstFileW:      dd 0
+namestring_FindFirstFileW:    db 'FindFirstFileW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__MultiByteToWideChar@24
-                    global MultiByteToWideChar
-                    global _MultiByteToWideChar@24
-                    global _Unicows_MultiByteToWideChar
+                    global __imp__GetVolumeInformationW@32
+                    global GetVolumeInformationW
+                    global _GetVolumeInformationW@32
+                    global _Unicows_GetVolumeInformationW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_MultiByteToWideChar:
+unicows_initial_stub_GetVolumeInformationW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__MultiByteToWideChar@24     ; place to save the pointer
-                    push dword [_Unicows_MultiByteToWideChar]      ; default proc, if any
+                    push dword __imp__GetVolumeInformationW@32     ; place to save the pointer
+                    push dword [_Unicows_GetVolumeInformationW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_MultiByteToWideChar      ; name of the function
+                    push dword namestring_GetVolumeInformationW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-MultiByteToWideChar:
-_MultiByteToWideChar@24:
-                    jmp [__imp__MultiByteToWideChar@24]
+GetVolumeInformationW:
+_GetVolumeInformationW@32:
+                    jmp [__imp__GetVolumeInformationW@32]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _MultiByteToWideChar@24:
                     section .data
 %endif
 
-__imp__MultiByteToWideChar@24:   dd unicows_initial_stub_MultiByteToWideChar
-_Unicows_MultiByteToWideChar:      dd 0
-namestring_MultiByteToWideChar:    db 'MultiByteToWideChar',0
+__imp__GetVolumeInformationW@32:   dd unicows_initial_stub_GetVolumeInformationW
+_Unicows_GetVolumeInformationW:      dd 0
+namestring_GetVolumeInformationW:    db 'GetVolumeInformationW',0

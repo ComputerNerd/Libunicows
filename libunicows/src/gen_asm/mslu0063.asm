@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__auxGetDevCapsW@12
-                    global auxGetDevCapsW
-                    global _auxGetDevCapsW@12
-                    global _Unicows_auxGetDevCapsW
+                    global __imp__PlaySoundW@12
+                    global PlaySoundW
+                    global _PlaySoundW@12
+                    global _Unicows_PlaySoundW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_auxGetDevCapsW:
+unicows_initial_stub_PlaySoundW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__auxGetDevCapsW@12     ; place to save the pointer
-                    push dword [_Unicows_auxGetDevCapsW]      ; default proc, if any
+                    push dword __imp__PlaySoundW@12     ; place to save the pointer
+                    push dword [_Unicows_PlaySoundW]      ; default proc, if any
                     push dword WINMM                  ; dll id
-                    push dword namestring_auxGetDevCapsW      ; name of the function
+                    push dword namestring_PlaySoundW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-auxGetDevCapsW:
-_auxGetDevCapsW@12:
-                    jmp [__imp__auxGetDevCapsW@12]
+PlaySoundW:
+_PlaySoundW@12:
+                    jmp [__imp__PlaySoundW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _auxGetDevCapsW@12:
                     section .data
 %endif
 
-__imp__auxGetDevCapsW@12:   dd unicows_initial_stub_auxGetDevCapsW
-_Unicows_auxGetDevCapsW:      dd 0
-namestring_auxGetDevCapsW:    db 'auxGetDevCapsW',0
+__imp__PlaySoundW@12:   dd unicows_initial_stub_PlaySoundW
+_Unicows_PlaySoundW:      dd 0
+namestring_PlaySoundW:    db 'PlaySoundW',0

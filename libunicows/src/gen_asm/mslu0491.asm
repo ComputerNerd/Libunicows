@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__QueryCredentialsAttributesW@12
-                    global QueryCredentialsAttributesW
-                    global _QueryCredentialsAttributesW@12
-                    global _Unicows_QueryCredentialsAttributesW
+                    global __imp__StartDocPrinterW@12
+                    global StartDocPrinterW
+                    global _StartDocPrinterW@12
+                    global _Unicows_StartDocPrinterW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_QueryCredentialsAttributesW:
+unicows_initial_stub_StartDocPrinterW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__QueryCredentialsAttributesW@12     ; place to save the pointer
-                    push dword [_Unicows_QueryCredentialsAttributesW]      ; default proc, if any
-                    push dword SECUR32                  ; dll id
-                    push dword namestring_QueryCredentialsAttributesW      ; name of the function
+                    push dword __imp__StartDocPrinterW@12     ; place to save the pointer
+                    push dword [_Unicows_StartDocPrinterW]      ; default proc, if any
+                    push dword WINSPOOL                  ; dll id
+                    push dword namestring_StartDocPrinterW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-QueryCredentialsAttributesW:
-_QueryCredentialsAttributesW@12:
-                    jmp [__imp__QueryCredentialsAttributesW@12]
+StartDocPrinterW:
+_StartDocPrinterW@12:
+                    jmp [__imp__StartDocPrinterW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _QueryCredentialsAttributesW@12:
                     section .data
 %endif
 
-__imp__QueryCredentialsAttributesW@12:   dd unicows_initial_stub_QueryCredentialsAttributesW
-_Unicows_QueryCredentialsAttributesW:      dd 0
-namestring_QueryCredentialsAttributesW:    db 'QueryCredentialsAttributesW',0
+__imp__StartDocPrinterW@12:   dd unicows_initial_stub_StartDocPrinterW
+_Unicows_StartDocPrinterW:      dd 0
+namestring_StartDocPrinterW:    db 'StartDocPrinterW',0

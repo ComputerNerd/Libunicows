@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetDateFormatW@24
-                    global GetDateFormatW
-                    global _GetDateFormatW@24
-                    global _Unicows_GetDateFormatW
+                    global __imp__FindResourceW@12
+                    global FindResourceW
+                    global _FindResourceW@12
+                    global _Unicows_FindResourceW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetDateFormatW:
+unicows_initial_stub_FindResourceW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetDateFormatW@24     ; place to save the pointer
-                    push dword [_Unicows_GetDateFormatW]      ; default proc, if any
+                    push dword __imp__FindResourceW@12     ; place to save the pointer
+                    push dword [_Unicows_FindResourceW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetDateFormatW      ; name of the function
+                    push dword namestring_FindResourceW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetDateFormatW:
-_GetDateFormatW@24:
-                    jmp [__imp__GetDateFormatW@24]
+FindResourceW:
+_FindResourceW@12:
+                    jmp [__imp__FindResourceW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetDateFormatW@24:
                     section .data
 %endif
 
-__imp__GetDateFormatW@24:   dd unicows_initial_stub_GetDateFormatW
-_Unicows_GetDateFormatW:      dd 0
-namestring_GetDateFormatW:    db 'GetDateFormatW',0
+__imp__FindResourceW@12:   dd unicows_initial_stub_FindResourceW
+_Unicows_FindResourceW:      dd 0
+namestring_FindResourceW:    db 'FindResourceW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__IsCharUpperW@4
-                    global IsCharUpperW
-                    global _IsCharUpperW@4
-                    global _Unicows_IsCharUpperW
+                    global __imp__IsCharLowerW@4
+                    global IsCharLowerW
+                    global _IsCharLowerW@4
+                    global _Unicows_IsCharLowerW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_IsCharUpperW:
+unicows_initial_stub_IsCharLowerW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__IsCharUpperW@4     ; place to save the pointer
-                    push dword [_Unicows_IsCharUpperW]      ; default proc, if any
+                    push dword __imp__IsCharLowerW@4     ; place to save the pointer
+                    push dword [_Unicows_IsCharLowerW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_IsCharUpperW      ; name of the function
+                    push dword namestring_IsCharLowerW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsCharUpperW:
-_IsCharUpperW@4:
-                    jmp [__imp__IsCharUpperW@4]
+IsCharLowerW:
+_IsCharLowerW@4:
+                    jmp [__imp__IsCharLowerW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _IsCharUpperW@4:
                     section .data
 %endif
 
-__imp__IsCharUpperW@4:   dd unicows_initial_stub_IsCharUpperW
-_Unicows_IsCharUpperW:      dd 0
-namestring_IsCharUpperW:    db 'IsCharUpperW',0
+__imp__IsCharLowerW@4:   dd unicows_initial_stub_IsCharLowerW
+_Unicows_IsCharLowerW:      dd 0
+namestring_IsCharLowerW:    db 'IsCharLowerW',0

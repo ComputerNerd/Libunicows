@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasGetEntryDialParamsW@12
-                    global RasGetEntryDialParamsW
-                    global _RasGetEntryDialParamsW@12
-                    global _Unicows_RasGetEntryDialParamsW
+                    global __imp__lstrcpynW@12
+                    global lstrcpynW
+                    global _lstrcpynW@12
+                    global _Unicows_lstrcpynW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasGetEntryDialParamsW:
+unicows_initial_stub_lstrcpynW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasGetEntryDialParamsW@12     ; place to save the pointer
-                    push dword [_Unicows_RasGetEntryDialParamsW]      ; default proc, if any
-                    push dword RASAPI32                  ; dll id
-                    push dword namestring_RasGetEntryDialParamsW      ; name of the function
+                    push dword __imp__lstrcpynW@12     ; place to save the pointer
+                    push dword [_Unicows_lstrcpynW]      ; default proc, if any
+                    push dword KERNEL32                  ; dll id
+                    push dword namestring_lstrcpynW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasGetEntryDialParamsW:
-_RasGetEntryDialParamsW@12:
-                    jmp [__imp__RasGetEntryDialParamsW@12]
+lstrcpynW:
+_lstrcpynW@12:
+                    jmp [__imp__lstrcpynW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasGetEntryDialParamsW@12:
                     section .data
 %endif
 
-__imp__RasGetEntryDialParamsW@12:   dd unicows_initial_stub_RasGetEntryDialParamsW
-_Unicows_RasGetEntryDialParamsW:      dd 0
-namestring_RasGetEntryDialParamsW:    db 'RasGetEntryDialParamsW',0
+__imp__lstrcpynW@12:   dd unicows_initial_stub_lstrcpynW
+_Unicows_lstrcpynW:      dd 0
+namestring_lstrcpynW:    db 'lstrcpynW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CallMsgFilterW@8
-                    global CallMsgFilterW
-                    global _CallMsgFilterW@8
-                    global _Unicows_CallMsgFilterW
+                    global __imp__BroadcastSystemMessageW@20
+                    global BroadcastSystemMessageW
+                    global _BroadcastSystemMessageW@20
+                    global _Unicows_BroadcastSystemMessageW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CallMsgFilterW:
+unicows_initial_stub_BroadcastSystemMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CallMsgFilterW@8     ; place to save the pointer
-                    push dword [_Unicows_CallMsgFilterW]      ; default proc, if any
+                    push dword __imp__BroadcastSystemMessageW@20     ; place to save the pointer
+                    push dword [_Unicows_BroadcastSystemMessageW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_CallMsgFilterW      ; name of the function
+                    push dword namestring_BroadcastSystemMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CallMsgFilterW:
-_CallMsgFilterW@8:
-                    jmp [__imp__CallMsgFilterW@8]
+BroadcastSystemMessageW:
+_BroadcastSystemMessageW@20:
+                    jmp [__imp__BroadcastSystemMessageW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CallMsgFilterW@8:
                     section .data
 %endif
 
-__imp__CallMsgFilterW@8:   dd unicows_initial_stub_CallMsgFilterW
-_Unicows_CallMsgFilterW:      dd 0
-namestring_CallMsgFilterW:    db 'CallMsgFilterW',0
+__imp__BroadcastSystemMessageW@20:   dd unicows_initial_stub_BroadcastSystemMessageW
+_Unicows_BroadcastSystemMessageW:      dd 0
+namestring_BroadcastSystemMessageW:    db 'BroadcastSystemMessageW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SHGetPathFromIDListW@8
-                    global SHGetPathFromIDListW
-                    global _SHGetPathFromIDListW@8
-                    global _Unicows_SHGetPathFromIDListW
+                    global __imp__SHGetNewLinkInfoW@20
+                    global SHGetNewLinkInfoW
+                    global _SHGetNewLinkInfoW@20
+                    global _Unicows_SHGetNewLinkInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SHGetPathFromIDListW:
+unicows_initial_stub_SHGetNewLinkInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SHGetPathFromIDListW@8     ; place to save the pointer
-                    push dword [_Unicows_SHGetPathFromIDListW]      ; default proc, if any
+                    push dword __imp__SHGetNewLinkInfoW@20     ; place to save the pointer
+                    push dword [_Unicows_SHGetNewLinkInfoW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_SHGetPathFromIDListW      ; name of the function
+                    push dword namestring_SHGetNewLinkInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHGetPathFromIDListW:
-_SHGetPathFromIDListW@8:
-                    jmp [__imp__SHGetPathFromIDListW@8]
+SHGetNewLinkInfoW:
+_SHGetNewLinkInfoW@20:
+                    jmp [__imp__SHGetNewLinkInfoW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SHGetPathFromIDListW@8:
                     section .data
 %endif
 
-__imp__SHGetPathFromIDListW@8:   dd unicows_initial_stub_SHGetPathFromIDListW
-_Unicows_SHGetPathFromIDListW:      dd 0
-namestring_SHGetPathFromIDListW:    db 'SHGetPathFromIDListW',0
+__imp__SHGetNewLinkInfoW@20:   dd unicows_initial_stub_SHGetNewLinkInfoW
+_Unicows_SHGetNewLinkInfoW:      dd 0
+namestring_SHGetNewLinkInfoW:    db 'SHGetNewLinkInfoW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FindAtomW@4
-                    global FindAtomW
-                    global _FindAtomW@4
-                    global _Unicows_FindAtomW
+                    global __imp__EndUpdateResourceW@8
+                    global EndUpdateResourceW
+                    global _EndUpdateResourceW@8
+                    global _Unicows_EndUpdateResourceW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FindAtomW:
+unicows_initial_stub_EndUpdateResourceW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FindAtomW@4     ; place to save the pointer
-                    push dword [_Unicows_FindAtomW]      ; default proc, if any
+                    push dword __imp__EndUpdateResourceW@8     ; place to save the pointer
+                    push dword [_Unicows_EndUpdateResourceW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_FindAtomW      ; name of the function
+                    push dword namestring_EndUpdateResourceW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindAtomW:
-_FindAtomW@4:
-                    jmp [__imp__FindAtomW@4]
+EndUpdateResourceW:
+_EndUpdateResourceW@8:
+                    jmp [__imp__EndUpdateResourceW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FindAtomW@4:
                     section .data
 %endif
 
-__imp__FindAtomW@4:   dd unicows_initial_stub_FindAtomW
-_Unicows_FindAtomW:      dd 0
-namestring_FindAtomW:    db 'FindAtomW',0
+__imp__EndUpdateResourceW@8:   dd unicows_initial_stub_EndUpdateResourceW
+_Unicows_EndUpdateResourceW:      dd 0
+namestring_EndUpdateResourceW:    db 'EndUpdateResourceW',0

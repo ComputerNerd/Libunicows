@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__OleUIUpdateLinksW@16
-                    global OleUIUpdateLinksW
-                    global _OleUIUpdateLinksW@16
-                    global _Unicows_OleUIUpdateLinksW
+                    global __imp__OleUIPromptUserW
+                    global OleUIPromptUserW
+                    global _OleUIPromptUserW
+                    global _Unicows_OleUIPromptUserW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_OleUIUpdateLinksW:
+unicows_initial_stub_OleUIPromptUserW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__OleUIUpdateLinksW@16     ; place to save the pointer
-                    push dword [_Unicows_OleUIUpdateLinksW]      ; default proc, if any
+                    push dword __imp__OleUIPromptUserW     ; place to save the pointer
+                    push dword [_Unicows_OleUIPromptUserW]      ; default proc, if any
                     push dword OLEDLG                  ; dll id
-                    push dword namestring_OleUIUpdateLinksW      ; name of the function
+                    push dword namestring_OleUIPromptUserW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIUpdateLinksW:
-_OleUIUpdateLinksW@16:
-                    jmp [__imp__OleUIUpdateLinksW@16]
+OleUIPromptUserW:
+_OleUIPromptUserW:
+                    jmp [__imp__OleUIPromptUserW]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _OleUIUpdateLinksW@16:
                     section .data
 %endif
 
-__imp__OleUIUpdateLinksW@16:   dd unicows_initial_stub_OleUIUpdateLinksW
-_Unicows_OleUIUpdateLinksW:      dd 0
-namestring_OleUIUpdateLinksW:    db 'OleUIUpdateLinksW',0
+__imp__OleUIPromptUserW:   dd unicows_initial_stub_OleUIPromptUserW
+_Unicows_OleUIPromptUserW:      dd 0
+namestring_OleUIPromptUserW:    db 'OleUIPromptUserW',0

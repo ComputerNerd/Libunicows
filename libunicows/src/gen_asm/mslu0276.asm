@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegSaveKeyW@12
-                    global RegSaveKeyW
-                    global _RegSaveKeyW@12
-                    global _Unicows_RegSaveKeyW
+                    global __imp__RegEnumValueW@32
+                    global RegEnumValueW
+                    global _RegEnumValueW@32
+                    global _Unicows_RegEnumValueW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegSaveKeyW:
+unicows_initial_stub_RegEnumValueW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegSaveKeyW@12     ; place to save the pointer
-                    push dword [_Unicows_RegSaveKeyW]      ; default proc, if any
+                    push dword __imp__RegEnumValueW@32     ; place to save the pointer
+                    push dword [_Unicows_RegEnumValueW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegSaveKeyW      ; name of the function
+                    push dword namestring_RegEnumValueW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegSaveKeyW:
-_RegSaveKeyW@12:
-                    jmp [__imp__RegSaveKeyW@12]
+RegEnumValueW:
+_RegEnumValueW@32:
+                    jmp [__imp__RegEnumValueW@32]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegSaveKeyW@12:
                     section .data
 %endif
 
-__imp__RegSaveKeyW@12:   dd unicows_initial_stub_RegSaveKeyW
-_Unicows_RegSaveKeyW:      dd 0
-namestring_RegSaveKeyW:    db 'RegSaveKeyW',0
+__imp__RegEnumValueW@32:   dd unicows_initial_stub_RegEnumValueW
+_Unicows_RegEnumValueW:      dd 0
+namestring_RegEnumValueW:    db 'RegEnumValueW',0

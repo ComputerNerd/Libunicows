@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetCurrentDirectoryW@8
-                    global GetCurrentDirectoryW
-                    global _GetCurrentDirectoryW@8
-                    global _Unicows_GetCurrentDirectoryW
+                    global __imp__FindResourceExW@16
+                    global FindResourceExW
+                    global _FindResourceExW@16
+                    global _Unicows_FindResourceExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetCurrentDirectoryW:
+unicows_initial_stub_FindResourceExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetCurrentDirectoryW@8     ; place to save the pointer
-                    push dword [_Unicows_GetCurrentDirectoryW]      ; default proc, if any
+                    push dword __imp__FindResourceExW@16     ; place to save the pointer
+                    push dword [_Unicows_FindResourceExW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetCurrentDirectoryW      ; name of the function
+                    push dword namestring_FindResourceExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCurrentDirectoryW:
-_GetCurrentDirectoryW@8:
-                    jmp [__imp__GetCurrentDirectoryW@8]
+FindResourceExW:
+_FindResourceExW@16:
+                    jmp [__imp__FindResourceExW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetCurrentDirectoryW@8:
                     section .data
 %endif
 
-__imp__GetCurrentDirectoryW@8:   dd unicows_initial_stub_GetCurrentDirectoryW
-_Unicows_GetCurrentDirectoryW:      dd 0
-namestring_GetCurrentDirectoryW:    db 'GetCurrentDirectoryW',0
+__imp__FindResourceExW@16:   dd unicows_initial_stub_FindResourceExW
+_Unicows_FindResourceExW:      dd 0
+namestring_FindResourceExW:    db 'FindResourceExW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegOpenKeyExW@20
-                    global RegOpenKeyExW
-                    global _RegOpenKeyExW@20
-                    global _Unicows_RegOpenKeyExW
+                    global __imp__RegConnectRegistryW@12
+                    global RegConnectRegistryW
+                    global _RegConnectRegistryW@12
+                    global _Unicows_RegConnectRegistryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegOpenKeyExW:
+unicows_initial_stub_RegConnectRegistryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegOpenKeyExW@20     ; place to save the pointer
-                    push dword [_Unicows_RegOpenKeyExW]      ; default proc, if any
+                    push dword __imp__RegConnectRegistryW@12     ; place to save the pointer
+                    push dword [_Unicows_RegConnectRegistryW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegOpenKeyExW      ; name of the function
+                    push dword namestring_RegConnectRegistryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegOpenKeyExW:
-_RegOpenKeyExW@20:
-                    jmp [__imp__RegOpenKeyExW@20]
+RegConnectRegistryW:
+_RegConnectRegistryW@12:
+                    jmp [__imp__RegConnectRegistryW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegOpenKeyExW@20:
                     section .data
 %endif
 
-__imp__RegOpenKeyExW@20:   dd unicows_initial_stub_RegOpenKeyExW
-_Unicows_RegOpenKeyExW:      dd 0
-namestring_RegOpenKeyExW:    db 'RegOpenKeyExW',0
+__imp__RegConnectRegistryW@12:   dd unicows_initial_stub_RegConnectRegistryW
+_Unicows_RegConnectRegistryW:      dd 0
+namestring_RegConnectRegistryW:    db 'RegConnectRegistryW',0

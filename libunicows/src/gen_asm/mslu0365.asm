@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetStringTypeW@16
-                    global GetStringTypeW
-                    global _GetStringTypeW@16
-                    global _Unicows_GetStringTypeW
+                    global __imp__GetPrivateProfileIntW@16
+                    global GetPrivateProfileIntW
+                    global _GetPrivateProfileIntW@16
+                    global _Unicows_GetPrivateProfileIntW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetStringTypeW:
+unicows_initial_stub_GetPrivateProfileIntW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetStringTypeW@16     ; place to save the pointer
-                    push dword [_Unicows_GetStringTypeW]      ; default proc, if any
+                    push dword __imp__GetPrivateProfileIntW@16     ; place to save the pointer
+                    push dword [_Unicows_GetPrivateProfileIntW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetStringTypeW      ; name of the function
+                    push dword namestring_GetPrivateProfileIntW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetStringTypeW:
-_GetStringTypeW@16:
-                    jmp [__imp__GetStringTypeW@16]
+GetPrivateProfileIntW:
+_GetPrivateProfileIntW@16:
+                    jmp [__imp__GetPrivateProfileIntW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetStringTypeW@16:
                     section .data
 %endif
 
-__imp__GetStringTypeW@16:   dd unicows_initial_stub_GetStringTypeW
-_Unicows_GetStringTypeW:      dd 0
-namestring_GetStringTypeW:    db 'GetStringTypeW',0
+__imp__GetPrivateProfileIntW@16:   dd unicows_initial_stub_GetPrivateProfileIntW
+_Unicows_GetPrivateProfileIntW:      dd 0
+namestring_GetPrivateProfileIntW:    db 'GetPrivateProfileIntW',0

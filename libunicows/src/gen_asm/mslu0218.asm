@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SetClassLongW@12
-                    global SetClassLongW
-                    global _SetClassLongW@12
-                    global _Unicows_SetClassLongW
+                    global __imp__SendNotifyMessageW@16
+                    global SendNotifyMessageW
+                    global _SendNotifyMessageW@16
+                    global _Unicows_SendNotifyMessageW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SetClassLongW:
+unicows_initial_stub_SendNotifyMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetClassLongW@12     ; place to save the pointer
-                    push dword [_Unicows_SetClassLongW]      ; default proc, if any
+                    push dword __imp__SendNotifyMessageW@16     ; place to save the pointer
+                    push dword [_Unicows_SendNotifyMessageW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_SetClassLongW      ; name of the function
+                    push dword namestring_SendNotifyMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetClassLongW:
-_SetClassLongW@12:
-                    jmp [__imp__SetClassLongW@12]
+SendNotifyMessageW:
+_SendNotifyMessageW@16:
+                    jmp [__imp__SendNotifyMessageW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SetClassLongW@12:
                     section .data
 %endif
 
-__imp__SetClassLongW@12:   dd unicows_initial_stub_SetClassLongW
-_Unicows_SetClassLongW:      dd 0
-namestring_SetClassLongW:    db 'SetClassLongW',0
+__imp__SendNotifyMessageW@16:   dd unicows_initial_stub_SendNotifyMessageW
+_Unicows_SendNotifyMessageW:      dd 0
+namestring_SendNotifyMessageW:    db 'SendNotifyMessageW',0

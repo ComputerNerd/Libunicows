@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegQueryValueExW@24
-                    global RegQueryValueExW
-                    global _RegQueryValueExW@24
-                    global _Unicows_RegQueryValueExW
+                    global __imp__RegDeleteValueW@8
+                    global RegDeleteValueW
+                    global _RegDeleteValueW@8
+                    global _Unicows_RegDeleteValueW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegQueryValueExW:
+unicows_initial_stub_RegDeleteValueW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegQueryValueExW@24     ; place to save the pointer
-                    push dword [_Unicows_RegQueryValueExW]      ; default proc, if any
+                    push dword __imp__RegDeleteValueW@8     ; place to save the pointer
+                    push dword [_Unicows_RegDeleteValueW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegQueryValueExW      ; name of the function
+                    push dword namestring_RegDeleteValueW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegQueryValueExW:
-_RegQueryValueExW@24:
-                    jmp [__imp__RegQueryValueExW@24]
+RegDeleteValueW:
+_RegDeleteValueW@8:
+                    jmp [__imp__RegDeleteValueW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegQueryValueExW@24:
                     section .data
 %endif
 
-__imp__RegQueryValueExW@24:   dd unicows_initial_stub_RegQueryValueExW
-_Unicows_RegQueryValueExW:      dd 0
-namestring_RegQueryValueExW:    db 'RegQueryValueExW',0
+__imp__RegDeleteValueW@8:   dd unicows_initial_stub_RegDeleteValueW
+_Unicows_RegDeleteValueW:      dd 0
+namestring_RegDeleteValueW:    db 'RegDeleteValueW',0

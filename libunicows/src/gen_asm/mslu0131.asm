@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DefWindowProcW@16
-                    global DefWindowProcW
-                    global _DefWindowProcW@16
-                    global _Unicows_DefWindowProcW
+                    global __imp__DefMDIChildProcW@16
+                    global DefMDIChildProcW
+                    global _DefMDIChildProcW@16
+                    global _Unicows_DefMDIChildProcW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DefWindowProcW:
+unicows_initial_stub_DefMDIChildProcW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DefWindowProcW@16     ; place to save the pointer
-                    push dword [_Unicows_DefWindowProcW]      ; default proc, if any
+                    push dword __imp__DefMDIChildProcW@16     ; place to save the pointer
+                    push dword [_Unicows_DefMDIChildProcW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DefWindowProcW      ; name of the function
+                    push dword namestring_DefMDIChildProcW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DefWindowProcW:
-_DefWindowProcW@16:
-                    jmp [__imp__DefWindowProcW@16]
+DefMDIChildProcW:
+_DefMDIChildProcW@16:
+                    jmp [__imp__DefMDIChildProcW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DefWindowProcW@16:
                     section .data
 %endif
 
-__imp__DefWindowProcW@16:   dd unicows_initial_stub_DefWindowProcW
-_Unicows_DefWindowProcW:      dd 0
-namestring_DefWindowProcW:    db 'DefWindowProcW',0
+__imp__DefMDIChildProcW@16:   dd unicows_initial_stub_DefMDIChildProcW
+_Unicows_DefMDIChildProcW:      dd 0
+namestring_DefMDIChildProcW:    db 'DefMDIChildProcW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__TranslateAcceleratorW@12
-                    global TranslateAcceleratorW
-                    global _TranslateAcceleratorW@12
-                    global _Unicows_TranslateAcceleratorW
+                    global __imp__TabbedTextOutW@32
+                    global TabbedTextOutW
+                    global _TabbedTextOutW@32
+                    global _Unicows_TabbedTextOutW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_TranslateAcceleratorW:
+unicows_initial_stub_TabbedTextOutW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__TranslateAcceleratorW@12     ; place to save the pointer
-                    push dword [_Unicows_TranslateAcceleratorW]      ; default proc, if any
+                    push dword __imp__TabbedTextOutW@32     ; place to save the pointer
+                    push dword [_Unicows_TabbedTextOutW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_TranslateAcceleratorW      ; name of the function
+                    push dword namestring_TabbedTextOutW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-TranslateAcceleratorW:
-_TranslateAcceleratorW@12:
-                    jmp [__imp__TranslateAcceleratorW@12]
+TabbedTextOutW:
+_TabbedTextOutW@32:
+                    jmp [__imp__TabbedTextOutW@32]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _TranslateAcceleratorW@12:
                     section .data
 %endif
 
-__imp__TranslateAcceleratorW@12:   dd unicows_initial_stub_TranslateAcceleratorW
-_Unicows_TranslateAcceleratorW:      dd 0
-namestring_TranslateAcceleratorW:    db 'TranslateAcceleratorW',0
+__imp__TabbedTextOutW@32:   dd unicows_initial_stub_TabbedTextOutW
+_Unicows_TabbedTextOutW:      dd 0
+namestring_TabbedTextOutW:    db 'TabbedTextOutW',0

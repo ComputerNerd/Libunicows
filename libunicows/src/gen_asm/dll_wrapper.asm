@@ -76,6 +76,8 @@ extern _GetCharWidthFloatW@16
 export GetCharWidthFloatW@16
 extern _GetCharWidthW@16
 export GetCharWidthW@16
+extern _GetCharWidth32W@16
+export GetCharWidth32W@16
 extern _GetCharacterPlacementW@24
 export GetCharacterPlacementW@24
 extern _GetEnhMetaFileDescriptionW@12
@@ -510,6 +512,22 @@ extern _VerLanguageNameW@12
 export VerLanguageNameW@12
 extern _VerQueryValueW@16
 export VerQueryValueW@16
+extern _CryptAcquireContextW@20
+export CryptAcquireContextW@20
+extern _CryptEnumProvidersW@24
+export CryptEnumProvidersW@24
+extern _CryptEnumProviderTypesW@24
+export CryptEnumProviderTypesW@24
+extern _CryptGetDefaultProviderW@20
+export CryptGetDefaultProviderW@20
+extern _CryptSetProviderExW@16
+export CryptSetProviderExW@16
+extern _CryptSetProviderW@8
+export CryptSetProviderW@8
+extern _CryptSignHashW@24
+export CryptSignHashW@24
+extern _CryptVerifySignatureW@24
+export CryptVerifySignatureW@24
 extern _GetCurrentHwProfileW@4
 export GetCurrentHwProfileW@4
 extern _GetUserNameW@8
@@ -576,6 +594,8 @@ extern _ReplaceTextW@4
 export ReplaceTextW@4
 extern _AddAtomW@4
 export AddAtomW@4
+extern _BeginUpdateResourceA@8
+export BeginUpdateResourceA@8
 extern _BeginUpdateResourceW@8
 export BeginUpdateResourceW@8
 extern _BuildCommDCBAndTimeoutsW@12
@@ -616,6 +636,8 @@ extern _CreateWaitableTimerW@12
 export CreateWaitableTimerW@12
 extern _DeleteFileW@4
 export DeleteFileW@4
+extern _EndUpdateResourceA@8
+export EndUpdateResourceA@8
 extern _EndUpdateResourceW@8
 export EndUpdateResourceW@8
 extern _EnumCalendarInfoExW@16
@@ -812,6 +834,8 @@ extern _SetLocaleInfoW@12
 export SetLocaleInfoW@12
 extern _SetVolumeLabelW@8
 export SetVolumeLabelW@8
+extern _UpdateResourceA@24
+export UpdateResourceA@24
 extern _UpdateResourceW@24
 export UpdateResourceW@24
 extern _WaitNamedPipeW@8
@@ -874,6 +898,8 @@ extern _RasGetEntryPropertiesW@24
 export RasGetEntryPropertiesW@24
 extern _RasGetErrorStringW@12
 export RasGetErrorStringW@12
+extern _RasGetProjectionInfoW@16
+export RasGetProjectionInfoW@16
 extern _RasHangUpW@4
 export RasHangUpW@4
 extern _RasRenameEntryW@12

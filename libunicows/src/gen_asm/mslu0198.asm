@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__MessageBoxIndirectW@4
-                    global MessageBoxIndirectW
-                    global _MessageBoxIndirectW@4
-                    global _Unicows_MessageBoxIndirectW
+                    global __imp__MessageBoxExW@20
+                    global MessageBoxExW
+                    global _MessageBoxExW@20
+                    global _Unicows_MessageBoxExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_MessageBoxIndirectW:
+unicows_initial_stub_MessageBoxExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__MessageBoxIndirectW@4     ; place to save the pointer
-                    push dword [_Unicows_MessageBoxIndirectW]      ; default proc, if any
+                    push dword __imp__MessageBoxExW@20     ; place to save the pointer
+                    push dword [_Unicows_MessageBoxExW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_MessageBoxIndirectW      ; name of the function
+                    push dword namestring_MessageBoxExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-MessageBoxIndirectW:
-_MessageBoxIndirectW@4:
-                    jmp [__imp__MessageBoxIndirectW@4]
+MessageBoxExW:
+_MessageBoxExW@20:
+                    jmp [__imp__MessageBoxExW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _MessageBoxIndirectW@4:
                     section .data
 %endif
 
-__imp__MessageBoxIndirectW@4:   dd unicows_initial_stub_MessageBoxIndirectW
-_Unicows_MessageBoxIndirectW:      dd 0
-namestring_MessageBoxIndirectW:    db 'MessageBoxIndirectW',0
+__imp__MessageBoxExW@20:   dd unicows_initial_stub_MessageBoxExW
+_Unicows_MessageBoxExW:      dd 0
+namestring_MessageBoxExW:    db 'MessageBoxExW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegEnumKeyW@16
-                    global RegEnumKeyW
-                    global _RegEnumKeyW@16
-                    global _Unicows_RegEnumKeyW
+                    global __imp__GetCurrentHwProfileW@4
+                    global GetCurrentHwProfileW
+                    global _GetCurrentHwProfileW@4
+                    global _Unicows_GetCurrentHwProfileW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegEnumKeyW:
+unicows_initial_stub_GetCurrentHwProfileW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegEnumKeyW@16     ; place to save the pointer
-                    push dword [_Unicows_RegEnumKeyW]      ; default proc, if any
+                    push dword __imp__GetCurrentHwProfileW@4     ; place to save the pointer
+                    push dword [_Unicows_GetCurrentHwProfileW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegEnumKeyW      ; name of the function
+                    push dword namestring_GetCurrentHwProfileW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegEnumKeyW:
-_RegEnumKeyW@16:
-                    jmp [__imp__RegEnumKeyW@16]
+GetCurrentHwProfileW:
+_GetCurrentHwProfileW@4:
+                    jmp [__imp__GetCurrentHwProfileW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegEnumKeyW@16:
                     section .data
 %endif
 
-__imp__RegEnumKeyW@16:   dd unicows_initial_stub_RegEnumKeyW
-_Unicows_RegEnumKeyW:      dd 0
-namestring_RegEnumKeyW:    db 'RegEnumKeyW',0
+__imp__GetCurrentHwProfileW@4:   dd unicows_initial_stub_GetCurrentHwProfileW
+_Unicows_GetCurrentHwProfileW:      dd 0
+namestring_GetCurrentHwProfileW:    db 'GetCurrentHwProfileW',0

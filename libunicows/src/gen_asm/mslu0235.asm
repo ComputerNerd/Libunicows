@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__wsprintfW
-                    global wsprintfW
-                    global _wsprintfW
-                    global _Unicows_wsprintfW
+                    global __imp__WinHelpW@16
+                    global WinHelpW
+                    global _WinHelpW@16
+                    global _Unicows_WinHelpW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_wsprintfW:
+unicows_initial_stub_WinHelpW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__wsprintfW     ; place to save the pointer
-                    push dword [_Unicows_wsprintfW]      ; default proc, if any
+                    push dword __imp__WinHelpW@16     ; place to save the pointer
+                    push dword [_Unicows_WinHelpW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_wsprintfW      ; name of the function
+                    push dword namestring_WinHelpW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-wsprintfW:
-_wsprintfW:
-                    jmp [__imp__wsprintfW]
+WinHelpW:
+_WinHelpW@16:
+                    jmp [__imp__WinHelpW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _wsprintfW:
                     section .data
 %endif
 
-__imp__wsprintfW:   dd unicows_initial_stub_wsprintfW
-_Unicows_wsprintfW:      dd 0
-namestring_wsprintfW:    db 'wsprintfW',0
+__imp__WinHelpW@16:   dd unicows_initial_stub_WinHelpW
+_Unicows_WinHelpW:      dd 0
+namestring_WinHelpW:    db 'WinHelpW',0

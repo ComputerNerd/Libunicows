@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__IsWindowUnicode@4
-                    global IsWindowUnicode
-                    global _IsWindowUnicode@4
-                    global _Unicows_IsWindowUnicode
+                    global __imp__IsDialogMessageW@8
+                    global IsDialogMessageW
+                    global _IsDialogMessageW@8
+                    global _Unicows_IsDialogMessageW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_IsWindowUnicode:
+unicows_initial_stub_IsDialogMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__IsWindowUnicode@4     ; place to save the pointer
-                    push dword [_Unicows_IsWindowUnicode]      ; default proc, if any
+                    push dword __imp__IsDialogMessageW@8     ; place to save the pointer
+                    push dword [_Unicows_IsDialogMessageW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_IsWindowUnicode      ; name of the function
+                    push dword namestring_IsDialogMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsWindowUnicode:
-_IsWindowUnicode@4:
-                    jmp [__imp__IsWindowUnicode@4]
+IsDialogMessageW:
+_IsDialogMessageW@8:
+                    jmp [__imp__IsDialogMessageW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _IsWindowUnicode@4:
                     section .data
 %endif
 
-__imp__IsWindowUnicode@4:   dd unicows_initial_stub_IsWindowUnicode
-_Unicows_IsWindowUnicode:      dd 0
-namestring_IsWindowUnicode:    db 'IsWindowUnicode',0
+__imp__IsDialogMessageW@8:   dd unicows_initial_stub_IsDialogMessageW
+_Unicows_IsDialogMessageW:      dd 0
+namestring_IsDialogMessageW:    db 'IsDialogMessageW',0

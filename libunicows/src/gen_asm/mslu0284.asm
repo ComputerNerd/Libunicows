@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetOpenFileNameW@4
-                    global GetOpenFileNameW
-                    global _GetOpenFileNameW@4
-                    global _Unicows_GetOpenFileNameW
+                    global __imp__RegReplaceKeyW@16
+                    global RegReplaceKeyW
+                    global _RegReplaceKeyW@16
+                    global _Unicows_RegReplaceKeyW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetOpenFileNameW:
+unicows_initial_stub_RegReplaceKeyW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetOpenFileNameW@4     ; place to save the pointer
-                    push dword [_Unicows_GetOpenFileNameW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_GetOpenFileNameW      ; name of the function
+                    push dword __imp__RegReplaceKeyW@16     ; place to save the pointer
+                    push dword [_Unicows_RegReplaceKeyW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegReplaceKeyW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetOpenFileNameW:
-_GetOpenFileNameW@4:
-                    jmp [__imp__GetOpenFileNameW@4]
+RegReplaceKeyW:
+_RegReplaceKeyW@16:
+                    jmp [__imp__RegReplaceKeyW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetOpenFileNameW@4:
                     section .data
 %endif
 
-__imp__GetOpenFileNameW@4:   dd unicows_initial_stub_GetOpenFileNameW
-_Unicows_GetOpenFileNameW:      dd 0
-namestring_GetOpenFileNameW:    db 'GetOpenFileNameW',0
+__imp__RegReplaceKeyW@16:   dd unicows_initial_stub_RegReplaceKeyW
+_Unicows_RegReplaceKeyW:      dd 0
+namestring_RegReplaceKeyW:    db 'RegReplaceKeyW',0

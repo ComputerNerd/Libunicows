@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__VerQueryValueW@16
-                    global VerQueryValueW
-                    global _VerQueryValueW@16
-                    global _Unicows_VerQueryValueW
+                    global __imp__VerLanguageNameW@12
+                    global VerLanguageNameW
+                    global _VerLanguageNameW@12
+                    global _Unicows_VerLanguageNameW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_VerQueryValueW:
+unicows_initial_stub_VerLanguageNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__VerQueryValueW@16     ; place to save the pointer
-                    push dword [_Unicows_VerQueryValueW]      ; default proc, if any
+                    push dword __imp__VerLanguageNameW@12     ; place to save the pointer
+                    push dword [_Unicows_VerLanguageNameW]      ; default proc, if any
                     push dword VERSION                  ; dll id
-                    push dword namestring_VerQueryValueW      ; name of the function
+                    push dword namestring_VerLanguageNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-VerQueryValueW:
-_VerQueryValueW@16:
-                    jmp [__imp__VerQueryValueW@16]
+VerLanguageNameW:
+_VerLanguageNameW@12:
+                    jmp [__imp__VerLanguageNameW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _VerQueryValueW@16:
                     section .data
 %endif
 
-__imp__VerQueryValueW@16:   dd unicows_initial_stub_VerQueryValueW
-_Unicows_VerQueryValueW:      dd 0
-namestring_VerQueryValueW:    db 'VerQueryValueW',0
+__imp__VerLanguageNameW@12:   dd unicows_initial_stub_VerLanguageNameW
+_Unicows_VerLanguageNameW:      dd 0
+namestring_VerLanguageNameW:    db 'VerLanguageNameW',0

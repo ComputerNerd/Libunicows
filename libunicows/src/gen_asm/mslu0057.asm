@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ResetDCW@8
-                    global ResetDCW
-                    global _ResetDCW@8
-                    global _Unicows_ResetDCW
+                    global __imp__RemoveFontResourceW@4
+                    global RemoveFontResourceW
+                    global _RemoveFontResourceW@4
+                    global _Unicows_RemoveFontResourceW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ResetDCW:
+unicows_initial_stub_RemoveFontResourceW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ResetDCW@8     ; place to save the pointer
-                    push dword [_Unicows_ResetDCW]      ; default proc, if any
+                    push dword __imp__RemoveFontResourceW@4     ; place to save the pointer
+                    push dword [_Unicows_RemoveFontResourceW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_ResetDCW      ; name of the function
+                    push dword namestring_RemoveFontResourceW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ResetDCW:
-_ResetDCW@8:
-                    jmp [__imp__ResetDCW@8]
+RemoveFontResourceW:
+_RemoveFontResourceW@4:
+                    jmp [__imp__RemoveFontResourceW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ResetDCW@8:
                     section .data
 %endif
 
-__imp__ResetDCW@8:   dd unicows_initial_stub_ResetDCW
-_Unicows_ResetDCW:      dd 0
-namestring_ResetDCW:    db 'ResetDCW',0
+__imp__RemoveFontResourceW@4:   dd unicows_initial_stub_RemoveFontResourceW
+_Unicows_RemoveFontResourceW:      dd 0
+namestring_RemoveFontResourceW:    db 'RemoveFontResourceW',0

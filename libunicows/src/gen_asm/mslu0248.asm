@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ShellExecuteExW@4
-                    global ShellExecuteExW
-                    global _ShellExecuteExW@4
-                    global _Unicows_ShellExecuteExW
+                    global __imp__ShellAboutW@16
+                    global ShellAboutW
+                    global _ShellAboutW@16
+                    global _Unicows_ShellAboutW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ShellExecuteExW:
+unicows_initial_stub_ShellAboutW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ShellExecuteExW@4     ; place to save the pointer
-                    push dword [_Unicows_ShellExecuteExW]      ; default proc, if any
+                    push dword __imp__ShellAboutW@16     ; place to save the pointer
+                    push dword [_Unicows_ShellAboutW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_ShellExecuteExW      ; name of the function
+                    push dword namestring_ShellAboutW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ShellExecuteExW:
-_ShellExecuteExW@4:
-                    jmp [__imp__ShellExecuteExW@4]
+ShellAboutW:
+_ShellAboutW@16:
+                    jmp [__imp__ShellAboutW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ShellExecuteExW@4:
                     section .data
 %endif
 
-__imp__ShellExecuteExW@4:   dd unicows_initial_stub_ShellExecuteExW
-_Unicows_ShellExecuteExW:      dd 0
-namestring_ShellExecuteExW:    db 'ShellExecuteExW',0
+__imp__ShellAboutW@16:   dd unicows_initial_stub_ShellAboutW
+_Unicows_ShellAboutW:      dd 0
+namestring_ShellAboutW:    db 'ShellAboutW',0

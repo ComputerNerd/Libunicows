@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CreateDirectoryW@8
-                    global CreateDirectoryW
-                    global _CreateDirectoryW@8
-                    global _Unicows_CreateDirectoryW
+                    global __imp__BeginUpdateResourceA@8
+                    global BeginUpdateResourceA
+                    global _BeginUpdateResourceA@8
+                    global _Unicows_BeginUpdateResourceA
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CreateDirectoryW:
+unicows_initial_stub_BeginUpdateResourceA:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CreateDirectoryW@8     ; place to save the pointer
-                    push dword [_Unicows_CreateDirectoryW]      ; default proc, if any
+                    push dword __imp__BeginUpdateResourceA@8     ; place to save the pointer
+                    push dword [_Unicows_BeginUpdateResourceA]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_CreateDirectoryW      ; name of the function
+                    push dword namestring_BeginUpdateResourceA      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateDirectoryW:
-_CreateDirectoryW@8:
-                    jmp [__imp__CreateDirectoryW@8]
+BeginUpdateResourceA:
+_BeginUpdateResourceA@8:
+                    jmp [__imp__BeginUpdateResourceA@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CreateDirectoryW@8:
                     section .data
 %endif
 
-__imp__CreateDirectoryW@8:   dd unicows_initial_stub_CreateDirectoryW
-_Unicows_CreateDirectoryW:      dd 0
-namestring_CreateDirectoryW:    db 'CreateDirectoryW',0
+__imp__BeginUpdateResourceA@8:   dd unicows_initial_stub_BeginUpdateResourceA
+_Unicows_BeginUpdateResourceA:      dd 0
+namestring_BeginUpdateResourceA:    db 'BeginUpdateResourceA',0

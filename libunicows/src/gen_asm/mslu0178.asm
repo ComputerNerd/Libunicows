@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__IsCharAlphaNumericW@4
-                    global IsCharAlphaNumericW
-                    global _IsCharAlphaNumericW@4
-                    global _Unicows_IsCharAlphaNumericW
+                    global __imp__InsertMenuW@20
+                    global InsertMenuW
+                    global _InsertMenuW@20
+                    global _Unicows_InsertMenuW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_IsCharAlphaNumericW:
+unicows_initial_stub_InsertMenuW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__IsCharAlphaNumericW@4     ; place to save the pointer
-                    push dword [_Unicows_IsCharAlphaNumericW]      ; default proc, if any
+                    push dword __imp__InsertMenuW@20     ; place to save the pointer
+                    push dword [_Unicows_InsertMenuW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_IsCharAlphaNumericW      ; name of the function
+                    push dword namestring_InsertMenuW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsCharAlphaNumericW:
-_IsCharAlphaNumericW@4:
-                    jmp [__imp__IsCharAlphaNumericW@4]
+InsertMenuW:
+_InsertMenuW@20:
+                    jmp [__imp__InsertMenuW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _IsCharAlphaNumericW@4:
                     section .data
 %endif
 
-__imp__IsCharAlphaNumericW@4:   dd unicows_initial_stub_IsCharAlphaNumericW
-_Unicows_IsCharAlphaNumericW:      dd 0
-namestring_IsCharAlphaNumericW:    db 'IsCharAlphaNumericW',0
+__imp__InsertMenuW@20:   dd unicows_initial_stub_InsertMenuW
+_Unicows_InsertMenuW:      dd 0
+namestring_InsertMenuW:    db 'InsertMenuW',0

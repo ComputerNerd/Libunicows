@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__mixerGetControlDetailsW@12
-                    global mixerGetControlDetailsW
-                    global _mixerGetControlDetailsW@12
-                    global _Unicows_mixerGetControlDetailsW
+                    global __imp__midiOutGetErrorTextW@12
+                    global midiOutGetErrorTextW
+                    global _midiOutGetErrorTextW@12
+                    global _Unicows_midiOutGetErrorTextW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_mixerGetControlDetailsW:
+unicows_initial_stub_midiOutGetErrorTextW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__mixerGetControlDetailsW@12     ; place to save the pointer
-                    push dword [_Unicows_mixerGetControlDetailsW]      ; default proc, if any
+                    push dword __imp__midiOutGetErrorTextW@12     ; place to save the pointer
+                    push dword [_Unicows_midiOutGetErrorTextW]      ; default proc, if any
                     push dword WINMM                  ; dll id
-                    push dword namestring_mixerGetControlDetailsW      ; name of the function
+                    push dword namestring_midiOutGetErrorTextW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-mixerGetControlDetailsW:
-_mixerGetControlDetailsW@12:
-                    jmp [__imp__mixerGetControlDetailsW@12]
+midiOutGetErrorTextW:
+_midiOutGetErrorTextW@12:
+                    jmp [__imp__midiOutGetErrorTextW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _mixerGetControlDetailsW@12:
                     section .data
 %endif
 
-__imp__mixerGetControlDetailsW@12:   dd unicows_initial_stub_mixerGetControlDetailsW
-_Unicows_mixerGetControlDetailsW:      dd 0
-namestring_mixerGetControlDetailsW:    db 'mixerGetControlDetailsW',0
+__imp__midiOutGetErrorTextW@12:   dd unicows_initial_stub_midiOutGetErrorTextW
+_Unicows_midiOutGetErrorTextW:      dd 0
+namestring_midiOutGetErrorTextW:    db 'midiOutGetErrorTextW',0

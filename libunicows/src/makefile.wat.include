@@ -492,4 +492,17 @@ WRAPPERS = &
            build\watcom\mslu0489.obj &
            build\watcom\mslu0490.obj &
            build\watcom\mslu0491.obj &
-           build\watcom\mslu0492.obj 
+           build\watcom\mslu0492.obj &
+           build\watcom\mslu0493.obj &
+           build\watcom\mslu0494.obj &
+           build\watcom\mslu0495.obj &
+           build\watcom\mslu0496.obj &
+           build\watcom\mslu0497.obj &
+           build\watcom\mslu0498.obj &
+           build\watcom\mslu0499.obj &
+           build\watcom\mslu0500.obj &
+           build\watcom\mslu0501.obj &
+           build\watcom\mslu0502.obj &
+           build\watcom\mslu0503.obj &
+           build\watcom\mslu0504.obj &
+           build\watcom\mslu0505.obj 

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CreateDirectoryExW@12
-                    global CreateDirectoryExW
-                    global _CreateDirectoryExW@12
-                    global _Unicows_CreateDirectoryExW
+                    global __imp__AddAtomW@4
+                    global AddAtomW
+                    global _AddAtomW@4
+                    global _Unicows_AddAtomW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CreateDirectoryExW:
+unicows_initial_stub_AddAtomW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CreateDirectoryExW@12     ; place to save the pointer
-                    push dword [_Unicows_CreateDirectoryExW]      ; default proc, if any
+                    push dword __imp__AddAtomW@4     ; place to save the pointer
+                    push dword [_Unicows_AddAtomW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_CreateDirectoryExW      ; name of the function
+                    push dword namestring_AddAtomW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateDirectoryExW:
-_CreateDirectoryExW@12:
-                    jmp [__imp__CreateDirectoryExW@12]
+AddAtomW:
+_AddAtomW@4:
+                    jmp [__imp__AddAtomW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CreateDirectoryExW@12:
                     section .data
 %endif
 
-__imp__CreateDirectoryExW@12:   dd unicows_initial_stub_CreateDirectoryExW
-_Unicows_CreateDirectoryExW:      dd 0
-namestring_CreateDirectoryExW:    db 'CreateDirectoryExW',0
+__imp__AddAtomW@4:   dd unicows_initial_stub_AddAtomW
+_Unicows_AddAtomW:      dd 0
+namestring_AddAtomW:    db 'AddAtomW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__AddPrinterW@12
-                    global AddPrinterW
-                    global _AddPrinterW@12
-                    global _Unicows_AddPrinterW
+                    global __imp__RasGetProjectionInfoW@16
+                    global RasGetProjectionInfoW
+                    global _RasGetProjectionInfoW@16
+                    global _Unicows_RasGetProjectionInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_AddPrinterW:
+unicows_initial_stub_RasGetProjectionInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AddPrinterW@12     ; place to save the pointer
-                    push dword [_Unicows_AddPrinterW]      ; default proc, if any
-                    push dword WINSPOOL                  ; dll id
-                    push dword namestring_AddPrinterW      ; name of the function
+                    push dword __imp__RasGetProjectionInfoW@16     ; place to save the pointer
+                    push dword [_Unicows_RasGetProjectionInfoW]      ; default proc, if any
+                    push dword RASAPI32                  ; dll id
+                    push dword namestring_RasGetProjectionInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddPrinterW:
-_AddPrinterW@12:
-                    jmp [__imp__AddPrinterW@12]
+RasGetProjectionInfoW:
+_RasGetProjectionInfoW@16:
+                    jmp [__imp__RasGetProjectionInfoW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _AddPrinterW@12:
                     section .data
 %endif
 
-__imp__AddPrinterW@12:   dd unicows_initial_stub_AddPrinterW
-_Unicows_AddPrinterW:      dd 0
-namestring_AddPrinterW:    db 'AddPrinterW',0
+__imp__RasGetProjectionInfoW@16:   dd unicows_initial_stub_RasGetProjectionInfoW
+_Unicows_RasGetProjectionInfoW:      dd 0
+namestring_RasGetProjectionInfoW:    db 'RasGetProjectionInfoW',0

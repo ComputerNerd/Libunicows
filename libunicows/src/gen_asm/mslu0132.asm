@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DialogBoxIndirectParamW@20
-                    global DialogBoxIndirectParamW
-                    global _DialogBoxIndirectParamW@20
-                    global _Unicows_DialogBoxIndirectParamW
+                    global __imp__DefWindowProcW@16
+                    global DefWindowProcW
+                    global _DefWindowProcW@16
+                    global _Unicows_DefWindowProcW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DialogBoxIndirectParamW:
+unicows_initial_stub_DefWindowProcW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DialogBoxIndirectParamW@20     ; place to save the pointer
-                    push dword [_Unicows_DialogBoxIndirectParamW]      ; default proc, if any
+                    push dword __imp__DefWindowProcW@16     ; place to save the pointer
+                    push dword [_Unicows_DefWindowProcW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DialogBoxIndirectParamW      ; name of the function
+                    push dword namestring_DefWindowProcW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DialogBoxIndirectParamW:
-_DialogBoxIndirectParamW@20:
-                    jmp [__imp__DialogBoxIndirectParamW@20]
+DefWindowProcW:
+_DefWindowProcW@16:
+                    jmp [__imp__DefWindowProcW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DialogBoxIndirectParamW@20:
                     section .data
 %endif
 
-__imp__DialogBoxIndirectParamW@20:   dd unicows_initial_stub_DialogBoxIndirectParamW
-_Unicows_DialogBoxIndirectParamW:      dd 0
-namestring_DialogBoxIndirectParamW:    db 'DialogBoxIndirectParamW',0
+__imp__DefWindowProcW@16:   dd unicows_initial_stub_DefWindowProcW
+_Unicows_DefWindowProcW:      dd 0
+namestring_DefWindowProcW:    db 'DefWindowProcW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__TabbedTextOutW@32
-                    global TabbedTextOutW
-                    global _TabbedTextOutW@32
-                    global _Unicows_TabbedTextOutW
+                    global __imp__SystemParametersInfoW@16
+                    global SystemParametersInfoW
+                    global _SystemParametersInfoW@16
+                    global _Unicows_SystemParametersInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_TabbedTextOutW:
+unicows_initial_stub_SystemParametersInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__TabbedTextOutW@32     ; place to save the pointer
-                    push dword [_Unicows_TabbedTextOutW]      ; default proc, if any
+                    push dword __imp__SystemParametersInfoW@16     ; place to save the pointer
+                    push dword [_Unicows_SystemParametersInfoW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_TabbedTextOutW      ; name of the function
+                    push dword namestring_SystemParametersInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-TabbedTextOutW:
-_TabbedTextOutW@32:
-                    jmp [__imp__TabbedTextOutW@32]
+SystemParametersInfoW:
+_SystemParametersInfoW@16:
+                    jmp [__imp__SystemParametersInfoW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _TabbedTextOutW@32:
                     section .data
 %endif
 
-__imp__TabbedTextOutW@32:   dd unicows_initial_stub_TabbedTextOutW
-_Unicows_TabbedTextOutW:      dd 0
-namestring_TabbedTextOutW:    db 'TabbedTextOutW',0
+__imp__SystemParametersInfoW@16:   dd unicows_initial_stub_SystemParametersInfoW
+_Unicows_SystemParametersInfoW:      dd 0
+namestring_SystemParametersInfoW:    db 'SystemParametersInfoW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DrawStateW@40
-                    global DrawStateW
-                    global _DrawStateW@40
-                    global _Unicows_DrawStateW
+                    global __imp__DlgDirSelectExW@16
+                    global DlgDirSelectExW
+                    global _DlgDirSelectExW@16
+                    global _Unicows_DlgDirSelectExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DrawStateW:
+unicows_initial_stub_DlgDirSelectExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DrawStateW@40     ; place to save the pointer
-                    push dword [_Unicows_DrawStateW]      ; default proc, if any
+                    push dword __imp__DlgDirSelectExW@16     ; place to save the pointer
+                    push dword [_Unicows_DlgDirSelectExW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DrawStateW      ; name of the function
+                    push dword namestring_DlgDirSelectExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DrawStateW:
-_DrawStateW@40:
-                    jmp [__imp__DrawStateW@40]
+DlgDirSelectExW:
+_DlgDirSelectExW@16:
+                    jmp [__imp__DlgDirSelectExW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DrawStateW@40:
                     section .data
 %endif
 
-__imp__DrawStateW@40:   dd unicows_initial_stub_DrawStateW
-_Unicows_DrawStateW:      dd 0
-namestring_DrawStateW:    db 'DrawStateW',0
+__imp__DlgDirSelectExW@16:   dd unicows_initial_stub_DlgDirSelectExW
+_Unicows_DlgDirSelectExW:      dd 0
+namestring_DlgDirSelectExW:    db 'DlgDirSelectExW',0

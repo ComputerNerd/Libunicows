@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__InsertMenuW@20
-                    global InsertMenuW
-                    global _InsertMenuW@20
-                    global _Unicows_InsertMenuW
+                    global __imp__InsertMenuItemW@16
+                    global InsertMenuItemW
+                    global _InsertMenuItemW@16
+                    global _Unicows_InsertMenuItemW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_InsertMenuW:
+unicows_initial_stub_InsertMenuItemW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__InsertMenuW@20     ; place to save the pointer
-                    push dword [_Unicows_InsertMenuW]      ; default proc, if any
+                    push dword __imp__InsertMenuItemW@16     ; place to save the pointer
+                    push dword [_Unicows_InsertMenuItemW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_InsertMenuW      ; name of the function
+                    push dword namestring_InsertMenuItemW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-InsertMenuW:
-_InsertMenuW@20:
-                    jmp [__imp__InsertMenuW@20]
+InsertMenuItemW:
+_InsertMenuItemW@16:
+                    jmp [__imp__InsertMenuItemW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _InsertMenuW@20:
                     section .data
 %endif
 
-__imp__InsertMenuW@20:   dd unicows_initial_stub_InsertMenuW
-_Unicows_InsertMenuW:      dd 0
-namestring_InsertMenuW:    db 'InsertMenuW',0
+__imp__InsertMenuItemW@16:   dd unicows_initial_stub_InsertMenuItemW
+_Unicows_InsertMenuItemW:      dd 0
+namestring_InsertMenuItemW:    db 'InsertMenuItemW',0

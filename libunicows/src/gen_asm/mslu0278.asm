@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegSetValueW@20
-                    global RegSetValueW
-                    global _RegSetValueW@20
-                    global _Unicows_RegSetValueW
+                    global __imp__RegOpenKeyExW@20
+                    global RegOpenKeyExW
+                    global _RegOpenKeyExW@20
+                    global _Unicows_RegOpenKeyExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegSetValueW:
+unicows_initial_stub_RegOpenKeyExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegSetValueW@20     ; place to save the pointer
-                    push dword [_Unicows_RegSetValueW]      ; default proc, if any
+                    push dword __imp__RegOpenKeyExW@20     ; place to save the pointer
+                    push dword [_Unicows_RegOpenKeyExW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegSetValueW      ; name of the function
+                    push dword namestring_RegOpenKeyExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegSetValueW:
-_RegSetValueW@20:
-                    jmp [__imp__RegSetValueW@20]
+RegOpenKeyExW:
+_RegOpenKeyExW@20:
+                    jmp [__imp__RegOpenKeyExW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegSetValueW@20:
                     section .data
 %endif
 
-__imp__RegSetValueW@20:   dd unicows_initial_stub_RegSetValueW
-_Unicows_RegSetValueW:      dd 0
-namestring_RegSetValueW:    db 'RegSetValueW',0
+__imp__RegOpenKeyExW@20:   dd unicows_initial_stub_RegOpenKeyExW
+_Unicows_RegOpenKeyExW:      dd 0
+namestring_RegOpenKeyExW:    db 'RegOpenKeyExW',0

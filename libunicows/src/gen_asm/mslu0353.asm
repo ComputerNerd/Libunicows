@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetNumberFormatW@24
-                    global GetNumberFormatW
-                    global _GetNumberFormatW@24
-                    global _Unicows_GetNumberFormatW
+                    global __imp__GetEnvironmentStringsW@0
+                    global GetEnvironmentStringsW
+                    global _GetEnvironmentStringsW@0
+                    global _Unicows_GetEnvironmentStringsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetNumberFormatW:
+unicows_initial_stub_GetEnvironmentStringsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetNumberFormatW@24     ; place to save the pointer
-                    push dword [_Unicows_GetNumberFormatW]      ; default proc, if any
+                    push dword __imp__GetEnvironmentStringsW@0     ; place to save the pointer
+                    push dword [_Unicows_GetEnvironmentStringsW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetNumberFormatW      ; name of the function
+                    push dword namestring_GetEnvironmentStringsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetNumberFormatW:
-_GetNumberFormatW@24:
-                    jmp [__imp__GetNumberFormatW@24]
+GetEnvironmentStringsW:
+_GetEnvironmentStringsW@0:
+                    jmp [__imp__GetEnvironmentStringsW@0]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetNumberFormatW@24:
                     section .data
 %endif
 
-__imp__GetNumberFormatW@24:   dd unicows_initial_stub_GetNumberFormatW
-_Unicows_GetNumberFormatW:      dd 0
-namestring_GetNumberFormatW:    db 'GetNumberFormatW',0
+__imp__GetEnvironmentStringsW@0:   dd unicows_initial_stub_GetEnvironmentStringsW
+_Unicows_GetEnvironmentStringsW:      dd 0
+namestring_GetEnvironmentStringsW:    db 'GetEnvironmentStringsW',0

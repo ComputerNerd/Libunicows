@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumDateFormatsExW@12
-                    global EnumDateFormatsExW
-                    global _EnumDateFormatsExW@12
-                    global _Unicows_EnumDateFormatsExW
+                    global __imp__CreateMailslotW@16
+                    global CreateMailslotW
+                    global _CreateMailslotW@16
+                    global _Unicows_CreateMailslotW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumDateFormatsExW:
+unicows_initial_stub_CreateMailslotW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumDateFormatsExW@12     ; place to save the pointer
-                    push dword [_Unicows_EnumDateFormatsExW]      ; default proc, if any
+                    push dword __imp__CreateMailslotW@16     ; place to save the pointer
+                    push dword [_Unicows_CreateMailslotW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_EnumDateFormatsExW      ; name of the function
+                    push dword namestring_CreateMailslotW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumDateFormatsExW:
-_EnumDateFormatsExW@12:
-                    jmp [__imp__EnumDateFormatsExW@12]
+CreateMailslotW:
+_CreateMailslotW@16:
+                    jmp [__imp__CreateMailslotW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumDateFormatsExW@12:
                     section .data
 %endif
 
-__imp__EnumDateFormatsExW@12:   dd unicows_initial_stub_EnumDateFormatsExW
-_Unicows_EnumDateFormatsExW:      dd 0
-namestring_EnumDateFormatsExW:    db 'EnumDateFormatsExW',0
+__imp__CreateMailslotW@16:   dd unicows_initial_stub_CreateMailslotW
+_Unicows_CreateMailslotW:      dd 0
+namestring_CreateMailslotW:    db 'CreateMailslotW',0

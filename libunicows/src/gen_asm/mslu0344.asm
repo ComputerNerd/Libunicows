@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetFileAttributesExW@12
-                    global GetFileAttributesExW
-                    global _GetFileAttributesExW@12
-                    global _Unicows_GetFileAttributesExW
+                    global __imp__GetComputerNameW@8
+                    global GetComputerNameW
+                    global _GetComputerNameW@8
+                    global _Unicows_GetComputerNameW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetFileAttributesExW:
+unicows_initial_stub_GetComputerNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetFileAttributesExW@12     ; place to save the pointer
-                    push dword [_Unicows_GetFileAttributesExW]      ; default proc, if any
+                    push dword __imp__GetComputerNameW@8     ; place to save the pointer
+                    push dword [_Unicows_GetComputerNameW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetFileAttributesExW      ; name of the function
+                    push dword namestring_GetComputerNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFileAttributesExW:
-_GetFileAttributesExW@12:
-                    jmp [__imp__GetFileAttributesExW@12]
+GetComputerNameW:
+_GetComputerNameW@8:
+                    jmp [__imp__GetComputerNameW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetFileAttributesExW@12:
                     section .data
 %endif
 
-__imp__GetFileAttributesExW@12:   dd unicows_initial_stub_GetFileAttributesExW
-_Unicows_GetFileAttributesExW:      dd 0
-namestring_GetFileAttributesExW:    db 'GetFileAttributesExW',0
+__imp__GetComputerNameW@8:   dd unicows_initial_stub_GetComputerNameW
+_Unicows_GetComputerNameW:      dd 0
+namestring_GetComputerNameW:    db 'GetComputerNameW',0

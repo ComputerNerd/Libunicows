@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CopyAcceleratorTableW@12
-                    global CopyAcceleratorTableW
-                    global _CopyAcceleratorTableW@12
-                    global _Unicows_CopyAcceleratorTableW
+                    global __imp__CharUpperW@4
+                    global CharUpperW
+                    global _CharUpperW@4
+                    global _Unicows_CharUpperW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CopyAcceleratorTableW:
+unicows_initial_stub_CharUpperW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CopyAcceleratorTableW@12     ; place to save the pointer
-                    push dword [_Unicows_CopyAcceleratorTableW]      ; default proc, if any
+                    push dword __imp__CharUpperW@4     ; place to save the pointer
+                    push dword [_Unicows_CharUpperW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_CopyAcceleratorTableW      ; name of the function
+                    push dword namestring_CharUpperW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CopyAcceleratorTableW:
-_CopyAcceleratorTableW@12:
-                    jmp [__imp__CopyAcceleratorTableW@12]
+CharUpperW:
+_CharUpperW@4:
+                    jmp [__imp__CharUpperW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CopyAcceleratorTableW@12:
                     section .data
 %endif
 
-__imp__CopyAcceleratorTableW@12:   dd unicows_initial_stub_CopyAcceleratorTableW
-_Unicows_CopyAcceleratorTableW:      dd 0
-namestring_CopyAcceleratorTableW:    db 'CopyAcceleratorTableW',0
+__imp__CharUpperW@4:   dd unicows_initial_stub_CharUpperW
+_Unicows_CharUpperW:      dd 0
+namestring_CharUpperW:    db 'CharUpperW',0

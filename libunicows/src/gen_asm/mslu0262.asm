@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegCreateKeyW@12
-                    global RegCreateKeyW
-                    global _RegCreateKeyW@12
-                    global _Unicows_RegCreateKeyW
+                    global __imp__CryptSetProviderExW@16
+                    global CryptSetProviderExW
+                    global _CryptSetProviderExW@16
+                    global _Unicows_CryptSetProviderExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegCreateKeyW:
+unicows_initial_stub_CryptSetProviderExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegCreateKeyW@12     ; place to save the pointer
-                    push dword [_Unicows_RegCreateKeyW]      ; default proc, if any
+                    push dword __imp__CryptSetProviderExW@16     ; place to save the pointer
+                    push dword [_Unicows_CryptSetProviderExW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegCreateKeyW      ; name of the function
+                    push dword namestring_CryptSetProviderExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegCreateKeyW:
-_RegCreateKeyW@12:
-                    jmp [__imp__RegCreateKeyW@12]
+CryptSetProviderExW:
+_CryptSetProviderExW@16:
+                    jmp [__imp__CryptSetProviderExW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegCreateKeyW@12:
                     section .data
 %endif
 
-__imp__RegCreateKeyW@12:   dd unicows_initial_stub_RegCreateKeyW
-_Unicows_RegCreateKeyW:      dd 0
-namestring_RegCreateKeyW:    db 'RegCreateKeyW',0
+__imp__CryptSetProviderExW@16:   dd unicows_initial_stub_CryptSetProviderExW
+_Unicows_CryptSetProviderExW:      dd 0
+namestring_CryptSetProviderExW:    db 'CryptSetProviderExW',0

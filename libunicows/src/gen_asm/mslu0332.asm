@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetCalendarInfoW@24
-                    global GetCalendarInfoW
-                    global _GetCalendarInfoW@24
-                    global _Unicows_GetCalendarInfoW
+                    global __imp__FindAtomW@4
+                    global FindAtomW
+                    global _FindAtomW@4
+                    global _Unicows_FindAtomW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetCalendarInfoW:
+unicows_initial_stub_FindAtomW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetCalendarInfoW@24     ; place to save the pointer
-                    push dword [_Unicows_GetCalendarInfoW]      ; default proc, if any
+                    push dword __imp__FindAtomW@4     ; place to save the pointer
+                    push dword [_Unicows_FindAtomW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetCalendarInfoW      ; name of the function
+                    push dword namestring_FindAtomW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCalendarInfoW:
-_GetCalendarInfoW@24:
-                    jmp [__imp__GetCalendarInfoW@24]
+FindAtomW:
+_FindAtomW@4:
+                    jmp [__imp__FindAtomW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetCalendarInfoW@24:
                     section .data
 %endif
 
-__imp__GetCalendarInfoW@24:   dd unicows_initial_stub_GetCalendarInfoW
-_Unicows_GetCalendarInfoW:      dd 0
-namestring_GetCalendarInfoW:    db 'GetCalendarInfoW',0
+__imp__FindAtomW@4:   dd unicows_initial_stub_FindAtomW
+_Unicows_FindAtomW:      dd 0
+namestring_FindAtomW:    db 'FindAtomW',0

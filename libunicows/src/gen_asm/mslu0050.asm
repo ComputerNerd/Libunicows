@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetTextExtentExPointW@28
-                    global GetTextExtentExPointW
-                    global _GetTextExtentExPointW@28
-                    global _Unicows_GetTextExtentExPointW
+                    global __imp__GetOutlineTextMetricsW@12
+                    global GetOutlineTextMetricsW
+                    global _GetOutlineTextMetricsW@12
+                    global _Unicows_GetOutlineTextMetricsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetTextExtentExPointW:
+unicows_initial_stub_GetOutlineTextMetricsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetTextExtentExPointW@28     ; place to save the pointer
-                    push dword [_Unicows_GetTextExtentExPointW]      ; default proc, if any
+                    push dword __imp__GetOutlineTextMetricsW@12     ; place to save the pointer
+                    push dword [_Unicows_GetOutlineTextMetricsW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_GetTextExtentExPointW      ; name of the function
+                    push dword namestring_GetOutlineTextMetricsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTextExtentExPointW:
-_GetTextExtentExPointW@28:
-                    jmp [__imp__GetTextExtentExPointW@28]
+GetOutlineTextMetricsW:
+_GetOutlineTextMetricsW@12:
+                    jmp [__imp__GetOutlineTextMetricsW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetTextExtentExPointW@28:
                     section .data
 %endif
 
-__imp__GetTextExtentExPointW@28:   dd unicows_initial_stub_GetTextExtentExPointW
-_Unicows_GetTextExtentExPointW:      dd 0
-namestring_GetTextExtentExPointW:    db 'GetTextExtentExPointW',0
+__imp__GetOutlineTextMetricsW@12:   dd unicows_initial_stub_GetOutlineTextMetricsW
+_Unicows_GetOutlineTextMetricsW:      dd 0
+namestring_GetOutlineTextMetricsW:    db 'GetOutlineTextMetricsW',0

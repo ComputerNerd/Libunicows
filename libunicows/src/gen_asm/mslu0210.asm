@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegisterWindowMessageW@4
-                    global RegisterWindowMessageW
-                    global _RegisterWindowMessageW@4
-                    global _Unicows_RegisterWindowMessageW
+                    global __imp__RegisterDeviceNotificationW@12
+                    global RegisterDeviceNotificationW
+                    global _RegisterDeviceNotificationW@12
+                    global _Unicows_RegisterDeviceNotificationW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegisterWindowMessageW:
+unicows_initial_stub_RegisterDeviceNotificationW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegisterWindowMessageW@4     ; place to save the pointer
-                    push dword [_Unicows_RegisterWindowMessageW]      ; default proc, if any
+                    push dword __imp__RegisterDeviceNotificationW@12     ; place to save the pointer
+                    push dword [_Unicows_RegisterDeviceNotificationW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_RegisterWindowMessageW      ; name of the function
+                    push dword namestring_RegisterDeviceNotificationW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegisterWindowMessageW:
-_RegisterWindowMessageW@4:
-                    jmp [__imp__RegisterWindowMessageW@4]
+RegisterDeviceNotificationW:
+_RegisterDeviceNotificationW@12:
+                    jmp [__imp__RegisterDeviceNotificationW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegisterWindowMessageW@4:
                     section .data
 %endif
 
-__imp__RegisterWindowMessageW@4:   dd unicows_initial_stub_RegisterWindowMessageW
-_Unicows_RegisterWindowMessageW:      dd 0
-namestring_RegisterWindowMessageW:    db 'RegisterWindowMessageW',0
+__imp__RegisterDeviceNotificationW@12:   dd unicows_initial_stub_RegisterDeviceNotificationW
+_Unicows_RegisterDeviceNotificationW:      dd 0
+namestring_RegisterDeviceNotificationW:    db 'RegisterDeviceNotificationW',0

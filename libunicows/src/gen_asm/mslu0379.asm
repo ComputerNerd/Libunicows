@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__LCMapStringW@24
-                    global LCMapStringW
-                    global _LCMapStringW@24
-                    global _Unicows_LCMapStringW
+                    global __imp__GetTempFileNameW@16
+                    global GetTempFileNameW
+                    global _GetTempFileNameW@16
+                    global _Unicows_GetTempFileNameW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_LCMapStringW:
+unicows_initial_stub_GetTempFileNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__LCMapStringW@24     ; place to save the pointer
-                    push dword [_Unicows_LCMapStringW]      ; default proc, if any
+                    push dword __imp__GetTempFileNameW@16     ; place to save the pointer
+                    push dword [_Unicows_GetTempFileNameW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_LCMapStringW      ; name of the function
+                    push dword namestring_GetTempFileNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-LCMapStringW:
-_LCMapStringW@24:
-                    jmp [__imp__LCMapStringW@24]
+GetTempFileNameW:
+_GetTempFileNameW@16:
+                    jmp [__imp__GetTempFileNameW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _LCMapStringW@24:
                     section .data
 %endif
 
-__imp__LCMapStringW@24:   dd unicows_initial_stub_LCMapStringW
-_Unicows_LCMapStringW:      dd 0
-namestring_LCMapStringW:    db 'LCMapStringW',0
+__imp__GetTempFileNameW@16:   dd unicows_initial_stub_GetTempFileNameW
+_Unicows_GetTempFileNameW:      dd 0
+namestring_GetTempFileNameW:    db 'GetTempFileNameW',0

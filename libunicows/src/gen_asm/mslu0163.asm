@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetMenuItemInfoW@16
-                    global GetMenuItemInfoW
-                    global _GetMenuItemInfoW@16
-                    global _Unicows_GetMenuItemInfoW
+                    global __imp__GetKeyboardLayoutNameW@4
+                    global GetKeyboardLayoutNameW
+                    global _GetKeyboardLayoutNameW@4
+                    global _Unicows_GetKeyboardLayoutNameW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetMenuItemInfoW:
+unicows_initial_stub_GetKeyboardLayoutNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetMenuItemInfoW@16     ; place to save the pointer
-                    push dword [_Unicows_GetMenuItemInfoW]      ; default proc, if any
+                    push dword __imp__GetKeyboardLayoutNameW@4     ; place to save the pointer
+                    push dword [_Unicows_GetKeyboardLayoutNameW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_GetMenuItemInfoW      ; name of the function
+                    push dword namestring_GetKeyboardLayoutNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetMenuItemInfoW:
-_GetMenuItemInfoW@16:
-                    jmp [__imp__GetMenuItemInfoW@16]
+GetKeyboardLayoutNameW:
+_GetKeyboardLayoutNameW@4:
+                    jmp [__imp__GetKeyboardLayoutNameW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetMenuItemInfoW@16:
                     section .data
 %endif
 
-__imp__GetMenuItemInfoW@16:   dd unicows_initial_stub_GetMenuItemInfoW
-_Unicows_GetMenuItemInfoW:      dd 0
-namestring_GetMenuItemInfoW:    db 'GetMenuItemInfoW',0
+__imp__GetKeyboardLayoutNameW@4:   dd unicows_initial_stub_GetKeyboardLayoutNameW
+_Unicows_GetKeyboardLayoutNameW:      dd 0
+namestring_GetKeyboardLayoutNameW:    db 'GetKeyboardLayoutNameW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FindExecutableW@12
-                    global FindExecutableW
-                    global _FindExecutableW@12
-                    global _Unicows_FindExecutableW
+                    global __imp__ExtractIconW@12
+                    global ExtractIconW
+                    global _ExtractIconW@12
+                    global _Unicows_ExtractIconW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FindExecutableW:
+unicows_initial_stub_ExtractIconW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FindExecutableW@12     ; place to save the pointer
-                    push dword [_Unicows_FindExecutableW]      ; default proc, if any
+                    push dword __imp__ExtractIconW@12     ; place to save the pointer
+                    push dword [_Unicows_ExtractIconW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_FindExecutableW      ; name of the function
+                    push dword namestring_ExtractIconW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindExecutableW:
-_FindExecutableW@12:
-                    jmp [__imp__FindExecutableW@12]
+ExtractIconW:
+_ExtractIconW@12:
+                    jmp [__imp__ExtractIconW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FindExecutableW@12:
                     section .data
 %endif
 
-__imp__FindExecutableW@12:   dd unicows_initial_stub_FindExecutableW
-_Unicows_FindExecutableW:      dd 0
-namestring_FindExecutableW:    db 'FindExecutableW',0
+__imp__ExtractIconW@12:   dd unicows_initial_stub_ExtractIconW
+_Unicows_ExtractIconW:      dd 0
+namestring_ExtractIconW:    db 'ExtractIconW',0

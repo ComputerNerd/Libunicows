@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegEnumKeyExW@32
-                    global RegEnumKeyExW
-                    global _RegEnumKeyExW@32
-                    global _Unicows_RegEnumKeyExW
+                    global __imp__CryptVerifySignatureW@24
+                    global CryptVerifySignatureW
+                    global _CryptVerifySignatureW@24
+                    global _Unicows_CryptVerifySignatureW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegEnumKeyExW:
+unicows_initial_stub_CryptVerifySignatureW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegEnumKeyExW@32     ; place to save the pointer
-                    push dword [_Unicows_RegEnumKeyExW]      ; default proc, if any
+                    push dword __imp__CryptVerifySignatureW@24     ; place to save the pointer
+                    push dword [_Unicows_CryptVerifySignatureW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegEnumKeyExW      ; name of the function
+                    push dword namestring_CryptVerifySignatureW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegEnumKeyExW:
-_RegEnumKeyExW@32:
-                    jmp [__imp__RegEnumKeyExW@32]
+CryptVerifySignatureW:
+_CryptVerifySignatureW@24:
+                    jmp [__imp__CryptVerifySignatureW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegEnumKeyExW@32:
                     section .data
 %endif
 
-__imp__RegEnumKeyExW@32:   dd unicows_initial_stub_RegEnumKeyExW
-_Unicows_RegEnumKeyExW:      dd 0
-namestring_RegEnumKeyExW:    db 'RegEnumKeyExW',0
+__imp__CryptVerifySignatureW@24:   dd unicows_initial_stub_CryptVerifySignatureW
+_Unicows_CryptVerifySignatureW:      dd 0
+namestring_CryptVerifySignatureW:    db 'CryptVerifySignatureW',0

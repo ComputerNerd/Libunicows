@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SHBrowseForFolderW@4
-                    global SHBrowseForFolderW
-                    global _SHBrowseForFolderW@4
-                    global _Unicows_SHBrowseForFolderW
+                    global __imp__FindExecutableW@12
+                    global FindExecutableW
+                    global _FindExecutableW@12
+                    global _Unicows_FindExecutableW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SHBrowseForFolderW:
+unicows_initial_stub_FindExecutableW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SHBrowseForFolderW@4     ; place to save the pointer
-                    push dword [_Unicows_SHBrowseForFolderW]      ; default proc, if any
+                    push dword __imp__FindExecutableW@12     ; place to save the pointer
+                    push dword [_Unicows_FindExecutableW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_SHBrowseForFolderW      ; name of the function
+                    push dword namestring_FindExecutableW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHBrowseForFolderW:
-_SHBrowseForFolderW@4:
-                    jmp [__imp__SHBrowseForFolderW@4]
+FindExecutableW:
+_FindExecutableW@12:
+                    jmp [__imp__FindExecutableW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SHBrowseForFolderW@4:
                     section .data
 %endif
 
-__imp__SHBrowseForFolderW@4:   dd unicows_initial_stub_SHBrowseForFolderW
-_Unicows_SHBrowseForFolderW:      dd 0
-namestring_SHBrowseForFolderW:    db 'SHBrowseForFolderW',0
+__imp__FindExecutableW@12:   dd unicows_initial_stub_FindExecutableW
+_Unicows_FindExecutableW:      dd 0
+namestring_FindExecutableW:    db 'FindExecutableW',0

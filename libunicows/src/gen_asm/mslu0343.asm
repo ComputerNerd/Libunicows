@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetEnvironmentVariableW@12
-                    global GetEnvironmentVariableW
-                    global _GetEnvironmentVariableW@12
-                    global _Unicows_GetEnvironmentVariableW
+                    global __imp__GetCalendarInfoW@24
+                    global GetCalendarInfoW
+                    global _GetCalendarInfoW@24
+                    global _Unicows_GetCalendarInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetEnvironmentVariableW:
+unicows_initial_stub_GetCalendarInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetEnvironmentVariableW@12     ; place to save the pointer
-                    push dword [_Unicows_GetEnvironmentVariableW]      ; default proc, if any
+                    push dword __imp__GetCalendarInfoW@24     ; place to save the pointer
+                    push dword [_Unicows_GetCalendarInfoW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetEnvironmentVariableW      ; name of the function
+                    push dword namestring_GetCalendarInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetEnvironmentVariableW:
-_GetEnvironmentVariableW@12:
-                    jmp [__imp__GetEnvironmentVariableW@12]
+GetCalendarInfoW:
+_GetCalendarInfoW@24:
+                    jmp [__imp__GetCalendarInfoW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetEnvironmentVariableW@12:
                     section .data
 %endif
 
-__imp__GetEnvironmentVariableW@12:   dd unicows_initial_stub_GetEnvironmentVariableW
-_Unicows_GetEnvironmentVariableW:      dd 0
-namestring_GetEnvironmentVariableW:    db 'GetEnvironmentVariableW',0
+__imp__GetCalendarInfoW@24:   dd unicows_initial_stub_GetCalendarInfoW
+_Unicows_GetCalendarInfoW:      dd 0
+namestring_GetCalendarInfoW:    db 'GetCalendarInfoW',0

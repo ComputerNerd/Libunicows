@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__PostThreadMessageW@16
-                    global PostThreadMessageW
-                    global _PostThreadMessageW@16
-                    global _Unicows_PostThreadMessageW
+                    global __imp__PostMessageW@16
+                    global PostMessageW
+                    global _PostMessageW@16
+                    global _Unicows_PostMessageW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_PostThreadMessageW:
+unicows_initial_stub_PostMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__PostThreadMessageW@16     ; place to save the pointer
-                    push dword [_Unicows_PostThreadMessageW]      ; default proc, if any
+                    push dword __imp__PostMessageW@16     ; place to save the pointer
+                    push dword [_Unicows_PostMessageW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_PostThreadMessageW      ; name of the function
+                    push dword namestring_PostMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-PostThreadMessageW:
-_PostThreadMessageW@16:
-                    jmp [__imp__PostThreadMessageW@16]
+PostMessageW:
+_PostMessageW@16:
+                    jmp [__imp__PostMessageW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _PostThreadMessageW@16:
                     section .data
 %endif
 
-__imp__PostThreadMessageW@16:   dd unicows_initial_stub_PostThreadMessageW
-_Unicows_PostThreadMessageW:      dd 0
-namestring_PostThreadMessageW:    db 'PostThreadMessageW',0
+__imp__PostMessageW@16:   dd unicows_initial_stub_PostMessageW
+_Unicows_PostMessageW:      dd 0
+namestring_PostMessageW:    db 'PostMessageW',0

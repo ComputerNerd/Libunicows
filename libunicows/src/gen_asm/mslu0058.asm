@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SetICMProfileW@8
-                    global SetICMProfileW
-                    global _SetICMProfileW@8
-                    global _Unicows_SetICMProfileW
+                    global __imp__ResetDCW@8
+                    global ResetDCW
+                    global _ResetDCW@8
+                    global _Unicows_ResetDCW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SetICMProfileW:
+unicows_initial_stub_ResetDCW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetICMProfileW@8     ; place to save the pointer
-                    push dword [_Unicows_SetICMProfileW]      ; default proc, if any
+                    push dword __imp__ResetDCW@8     ; place to save the pointer
+                    push dword [_Unicows_ResetDCW]      ; default proc, if any
                     push dword GDI32                  ; dll id
-                    push dword namestring_SetICMProfileW      ; name of the function
+                    push dword namestring_ResetDCW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetICMProfileW:
-_SetICMProfileW@8:
-                    jmp [__imp__SetICMProfileW@8]
+ResetDCW:
+_ResetDCW@8:
+                    jmp [__imp__ResetDCW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SetICMProfileW@8:
                     section .data
 %endif
 
-__imp__SetICMProfileW@8:   dd unicows_initial_stub_SetICMProfileW
-_Unicows_SetICMProfileW:      dd 0
-namestring_SetICMProfileW:    db 'SetICMProfileW',0
+__imp__ResetDCW@8:   dd unicows_initial_stub_ResetDCW
+_Unicows_ResetDCW:      dd 0
+namestring_ResetDCW:    db 'ResetDCW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CreateStdAccessibleProxyW@20
-                    global CreateStdAccessibleProxyW
-                    global _CreateStdAccessibleProxyW@20
-                    global _Unicows_CreateStdAccessibleProxyW
+                    global __imp__waveOutGetErrorTextW@12
+                    global waveOutGetErrorTextW
+                    global _waveOutGetErrorTextW@12
+                    global _Unicows_waveOutGetErrorTextW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CreateStdAccessibleProxyW:
+unicows_initial_stub_waveOutGetErrorTextW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CreateStdAccessibleProxyW@20     ; place to save the pointer
-                    push dword [_Unicows_CreateStdAccessibleProxyW]      ; default proc, if any
-                    push dword OLEACC                  ; dll id
-                    push dword namestring_CreateStdAccessibleProxyW      ; name of the function
+                    push dword __imp__waveOutGetErrorTextW@12     ; place to save the pointer
+                    push dword [_Unicows_waveOutGetErrorTextW]      ; default proc, if any
+                    push dword WINMM                  ; dll id
+                    push dword namestring_waveOutGetErrorTextW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateStdAccessibleProxyW:
-_CreateStdAccessibleProxyW@20:
-                    jmp [__imp__CreateStdAccessibleProxyW@20]
+waveOutGetErrorTextW:
+_waveOutGetErrorTextW@12:
+                    jmp [__imp__waveOutGetErrorTextW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CreateStdAccessibleProxyW@20:
                     section .data
 %endif
 
-__imp__CreateStdAccessibleProxyW@20:   dd unicows_initial_stub_CreateStdAccessibleProxyW
-_Unicows_CreateStdAccessibleProxyW:      dd 0
-namestring_CreateStdAccessibleProxyW:    db 'CreateStdAccessibleProxyW',0
+__imp__waveOutGetErrorTextW@12:   dd unicows_initial_stub_waveOutGetErrorTextW
+_Unicows_waveOutGetErrorTextW:      dd 0
+namestring_waveOutGetErrorTextW:    db 'waveOutGetErrorTextW',0

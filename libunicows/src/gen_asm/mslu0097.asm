@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__OleUIPasteSpecialW@4
-                    global OleUIPasteSpecialW
-                    global _OleUIPasteSpecialW@4
-                    global _Unicows_OleUIPasteSpecialW
+                    global __imp__OleUIObjectPropertiesW@4
+                    global OleUIObjectPropertiesW
+                    global _OleUIObjectPropertiesW@4
+                    global _Unicows_OleUIObjectPropertiesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_OleUIPasteSpecialW:
+unicows_initial_stub_OleUIObjectPropertiesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__OleUIPasteSpecialW@4     ; place to save the pointer
-                    push dword [_Unicows_OleUIPasteSpecialW]      ; default proc, if any
+                    push dword __imp__OleUIObjectPropertiesW@4     ; place to save the pointer
+                    push dword [_Unicows_OleUIObjectPropertiesW]      ; default proc, if any
                     push dword OLEDLG                  ; dll id
-                    push dword namestring_OleUIPasteSpecialW      ; name of the function
+                    push dword namestring_OleUIObjectPropertiesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIPasteSpecialW:
-_OleUIPasteSpecialW@4:
-                    jmp [__imp__OleUIPasteSpecialW@4]
+OleUIObjectPropertiesW:
+_OleUIObjectPropertiesW@4:
+                    jmp [__imp__OleUIObjectPropertiesW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _OleUIPasteSpecialW@4:
                     section .data
 %endif
 
-__imp__OleUIPasteSpecialW@4:   dd unicows_initial_stub_OleUIPasteSpecialW
-_Unicows_OleUIPasteSpecialW:      dd 0
-namestring_OleUIPasteSpecialW:    db 'OleUIPasteSpecialW',0
+__imp__OleUIObjectPropertiesW@4:   dd unicows_initial_stub_OleUIObjectPropertiesW
+_Unicows_OleUIObjectPropertiesW:      dd 0
+namestring_OleUIObjectPropertiesW:    db 'OleUIObjectPropertiesW',0

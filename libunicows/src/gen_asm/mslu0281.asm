@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ChooseFontW@4
-                    global ChooseFontW
-                    global _ChooseFontW@4
-                    global _Unicows_ChooseFontW
+                    global __imp__RegQueryMultipleValuesW@20
+                    global RegQueryMultipleValuesW
+                    global _RegQueryMultipleValuesW@20
+                    global _Unicows_RegQueryMultipleValuesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ChooseFontW:
+unicows_initial_stub_RegQueryMultipleValuesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ChooseFontW@4     ; place to save the pointer
-                    push dword [_Unicows_ChooseFontW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_ChooseFontW      ; name of the function
+                    push dword __imp__RegQueryMultipleValuesW@20     ; place to save the pointer
+                    push dword [_Unicows_RegQueryMultipleValuesW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegQueryMultipleValuesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ChooseFontW:
-_ChooseFontW@4:
-                    jmp [__imp__ChooseFontW@4]
+RegQueryMultipleValuesW:
+_RegQueryMultipleValuesW@20:
+                    jmp [__imp__RegQueryMultipleValuesW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ChooseFontW@4:
                     section .data
 %endif
 
-__imp__ChooseFontW@4:   dd unicows_initial_stub_ChooseFontW
-_Unicows_ChooseFontW:      dd 0
-namestring_ChooseFontW:    db 'ChooseFontW',0
+__imp__RegQueryMultipleValuesW@20:   dd unicows_initial_stub_RegQueryMultipleValuesW
+_Unicows_RegQueryMultipleValuesW:      dd 0
+namestring_RegQueryMultipleValuesW:    db 'RegQueryMultipleValuesW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__OpenFileMappingW@12
-                    global OpenFileMappingW
-                    global _OpenFileMappingW@12
-                    global _Unicows_OpenFileMappingW
+                    global __imp__GlobalAddAtomW@4
+                    global GlobalAddAtomW
+                    global _GlobalAddAtomW@4
+                    global _Unicows_GlobalAddAtomW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_OpenFileMappingW:
+unicows_initial_stub_GlobalAddAtomW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__OpenFileMappingW@12     ; place to save the pointer
-                    push dword [_Unicows_OpenFileMappingW]      ; default proc, if any
+                    push dword __imp__GlobalAddAtomW@4     ; place to save the pointer
+                    push dword [_Unicows_GlobalAddAtomW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_OpenFileMappingW      ; name of the function
+                    push dword namestring_GlobalAddAtomW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenFileMappingW:
-_OpenFileMappingW@12:
-                    jmp [__imp__OpenFileMappingW@12]
+GlobalAddAtomW:
+_GlobalAddAtomW@4:
+                    jmp [__imp__GlobalAddAtomW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _OpenFileMappingW@12:
                     section .data
 %endif
 
-__imp__OpenFileMappingW@12:   dd unicows_initial_stub_OpenFileMappingW
-_Unicows_OpenFileMappingW:      dd 0
-namestring_OpenFileMappingW:    db 'OpenFileMappingW',0
+__imp__GlobalAddAtomW@4:   dd unicows_initial_stub_GlobalAddAtomW
+_Unicows_GlobalAddAtomW:      dd 0
+namestring_GlobalAddAtomW:    db 'GlobalAddAtomW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetCurrentHwProfileW@4
-                    global GetCurrentHwProfileW
-                    global _GetCurrentHwProfileW@4
-                    global _Unicows_GetCurrentHwProfileW
+                    global __imp__VerQueryValueW@16
+                    global VerQueryValueW
+                    global _VerQueryValueW@16
+                    global _Unicows_VerQueryValueW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetCurrentHwProfileW:
+unicows_initial_stub_VerQueryValueW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetCurrentHwProfileW@4     ; place to save the pointer
-                    push dword [_Unicows_GetCurrentHwProfileW]      ; default proc, if any
-                    push dword ADVAPI32                  ; dll id
-                    push dword namestring_GetCurrentHwProfileW      ; name of the function
+                    push dword __imp__VerQueryValueW@16     ; place to save the pointer
+                    push dword [_Unicows_VerQueryValueW]      ; default proc, if any
+                    push dword VERSION                  ; dll id
+                    push dword namestring_VerQueryValueW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCurrentHwProfileW:
-_GetCurrentHwProfileW@4:
-                    jmp [__imp__GetCurrentHwProfileW@4]
+VerQueryValueW:
+_VerQueryValueW@16:
+                    jmp [__imp__VerQueryValueW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetCurrentHwProfileW@4:
                     section .data
 %endif
 
-__imp__GetCurrentHwProfileW@4:   dd unicows_initial_stub_GetCurrentHwProfileW
-_Unicows_GetCurrentHwProfileW:      dd 0
-namestring_GetCurrentHwProfileW:    db 'GetCurrentHwProfileW',0
+__imp__VerQueryValueW@16:   dd unicows_initial_stub_VerQueryValueW
+_Unicows_VerQueryValueW:      dd 0
+namestring_VerQueryValueW:    db 'VerQueryValueW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DefFrameProcW@20
-                    global DefFrameProcW
-                    global _DefFrameProcW@20
-                    global _Unicows_DefFrameProcW
+                    global __imp__DefDlgProcW@16
+                    global DefDlgProcW
+                    global _DefDlgProcW@16
+                    global _Unicows_DefDlgProcW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DefFrameProcW:
+unicows_initial_stub_DefDlgProcW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DefFrameProcW@20     ; place to save the pointer
-                    push dword [_Unicows_DefFrameProcW]      ; default proc, if any
+                    push dword __imp__DefDlgProcW@16     ; place to save the pointer
+                    push dword [_Unicows_DefDlgProcW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DefFrameProcW      ; name of the function
+                    push dword namestring_DefDlgProcW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DefFrameProcW:
-_DefFrameProcW@20:
-                    jmp [__imp__DefFrameProcW@20]
+DefDlgProcW:
+_DefDlgProcW@16:
+                    jmp [__imp__DefDlgProcW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DefFrameProcW@20:
                     section .data
 %endif
 
-__imp__DefFrameProcW@20:   dd unicows_initial_stub_DefFrameProcW
-_Unicows_DefFrameProcW:      dd 0
-namestring_DefFrameProcW:    db 'DefFrameProcW',0
+__imp__DefDlgProcW@16:   dd unicows_initial_stub_DefDlgProcW
+_Unicows_DefDlgProcW:      dd 0
+namestring_DefDlgProcW:    db 'DefDlgProcW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CommConfigDialogW@12
-                    global CommConfigDialogW
-                    global _CommConfigDialogW@12
-                    global _Unicows_CommConfigDialogW
+                    global __imp__GetSaveFileNameW@4
+                    global GetSaveFileNameW
+                    global _GetSaveFileNameW@4
+                    global _Unicows_GetSaveFileNameW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CommConfigDialogW:
+unicows_initial_stub_GetSaveFileNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CommConfigDialogW@12     ; place to save the pointer
-                    push dword [_Unicows_CommConfigDialogW]      ; default proc, if any
-                    push dword KERNEL32                  ; dll id
-                    push dword namestring_CommConfigDialogW      ; name of the function
+                    push dword __imp__GetSaveFileNameW@4     ; place to save the pointer
+                    push dword [_Unicows_GetSaveFileNameW]      ; default proc, if any
+                    push dword COMDLG32                  ; dll id
+                    push dword namestring_GetSaveFileNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CommConfigDialogW:
-_CommConfigDialogW@12:
-                    jmp [__imp__CommConfigDialogW@12]
+GetSaveFileNameW:
+_GetSaveFileNameW@4:
+                    jmp [__imp__GetSaveFileNameW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CommConfigDialogW@12:
                     section .data
 %endif
 
-__imp__CommConfigDialogW@12:   dd unicows_initial_stub_CommConfigDialogW
-_Unicows_CommConfigDialogW:      dd 0
-namestring_CommConfigDialogW:    db 'CommConfigDialogW',0
+__imp__GetSaveFileNameW@4:   dd unicows_initial_stub_GetSaveFileNameW
+_Unicows_GetSaveFileNameW:      dd 0
+namestring_GetSaveFileNameW:    db 'GetSaveFileNameW',0

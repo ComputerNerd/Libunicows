@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FindTextW@4
-                    global FindTextW
-                    global _FindTextW@4
-                    global _Unicows_FindTextW
+                    global __imp__RegQueryValueExW@24
+                    global RegQueryValueExW
+                    global _RegQueryValueExW@24
+                    global _Unicows_RegQueryValueExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FindTextW:
+unicows_initial_stub_RegQueryValueExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FindTextW@4     ; place to save the pointer
-                    push dword [_Unicows_FindTextW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_FindTextW      ; name of the function
+                    push dword __imp__RegQueryValueExW@24     ; place to save the pointer
+                    push dword [_Unicows_RegQueryValueExW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegQueryValueExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindTextW:
-_FindTextW@4:
-                    jmp [__imp__FindTextW@4]
+RegQueryValueExW:
+_RegQueryValueExW@24:
+                    jmp [__imp__RegQueryValueExW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FindTextW@4:
                     section .data
 %endif
 
-__imp__FindTextW@4:   dd unicows_initial_stub_FindTextW
-_Unicows_FindTextW:      dd 0
-namestring_FindTextW:    db 'FindTextW',0
+__imp__RegQueryValueExW@24:   dd unicows_initial_stub_RegQueryValueExW
+_Unicows_RegQueryValueExW:      dd 0
+namestring_RegQueryValueExW:    db 'RegQueryValueExW',0

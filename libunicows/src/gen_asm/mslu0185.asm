@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__LoadAcceleratorsW@8
-                    global LoadAcceleratorsW
-                    global _LoadAcceleratorsW@8
-                    global _Unicows_LoadAcceleratorsW
+                    global __imp__IsWindowUnicode@4
+                    global IsWindowUnicode
+                    global _IsWindowUnicode@4
+                    global _Unicows_IsWindowUnicode
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_LoadAcceleratorsW:
+unicows_initial_stub_IsWindowUnicode:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__LoadAcceleratorsW@8     ; place to save the pointer
-                    push dword [_Unicows_LoadAcceleratorsW]      ; default proc, if any
+                    push dword __imp__IsWindowUnicode@4     ; place to save the pointer
+                    push dword [_Unicows_IsWindowUnicode]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_LoadAcceleratorsW      ; name of the function
+                    push dword namestring_IsWindowUnicode      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadAcceleratorsW:
-_LoadAcceleratorsW@8:
-                    jmp [__imp__LoadAcceleratorsW@8]
+IsWindowUnicode:
+_IsWindowUnicode@4:
+                    jmp [__imp__IsWindowUnicode@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _LoadAcceleratorsW@8:
                     section .data
 %endif
 
-__imp__LoadAcceleratorsW@8:   dd unicows_initial_stub_LoadAcceleratorsW
-_Unicows_LoadAcceleratorsW:      dd 0
-namestring_LoadAcceleratorsW:    db 'LoadAcceleratorsW',0
+__imp__IsWindowUnicode@4:   dd unicows_initial_stub_IsWindowUnicode
+_Unicows_IsWindowUnicode:      dd 0
+namestring_IsWindowUnicode:    db 'IsWindowUnicode',0

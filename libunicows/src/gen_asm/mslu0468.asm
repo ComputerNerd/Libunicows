@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetPrintProcessorDirectoryW@24
-                    global GetPrintProcessorDirectoryW
-                    global _GetPrintProcessorDirectoryW@24
-                    global _Unicows_GetPrintProcessorDirectoryW
+                    global __imp__DeletePortW@12
+                    global DeletePortW
+                    global _DeletePortW@12
+                    global _Unicows_DeletePortW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetPrintProcessorDirectoryW:
+unicows_initial_stub_DeletePortW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetPrintProcessorDirectoryW@24     ; place to save the pointer
-                    push dword [_Unicows_GetPrintProcessorDirectoryW]      ; default proc, if any
+                    push dword __imp__DeletePortW@12     ; place to save the pointer
+                    push dword [_Unicows_DeletePortW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_GetPrintProcessorDirectoryW      ; name of the function
+                    push dword namestring_DeletePortW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetPrintProcessorDirectoryW:
-_GetPrintProcessorDirectoryW@24:
-                    jmp [__imp__GetPrintProcessorDirectoryW@24]
+DeletePortW:
+_DeletePortW@12:
+                    jmp [__imp__DeletePortW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetPrintProcessorDirectoryW@24:
                     section .data
 %endif
 
-__imp__GetPrintProcessorDirectoryW@24:   dd unicows_initial_stub_GetPrintProcessorDirectoryW
-_Unicows_GetPrintProcessorDirectoryW:      dd 0
-namestring_GetPrintProcessorDirectoryW:    db 'GetPrintProcessorDirectoryW',0
+__imp__DeletePortW@12:   dd unicows_initial_stub_DeletePortW
+_Unicows_DeletePortW:      dd 0
+namestring_DeletePortW:    db 'DeletePortW',0

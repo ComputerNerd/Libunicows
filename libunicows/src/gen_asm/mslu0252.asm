@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetFileVersionInfoW@16
-                    global GetFileVersionInfoW
-                    global _GetFileVersionInfoW@16
-                    global _Unicows_GetFileVersionInfoW
+                    global __imp__GetFileVersionInfoSizeW@8
+                    global GetFileVersionInfoSizeW
+                    global _GetFileVersionInfoSizeW@8
+                    global _Unicows_GetFileVersionInfoSizeW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetFileVersionInfoW:
+unicows_initial_stub_GetFileVersionInfoSizeW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetFileVersionInfoW@16     ; place to save the pointer
-                    push dword [_Unicows_GetFileVersionInfoW]      ; default proc, if any
+                    push dword __imp__GetFileVersionInfoSizeW@8     ; place to save the pointer
+                    push dword [_Unicows_GetFileVersionInfoSizeW]      ; default proc, if any
                     push dword VERSION                  ; dll id
-                    push dword namestring_GetFileVersionInfoW      ; name of the function
+                    push dword namestring_GetFileVersionInfoSizeW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFileVersionInfoW:
-_GetFileVersionInfoW@16:
-                    jmp [__imp__GetFileVersionInfoW@16]
+GetFileVersionInfoSizeW:
+_GetFileVersionInfoSizeW@8:
+                    jmp [__imp__GetFileVersionInfoSizeW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetFileVersionInfoW@16:
                     section .data
 %endif
 
-__imp__GetFileVersionInfoW@16:   dd unicows_initial_stub_GetFileVersionInfoW
-_Unicows_GetFileVersionInfoW:      dd 0
-namestring_GetFileVersionInfoW:    db 'GetFileVersionInfoW',0
+__imp__GetFileVersionInfoSizeW@8:   dd unicows_initial_stub_GetFileVersionInfoSizeW
+_Unicows_GetFileVersionInfoSizeW:      dd 0
+namestring_GetFileVersionInfoSizeW:    db 'GetFileVersionInfoSizeW',0

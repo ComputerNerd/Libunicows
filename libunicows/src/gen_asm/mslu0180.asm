@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__IsCharLowerW@4
-                    global IsCharLowerW
-                    global _IsCharLowerW@4
-                    global _Unicows_IsCharLowerW
+                    global __imp__IsCharAlphaW@4
+                    global IsCharAlphaW
+                    global _IsCharAlphaW@4
+                    global _Unicows_IsCharAlphaW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_IsCharLowerW:
+unicows_initial_stub_IsCharAlphaW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__IsCharLowerW@4     ; place to save the pointer
-                    push dword [_Unicows_IsCharLowerW]      ; default proc, if any
+                    push dword __imp__IsCharAlphaW@4     ; place to save the pointer
+                    push dword [_Unicows_IsCharAlphaW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_IsCharLowerW      ; name of the function
+                    push dword namestring_IsCharAlphaW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsCharLowerW:
-_IsCharLowerW@4:
-                    jmp [__imp__IsCharLowerW@4]
+IsCharAlphaW:
+_IsCharAlphaW@4:
+                    jmp [__imp__IsCharAlphaW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _IsCharLowerW@4:
                     section .data
 %endif
 
-__imp__IsCharLowerW@4:   dd unicows_initial_stub_IsCharLowerW
-_Unicows_IsCharLowerW:      dd 0
-namestring_IsCharLowerW:    db 'IsCharLowerW',0
+__imp__IsCharAlphaW@4:   dd unicows_initial_stub_IsCharAlphaW
+_Unicows_IsCharAlphaW:      dd 0
+namestring_IsCharAlphaW:    db 'IsCharAlphaW',0

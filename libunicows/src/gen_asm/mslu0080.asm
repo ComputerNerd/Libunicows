@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__mmioStringToFOURCCW@8
-                    global mmioStringToFOURCCW
-                    global _mmioStringToFOURCCW@8
-                    global _Unicows_mmioStringToFOURCCW
+                    global __imp__mmioRenameW@16
+                    global mmioRenameW
+                    global _mmioRenameW@16
+                    global _Unicows_mmioRenameW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_mmioStringToFOURCCW:
+unicows_initial_stub_mmioRenameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__mmioStringToFOURCCW@8     ; place to save the pointer
-                    push dword [_Unicows_mmioStringToFOURCCW]      ; default proc, if any
+                    push dword __imp__mmioRenameW@16     ; place to save the pointer
+                    push dword [_Unicows_mmioRenameW]      ; default proc, if any
                     push dword WINMM                  ; dll id
-                    push dword namestring_mmioStringToFOURCCW      ; name of the function
+                    push dword namestring_mmioRenameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-mmioStringToFOURCCW:
-_mmioStringToFOURCCW@8:
-                    jmp [__imp__mmioStringToFOURCCW@8]
+mmioRenameW:
+_mmioRenameW@16:
+                    jmp [__imp__mmioRenameW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _mmioStringToFOURCCW@8:
                     section .data
 %endif
 
-__imp__mmioStringToFOURCCW@8:   dd unicows_initial_stub_mmioStringToFOURCCW
-_Unicows_mmioStringToFOURCCW:      dd 0
-namestring_mmioStringToFOURCCW:    db 'mmioStringToFOURCCW',0
+__imp__mmioRenameW@16:   dd unicows_initial_stub_mmioRenameW
+_Unicows_mmioRenameW:      dd 0
+namestring_mmioRenameW:    db 'mmioRenameW',0

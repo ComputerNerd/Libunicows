@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__LoadMenuW@8
-                    global LoadMenuW
-                    global _LoadMenuW@8
-                    global _Unicows_LoadMenuW
+                    global __imp__LoadMenuIndirectW@4
+                    global LoadMenuIndirectW
+                    global _LoadMenuIndirectW@4
+                    global _Unicows_LoadMenuIndirectW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_LoadMenuW:
+unicows_initial_stub_LoadMenuIndirectW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__LoadMenuW@8     ; place to save the pointer
-                    push dword [_Unicows_LoadMenuW]      ; default proc, if any
+                    push dword __imp__LoadMenuIndirectW@4     ; place to save the pointer
+                    push dword [_Unicows_LoadMenuIndirectW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_LoadMenuW      ; name of the function
+                    push dword namestring_LoadMenuIndirectW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadMenuW:
-_LoadMenuW@8:
-                    jmp [__imp__LoadMenuW@8]
+LoadMenuIndirectW:
+_LoadMenuIndirectW@4:
+                    jmp [__imp__LoadMenuIndirectW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _LoadMenuW@8:
                     section .data
 %endif
 
-__imp__LoadMenuW@8:   dd unicows_initial_stub_LoadMenuW
-_Unicows_LoadMenuW:      dd 0
-namestring_LoadMenuW:    db 'LoadMenuW',0
+__imp__LoadMenuIndirectW@4:   dd unicows_initial_stub_LoadMenuIndirectW
+_Unicows_LoadMenuIndirectW:      dd 0
+namestring_LoadMenuIndirectW:    db 'LoadMenuIndirectW',0

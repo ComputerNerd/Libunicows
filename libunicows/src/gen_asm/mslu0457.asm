@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DeletePrintProvidorW@12
-                    global DeletePrintProvidorW
-                    global _DeletePrintProvidorW@12
-                    global _Unicows_DeletePrintProvidorW
+                    global __imp__RasValidateEntryNameW@8
+                    global RasValidateEntryNameW
+                    global _RasValidateEntryNameW@8
+                    global _Unicows_RasValidateEntryNameW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DeletePrintProvidorW:
+unicows_initial_stub_RasValidateEntryNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DeletePrintProvidorW@12     ; place to save the pointer
-                    push dword [_Unicows_DeletePrintProvidorW]      ; default proc, if any
-                    push dword WINSPOOL                  ; dll id
-                    push dword namestring_DeletePrintProvidorW      ; name of the function
+                    push dword __imp__RasValidateEntryNameW@8     ; place to save the pointer
+                    push dword [_Unicows_RasValidateEntryNameW]      ; default proc, if any
+                    push dword RASAPI32                  ; dll id
+                    push dword namestring_RasValidateEntryNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeletePrintProvidorW:
-_DeletePrintProvidorW@12:
-                    jmp [__imp__DeletePrintProvidorW@12]
+RasValidateEntryNameW:
+_RasValidateEntryNameW@8:
+                    jmp [__imp__RasValidateEntryNameW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DeletePrintProvidorW@12:
                     section .data
 %endif
 
-__imp__DeletePrintProvidorW@12:   dd unicows_initial_stub_DeletePrintProvidorW
-_Unicows_DeletePrintProvidorW:      dd 0
-namestring_DeletePrintProvidorW:    db 'DeletePrintProvidorW',0
+__imp__RasValidateEntryNameW@8:   dd unicows_initial_stub_RasValidateEntryNameW
+_Unicows_RasValidateEntryNameW:      dd 0
+namestring_RasValidateEntryNameW:    db 'RasValidateEntryNameW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegisterDeviceNotificationW@12
-                    global RegisterDeviceNotificationW
-                    global _RegisterDeviceNotificationW@12
-                    global _Unicows_RegisterDeviceNotificationW
+                    global __imp__RegisterClipboardFormatW@4
+                    global RegisterClipboardFormatW
+                    global _RegisterClipboardFormatW@4
+                    global _Unicows_RegisterClipboardFormatW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegisterDeviceNotificationW:
+unicows_initial_stub_RegisterClipboardFormatW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegisterDeviceNotificationW@12     ; place to save the pointer
-                    push dword [_Unicows_RegisterDeviceNotificationW]      ; default proc, if any
+                    push dword __imp__RegisterClipboardFormatW@4     ; place to save the pointer
+                    push dword [_Unicows_RegisterClipboardFormatW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_RegisterDeviceNotificationW      ; name of the function
+                    push dword namestring_RegisterClipboardFormatW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegisterDeviceNotificationW:
-_RegisterDeviceNotificationW@12:
-                    jmp [__imp__RegisterDeviceNotificationW@12]
+RegisterClipboardFormatW:
+_RegisterClipboardFormatW@4:
+                    jmp [__imp__RegisterClipboardFormatW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegisterDeviceNotificationW@12:
                     section .data
 %endif
 
-__imp__RegisterDeviceNotificationW@12:   dd unicows_initial_stub_RegisterDeviceNotificationW
-_Unicows_RegisterDeviceNotificationW:      dd 0
-namestring_RegisterDeviceNotificationW:    db 'RegisterDeviceNotificationW',0
+__imp__RegisterClipboardFormatW@4:   dd unicows_initial_stub_RegisterClipboardFormatW
+_Unicows_RegisterClipboardFormatW:      dd 0
+namestring_RegisterClipboardFormatW:    db 'RegisterClipboardFormatW',0

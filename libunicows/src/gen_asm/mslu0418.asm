@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__WriteProfileSectionW@8
-                    global WriteProfileSectionW
-                    global _WriteProfileSectionW@8
-                    global _Unicows_WriteProfileSectionW
+                    global __imp__SetVolumeLabelW@8
+                    global SetVolumeLabelW
+                    global _SetVolumeLabelW@8
+                    global _Unicows_SetVolumeLabelW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_WriteProfileSectionW:
+unicows_initial_stub_SetVolumeLabelW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WriteProfileSectionW@8     ; place to save the pointer
-                    push dword [_Unicows_WriteProfileSectionW]      ; default proc, if any
+                    push dword __imp__SetVolumeLabelW@8     ; place to save the pointer
+                    push dword [_Unicows_SetVolumeLabelW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WriteProfileSectionW      ; name of the function
+                    push dword namestring_SetVolumeLabelW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-WriteProfileSectionW:
-_WriteProfileSectionW@8:
-                    jmp [__imp__WriteProfileSectionW@8]
+SetVolumeLabelW:
+_SetVolumeLabelW@8:
+                    jmp [__imp__SetVolumeLabelW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _WriteProfileSectionW@8:
                     section .data
 %endif
 
-__imp__WriteProfileSectionW@8:   dd unicows_initial_stub_WriteProfileSectionW
-_Unicows_WriteProfileSectionW:      dd 0
-namestring_WriteProfileSectionW:    db 'WriteProfileSectionW',0
+__imp__SetVolumeLabelW@8:   dd unicows_initial_stub_SetVolumeLabelW
+_Unicows_SetVolumeLabelW:      dd 0
+namestring_SetVolumeLabelW:    db 'SetVolumeLabelW',0

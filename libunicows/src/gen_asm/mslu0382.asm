@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__MoveFileW@8
-                    global MoveFileW
-                    global _MoveFileW@8
-                    global _Unicows_MoveFileW
+                    global __imp__GetVersionExW@4
+                    global GetVersionExW
+                    global _GetVersionExW@4
+                    global _Unicows_GetVersionExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_MoveFileW:
+unicows_initial_stub_GetVersionExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__MoveFileW@8     ; place to save the pointer
-                    push dword [_Unicows_MoveFileW]      ; default proc, if any
+                    push dword __imp__GetVersionExW@4     ; place to save the pointer
+                    push dword [_Unicows_GetVersionExW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_MoveFileW      ; name of the function
+                    push dword namestring_GetVersionExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-MoveFileW:
-_MoveFileW@8:
-                    jmp [__imp__MoveFileW@8]
+GetVersionExW:
+_GetVersionExW@4:
+                    jmp [__imp__GetVersionExW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _MoveFileW@8:
                     section .data
 %endif
 
-__imp__MoveFileW@8:   dd unicows_initial_stub_MoveFileW
-_Unicows_MoveFileW:      dd 0
-namestring_MoveFileW:    db 'MoveFileW',0
+__imp__GetVersionExW@4:   dd unicows_initial_stub_GetVersionExW
+_Unicows_GetVersionExW:      dd 0
+namestring_GetVersionExW:    db 'GetVersionExW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__AcquireCredentialsHandleW@36
-                    global AcquireCredentialsHandleW
-                    global _AcquireCredentialsHandleW@36
-                    global _Unicows_AcquireCredentialsHandleW
+                    global __imp__GetPrinterW@20
+                    global GetPrinterW
+                    global _GetPrinterW@20
+                    global _Unicows_GetPrinterW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_AcquireCredentialsHandleW:
+unicows_initial_stub_GetPrinterW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AcquireCredentialsHandleW@36     ; place to save the pointer
-                    push dword [_Unicows_AcquireCredentialsHandleW]      ; default proc, if any
-                    push dword SECUR32                  ; dll id
-                    push dword namestring_AcquireCredentialsHandleW      ; name of the function
+                    push dword __imp__GetPrinterW@20     ; place to save the pointer
+                    push dword [_Unicows_GetPrinterW]      ; default proc, if any
+                    push dword WINSPOOL                  ; dll id
+                    push dword namestring_GetPrinterW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-AcquireCredentialsHandleW:
-_AcquireCredentialsHandleW@36:
-                    jmp [__imp__AcquireCredentialsHandleW@36]
+GetPrinterW:
+_GetPrinterW@20:
+                    jmp [__imp__GetPrinterW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _AcquireCredentialsHandleW@36:
                     section .data
 %endif
 
-__imp__AcquireCredentialsHandleW@36:   dd unicows_initial_stub_AcquireCredentialsHandleW
-_Unicows_AcquireCredentialsHandleW:      dd 0
-namestring_AcquireCredentialsHandleW:    db 'AcquireCredentialsHandleW',0
+__imp__GetPrinterW@20:   dd unicows_initial_stub_GetPrinterW
+_Unicows_GetPrinterW:      dd 0
+namestring_GetPrinterW:    db 'GetPrinterW',0

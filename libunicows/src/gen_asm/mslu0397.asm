@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ScrollConsoleScreenBufferW@20
-                    global ScrollConsoleScreenBufferW
-                    global _ScrollConsoleScreenBufferW@20
-                    global _Unicows_ScrollConsoleScreenBufferW
+                    global __imp__OpenMutexW@12
+                    global OpenMutexW
+                    global _OpenMutexW@12
+                    global _Unicows_OpenMutexW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ScrollConsoleScreenBufferW:
+unicows_initial_stub_OpenMutexW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ScrollConsoleScreenBufferW@20     ; place to save the pointer
-                    push dword [_Unicows_ScrollConsoleScreenBufferW]      ; default proc, if any
+                    push dword __imp__OpenMutexW@12     ; place to save the pointer
+                    push dword [_Unicows_OpenMutexW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_ScrollConsoleScreenBufferW      ; name of the function
+                    push dword namestring_OpenMutexW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ScrollConsoleScreenBufferW:
-_ScrollConsoleScreenBufferW@20:
-                    jmp [__imp__ScrollConsoleScreenBufferW@20]
+OpenMutexW:
+_OpenMutexW@12:
+                    jmp [__imp__OpenMutexW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ScrollConsoleScreenBufferW@20:
                     section .data
 %endif
 
-__imp__ScrollConsoleScreenBufferW@20:   dd unicows_initial_stub_ScrollConsoleScreenBufferW
-_Unicows_ScrollConsoleScreenBufferW:      dd 0
-namestring_ScrollConsoleScreenBufferW:    db 'ScrollConsoleScreenBufferW',0
+__imp__OpenMutexW@12:   dd unicows_initial_stub_OpenMutexW
+_Unicows_OpenMutexW:      dd 0
+namestring_OpenMutexW:    db 'OpenMutexW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__lstrcmpiW@8
-                    global lstrcmpiW
-                    global _lstrcmpiW@8
-                    global _Unicows_lstrcmpiW
+                    global __imp__WideCharToMultiByte@32
+                    global WideCharToMultiByte
+                    global _WideCharToMultiByte@32
+                    global _Unicows_WideCharToMultiByte
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_lstrcmpiW:
+unicows_initial_stub_WideCharToMultiByte:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__lstrcmpiW@8     ; place to save the pointer
-                    push dword [_Unicows_lstrcmpiW]      ; default proc, if any
+                    push dword __imp__WideCharToMultiByte@32     ; place to save the pointer
+                    push dword [_Unicows_WideCharToMultiByte]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_lstrcmpiW      ; name of the function
+                    push dword namestring_WideCharToMultiByte      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-lstrcmpiW:
-_lstrcmpiW@8:
-                    jmp [__imp__lstrcmpiW@8]
+WideCharToMultiByte:
+_WideCharToMultiByte@32:
+                    jmp [__imp__WideCharToMultiByte@32]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _lstrcmpiW@8:
                     section .data
 %endif
 
-__imp__lstrcmpiW@8:   dd unicows_initial_stub_lstrcmpiW
-_Unicows_lstrcmpiW:      dd 0
-namestring_lstrcmpiW:    db 'lstrcmpiW',0
+__imp__WideCharToMultiByte@32:   dd unicows_initial_stub_WideCharToMultiByte
+_Unicows_WideCharToMultiByte:      dd 0
+namestring_WideCharToMultiByte:    db 'WideCharToMultiByte',0

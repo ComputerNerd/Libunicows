@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetFileTitleW@12
-                    global GetFileTitleW
-                    global _GetFileTitleW@12
-                    global _Unicows_GetFileTitleW
+                    global __imp__RegQueryValueW@16
+                    global RegQueryValueW
+                    global _RegQueryValueW@16
+                    global _Unicows_RegQueryValueW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetFileTitleW:
+unicows_initial_stub_RegQueryValueW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetFileTitleW@12     ; place to save the pointer
-                    push dword [_Unicows_GetFileTitleW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_GetFileTitleW      ; name of the function
+                    push dword __imp__RegQueryValueW@16     ; place to save the pointer
+                    push dword [_Unicows_RegQueryValueW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegQueryValueW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFileTitleW:
-_GetFileTitleW@12:
-                    jmp [__imp__GetFileTitleW@12]
+RegQueryValueW:
+_RegQueryValueW@16:
+                    jmp [__imp__RegQueryValueW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetFileTitleW@12:
                     section .data
 %endif
 
-__imp__GetFileTitleW@12:   dd unicows_initial_stub_GetFileTitleW
-_Unicows_GetFileTitleW:      dd 0
-namestring_GetFileTitleW:    db 'GetFileTitleW',0
+__imp__RegQueryValueW@16:   dd unicows_initial_stub_RegQueryValueW
+_Unicows_RegQueryValueW:      dd 0
+namestring_RegQueryValueW:    db 'RegQueryValueW',0

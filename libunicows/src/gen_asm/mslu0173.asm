@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetWindowTextLengthW@4
-                    global GetWindowTextLengthW
-                    global _GetWindowTextLengthW@4
-                    global _Unicows_GetWindowTextLengthW
+                    global __imp__GetWindowModuleFileNameW@12
+                    global GetWindowModuleFileNameW
+                    global _GetWindowModuleFileNameW@12
+                    global _Unicows_GetWindowModuleFileNameW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetWindowTextLengthW:
+unicows_initial_stub_GetWindowModuleFileNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetWindowTextLengthW@4     ; place to save the pointer
-                    push dword [_Unicows_GetWindowTextLengthW]      ; default proc, if any
+                    push dword __imp__GetWindowModuleFileNameW@12     ; place to save the pointer
+                    push dword [_Unicows_GetWindowModuleFileNameW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_GetWindowTextLengthW      ; name of the function
+                    push dword namestring_GetWindowModuleFileNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetWindowTextLengthW:
-_GetWindowTextLengthW@4:
-                    jmp [__imp__GetWindowTextLengthW@4]
+GetWindowModuleFileNameW:
+_GetWindowModuleFileNameW@12:
+                    jmp [__imp__GetWindowModuleFileNameW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetWindowTextLengthW@4:
                     section .data
 %endif
 
-__imp__GetWindowTextLengthW@4:   dd unicows_initial_stub_GetWindowTextLengthW
-_Unicows_GetWindowTextLengthW:      dd 0
-namestring_GetWindowTextLengthW:    db 'GetWindowTextLengthW',0
+__imp__GetWindowModuleFileNameW@12:   dd unicows_initial_stub_GetWindowModuleFileNameW
+_Unicows_GetWindowModuleFileNameW:      dd 0
+namestring_GetWindowModuleFileNameW:    db 'GetWindowModuleFileNameW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetPrivateProfileSectionNamesW@12
-                    global GetPrivateProfileSectionNamesW
-                    global _GetPrivateProfileSectionNamesW@12
-                    global _Unicows_GetPrivateProfileSectionNamesW
+                    global __imp__GetFileAttributesExW@12
+                    global GetFileAttributesExW
+                    global _GetFileAttributesExW@12
+                    global _Unicows_GetFileAttributesExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetPrivateProfileSectionNamesW:
+unicows_initial_stub_GetFileAttributesExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetPrivateProfileSectionNamesW@12     ; place to save the pointer
-                    push dword [_Unicows_GetPrivateProfileSectionNamesW]      ; default proc, if any
+                    push dword __imp__GetFileAttributesExW@12     ; place to save the pointer
+                    push dword [_Unicows_GetFileAttributesExW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetPrivateProfileSectionNamesW      ; name of the function
+                    push dword namestring_GetFileAttributesExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetPrivateProfileSectionNamesW:
-_GetPrivateProfileSectionNamesW@12:
-                    jmp [__imp__GetPrivateProfileSectionNamesW@12]
+GetFileAttributesExW:
+_GetFileAttributesExW@12:
+                    jmp [__imp__GetFileAttributesExW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetPrivateProfileSectionNamesW@12:
                     section .data
 %endif
 
-__imp__GetPrivateProfileSectionNamesW@12:   dd unicows_initial_stub_GetPrivateProfileSectionNamesW
-_Unicows_GetPrivateProfileSectionNamesW:      dd 0
-namestring_GetPrivateProfileSectionNamesW:    db 'GetPrivateProfileSectionNamesW',0
+__imp__GetFileAttributesExW@12:   dd unicows_initial_stub_GetFileAttributesExW
+_Unicows_GetFileAttributesExW:      dd 0
+namestring_GetFileAttributesExW:    db 'GetFileAttributesExW',0

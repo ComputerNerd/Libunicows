@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SystemParametersInfoW@16
-                    global SystemParametersInfoW
-                    global _SystemParametersInfoW@16
-                    global _Unicows_SystemParametersInfoW
+                    global __imp__SetWindowsHookW@8
+                    global SetWindowsHookW
+                    global _SetWindowsHookW@8
+                    global _Unicows_SetWindowsHookW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SystemParametersInfoW:
+unicows_initial_stub_SetWindowsHookW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SystemParametersInfoW@16     ; place to save the pointer
-                    push dword [_Unicows_SystemParametersInfoW]      ; default proc, if any
+                    push dword __imp__SetWindowsHookW@8     ; place to save the pointer
+                    push dword [_Unicows_SetWindowsHookW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_SystemParametersInfoW      ; name of the function
+                    push dword namestring_SetWindowsHookW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SystemParametersInfoW:
-_SystemParametersInfoW@16:
-                    jmp [__imp__SystemParametersInfoW@16]
+SetWindowsHookW:
+_SetWindowsHookW@8:
+                    jmp [__imp__SetWindowsHookW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SystemParametersInfoW@16:
                     section .data
 %endif
 
-__imp__SystemParametersInfoW@16:   dd unicows_initial_stub_SystemParametersInfoW
-_Unicows_SystemParametersInfoW:      dd 0
-namestring_SystemParametersInfoW:    db 'SystemParametersInfoW',0
+__imp__SetWindowsHookW@8:   dd unicows_initial_stub_SetWindowsHookW
+_Unicows_SetWindowsHookW:      dd 0
+namestring_SetWindowsHookW:    db 'SetWindowsHookW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegOpenKeyW@12
-                    global RegOpenKeyW
-                    global _RegOpenKeyW@12
-                    global _Unicows_RegOpenKeyW
+                    global __imp__RegCreateKeyExW@36
+                    global RegCreateKeyExW
+                    global _RegCreateKeyExW@36
+                    global _Unicows_RegCreateKeyExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegOpenKeyW:
+unicows_initial_stub_RegCreateKeyExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegOpenKeyW@12     ; place to save the pointer
-                    push dword [_Unicows_RegOpenKeyW]      ; default proc, if any
+                    push dword __imp__RegCreateKeyExW@36     ; place to save the pointer
+                    push dword [_Unicows_RegCreateKeyExW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegOpenKeyW      ; name of the function
+                    push dword namestring_RegCreateKeyExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegOpenKeyW:
-_RegOpenKeyW@12:
-                    jmp [__imp__RegOpenKeyW@12]
+RegCreateKeyExW:
+_RegCreateKeyExW@36:
+                    jmp [__imp__RegCreateKeyExW@36]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegOpenKeyW@12:
                     section .data
 %endif
 
-__imp__RegOpenKeyW@12:   dd unicows_initial_stub_RegOpenKeyW
-_Unicows_RegOpenKeyW:      dd 0
-namestring_RegOpenKeyW:    db 'RegOpenKeyW',0
+__imp__RegCreateKeyExW@36:   dd unicows_initial_stub_RegCreateKeyExW
+_Unicows_RegCreateKeyExW:      dd 0
+namestring_RegCreateKeyExW:    db 'RegCreateKeyExW',0

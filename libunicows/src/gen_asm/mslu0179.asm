@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__IsCharAlphaW@4
-                    global IsCharAlphaW
-                    global _IsCharAlphaW@4
-                    global _Unicows_IsCharAlphaW
+                    global __imp__IsCharAlphaNumericW@4
+                    global IsCharAlphaNumericW
+                    global _IsCharAlphaNumericW@4
+                    global _Unicows_IsCharAlphaNumericW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_IsCharAlphaW:
+unicows_initial_stub_IsCharAlphaNumericW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__IsCharAlphaW@4     ; place to save the pointer
-                    push dword [_Unicows_IsCharAlphaW]      ; default proc, if any
+                    push dword __imp__IsCharAlphaNumericW@4     ; place to save the pointer
+                    push dword [_Unicows_IsCharAlphaNumericW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_IsCharAlphaW      ; name of the function
+                    push dword namestring_IsCharAlphaNumericW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsCharAlphaW:
-_IsCharAlphaW@4:
-                    jmp [__imp__IsCharAlphaW@4]
+IsCharAlphaNumericW:
+_IsCharAlphaNumericW@4:
+                    jmp [__imp__IsCharAlphaNumericW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _IsCharAlphaW@4:
                     section .data
 %endif
 
-__imp__IsCharAlphaW@4:   dd unicows_initial_stub_IsCharAlphaW
-_Unicows_IsCharAlphaW:      dd 0
-namestring_IsCharAlphaW:    db 'IsCharAlphaW',0
+__imp__IsCharAlphaNumericW@4:   dd unicows_initial_stub_IsCharAlphaNumericW
+_Unicows_IsCharAlphaNumericW:      dd 0
+namestring_IsCharAlphaNumericW:    db 'IsCharAlphaNumericW',0

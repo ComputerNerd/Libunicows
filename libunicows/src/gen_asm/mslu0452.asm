@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__AdvancedDocumentPropertiesW@20
-                    global AdvancedDocumentPropertiesW
-                    global _AdvancedDocumentPropertiesW@20
-                    global _Unicows_AdvancedDocumentPropertiesW
+                    global __imp__RasHangUpW@4
+                    global RasHangUpW
+                    global _RasHangUpW@4
+                    global _Unicows_RasHangUpW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_AdvancedDocumentPropertiesW:
+unicows_initial_stub_RasHangUpW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AdvancedDocumentPropertiesW@20     ; place to save the pointer
-                    push dword [_Unicows_AdvancedDocumentPropertiesW]      ; default proc, if any
-                    push dword WINSPOOL                  ; dll id
-                    push dword namestring_AdvancedDocumentPropertiesW      ; name of the function
+                    push dword __imp__RasHangUpW@4     ; place to save the pointer
+                    push dword [_Unicows_RasHangUpW]      ; default proc, if any
+                    push dword RASAPI32                  ; dll id
+                    push dword namestring_RasHangUpW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-AdvancedDocumentPropertiesW:
-_AdvancedDocumentPropertiesW@20:
-                    jmp [__imp__AdvancedDocumentPropertiesW@20]
+RasHangUpW:
+_RasHangUpW@4:
+                    jmp [__imp__RasHangUpW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _AdvancedDocumentPropertiesW@20:
                     section .data
 %endif
 
-__imp__AdvancedDocumentPropertiesW@20:   dd unicows_initial_stub_AdvancedDocumentPropertiesW
-_Unicows_AdvancedDocumentPropertiesW:      dd 0
-namestring_AdvancedDocumentPropertiesW:    db 'AdvancedDocumentPropertiesW',0
+__imp__RasHangUpW@4:   dd unicows_initial_stub_RasHangUpW
+_Unicows_RasHangUpW:      dd 0
+namestring_RasHangUpW:    db 'RasHangUpW',0

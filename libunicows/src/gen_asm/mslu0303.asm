@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CreateMailslotW@16
-                    global CreateMailslotW
-                    global _CreateMailslotW@16
-                    global _Unicows_CreateMailslotW
+                    global __imp__CallNamedPipeW@28
+                    global CallNamedPipeW
+                    global _CallNamedPipeW@28
+                    global _Unicows_CallNamedPipeW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CreateMailslotW:
+unicows_initial_stub_CallNamedPipeW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CreateMailslotW@16     ; place to save the pointer
-                    push dword [_Unicows_CreateMailslotW]      ; default proc, if any
+                    push dword __imp__CallNamedPipeW@28     ; place to save the pointer
+                    push dword [_Unicows_CallNamedPipeW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_CreateMailslotW      ; name of the function
+                    push dword namestring_CallNamedPipeW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateMailslotW:
-_CreateMailslotW@16:
-                    jmp [__imp__CreateMailslotW@16]
+CallNamedPipeW:
+_CallNamedPipeW@28:
+                    jmp [__imp__CallNamedPipeW@28]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CreateMailslotW@16:
                     section .data
 %endif
 
-__imp__CreateMailslotW@16:   dd unicows_initial_stub_CreateMailslotW
-_Unicows_CreateMailslotW:      dd 0
-namestring_CreateMailslotW:    db 'CreateMailslotW',0
+__imp__CallNamedPipeW@28:   dd unicows_initial_stub_CallNamedPipeW
+_Unicows_CallNamedPipeW:      dd 0
+namestring_CallNamedPipeW:    db 'CallNamedPipeW',0

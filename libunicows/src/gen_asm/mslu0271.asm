@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegQueryInfoKeyW@48
-                    global RegQueryInfoKeyW
-                    global _RegQueryInfoKeyW@48
-                    global _Unicows_RegQueryInfoKeyW
+                    global __imp__RegCreateKeyW@12
+                    global RegCreateKeyW
+                    global _RegCreateKeyW@12
+                    global _Unicows_RegCreateKeyW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegQueryInfoKeyW:
+unicows_initial_stub_RegCreateKeyW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegQueryInfoKeyW@48     ; place to save the pointer
-                    push dword [_Unicows_RegQueryInfoKeyW]      ; default proc, if any
+                    push dword __imp__RegCreateKeyW@12     ; place to save the pointer
+                    push dword [_Unicows_RegCreateKeyW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegQueryInfoKeyW      ; name of the function
+                    push dword namestring_RegCreateKeyW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegQueryInfoKeyW:
-_RegQueryInfoKeyW@48:
-                    jmp [__imp__RegQueryInfoKeyW@48]
+RegCreateKeyW:
+_RegCreateKeyW@12:
+                    jmp [__imp__RegCreateKeyW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegQueryInfoKeyW@48:
                     section .data
 %endif
 
-__imp__RegQueryInfoKeyW@48:   dd unicows_initial_stub_RegQueryInfoKeyW
-_Unicows_RegQueryInfoKeyW:      dd 0
-namestring_RegQueryInfoKeyW:    db 'RegQueryInfoKeyW',0
+__imp__RegCreateKeyW@12:   dd unicows_initial_stub_RegCreateKeyW
+_Unicows_RegCreateKeyW:      dd 0
+namestring_RegCreateKeyW:    db 'RegCreateKeyW',0

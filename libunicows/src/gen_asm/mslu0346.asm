@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetFullPathNameW@16
-                    global GetFullPathNameW
-                    global _GetFullPathNameW@16
-                    global _Unicows_GetFullPathNameW
+                    global __imp__GetCurrencyFormatW@24
+                    global GetCurrencyFormatW
+                    global _GetCurrencyFormatW@24
+                    global _Unicows_GetCurrencyFormatW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetFullPathNameW:
+unicows_initial_stub_GetCurrencyFormatW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetFullPathNameW@16     ; place to save the pointer
-                    push dword [_Unicows_GetFullPathNameW]      ; default proc, if any
+                    push dword __imp__GetCurrencyFormatW@24     ; place to save the pointer
+                    push dword [_Unicows_GetCurrencyFormatW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetFullPathNameW      ; name of the function
+                    push dword namestring_GetCurrencyFormatW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFullPathNameW:
-_GetFullPathNameW@16:
-                    jmp [__imp__GetFullPathNameW@16]
+GetCurrencyFormatW:
+_GetCurrencyFormatW@24:
+                    jmp [__imp__GetCurrencyFormatW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetFullPathNameW@16:
                     section .data
 %endif
 
-__imp__GetFullPathNameW@16:   dd unicows_initial_stub_GetFullPathNameW
-_Unicows_GetFullPathNameW:      dd 0
-namestring_GetFullPathNameW:    db 'GetFullPathNameW',0
+__imp__GetCurrencyFormatW@24:   dd unicows_initial_stub_GetCurrencyFormatW
+_Unicows_GetCurrencyFormatW:      dd 0
+namestring_GetCurrencyFormatW:    db 'GetCurrencyFormatW',0

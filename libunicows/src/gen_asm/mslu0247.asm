@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ShellAboutW@16
-                    global ShellAboutW
-                    global _ShellAboutW@16
-                    global _Unicows_ShellAboutW
+                    global __imp__SHGetPathFromIDListW@8
+                    global SHGetPathFromIDListW
+                    global _SHGetPathFromIDListW@8
+                    global _Unicows_SHGetPathFromIDListW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ShellAboutW:
+unicows_initial_stub_SHGetPathFromIDListW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ShellAboutW@16     ; place to save the pointer
-                    push dword [_Unicows_ShellAboutW]      ; default proc, if any
+                    push dword __imp__SHGetPathFromIDListW@8     ; place to save the pointer
+                    push dword [_Unicows_SHGetPathFromIDListW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_ShellAboutW      ; name of the function
+                    push dword namestring_SHGetPathFromIDListW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ShellAboutW:
-_ShellAboutW@16:
-                    jmp [__imp__ShellAboutW@16]
+SHGetPathFromIDListW:
+_SHGetPathFromIDListW@8:
+                    jmp [__imp__SHGetPathFromIDListW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ShellAboutW@16:
                     section .data
 %endif
 
-__imp__ShellAboutW@16:   dd unicows_initial_stub_ShellAboutW
-_Unicows_ShellAboutW:      dd 0
-namestring_ShellAboutW:    db 'ShellAboutW',0
+__imp__SHGetPathFromIDListW@8:   dd unicows_initial_stub_SHGetPathFromIDListW
+_Unicows_SHGetPathFromIDListW:      dd 0
+namestring_SHGetPathFromIDListW:    db 'SHGetPathFromIDListW',0

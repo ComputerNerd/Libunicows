@@ -492,4 +492,17 @@ WRAPPERS = \
            build/mingw32/mslu0489.o \
            build/mingw32/mslu0490.o \
            build/mingw32/mslu0491.o \
-           build/mingw32/mslu0492.o 
+           build/mingw32/mslu0492.o \
+           build/mingw32/mslu0493.o \
+           build/mingw32/mslu0494.o \
+           build/mingw32/mslu0495.o \
+           build/mingw32/mslu0496.o \
+           build/mingw32/mslu0497.o \
+           build/mingw32/mslu0498.o \
+           build/mingw32/mslu0499.o \
+           build/mingw32/mslu0500.o \
+           build/mingw32/mslu0501.o \
+           build/mingw32/mslu0502.o \
+           build/mingw32/mslu0503.o \
+           build/mingw32/mslu0504.o \
+           build/mingw32/mslu0505.o 

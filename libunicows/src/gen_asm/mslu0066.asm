@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__mciGetErrorStringW@12
-                    global mciGetErrorStringW
-                    global _mciGetErrorStringW@12
-                    global _Unicows_mciGetErrorStringW
+                    global __imp__mciGetDeviceIDW@4
+                    global mciGetDeviceIDW
+                    global _mciGetDeviceIDW@4
+                    global _Unicows_mciGetDeviceIDW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_mciGetErrorStringW:
+unicows_initial_stub_mciGetDeviceIDW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__mciGetErrorStringW@12     ; place to save the pointer
-                    push dword [_Unicows_mciGetErrorStringW]      ; default proc, if any
+                    push dword __imp__mciGetDeviceIDW@4     ; place to save the pointer
+                    push dword [_Unicows_mciGetDeviceIDW]      ; default proc, if any
                     push dword WINMM                  ; dll id
-                    push dword namestring_mciGetErrorStringW      ; name of the function
+                    push dword namestring_mciGetDeviceIDW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-mciGetErrorStringW:
-_mciGetErrorStringW@12:
-                    jmp [__imp__mciGetErrorStringW@12]
+mciGetDeviceIDW:
+_mciGetDeviceIDW@4:
+                    jmp [__imp__mciGetDeviceIDW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _mciGetErrorStringW@12:
                     section .data
 %endif
 
-__imp__mciGetErrorStringW@12:   dd unicows_initial_stub_mciGetErrorStringW
-_Unicows_mciGetErrorStringW:      dd 0
-namestring_mciGetErrorStringW:    db 'mciGetErrorStringW',0
+__imp__mciGetDeviceIDW@4:   dd unicows_initial_stub_mciGetDeviceIDW
+_Unicows_mciGetDeviceIDW:      dd 0
+namestring_mciGetDeviceIDW:    db 'mciGetDeviceIDW',0

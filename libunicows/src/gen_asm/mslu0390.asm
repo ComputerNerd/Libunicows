@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__PeekConsoleInputW@16
-                    global PeekConsoleInputW
-                    global _PeekConsoleInputW@16
-                    global _Unicows_PeekConsoleInputW
+                    global __imp__LCMapStringW@24
+                    global LCMapStringW
+                    global _LCMapStringW@24
+                    global _Unicows_LCMapStringW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_PeekConsoleInputW:
+unicows_initial_stub_LCMapStringW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__PeekConsoleInputW@16     ; place to save the pointer
-                    push dword [_Unicows_PeekConsoleInputW]      ; default proc, if any
+                    push dword __imp__LCMapStringW@24     ; place to save the pointer
+                    push dword [_Unicows_LCMapStringW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_PeekConsoleInputW      ; name of the function
+                    push dword namestring_LCMapStringW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-PeekConsoleInputW:
-_PeekConsoleInputW@16:
-                    jmp [__imp__PeekConsoleInputW@16]
+LCMapStringW:
+_LCMapStringW@24:
+                    jmp [__imp__LCMapStringW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _PeekConsoleInputW@16:
                     section .data
 %endif
 
-__imp__PeekConsoleInputW@16:   dd unicows_initial_stub_PeekConsoleInputW
-_Unicows_PeekConsoleInputW:      dd 0
-namestring_PeekConsoleInputW:    db 'PeekConsoleInputW',0
+__imp__LCMapStringW@24:   dd unicows_initial_stub_LCMapStringW
+_Unicows_LCMapStringW:      dd 0
+namestring_LCMapStringW:    db 'LCMapStringW',0

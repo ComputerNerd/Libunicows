@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SetDefaultCommConfigW@12
-                    global SetDefaultCommConfigW
-                    global _SetDefaultCommConfigW@12
-                    global _Unicows_SetDefaultCommConfigW
+                    global __imp__ReadConsoleInputW@16
+                    global ReadConsoleInputW
+                    global _ReadConsoleInputW@16
+                    global _Unicows_ReadConsoleInputW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SetDefaultCommConfigW:
+unicows_initial_stub_ReadConsoleInputW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetDefaultCommConfigW@12     ; place to save the pointer
-                    push dword [_Unicows_SetDefaultCommConfigW]      ; default proc, if any
+                    push dword __imp__ReadConsoleInputW@16     ; place to save the pointer
+                    push dword [_Unicows_ReadConsoleInputW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_SetDefaultCommConfigW      ; name of the function
+                    push dword namestring_ReadConsoleInputW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetDefaultCommConfigW:
-_SetDefaultCommConfigW@12:
-                    jmp [__imp__SetDefaultCommConfigW@12]
+ReadConsoleInputW:
+_ReadConsoleInputW@16:
+                    jmp [__imp__ReadConsoleInputW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SetDefaultCommConfigW@12:
                     section .data
 %endif
 
-__imp__SetDefaultCommConfigW@12:   dd unicows_initial_stub_SetDefaultCommConfigW
-_Unicows_SetDefaultCommConfigW:      dd 0
-namestring_SetDefaultCommConfigW:    db 'SetDefaultCommConfigW',0
+__imp__ReadConsoleInputW@16:   dd unicows_initial_stub_ReadConsoleInputW
+_Unicows_ReadConsoleInputW:      dd 0
+namestring_ReadConsoleInputW:    db 'ReadConsoleInputW',0

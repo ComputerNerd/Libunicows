@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetDefaultCommConfigW@12
-                    global GetDefaultCommConfigW
-                    global _GetDefaultCommConfigW@12
-                    global _Unicows_GetDefaultCommConfigW
+                    global __imp__FormatMessageW@28
+                    global FormatMessageW
+                    global _FormatMessageW@28
+                    global _Unicows_FormatMessageW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetDefaultCommConfigW:
+unicows_initial_stub_FormatMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetDefaultCommConfigW@12     ; place to save the pointer
-                    push dword [_Unicows_GetDefaultCommConfigW]      ; default proc, if any
+                    push dword __imp__FormatMessageW@28     ; place to save the pointer
+                    push dword [_Unicows_FormatMessageW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetDefaultCommConfigW      ; name of the function
+                    push dword namestring_FormatMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetDefaultCommConfigW:
-_GetDefaultCommConfigW@12:
-                    jmp [__imp__GetDefaultCommConfigW@12]
+FormatMessageW:
+_FormatMessageW@28:
+                    jmp [__imp__FormatMessageW@28]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetDefaultCommConfigW@12:
                     section .data
 %endif
 
-__imp__GetDefaultCommConfigW@12:   dd unicows_initial_stub_GetDefaultCommConfigW
-_Unicows_GetDefaultCommConfigW:      dd 0
-namestring_GetDefaultCommConfigW:    db 'GetDefaultCommConfigW',0
+__imp__FormatMessageW@28:   dd unicows_initial_stub_FormatMessageW
+_Unicows_FormatMessageW:      dd 0
+namestring_FormatMessageW:    db 'FormatMessageW',0

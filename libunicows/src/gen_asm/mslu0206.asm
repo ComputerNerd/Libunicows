@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RegisterClassExW@4
-                    global RegisterClassExW
-                    global _RegisterClassExW@4
-                    global _Unicows_RegisterClassExW
+                    global __imp__PostThreadMessageW@16
+                    global PostThreadMessageW
+                    global _PostThreadMessageW@16
+                    global _Unicows_PostThreadMessageW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RegisterClassExW:
+unicows_initial_stub_PostThreadMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegisterClassExW@4     ; place to save the pointer
-                    push dword [_Unicows_RegisterClassExW]      ; default proc, if any
+                    push dword __imp__PostThreadMessageW@16     ; place to save the pointer
+                    push dword [_Unicows_PostThreadMessageW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_RegisterClassExW      ; name of the function
+                    push dword namestring_PostThreadMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegisterClassExW:
-_RegisterClassExW@4:
-                    jmp [__imp__RegisterClassExW@4]
+PostThreadMessageW:
+_PostThreadMessageW@16:
+                    jmp [__imp__PostThreadMessageW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RegisterClassExW@4:
                     section .data
 %endif
 
-__imp__RegisterClassExW@4:   dd unicows_initial_stub_RegisterClassExW
-_Unicows_RegisterClassExW:      dd 0
-namestring_RegisterClassExW:    db 'RegisterClassExW',0
+__imp__PostThreadMessageW@16:   dd unicows_initial_stub_PostThreadMessageW
+_Unicows_PostThreadMessageW:      dd 0
+namestring_PostThreadMessageW:    db 'PostThreadMessageW',0

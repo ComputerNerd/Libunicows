@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__WritePrivateProfileStringW@16
-                    global WritePrivateProfileStringW
-                    global _WritePrivateProfileStringW@16
-                    global _Unicows_WritePrivateProfileStringW
+                    global __imp__SetFileAttributesW@8
+                    global SetFileAttributesW
+                    global _SetFileAttributesW@8
+                    global _Unicows_SetFileAttributesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_WritePrivateProfileStringW:
+unicows_initial_stub_SetFileAttributesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WritePrivateProfileStringW@16     ; place to save the pointer
-                    push dword [_Unicows_WritePrivateProfileStringW]      ; default proc, if any
+                    push dword __imp__SetFileAttributesW@8     ; place to save the pointer
+                    push dword [_Unicows_SetFileAttributesW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WritePrivateProfileStringW      ; name of the function
+                    push dword namestring_SetFileAttributesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-WritePrivateProfileStringW:
-_WritePrivateProfileStringW@16:
-                    jmp [__imp__WritePrivateProfileStringW@16]
+SetFileAttributesW:
+_SetFileAttributesW@8:
+                    jmp [__imp__SetFileAttributesW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _WritePrivateProfileStringW@16:
                     section .data
 %endif
 
-__imp__WritePrivateProfileStringW@16:   dd unicows_initial_stub_WritePrivateProfileStringW
-_Unicows_WritePrivateProfileStringW:      dd 0
-namestring_WritePrivateProfileStringW:    db 'WritePrivateProfileStringW',0
+__imp__SetFileAttributesW@8:   dd unicows_initial_stub_SetFileAttributesW
+_Unicows_SetFileAttributesW:      dd 0
+namestring_SetFileAttributesW:    db 'SetFileAttributesW',0

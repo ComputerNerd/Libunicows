@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CompareStringW@24
-                    global CompareStringW
-                    global _CompareStringW@24
-                    global _Unicows_CompareStringW
+                    global __imp__PageSetupDlgW@4
+                    global PageSetupDlgW
+                    global _PageSetupDlgW@4
+                    global _Unicows_PageSetupDlgW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CompareStringW:
+unicows_initial_stub_PageSetupDlgW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CompareStringW@24     ; place to save the pointer
-                    push dword [_Unicows_CompareStringW]      ; default proc, if any
-                    push dword KERNEL32                  ; dll id
-                    push dword namestring_CompareStringW      ; name of the function
+                    push dword __imp__PageSetupDlgW@4     ; place to save the pointer
+                    push dword [_Unicows_PageSetupDlgW]      ; default proc, if any
+                    push dword COMDLG32                  ; dll id
+                    push dword namestring_PageSetupDlgW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CompareStringW:
-_CompareStringW@24:
-                    jmp [__imp__CompareStringW@24]
+PageSetupDlgW:
+_PageSetupDlgW@4:
+                    jmp [__imp__PageSetupDlgW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CompareStringW@24:
                     section .data
 %endif
 
-__imp__CompareStringW@24:   dd unicows_initial_stub_CompareStringW
-_Unicows_CompareStringW:      dd 0
-namestring_CompareStringW:    db 'CompareStringW',0
+__imp__PageSetupDlgW@4:   dd unicows_initial_stub_PageSetupDlgW
+_Unicows_PageSetupDlgW:      dd 0
+namestring_PageSetupDlgW:    db 'PageSetupDlgW',0

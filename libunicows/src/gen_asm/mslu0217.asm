@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SendNotifyMessageW@16
-                    global SendNotifyMessageW
-                    global _SendNotifyMessageW@16
-                    global _Unicows_SendNotifyMessageW
+                    global __imp__SendMessageW@16
+                    global SendMessageW
+                    global _SendMessageW@16
+                    global _Unicows_SendMessageW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SendNotifyMessageW:
+unicows_initial_stub_SendMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SendNotifyMessageW@16     ; place to save the pointer
-                    push dword [_Unicows_SendNotifyMessageW]      ; default proc, if any
+                    push dword __imp__SendMessageW@16     ; place to save the pointer
+                    push dword [_Unicows_SendMessageW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_SendNotifyMessageW      ; name of the function
+                    push dword namestring_SendMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SendNotifyMessageW:
-_SendNotifyMessageW@16:
-                    jmp [__imp__SendNotifyMessageW@16]
+SendMessageW:
+_SendMessageW@16:
+                    jmp [__imp__SendMessageW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SendNotifyMessageW@16:
                     section .data
 %endif
 
-__imp__SendNotifyMessageW@16:   dd unicows_initial_stub_SendNotifyMessageW
-_Unicows_SendNotifyMessageW:      dd 0
-namestring_SendNotifyMessageW:    db 'SendNotifyMessageW',0
+__imp__SendMessageW@16:   dd unicows_initial_stub_SendMessageW
+_Unicows_SendMessageW:      dd 0
+namestring_SendMessageW:    db 'SendMessageW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetComputerNameW@8
-                    global GetComputerNameW
-                    global _GetComputerNameW@8
-                    global _Unicows_GetComputerNameW
+                    global __imp__FindFirstChangeNotificationW@12
+                    global FindFirstChangeNotificationW
+                    global _FindFirstChangeNotificationW@12
+                    global _Unicows_FindFirstChangeNotificationW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetComputerNameW:
+unicows_initial_stub_FindFirstChangeNotificationW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetComputerNameW@8     ; place to save the pointer
-                    push dword [_Unicows_GetComputerNameW]      ; default proc, if any
+                    push dword __imp__FindFirstChangeNotificationW@12     ; place to save the pointer
+                    push dword [_Unicows_FindFirstChangeNotificationW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetComputerNameW      ; name of the function
+                    push dword namestring_FindFirstChangeNotificationW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetComputerNameW:
-_GetComputerNameW@8:
-                    jmp [__imp__GetComputerNameW@8]
+FindFirstChangeNotificationW:
+_FindFirstChangeNotificationW@12:
+                    jmp [__imp__FindFirstChangeNotificationW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetComputerNameW@8:
                     section .data
 %endif
 
-__imp__GetComputerNameW@8:   dd unicows_initial_stub_GetComputerNameW
-_Unicows_GetComputerNameW:      dd 0
-namestring_GetComputerNameW:    db 'GetComputerNameW',0
+__imp__FindFirstChangeNotificationW@12:   dd unicows_initial_stub_FindFirstChangeNotificationW
+_Unicows_FindFirstChangeNotificationW:      dd 0
+namestring_FindFirstChangeNotificationW:    db 'FindFirstChangeNotificationW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumPortsW@24
-                    global EnumPortsW
-                    global _EnumPortsW@24
-                    global _Unicows_EnumPortsW
+                    global __imp__AddPrintProvidorW@12
+                    global AddPrintProvidorW
+                    global _AddPrintProvidorW@12
+                    global _Unicows_AddPrintProvidorW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumPortsW:
+unicows_initial_stub_AddPrintProvidorW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumPortsW@24     ; place to save the pointer
-                    push dword [_Unicows_EnumPortsW]      ; default proc, if any
+                    push dword __imp__AddPrintProvidorW@12     ; place to save the pointer
+                    push dword [_Unicows_AddPrintProvidorW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_EnumPortsW      ; name of the function
+                    push dword namestring_AddPrintProvidorW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumPortsW:
-_EnumPortsW@24:
-                    jmp [__imp__EnumPortsW@24]
+AddPrintProvidorW:
+_AddPrintProvidorW@12:
+                    jmp [__imp__AddPrintProvidorW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumPortsW@24:
                     section .data
 %endif
 
-__imp__EnumPortsW@24:   dd unicows_initial_stub_EnumPortsW
-_Unicows_EnumPortsW:      dd 0
-namestring_EnumPortsW:    db 'EnumPortsW',0
+__imp__AddPrintProvidorW@12:   dd unicows_initial_stub_AddPrintProvidorW
+_Unicows_AddPrintProvidorW:      dd 0
+namestring_AddPrintProvidorW:    db 'AddPrintProvidorW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__PageSetupDlgW@4
-                    global PageSetupDlgW
-                    global _PageSetupDlgW@4
-                    global _Unicows_PageSetupDlgW
+                    global __imp__RegSetValueExW@24
+                    global RegSetValueExW
+                    global _RegSetValueExW@24
+                    global _Unicows_RegSetValueExW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_PageSetupDlgW:
+unicows_initial_stub_RegSetValueExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__PageSetupDlgW@4     ; place to save the pointer
-                    push dword [_Unicows_PageSetupDlgW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_PageSetupDlgW      ; name of the function
+                    push dword __imp__RegSetValueExW@24     ; place to save the pointer
+                    push dword [_Unicows_RegSetValueExW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegSetValueExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-PageSetupDlgW:
-_PageSetupDlgW@4:
-                    jmp [__imp__PageSetupDlgW@4]
+RegSetValueExW:
+_RegSetValueExW@24:
+                    jmp [__imp__RegSetValueExW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _PageSetupDlgW@4:
                     section .data
 %endif
 
-__imp__PageSetupDlgW@4:   dd unicows_initial_stub_PageSetupDlgW
-_Unicows_PageSetupDlgW:      dd 0
-namestring_PageSetupDlgW:    db 'PageSetupDlgW',0
+__imp__RegSetValueExW@24:   dd unicows_initial_stub_RegSetValueExW
+_Unicows_RegSetValueExW:      dd 0
+namestring_RegSetValueExW:    db 'RegSetValueExW',0

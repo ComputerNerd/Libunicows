@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RemoveDirectoryW@4
-                    global RemoveDirectoryW
-                    global _RemoveDirectoryW@4
-                    global _Unicows_RemoveDirectoryW
+                    global __imp__OpenFileMappingW@12
+                    global OpenFileMappingW
+                    global _OpenFileMappingW@12
+                    global _Unicows_OpenFileMappingW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RemoveDirectoryW:
+unicows_initial_stub_OpenFileMappingW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RemoveDirectoryW@4     ; place to save the pointer
-                    push dword [_Unicows_RemoveDirectoryW]      ; default proc, if any
+                    push dword __imp__OpenFileMappingW@12     ; place to save the pointer
+                    push dword [_Unicows_OpenFileMappingW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_RemoveDirectoryW      ; name of the function
+                    push dword namestring_OpenFileMappingW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RemoveDirectoryW:
-_RemoveDirectoryW@4:
-                    jmp [__imp__RemoveDirectoryW@4]
+OpenFileMappingW:
+_OpenFileMappingW@12:
+                    jmp [__imp__OpenFileMappingW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RemoveDirectoryW@4:
                     section .data
 %endif
 
-__imp__RemoveDirectoryW@4:   dd unicows_initial_stub_RemoveDirectoryW
-_Unicows_RemoveDirectoryW:      dd 0
-namestring_RemoveDirectoryW:    db 'RemoveDirectoryW',0
+__imp__OpenFileMappingW@12:   dd unicows_initial_stub_OpenFileMappingW
+_Unicows_OpenFileMappingW:      dd 0
+namestring_OpenFileMappingW:    db 'OpenFileMappingW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__CreateEventW@16
-                    global CreateEventW
-                    global _CreateEventW@16
-                    global _Unicows_CreateEventW
+                    global __imp__BeginUpdateResourceW@8
+                    global BeginUpdateResourceW
+                    global _BeginUpdateResourceW@8
+                    global _Unicows_BeginUpdateResourceW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_CreateEventW:
+unicows_initial_stub_BeginUpdateResourceW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__CreateEventW@16     ; place to save the pointer
-                    push dword [_Unicows_CreateEventW]      ; default proc, if any
+                    push dword __imp__BeginUpdateResourceW@8     ; place to save the pointer
+                    push dword [_Unicows_BeginUpdateResourceW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_CreateEventW      ; name of the function
+                    push dword namestring_BeginUpdateResourceW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateEventW:
-_CreateEventW@16:
-                    jmp [__imp__CreateEventW@16]
+BeginUpdateResourceW:
+_BeginUpdateResourceW@8:
+                    jmp [__imp__BeginUpdateResourceW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _CreateEventW@16:
                     section .data
 %endif
 
-__imp__CreateEventW@16:   dd unicows_initial_stub_CreateEventW
-_Unicows_CreateEventW:      dd 0
-namestring_CreateEventW:    db 'CreateEventW',0
+__imp__BeginUpdateResourceW@8:   dd unicows_initial_stub_BeginUpdateResourceW
+_Unicows_BeginUpdateResourceW:      dd 0
+namestring_BeginUpdateResourceW:    db 'BeginUpdateResourceW',0

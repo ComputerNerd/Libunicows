@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__lstrcpyW@8
-                    global lstrcpyW
-                    global _lstrcpyW@8
-                    global _Unicows_lstrcpyW
+                    global __imp__WriteConsoleInputW@16
+                    global WriteConsoleInputW
+                    global _WriteConsoleInputW@16
+                    global _Unicows_WriteConsoleInputW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_lstrcpyW:
+unicows_initial_stub_WriteConsoleInputW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__lstrcpyW@8     ; place to save the pointer
-                    push dword [_Unicows_lstrcpyW]      ; default proc, if any
+                    push dword __imp__WriteConsoleInputW@16     ; place to save the pointer
+                    push dword [_Unicows_WriteConsoleInputW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_lstrcpyW      ; name of the function
+                    push dword namestring_WriteConsoleInputW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-lstrcpyW:
-_lstrcpyW@8:
-                    jmp [__imp__lstrcpyW@8]
+WriteConsoleInputW:
+_WriteConsoleInputW@16:
+                    jmp [__imp__WriteConsoleInputW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _lstrcpyW@8:
                     section .data
 %endif
 
-__imp__lstrcpyW@8:   dd unicows_initial_stub_lstrcpyW
-_Unicows_lstrcpyW:      dd 0
-namestring_lstrcpyW:    db 'lstrcpyW',0
+__imp__WriteConsoleInputW@16:   dd unicows_initial_stub_WriteConsoleInputW
+_Unicows_WriteConsoleInputW:      dd 0
+namestring_WriteConsoleInputW:    db 'WriteConsoleInputW',0

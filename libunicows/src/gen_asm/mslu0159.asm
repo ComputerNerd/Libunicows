@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetClipboardFormatNameW@12
-                    global GetClipboardFormatNameW
-                    global _GetClipboardFormatNameW@12
-                    global _Unicows_GetClipboardFormatNameW
+                    global __imp__GetClipboardData@4
+                    global GetClipboardData
+                    global _GetClipboardData@4
+                    global _Unicows_GetClipboardData
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetClipboardFormatNameW:
+unicows_initial_stub_GetClipboardData:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetClipboardFormatNameW@12     ; place to save the pointer
-                    push dword [_Unicows_GetClipboardFormatNameW]      ; default proc, if any
+                    push dword __imp__GetClipboardData@4     ; place to save the pointer
+                    push dword [_Unicows_GetClipboardData]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_GetClipboardFormatNameW      ; name of the function
+                    push dword namestring_GetClipboardData      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetClipboardFormatNameW:
-_GetClipboardFormatNameW@12:
-                    jmp [__imp__GetClipboardFormatNameW@12]
+GetClipboardData:
+_GetClipboardData@4:
+                    jmp [__imp__GetClipboardData@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetClipboardFormatNameW@12:
                     section .data
 %endif
 
-__imp__GetClipboardFormatNameW@12:   dd unicows_initial_stub_GetClipboardFormatNameW
-_Unicows_GetClipboardFormatNameW:      dd 0
-namestring_GetClipboardFormatNameW:    db 'GetClipboardFormatNameW',0
+__imp__GetClipboardData@4:   dd unicows_initial_stub_GetClipboardData
+_Unicows_GetClipboardData:      dd 0
+namestring_GetClipboardData:    db 'GetClipboardData',0

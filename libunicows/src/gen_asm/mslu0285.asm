@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetSaveFileNameW@4
-                    global GetSaveFileNameW
-                    global _GetSaveFileNameW@4
-                    global _Unicows_GetSaveFileNameW
+                    global __imp__RegSaveKeyW@12
+                    global RegSaveKeyW
+                    global _RegSaveKeyW@12
+                    global _Unicows_RegSaveKeyW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetSaveFileNameW:
+unicows_initial_stub_RegSaveKeyW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetSaveFileNameW@4     ; place to save the pointer
-                    push dword [_Unicows_GetSaveFileNameW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_GetSaveFileNameW      ; name of the function
+                    push dword __imp__RegSaveKeyW@12     ; place to save the pointer
+                    push dword [_Unicows_RegSaveKeyW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegSaveKeyW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetSaveFileNameW:
-_GetSaveFileNameW@4:
-                    jmp [__imp__GetSaveFileNameW@4]
+RegSaveKeyW:
+_RegSaveKeyW@12:
+                    jmp [__imp__RegSaveKeyW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetSaveFileNameW@4:
                     section .data
 %endif
 
-__imp__GetSaveFileNameW@4:   dd unicows_initial_stub_GetSaveFileNameW
-_Unicows_GetSaveFileNameW:      dd 0
-namestring_GetSaveFileNameW:    db 'GetSaveFileNameW',0
+__imp__RegSaveKeyW@12:   dd unicows_initial_stub_RegSaveKeyW
+_Unicows_RegSaveKeyW:      dd 0
+namestring_RegSaveKeyW:    db 'RegSaveKeyW',0

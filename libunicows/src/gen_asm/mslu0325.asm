@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__FindResourceExW@16
-                    global FindResourceExW
-                    global _FindResourceExW@16
-                    global _Unicows_FindResourceExW
+                    global __imp__EnumDateFormatsW@12
+                    global EnumDateFormatsW
+                    global _EnumDateFormatsW@12
+                    global _Unicows_EnumDateFormatsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_FindResourceExW:
+unicows_initial_stub_EnumDateFormatsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FindResourceExW@16     ; place to save the pointer
-                    push dword [_Unicows_FindResourceExW]      ; default proc, if any
+                    push dword __imp__EnumDateFormatsW@12     ; place to save the pointer
+                    push dword [_Unicows_EnumDateFormatsW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_FindResourceExW      ; name of the function
+                    push dword namestring_EnumDateFormatsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindResourceExW:
-_FindResourceExW@16:
-                    jmp [__imp__FindResourceExW@16]
+EnumDateFormatsW:
+_EnumDateFormatsW@12:
+                    jmp [__imp__EnumDateFormatsW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _FindResourceExW@16:
                     section .data
 %endif
 
-__imp__FindResourceExW@16:   dd unicows_initial_stub_FindResourceExW
-_Unicows_FindResourceExW:      dd 0
-namestring_FindResourceExW:    db 'FindResourceExW',0
+__imp__EnumDateFormatsW@12:   dd unicows_initial_stub_EnumDateFormatsW
+_Unicows_EnumDateFormatsW:      dd 0
+namestring_EnumDateFormatsW:    db 'EnumDateFormatsW',0
