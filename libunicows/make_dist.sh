@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=0.6.4
+VERSION=0.6.5
 NAME=libunicows
 
 
@@ -37,4 +37,5 @@ make_zip mingw32
 make_zip msvc6
 make_zip bcc32
 make_zip watcom
+make_zip dmc
 make_src
