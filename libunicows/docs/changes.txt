@@ -1,4 +1,7 @@
+Version 1.0.0
+-------------
 - implemented GetProcAddress wrapping (Alexey A. Popoff)
+- libunicows symbols loading is now thread-safe
 
 Version 0.7.0
 -------------

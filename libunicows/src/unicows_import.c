@@ -139,7 +139,7 @@ static FARPROC InternalGetProcAddress(HMODULE hModule,
     return NULL;
 }
 
-static void LoadGetProcAddress()
+static void LoadGetProcAddress(void)
 {
     dllHandleKernel32 = LoadLibraryA("kernel32.dll");
     if (!dllHandleKernel32)
@@ -153,6 +153,9 @@ static void LoadGetProcAddress()
 /* ------------------------------------------------------------------------ *
  * Implementation of symbols redirection:                                   *
  * ------------------------------------------------------------------------ */
+
+extern void __cdecl _LockUnicowsMutex(void);
+extern void __cdecl _UnlockUnicowsMutex(void);
 
 #define DLL_KERNEL32        0
 #define DLL_USER32          1
@@ -245,6 +248,8 @@ static void LoadDLLs(void)
 
 void __cdecl LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC *output)
 {
+    _LockUnicowsMutex();
+    
     if (!dllsLoaded)
     {
         LoadDLLs();
@@ -270,4 +275,6 @@ void __cdecl LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC 
     {
         UnicowsImportError(useUnicows ? UnicowsDllName : dllNames[dll], name);
     }
+
+    _UnlockUnicowsMutex();
 }
