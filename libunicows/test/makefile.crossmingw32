@@ -1,0 +1,7 @@
+# Makefile for GCC/Mingw32 cross-compiled from linux
+
+all:
+	make -f makefile.mingw32 CXX=i586-mingw32-g++ all
+
+clean:
+	make -f makefile.mingw32 clean

@@ -1,0 +1,18 @@
+# Makefile for GCC/Mingw32
+
+CXX       = g++
+CXXFLAGS  = -DUNICODE -D_UNICODE
+
+LIBNAME     = ../lib/mingw32/libunicows.a
+
+all: test_gcc.exe
+
+
+test_gcc.exe: test.o
+	$(CXX) -o $@ -mwindows test.o $(LIBNAME) -lkernel32 -luser32 -lgdi32
+
+clean:
+	rm -f test.o test_gcc.exe
+
+%.o : %.cpp
+	$(CXX) -c $(CXXFLAGS) -o $@ $<
