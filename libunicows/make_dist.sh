@@ -23,7 +23,7 @@ make_zip()
 
 make_src()
 {
-  mkdir -p _dist/$NAME-$VERSION/lib/{msvc6,mingw32,bcc32,watcom}
+  mkdir -p _dist/$NAME-$VERSION/lib/{msvc6,mingw32,bcc32,watcom,dmc}
   cp -Rf test docs src *.py *.sh *.txt  _dist/$NAME-$VERSION
 
   rm -f $NAME-$VERSION-src.tar.gz
