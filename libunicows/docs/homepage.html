@@ -11,13 +11,18 @@
 </center>
 
 
-<i>Latest version is 0.5, released on 2002/07/28</i>
+<i>
+    Latest version is 0.6, released on 2003/02/22
+    (<a href="#changes">see changes</a>)
+</i>
 
 <h3>What is libunicows?</h3>
 
-Traditionally, win32 Unicode API was only available on Windows NT or 2000. If you wanted
-to take advantage of Unicode in your application and support Windows 95/98 at the same
-time, your only option was to deploy two executables, one for NT and one for 9X. 
+Traditionally, win32 Unicode API was only available on Windows NT or 2000. If
+you wanted to take advantage of Unicode in your application and support Windows
+95/98 at the same time, your only option was to deploy two executables, one for
+NT and one for 9X.
+
 Fortunately, this changed in 2001 when MS (finally!) released MSLU runtime that
 allows Unicode applications to run under Windows 9X.
 <p>
@@ -39,27 +44,42 @@ MSDN article about MSLU
 </ul>
 
 <p>
-Less fortunately, this solution requires that you use a special statically linked
-import library that decides at runtime whether to load symbols from system libraries
-like kernel32.dll or user32.dll (in case of Windows NT) or from unicows.dll (which
-provides Unicode emulation layer under 9X). This import library is only available
-for Microsoft Visual C++ and is only part of the new Platform SDK, which is rather
-huge package.
+Less fortunately, this solution requires that you use a special statically
+linked import library that decides at runtime whether to load symbols from
+system libraries like kernel32.dll or user32.dll (in case of Windows NT) or
+from unicows.dll (which provides Unicode emulation layer under 9X). This import
+library is only available for Microsoft Visual C++ and is only part of the new
+Platform SDK, which is rather huge package.
 
 <p>
 libunicows contains independent implementation of the import library. It can be
-used with any C compiler (although it was only tested with Mingw32 and MSVC so far)
-and is released under the Open Source
+used with any C compiler (although it was only tested with Mingw32 and MSVC so
+far) and is released under the Open Source
 <a href="http://www.opensource.org/licenses/mit-license.html">MIT license</a>
-(this permits you to link the library into your executable without any restrictions).
+(this permits you to link the library into your executable without any
+restrictions).
 
+<p>
+For compilers where "native" import library is not available in precompiled
+form or is impossible/difficult to create (this is the case of e.g. Borland C++
+which doesn't use COFF libraries), libunicows 
+provides alternative mean of using unicows.dll (beginning with version 0.6).
+There is a version of unicows
+import library compiled as a DLL, called <i>unicows_wrapper.dll</i>. You can
+create import library for the wrapper as you do with any other DLL and calls
+to Unicode API functions will go through the wrapper DLL. Unlike when
+creating such import library for unicows.dll, unicows.dll is <em>not</em>
+used on NT/2000/XP systems when using the wrapper.
 
 
 <h3>Help needed!</h3>
 
-Currently only Mingw32 and MSVC are supported. In order to provide precompiled libraries
-for as many compilers as possible, your help is needed! I'd like to have libraries
-and makefiles for at least Watcom and Borland compilers.
+Currently only Mingw32 and MSVC are directly supported.
+In order to provide precompiled
+libraries for as many compilers as possible, your help is needed! I'd like to
+have libraries and makefiles for at least Watcom and Borland compilers
+(note that Borland support is nontrivial do to its object files format -
+I wasn't able to figure it out, but hopefully some expert can help here!).
 
 
 
@@ -69,17 +89,22 @@ and makefiles for at least Watcom and Borland compilers.
 
 <tr>
     <td><a href="http://www.mingw.org">Mingw32</a></td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.5-mingw32.zip">libunicows-0.5-mingw32.zip</td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6-mingw32.zip">libunicows-0.6-mingw32.zip</td>
 </tr>
 
 <tr>
     <td>Microsoft&nbsp;Visual&nbsp;C++&nbsp;6</td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.5-msvc6.zip">libunicows-0.5-msvc6.zip</td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6-msvc6.zip">libunicows-0.6-msvc6.zip</td>
+</tr>
+
+<tr>
+    <td>Borland&nbsp;C++ (w/ unicows_wrapper.dll)</td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6-bcc32.zip">libunicows-0.6-bcc32.zip</td>
 </tr>
 
 <tr>
     <td>Source code</td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.5-src.tar.gz">libunicows-0.5-src.tar.gz</td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6-src.tar.gz">libunicows-0.6-src.tar.gz</td>
 </tr>
 
 </table>
@@ -87,6 +112,20 @@ and makefiles for at least Watcom and Borland compilers.
 <p>
 See also the SF.net <a href="http://sourceforge.net/projects/libunicows">project page</a>
 
+
+<h3>Changes</h3>
+<a name="changes"></a>
+<b>version 0.6:</b><br>
+<ul>
+    <li>
+    added unicows_wrapper.dll, which is a helper that makes it possible to
+    use libunicows with <em>any</em> compiler, independently of the way its
+    import libraries work</li>
+    <li>
+    added import library for Borland C++ (uses unicows_wrapper.dll)</li>
+</ul>
+<b>version 0.5:</b><br>
+<i>initial release</i></li>
 
 <h3>Contact</h3>
 You can contact me by e-mail at 

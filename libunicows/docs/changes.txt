@@ -1,5 +1,10 @@
+Version 0.6
+-----------
+- added unicows_wrapper.dll, which is a helper that makes it possible to
+  use libunicows with *any* compiler, independently of the way its
+  import libraries work
+- added import library for Borland C++ (uses unicows_wrapper.dll)
 
 Version 0.5
 -----------
-
 - initial release
