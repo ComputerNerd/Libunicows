@@ -17,6 +17,15 @@ def writeStub(template, name, size, dll, number):
 
 
 # ------------------------------------------------------------
+def writeDllWrapper(symbols):
+    f = open('src/gen_asm/dll_wrapper.asm', 'wt');
+    for name,size,dll in symbols:
+        f.write('extern _%s@%s\nexport %s@%s\n' % (name,size,name,size))
+    f.close()
+
+
+
+# ------------------------------------------------------------
 
 def writeMakefiles(names):
 
@@ -73,3 +82,4 @@ for sn,ss,sd in symbols:
     number += 1
 
 writeMakefiles(names)
+writeDllWrapper(symbols)
