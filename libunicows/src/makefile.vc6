@@ -1,0 +1,35 @@
+
+CFLAGS=/nologo /Od /GX /Fo$@
+
+CC=cl
+LD=cl
+NASM=nasmw
+LIB=lib
+LDFLAGS=$(MODEL)
+
+LIBTARGET=..\lib\msvc6\unicows.lib
+
+all: build\msvc6 ..\lib\msvc6 $(LIBTARGET)
+
+!include "makefile.vc6.include"
+
+{}.c{build\msvc6}.obj:
+	cl /c /Zl /Gd /O1 /Os /Fo$@ $<
+
+{gen_asm}.asm{build\msvc6}.obj:
+	nasmw -f win32 -o $@ $<
+
+build\msvc6:
+    mkdir .\build\msvc6
+
+..\lib\msvc6:
+    mkdir .\..\lib\msvc6
+
+LIBOBJECTS = $(WRAPPERS) build\msvc6\unicows_import.obj
+$(LIBTARGET): $(LIBOBJECTS)
+        -erase $(LIBTARGET)
+        lib -out:$(LIBTARGET) $(LIBOBJECTS)
+
+clean:
+    -erase build\msvc6\*.obj
+    -erase $(LIBTARGET)

@@ -1,0 +1,38 @@
+# Makefile for GCC/Mingw32
+
+CC        = gcc
+LD        = ld
+RANLIB    = ranlib
+AR        = ar
+NASM      = nasm
+
+CFLAGS    = 
+ASMFLAGS  = -f win32
+AROPTIONS = rcu
+
+LIBNAME   = ../lib/mingw32/libunicows.a
+
+OBJECTS = build/mingw32/unicows_import.o $(WRAPPERS)
+
+include makefile.mingw32.include
+
+all: build/mingw32 ../lib/mingw32 $(LIBNAME)
+
+build/mingw32:
+	mkdir build/mingw32
+
+../lib/mingw32:
+	mkdir ../lib/mingw32
+
+$(LIBNAME): $(OBJECTS)
+	$(AR) $(AROPTIONS) $@ $(OBJECTS)
+	$(RANLIB) $@
+
+clean:
+	rm -f build/mingw32/*.o $(LIBNAME)
+
+build/mingw32/%.o : %.c
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+build/mingw32/%.o : gen_asm/%.asm
+	$(NASM) $(ASMFLAGS) -o $@ $<

@@ -1,0 +1,9 @@
+# Makefile for GCC/Mingw32 cross-compiled from linux
+
+all:
+	make -f makefile.mingw32  \
+            AR=i586-mingw32-ar RANLIB=i586-mingw32-ranlib \
+            LD=i586-mingw32-ld CC=i586-mingw32-gcc all
+
+clean:
+	make -f makefile.mingw32 clean

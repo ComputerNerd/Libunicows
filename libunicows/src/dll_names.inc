@@ -1,0 +1,13 @@
+%define KERNEL32        0
+%define USER32          1
+%define GDI32           2
+%define COMDLG32        3
+%define WINSPOOL        4
+%define SHELL32         5
+%define WINMM           6
+%define ADVAPI32        7
+%define VERSION         8
+%define MPR             9
+%define OLEACC         10
+%define OLEDLG         11
+%define RASAPI32       12
