@@ -88,6 +88,15 @@ void (__stdcall *UnicowsImportError)(const char *, const char *) = StdImportErro
 static HMODULE dllHandleKernel32 = 0;
 static FARPROC WINAPI (*ptrGetProcAddress)(HINSTANCE,LPCSTR) = 0;
     
+/* DMC doesn't have UINT_PTR: */
+#ifdef __DMC__
+    #ifdef _WIN64
+        typedef unsigned __int64 UINT_PTR;
+    #else
+        typedef unsigned int UINT_PTR;
+    #endif
+#endif
+
 /* GetProcAddress reimplementation
    (code by Alexey A. Popoff <pvax@mail.ru>): */
 
