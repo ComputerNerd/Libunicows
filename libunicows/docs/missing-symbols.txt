@@ -12,7 +12,6 @@ QuerySecurityPackageInfoW
 RasDeleteSubEntryW
 capCreateCaptureWindowW
 capGetDriverDescriptionW
-wsprintfW
 AcquireCredentialsHandleW
 CreateStdAccessibleProxyW
 EnumDisplayDevicesW
