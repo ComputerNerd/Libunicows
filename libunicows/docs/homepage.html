@@ -46,7 +46,8 @@ MSDN article about MSLU
 <p>
 Less fortunately, this solution requires that you use a special statically
 linked import library that decides at runtime whether to load symbols from
-system libraries like kernel32.dll or user32.dll (in case of Windows NT) or
+system libraries like <tt>kernel32.dll</tt> or <tt>user32.dll</tt>
+(in case of Windows NT) or
 from unicows.dll (which provides Unicode emulation layer under 9X). This import
 library is only available for Microsoft Visual C++ and is only part of the new
 Platform SDK, which is rather huge package.
@@ -68,16 +69,16 @@ There is a version of unicows
 import library compiled as a DLL, called <i>unicows_wrapper.dll</i>. You can
 create import library for the wrapper as you do with any other DLL and calls
 to Unicode API functions will go through the wrapper DLL. Unlike when
-creating such import library for unicows.dll, unicows.dll is <em>not</em>
-used on NT/2000/XP systems when using the wrapper.
+creating such import library for <tt>unicows.dll</tt>, <tt>unicows.dll</tt>
+is <em>not</em> used on NT/2000/XP systems when using the wrapper.
 
 
 <h3>Help needed!</h3>
 
-Currently only Mingw3, MSVC and Borland C++ are directly supported.
 In order to provide precompiled
 libraries for as many compilers as possible, your help is needed! I'd like to
-have libraries and makefiles for at least Watcom and DigitalMars compilers.
+have libraries and makefiles for at least DigitalMars compiler in addition to
+currently supported ones before 1.0 release.
 
 
 
@@ -124,10 +125,10 @@ See also the SF.net <a href="http://sourceforge.net/projects/libunicows">project
 </ul>
 <b>version 0.6.3</b><br>
 <ul>
-    <li>fixed winspool.drv loading (Tom Bishop)</li>
+    <li>fixed <tt>winspool.drv</tt> loading (Tom Bishop)</li>
     <li>
-    native Borland C++ import library which doesn't use unicows_wrapper.dll
-    (Seclan)
+    native Borland C++ import library which doesn't use 
+    <tt>unicows_wrapper.dll</tt> (Seclan)
     </li>
 </ul>
 <b>version 0.6.2:</b><br>
