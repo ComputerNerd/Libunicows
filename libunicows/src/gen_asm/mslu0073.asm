@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__mixerGetControlDetailsW@12
+                    global mixerGetControlDetailsW
                     global _mixerGetControlDetailsW@12
                     global _Unicows_mixerGetControlDetailsW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_mixerGetControlDetailsW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_mixerGetControlDetailsW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__mixerGetControlDetailsW@12]
+                    ; ...and skip to it (see following jmp instruction):
 
+mixerGetControlDetailsW:
 _mixerGetControlDetailsW@12:
                     jmp [__imp__mixerGetControlDetailsW@12]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__mixerGetControlDetailsW@12:   dd unicows_initial_stub_mixerGetControlDetailsW
 _Unicows_mixerGetControlDetailsW:      dd 0

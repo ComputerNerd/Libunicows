@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__InitSecurityInterfaceW@0
+                    global InitSecurityInterfaceW
                     global _InitSecurityInterfaceW@0
                     global _Unicows_InitSecurityInterfaceW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_InitSecurityInterfaceW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_InitSecurityInterfaceW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__InitSecurityInterfaceW@0]
+                    ; ...and skip to it (see following jmp instruction):
 
+InitSecurityInterfaceW:
 _InitSecurityInterfaceW@0:
                     jmp [__imp__InitSecurityInterfaceW@0]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__InitSecurityInterfaceW@0:   dd unicows_initial_stub_InitSecurityInterfaceW
 _Unicows_InitSecurityInterfaceW:      dd 0

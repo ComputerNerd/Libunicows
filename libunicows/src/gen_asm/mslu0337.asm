@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetDateFormatW@24
+                    global GetDateFormatW
                     global _GetDateFormatW@24
                     global _Unicows_GetDateFormatW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetDateFormatW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetDateFormatW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetDateFormatW@24]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetDateFormatW:
 _GetDateFormatW@24:
                     jmp [__imp__GetDateFormatW@24]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetDateFormatW@24:   dd unicows_initial_stub_GetDateFormatW
 _Unicows_GetDateFormatW:      dd 0

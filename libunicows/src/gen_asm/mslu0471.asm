@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetPrinterDriverW@24
+                    global GetPrinterDriverW
                     global _GetPrinterDriverW@24
                     global _Unicows_GetPrinterDriverW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetPrinterDriverW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetPrinterDriverW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetPrinterDriverW@24]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetPrinterDriverW:
 _GetPrinterDriverW@24:
                     jmp [__imp__GetPrinterDriverW@24]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetPrinterDriverW@24:   dd unicows_initial_stub_GetPrinterDriverW
 _Unicows_GetPrinterDriverW:      dd 0

@@ -1,6 +1,8 @@
 Version 0.6.3
 -------------
 - fixed winspool.drv loading (Tom Bishop)
+- native Borland C++ import library which doesn't use
+  unicows_wrapper.dll (Seclan)
 
 Version 0.6.2
 -------------

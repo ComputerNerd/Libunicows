@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__StartDocPrinterW@12
+                    global StartDocPrinterW
                     global _StartDocPrinterW@12
                     global _Unicows_StartDocPrinterW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_StartDocPrinterW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_StartDocPrinterW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__StartDocPrinterW@12]
+                    ; ...and skip to it (see following jmp instruction):
 
+StartDocPrinterW:
 _StartDocPrinterW@12:
                     jmp [__imp__StartDocPrinterW@12]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__StartDocPrinterW@12:   dd unicows_initial_stub_StartDocPrinterW
 _Unicows_StartDocPrinterW:      dd 0

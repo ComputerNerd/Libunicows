@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetPropW@8
+                    global GetPropW
                     global _GetPropW@8
                     global _Unicows_GetPropW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetPropW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetPropW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetPropW@8]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetPropW:
 _GetPropW@8:
                     jmp [__imp__GetPropW@8]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetPropW@8:   dd unicows_initial_stub_GetPropW
 _Unicows_GetPropW:      dd 0

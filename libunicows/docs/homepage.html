@@ -12,7 +12,7 @@
 
 
 <i>
-    Latest version is 0.6.2, released on 2003/04/27
+    Latest version is 0.6.3, released on 2003/08/15
     (<a href="#changes">see changes</a>)
 </i>
 
@@ -53,8 +53,8 @@ Platform SDK, which is rather huge package.
 
 <p>
 libunicows contains independent implementation of the import library. It can be
-used with any C compiler (although it was only tested with Mingw32 and MSVC so
-far) and is released under the Open Source
+used with any C compiler (although it was only tested with Mingw32, MSVC and
+Borland compilers so far) and is released under the Open Source
 <a href="http://www.opensource.org/licenses/mit-license.html">MIT license</a>
 (this permits you to link the library into your executable without any
 restrictions).
@@ -74,12 +74,10 @@ used on NT/2000/XP systems when using the wrapper.
 
 <h3>Help needed!</h3>
 
-Currently only Mingw32 and MSVC are directly supported.
+Currently only Mingw3, MSVC and Borland C++ are directly supported.
 In order to provide precompiled
 libraries for as many compilers as possible, your help is needed! I'd like to
-have libraries and makefiles for at least Watcom and Borland compilers
-(note that Borland support is nontrivial do to its object files format -
-I wasn't able to figure it out, but hopefully some expert can help here!).
+have libraries and makefiles for at least Watcom and DigitalMars compilers.
 
 
 
@@ -89,25 +87,22 @@ I wasn't able to figure it out, but hopefully some expert can help here!).
 
 <tr>
     <td><a href="http://www.mingw.org">Mingw32</a></td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6.2-mingw32.zip">libunicows-0.6.2-mingw32.zip</a></td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6.3-mingw32.zip">libunicows-0.6.3-mingw32.zip</a></td>
 </tr>
 
 <tr>
     <td>Microsoft&nbsp;Visual&nbsp;C++&nbsp;6</td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6.2-msvc6.zip">libunicows-0.6.2-msvc6.zip</a></td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6.3-msvc6.zip">libunicows-0.6.3-msvc6.zip</a></td>
 </tr>
 
 <tr>
-    <td>Borland&nbsp;C++ (w/ unicows_wrapper.dll)</td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6.2-bcc32.zip">libunicows-0.6.2-bcc32.zip</a>
-        (there's an alternative library <a href="unicows-bcc.zip">here</a> that
-        doesn't need unicows_wrapper.dll, but I didn't test it yet)
-    </td>
+    <td>Borland&nbsp;C++</td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6.3-bcc32.zip">libunicows-0.6.3-bcc32.zip</a></td>
 </tr>
 
 <tr>
     <td>Source code</td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6.2-src.tar.gz">libunicows-0.6.2-src.tar.gz</a></td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.6.3-src.tar.gz">libunicows-0.6.3-src.tar.gz</a></td>
 </tr>
 
 </table>
@@ -118,13 +113,21 @@ See also the SF.net <a href="http://sourceforge.net/projects/libunicows">project
 
 <h3>Changes</h3>
 <a name="changes"></a>
+<b>version 0.6.3</b><br>
+<ul>
+    <li>fixed winspool.drv loading (Tom Bishop)</li>
+    <li>
+    native Borland C++ import library which doesn't use unicows_wrapper.dll
+    (Seclan)
+    </li>
+</ul>
 <b>version 0.6.2:</b><br>
 <ul>
     <li>
     added more symbols (only <i>GetProcAddress</i> is missing, let me know if
     you can figure how to add it...)
 </ul>
-<b>version 0.6.2:</b><br>
+<b>version 0.6.1:</b><br>
 <ul>
     <li>
     unicows_wrapper.dll was made almost twice smaller</li>

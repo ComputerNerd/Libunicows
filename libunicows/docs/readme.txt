@@ -64,9 +64,7 @@ Note: This was tested only with MSVC++ 6.0, but should work with other versions
 -------------
 
 Copy unicows.lib to %BORLAND%\lib where %BORLAND% is where you installed BC++
-(this directory should contain import32.lib). Put unicows_wrapper.dll into
-the same directory your application is.
-
+(this directory should contain import32.lib).
 
 
  Usage

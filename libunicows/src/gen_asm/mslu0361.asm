@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetProfileStringW@20
+                    global GetProfileStringW
                     global _GetProfileStringW@20
                     global _Unicows_GetProfileStringW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetProfileStringW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetProfileStringW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetProfileStringW@20]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetProfileStringW:
 _GetProfileStringW@20:
                     jmp [__imp__GetProfileStringW@20]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetProfileStringW@20:   dd unicows_initial_stub_GetProfileStringW
 _Unicows_GetProfileStringW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetKerningPairsW@12
+                    global GetKerningPairsW
                     global _GetKerningPairsW@12
                     global _Unicows_GetKerningPairsW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetKerningPairsW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetKerningPairsW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetKerningPairsW@12]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetKerningPairsW:
 _GetKerningPairsW@12:
                     jmp [__imp__GetKerningPairsW@12]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetKerningPairsW@12:   dd unicows_initial_stub_GetKerningPairsW
 _Unicows_GetKerningPairsW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetSaveFileNameW@4
+                    global GetSaveFileNameW
                     global _GetSaveFileNameW@4
                     global _Unicows_GetSaveFileNameW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetSaveFileNameW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetSaveFileNameW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetSaveFileNameW@4]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetSaveFileNameW:
 _GetSaveFileNameW@4:
                     jmp [__imp__GetSaveFileNameW@4]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetSaveFileNameW@4:   dd unicows_initial_stub_GetSaveFileNameW
 _Unicows_GetSaveFileNameW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__EnumFontFamiliesExW@20
+                    global EnumFontFamiliesExW
                     global _EnumFontFamiliesExW@20
                     global _Unicows_EnumFontFamiliesExW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_EnumFontFamiliesExW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_EnumFontFamiliesExW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__EnumFontFamiliesExW@20]
+                    ; ...and skip to it (see following jmp instruction):
 
+EnumFontFamiliesExW:
 _EnumFontFamiliesExW@20:
                     jmp [__imp__EnumFontFamiliesExW@20]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__EnumFontFamiliesExW@20:   dd unicows_initial_stub_EnumFontFamiliesExW
 _Unicows_EnumFontFamiliesExW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__VerInstallFileW@32
+                    global VerInstallFileW
                     global _VerInstallFileW@32
                     global _Unicows_VerInstallFileW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_VerInstallFileW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_VerInstallFileW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__VerInstallFileW@32]
+                    ; ...and skip to it (see following jmp instruction):
 
+VerInstallFileW:
 _VerInstallFileW@32:
                     jmp [__imp__VerInstallFileW@32]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__VerInstallFileW@32:   dd unicows_initial_stub_VerInstallFileW
 _Unicows_VerInstallFileW:      dd 0

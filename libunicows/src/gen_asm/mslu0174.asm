@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetWindowTextW@12
+                    global GetWindowTextW
                     global _GetWindowTextW@12
                     global _Unicows_GetWindowTextW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetWindowTextW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetWindowTextW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetWindowTextW@12]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetWindowTextW:
 _GetWindowTextW@12:
                     jmp [__imp__GetWindowTextW@12]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetWindowTextW@12:   dd unicows_initial_stub_GetWindowTextW
 _Unicows_GetWindowTextW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__RemoveFontResourceW@4
+                    global RemoveFontResourceW
                     global _RemoveFontResourceW@4
                     global _Unicows_RemoveFontResourceW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_RemoveFontResourceW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_RemoveFontResourceW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__RemoveFontResourceW@4]
+                    ; ...and skip to it (see following jmp instruction):
 
+RemoveFontResourceW:
 _RemoveFontResourceW@4:
                     jmp [__imp__RemoveFontResourceW@4]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__RemoveFontResourceW@4:   dd unicows_initial_stub_RemoveFontResourceW
 _Unicows_RemoveFontResourceW:      dd 0

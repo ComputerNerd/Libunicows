@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__RasSetEntryPropertiesW@24
+                    global RasSetEntryPropertiesW
                     global _RasSetEntryPropertiesW@24
                     global _Unicows_RasSetEntryPropertiesW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_RasSetEntryPropertiesW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_RasSetEntryPropertiesW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__RasSetEntryPropertiesW@24]
+                    ; ...and skip to it (see following jmp instruction):
 
+RasSetEntryPropertiesW:
 _RasSetEntryPropertiesW@24:
                     jmp [__imp__RasSetEntryPropertiesW@24]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__RasSetEntryPropertiesW@24:   dd unicows_initial_stub_RasSetEntryPropertiesW
 _Unicows_RasSetEntryPropertiesW:      dd 0

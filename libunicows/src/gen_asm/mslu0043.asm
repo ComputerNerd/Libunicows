@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetGlyphOutlineW@28
+                    global GetGlyphOutlineW
                     global _GetGlyphOutlineW@28
                     global _Unicows_GetGlyphOutlineW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetGlyphOutlineW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetGlyphOutlineW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetGlyphOutlineW@28]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetGlyphOutlineW:
 _GetGlyphOutlineW@28:
                     jmp [__imp__GetGlyphOutlineW@28]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetGlyphOutlineW@28:   dd unicows_initial_stub_GetGlyphOutlineW
 _Unicows_GetGlyphOutlineW:      dd 0

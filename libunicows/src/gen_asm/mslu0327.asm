@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__FormatMessageW@28
+                    global FormatMessageW
                     global _FormatMessageW@28
                     global _Unicows_FormatMessageW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_FormatMessageW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_FormatMessageW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__FormatMessageW@28]
+                    ; ...and skip to it (see following jmp instruction):
 
+FormatMessageW:
 _FormatMessageW@28:
                     jmp [__imp__FormatMessageW@28]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__FormatMessageW@28:   dd unicows_initial_stub_FormatMessageW
 _Unicows_FormatMessageW:      dd 0

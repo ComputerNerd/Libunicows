@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__EnumPrintProcessorDatatypesW@28
+                    global EnumPrintProcessorDatatypesW
                     global _EnumPrintProcessorDatatypesW@28
                     global _Unicows_EnumPrintProcessorDatatypesW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_EnumPrintProcessorDatatypesW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_EnumPrintProcessorDatatypesW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__EnumPrintProcessorDatatypesW@28]
+                    ; ...and skip to it (see following jmp instruction):
 
+EnumPrintProcessorDatatypesW:
 _EnumPrintProcessorDatatypesW@28:
                     jmp [__imp__EnumPrintProcessorDatatypesW@28]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__EnumPrintProcessorDatatypesW@28:   dd unicows_initial_stub_EnumPrintProcessorDatatypesW
 _Unicows_EnumPrintProcessorDatatypesW:      dd 0

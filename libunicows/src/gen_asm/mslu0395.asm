@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__ReadConsoleW@20
+                    global ReadConsoleW
                     global _ReadConsoleW@20
                     global _Unicows_ReadConsoleW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_ReadConsoleW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_ReadConsoleW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__ReadConsoleW@20]
+                    ; ...and skip to it (see following jmp instruction):
 
+ReadConsoleW:
 _ReadConsoleW@20:
                     jmp [__imp__ReadConsoleW@20]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__ReadConsoleW@20:   dd unicows_initial_stub_ReadConsoleW
 _Unicows_ReadConsoleW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__SetDlgItemTextW@12
+                    global SetDlgItemTextW
                     global _SetDlgItemTextW@12
                     global _Unicows_SetDlgItemTextW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_SetDlgItemTextW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_SetDlgItemTextW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__SetDlgItemTextW@12]
+                    ; ...and skip to it (see following jmp instruction):
 
+SetDlgItemTextW:
 _SetDlgItemTextW@12:
                     jmp [__imp__SetDlgItemTextW@12]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__SetDlgItemTextW@12:   dd unicows_initial_stub_SetDlgItemTextW
 _Unicows_SetDlgItemTextW:      dd 0

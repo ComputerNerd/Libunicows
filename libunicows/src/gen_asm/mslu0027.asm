@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__CreateFontW@56
+                    global CreateFontW
                     global _CreateFontW@56
                     global _Unicows_CreateFontW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_CreateFontW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_CreateFontW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__CreateFontW@56]
+                    ; ...and skip to it (see following jmp instruction):
 
+CreateFontW:
 _CreateFontW@56:
                     jmp [__imp__CreateFontW@56]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__CreateFontW@56:   dd unicows_initial_stub_CreateFontW
 _Unicows_CreateFontW:      dd 0

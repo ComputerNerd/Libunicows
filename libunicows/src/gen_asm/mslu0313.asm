@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__EnumDateFormatsExW@12
+                    global EnumDateFormatsExW
                     global _EnumDateFormatsExW@12
                     global _Unicows_EnumDateFormatsExW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_EnumDateFormatsExW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_EnumDateFormatsExW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__EnumDateFormatsExW@12]
+                    ; ...and skip to it (see following jmp instruction):
 
+EnumDateFormatsExW:
 _EnumDateFormatsExW@12:
                     jmp [__imp__EnumDateFormatsExW@12]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__EnumDateFormatsExW@12:   dd unicows_initial_stub_EnumDateFormatsExW
 _Unicows_EnumDateFormatsExW:      dd 0

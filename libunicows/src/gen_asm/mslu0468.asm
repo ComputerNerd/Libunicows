@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetPrintProcessorDirectoryW@24
+                    global GetPrintProcessorDirectoryW
                     global _GetPrintProcessorDirectoryW@24
                     global _Unicows_GetPrintProcessorDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetPrintProcessorDirectoryW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetPrintProcessorDirectoryW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetPrintProcessorDirectoryW@24]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetPrintProcessorDirectoryW:
 _GetPrintProcessorDirectoryW@24:
                     jmp [__imp__GetPrintProcessorDirectoryW@24]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetPrintProcessorDirectoryW@24:   dd unicows_initial_stub_GetPrintProcessorDirectoryW
 _Unicows_GetPrintProcessorDirectoryW:      dd 0

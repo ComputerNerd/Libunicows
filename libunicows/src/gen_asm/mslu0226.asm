@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__SetWindowsHookExW@16
+                    global SetWindowsHookExW
                     global _SetWindowsHookExW@16
                     global _Unicows_SetWindowsHookExW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_SetWindowsHookExW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_SetWindowsHookExW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__SetWindowsHookExW@16]
+                    ; ...and skip to it (see following jmp instruction):
 
+SetWindowsHookExW:
 _SetWindowsHookExW@16:
                     jmp [__imp__SetWindowsHookExW@16]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__SetWindowsHookExW@16:   dd unicows_initial_stub_SetWindowsHookExW
 _Unicows_SetWindowsHookExW:      dd 0

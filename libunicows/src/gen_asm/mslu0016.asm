@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__WNetGetUniversalNameW@16
+                    global WNetGetUniversalNameW
                     global _WNetGetUniversalNameW@16
                     global _Unicows_WNetGetUniversalNameW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_WNetGetUniversalNameW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_WNetGetUniversalNameW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__WNetGetUniversalNameW@16]
+                    ; ...and skip to it (see following jmp instruction):
 
+WNetGetUniversalNameW:
 _WNetGetUniversalNameW@16:
                     jmp [__imp__WNetGetUniversalNameW@16]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__WNetGetUniversalNameW@16:   dd unicows_initial_stub_WNetGetUniversalNameW
 _Unicows_WNetGetUniversalNameW:      dd 0

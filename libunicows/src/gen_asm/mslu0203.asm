@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__PeekMessageW@20
+                    global PeekMessageW
                     global _PeekMessageW@20
                     global _Unicows_PeekMessageW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_PeekMessageW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_PeekMessageW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__PeekMessageW@20]
+                    ; ...and skip to it (see following jmp instruction):
 
+PeekMessageW:
 _PeekMessageW@20:
                     jmp [__imp__PeekMessageW@20]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__PeekMessageW@20:   dd unicows_initial_stub_PeekMessageW
 _Unicows_PeekMessageW:      dd 0

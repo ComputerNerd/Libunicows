@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__CreateWindowExW@48
+                    global CreateWindowExW
                     global _CreateWindowExW@48
                     global _Unicows_CreateWindowExW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_CreateWindowExW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_CreateWindowExW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__CreateWindowExW@48]
+                    ; ...and skip to it (see following jmp instruction):
 
+CreateWindowExW:
 _CreateWindowExW@48:
                     jmp [__imp__CreateWindowExW@48]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__CreateWindowExW@48:   dd unicows_initial_stub_CreateWindowExW
 _Unicows_CreateWindowExW:      dd 0

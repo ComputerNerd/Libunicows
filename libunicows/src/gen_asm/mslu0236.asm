@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__wvsprintfW@12
+                    global wvsprintfW
                     global _wvsprintfW@12
                     global _Unicows_wvsprintfW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_wvsprintfW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_wvsprintfW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__wvsprintfW@12]
+                    ; ...and skip to it (see following jmp instruction):
 
+wvsprintfW:
 _wvsprintfW@12:
                     jmp [__imp__wvsprintfW@12]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__wvsprintfW@12:   dd unicows_initial_stub_wvsprintfW
 _Unicows_wvsprintfW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__InsertMenuItemW@16
+                    global InsertMenuItemW
                     global _InsertMenuItemW@16
                     global _Unicows_InsertMenuItemW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_InsertMenuItemW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_InsertMenuItemW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__InsertMenuItemW@16]
+                    ; ...and skip to it (see following jmp instruction):
 
+InsertMenuItemW:
 _InsertMenuItemW@16:
                     jmp [__imp__InsertMenuItemW@16]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__InsertMenuItemW@16:   dd unicows_initial_stub_InsertMenuItemW
 _Unicows_InsertMenuItemW:      dd 0

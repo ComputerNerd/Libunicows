@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetTextExtentPoint32W@16
+                    global GetTextExtentPoint32W
                     global _GetTextExtentPoint32W@16
                     global _Unicows_GetTextExtentPoint32W
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetTextExtentPoint32W:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetTextExtentPoint32W:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetTextExtentPoint32W@16]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetTextExtentPoint32W:
 _GetTextExtentPoint32W@16:
                     jmp [__imp__GetTextExtentPoint32W@16]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetTextExtentPoint32W@16:   dd unicows_initial_stub_GetTextExtentPoint32W
 _Unicows_GetTextExtentPoint32W:      dd 0

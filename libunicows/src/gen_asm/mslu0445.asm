@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__AddJobW@20
+                    global AddJobW
                     global _AddJobW@20
                     global _Unicows_AddJobW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_AddJobW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_AddJobW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__AddJobW@20]
+                    ; ...and skip to it (see following jmp instruction):
 
+AddJobW:
 _AddJobW@20:
                     jmp [__imp__AddJobW@20]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__AddJobW@20:   dd unicows_initial_stub_AddJobW
 _Unicows_AddJobW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__NAME@SIZE
+                    global NAME
                     global _NAME@SIZE
                     global _Unicows_NAME
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_NAME:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_NAME:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__NAME@SIZE]
+                    ; ...and skip to it (see following jmp instruction):
 
+NAME:
 _NAME@SIZE:
                     jmp [__imp__NAME@SIZE]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__NAME@SIZE:   dd unicows_initial_stub_NAME
 _Unicows_NAME:      dd 0

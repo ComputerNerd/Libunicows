@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__RegSetValueW@20
+                    global RegSetValueW
                     global _RegSetValueW@20
                     global _Unicows_RegSetValueW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_RegSetValueW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_RegSetValueW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__RegSetValueW@20]
+                    ; ...and skip to it (see following jmp instruction):
 
+RegSetValueW:
 _RegSetValueW@20:
                     jmp [__imp__RegSetValueW@20]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__RegSetValueW@20:   dd unicows_initial_stub_RegSetValueW
 _Unicows_RegSetValueW:      dd 0

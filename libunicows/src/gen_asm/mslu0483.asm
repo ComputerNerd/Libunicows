@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__capCreateCaptureWindowW
+                    global capCreateCaptureWindowW
                     global _capCreateCaptureWindowW
                     global _Unicows_capCreateCaptureWindowW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_capCreateCaptureWindowW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_capCreateCaptureWindowW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__capCreateCaptureWindowW]
+                    ; ...and skip to it (see following jmp instruction):
 
+capCreateCaptureWindowW:
 _capCreateCaptureWindowW:
                     jmp [__imp__capCreateCaptureWindowW]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__capCreateCaptureWindowW:   dd unicows_initial_stub_capCreateCaptureWindowW
 _Unicows_capCreateCaptureWindowW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__PeekConsoleInputW@16
+                    global PeekConsoleInputW
                     global _PeekConsoleInputW@16
                     global _Unicows_PeekConsoleInputW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_PeekConsoleInputW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_PeekConsoleInputW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__PeekConsoleInputW@16]
+                    ; ...and skip to it (see following jmp instruction):
 
+PeekConsoleInputW:
 _PeekConsoleInputW@16:
                     jmp [__imp__PeekConsoleInputW@16]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__PeekConsoleInputW@16:   dd unicows_initial_stub_PeekConsoleInputW
 _Unicows_PeekConsoleInputW:      dd 0

@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__FreeEnvironmentStringsW@4
+                    global FreeEnvironmentStringsW
                     global _FreeEnvironmentStringsW@4
                     global _Unicows_FreeEnvironmentStringsW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_FreeEnvironmentStringsW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_FreeEnvironmentStringsW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__FreeEnvironmentStringsW@4]
+                    ; ...and skip to it (see following jmp instruction):
 
+FreeEnvironmentStringsW:
 _FreeEnvironmentStringsW@4:
                     jmp [__imp__FreeEnvironmentStringsW@4]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__FreeEnvironmentStringsW@4:   dd unicows_initial_stub_FreeEnvironmentStringsW
 _Unicows_FreeEnvironmentStringsW:      dd 0

@@ -1,0 +1,34 @@
+CC=bcc32
+CFLAGS=-c -o$@
+
+NASM=nasmw
+LIB=tlib
+
+LIBTARGET=..\lib\bcc32\unicows.lib
+
+all: build\bcc32 ..\lib\bcc32 $(LIBTARGET)
+
+!include "makefile.bcc.include"
+
+{}.c{build\bcc32}.obj:
+	$(CC) -c -o$@ $<
+
+{gen_asm}.asm{build\bcc32}.obj:
+	$(NASM) -dBORLAND -f obj -o $@ $<
+
+build\bcc32:
+    if not exist .\build\bcc32 mkdir .\build\bcc32
+
+..\lib\bcc32:
+    if not exist .\..\lib\bcc32 mkdir .\..\lib\bcc32
+
+LIBOBJECTS = $(WRAPPERS) build\bcc32\unicows_import.obj
+$(LIBTARGET): $(LIBOBJECTS)
+        -del $(LIBTARGET)
+        $(LIB) /c/e $(LIBTARGET) @&&|
+        	+ $(LIBOBJECTS:.obj =.obj + )
+|
+
+clean:
+    -del build\bcc32\*.obj
+    -del $(LIBTARGET)

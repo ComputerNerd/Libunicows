@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__DrawStateW@40
+                    global DrawStateW
                     global _DrawStateW@40
                     global _Unicows_DrawStateW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_DrawStateW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_DrawStateW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__DrawStateW@40]
+                    ; ...and skip to it (see following jmp instruction):
 
+DrawStateW:
 _DrawStateW@40:
                     jmp [__imp__DrawStateW@40]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__DrawStateW@40:   dd unicows_initial_stub_DrawStateW
 _Unicows_DrawStateW:      dd 0

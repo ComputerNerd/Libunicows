@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__GetCurrentDirectoryW@8
+                    global GetCurrentDirectoryW
                     global _GetCurrentDirectoryW@8
                     global _Unicows_GetCurrentDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_GetCurrentDirectoryW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_GetCurrentDirectoryW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__GetCurrentDirectoryW@8]
+                    ; ...and skip to it (see following jmp instruction):
 
+GetCurrentDirectoryW:
 _GetCurrentDirectoryW@8:
                     jmp [__imp__GetCurrentDirectoryW@8]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__GetCurrentDirectoryW@8:   dd unicows_initial_stub_GetCurrentDirectoryW
 _Unicows_GetCurrentDirectoryW:      dd 0

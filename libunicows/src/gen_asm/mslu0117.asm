@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__CreateAcceleratorTableW@8
+                    global CreateAcceleratorTableW
                     global _CreateAcceleratorTableW@8
                     global _Unicows_CreateAcceleratorTableW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_CreateAcceleratorTableW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_CreateAcceleratorTableW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__CreateAcceleratorTableW@8]
+                    ; ...and skip to it (see following jmp instruction):
 
+CreateAcceleratorTableW:
 _CreateAcceleratorTableW@8:
                     jmp [__imp__CreateAcceleratorTableW@8]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__CreateAcceleratorTableW@8:   dd unicows_initial_stub_CreateAcceleratorTableW
 _Unicows_CreateAcceleratorTableW:      dd 0

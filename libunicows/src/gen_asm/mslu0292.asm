@@ -1,12 +1,17 @@
 %include "dll_names.inc"
 
                     global __imp__BuildCommDCBW@8
+                    global BuildCommDCBW
                     global _BuildCommDCBW@8
                     global _Unicows_BuildCommDCBW
                   
                     extern _LoadUnicowsSymbol
 
+%ifdef BORLAND
+                    section  _TEXT class=CODE code  use32
+%else
                     section .text
+%endif
 
 unicows_initial_stub_BuildCommDCBW:
                     ; Load the symbol...
@@ -19,14 +24,17 @@ unicows_initial_stub_BuildCommDCBW:
                     add  esp,byte 16
                     popa
 
-                    ; ...and skip to it
-                    jmp [__imp__BuildCommDCBW@8]
+                    ; ...and skip to it (see following jmp instruction):
 
+BuildCommDCBW:
 _BuildCommDCBW@8:
                     jmp [__imp__BuildCommDCBW@8]
 
-
+%ifdef BORLAND
+                    section  _DATA class=DATA data use32
+%else
                     section .data
+%endif
 
 __imp__BuildCommDCBW@8:   dd unicows_initial_stub_BuildCommDCBW
 _Unicows_BuildCommDCBW:      dd 0
