@@ -83,6 +83,7 @@
      winmm waveInGetErrorTextW@12
      winmm waveOutGetDevCapsW@12
      winmm waveOutGetErrorTextW@12
+    oleacc CreateStdAccessibleProxyW@20
     oleacc GetRoleTextW@12
     oleacc GetStateTextW@12
     oledlg OleUIAddVerbMenuW@36
@@ -94,6 +95,7 @@
     oledlg OleUIInsertObjectW@4
     oledlg OleUIObjectPropertiesW@4
     oledlg OleUIPasteSpecialW@4
+    oledlg OleUIPromptUserW
     oledlg OleUIUpdateLinksW@16
     user32 AppendMenuW@16
     user32 BroadcastSystemMessageW@20
@@ -139,6 +141,7 @@
     user32 DrawTextW@20
     user32 EnableWindow@8
     user32 EnumClipboardFormats@4
+    user32 EnumDisplayDevicesW@16
     user32 EnumDisplaySettingsExW@16
     user32 EnumDisplaySettingsW@12
     user32 EnumPropsA@8
@@ -361,6 +364,7 @@
   kernel32 GetStringTypeExW@20
   kernel32 GetStringTypeW@16
   kernel32 GetSystemDirectoryW@8
+  kernel32 GetSystemWindowsDirectoryW@8
   kernel32 GetTempFileNameW@16
   kernel32 GetTempPathW@8
   kernel32 GetTimeFormatW@24
@@ -422,6 +426,7 @@
   rasapi32 RasConnectionNotificationW@12
   rasapi32 RasCreatePhonebookEntryW@8
   rasapi32 RasDeleteEntryW@8
+  rasapi32 RasDeleteSubEntryW@12
   rasapi32 RasDialW@24
   rasapi32 RasEditPhonebookEntryW@12
   rasapi32 RasEnumConnectionsW@12
@@ -471,3 +476,17 @@
   winspool SetPrinterDataW@20
   winspool SetPrinterW@16
   winspool StartDocPrinterW@12
+   msvfw32 GetOpenFileNamePreviewW@4
+   msvfw32 GetSaveFileNamePreviewW@4
+   msvfw32 MCIWndCreateW
+   sensapi IsDestinationReachableW@8
+  avicap32 capCreateCaptureWindowW@
+  avicap32 capGetDriverDescriptionW@20
+   secur32 AcquireCredentialsHandleW@36
+   secur32 EnumerateSecurityPackagesW@8
+   secur32 FreeContextBuffer@4
+   secur32 InitializeSecurityContextW@48
+   secur32 InitSecurityInterfaceW@0
+   secur32 QueryContextAttributesW@12
+   secur32 QueryCredentialsAttributesW@12
+   secur32 QuerySecurityPackageInfoW@8

@@ -14,7 +14,9 @@ AROPTIONS = rcu
 LIBNAME     = ../lib/mingw32/libunicows.a
 WRAPPERNAME = ../lib/unicows_wrapper.dll
 
-OBJECTS = build/mingw32/unicows_import.o $(WRAPPERS)
+OBJECTS = build/mingw32/unicows_import.o \
+		  $(WRAPPERS)
+
 DLLOBJECTS = build/mingw32/dll_wrapper_main.o \
 			 build/mingw32/dll_wrapper.o \
 			 build/mingw32/dll_wrapper_alloca_stub.o
