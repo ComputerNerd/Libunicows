@@ -106,12 +106,12 @@ make sure the installer installs new enough versions that fully support Unicode
 1) Download the source package (libunicows-$version-src.tar.gz)
 
 2) [optional step] Run generate.py to create assembler stubs. You will need
-   Python (http://www.python.org) and NASM (http://nasm.sourceforge.net) to run
-   it. You don't have to do this unless you modified symbols.txt or 
-   src\template.asm, because generated stubs are already included in source 
-   package (in src\gen_asm).
+   Python (http://www.python.org) to run it. You don't have to do this unless
+   you modified symbols.txt or src\template.asm, because generated stubs are
+   already included in source package (in src\gen_asm).
 
-3) Change to 'src' subdirectory and compile the library.
+3) Change to 'src' subdirectory and compile the library. You will need
+   NASM (http://nasm.sourceforge.net).
 
      Mingw32: run make -f makefile.mingw32
      MSVC:    run nmake -f makefile.vc6
