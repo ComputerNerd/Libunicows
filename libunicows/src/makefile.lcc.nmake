@@ -14,6 +14,8 @@ all: build\lcc $(LIBPATH) $(LIBTARGET)
 
 {gen_asm}.asm{build\lcc}.obj:
 	$(NASM) -f win32 -o $@ $<
+{}.asm{build\lcc}.obj:
+	$(NASM) -f win32 -o $@ $<
 
 build\lcc:
 	if not exist .\build\lcc mkdir .\build\lcc
@@ -21,7 +23,9 @@ build\lcc:
 $(LIBPATH):
 	if not exist .\$(LIBPATH) mkdir .\$(LIBPATH)
 
-LIBOBJECTS = $(WRAPPERS) build\lcc\unicows_import.obj
+LIBOBJECTS = $(WRAPPERS) \
+             build\lcc\unicows_import.obj \
+             build\lcc\unicows_mutex.obj
 $(LIBTARGET): $(LIBOBJECTS)
 	-del $(LIBTARGET)
 	$(LIB) -out:$(LIBTARGET) build\lcc\*.obj

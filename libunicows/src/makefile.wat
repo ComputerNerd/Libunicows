@@ -25,7 +25,10 @@ build\watcom:
 $(LIBPATH):
     if not exist .\$(LIBPATH) mkdir .$(LIBPATH)
 
-LIBOBJECTS = $(WRAPPERS) build\watcom\unicows_import.obj
+LIBOBJECTS = $(WRAPPERS) &
+             build\watcom\unicows_import.obj &
+             build\watcom\unicows_mutex.obj
+
 RESPONSFILE= build\watcom\unicows.~ln
 $(LIBTARGET): $(LIBOBJECTS) build\watcom\unicows.~ln
         $(LIB) -b -c -n $(LIBTARGET) @$(RESPONSFILE)

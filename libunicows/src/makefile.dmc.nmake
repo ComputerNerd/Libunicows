@@ -19,6 +19,8 @@ all: build\dmc ..\lib\dmc $(LIBTARGET)
 
 {gen_asm}.asm{build\dmc}.obj:
 	$(NASM) -dDIGITALMARS -f obj -o $@ $<
+{}.asm{build\dmc}.obj:
+	$(NASM) -dDIGITALMARS -f obj -o $@ $<
 
 build\dmc:
 	if not exist .\build\dmc mkdir .\build\dmc
@@ -27,7 +29,9 @@ build\dmc:
 	if not exist .\..\lib\dmc mkdir .\..\lib\dmc
 
 
-LIBOBJECTS = $(WRAPPERS) build\dmc\unicows_import.obj
+LIBOBJECTS = $(WRAPPERS) \
+             build\dmc\unicows_import.obj \
+             build\dmc\unicows_mutex.obj
 
 $(LIBTARGET): $(LIBOBJECTS) makefile.dmc.nmake
 	-del $(LIBTARGET)
