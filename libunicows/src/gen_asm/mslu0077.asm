@@ -1,5 +1,11 @@
 %include "dll_names.inc"
 
+%ifdef DIGITALMARS
+                    group FLAT _TEXT _DATA
+    ; DM is otherwise same as Borland:
+    %define BORLAND 1
+%endif
+
                     global __imp__mmioInstallIOProcW@12
                     global mmioInstallIOProcW
                     global _mmioInstallIOProcW@12

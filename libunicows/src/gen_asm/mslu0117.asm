@@ -1,5 +1,11 @@
 %include "dll_names.inc"
 
+%ifdef DIGITALMARS
+                    group FLAT _TEXT _DATA
+    ; DM is otherwise same as Borland:
+    %define BORLAND 1
+%endif
+
                     global __imp__CreateAcceleratorTableW@8
                     global CreateAcceleratorTableW
                     global _CreateAcceleratorTableW@8

@@ -1,5 +1,11 @@
 %include "dll_names.inc"
 
+%ifdef DIGITALMARS
+                    group FLAT _TEXT _DATA
+    ; DM is otherwise same as Borland:
+    %define BORLAND 1
+%endif
+
                     global __imp__Shell_NotifyIconW@8
                     global Shell_NotifyIconW
                     global _Shell_NotifyIconW@8

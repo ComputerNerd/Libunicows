@@ -1,5 +1,11 @@
 %include "dll_names.inc"
 
+%ifdef DIGITALMARS
+                    group FLAT _TEXT _DATA
+    ; DM is otherwise same as Borland:
+    %define BORLAND 1
+%endif
+
                     global __imp__DlgDirListComboBoxW@20
                     global DlgDirListComboBoxW
                     global _DlgDirListComboBoxW@20
