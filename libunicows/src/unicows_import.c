@@ -2,7 +2,10 @@
 #include <windows.h>
 #include "unicows_import.h"
 
-// avoid using CRT
+/* ------------------------------------------------------------------------ *
+ * Avoid using CRT, reimplement needed parts ourselves:                     *
+ * ------------------------------------------------------------------------ */
+
 static void my_strcat(char *dst, const char *src)
 {
 	char *cd;
@@ -13,7 +16,10 @@ static void my_strcat(char *dst, const char *src)
 	*cd = 0;
 }
 
-/* Error handling: */
+
+/* ------------------------------------------------------------------------ *
+ * Error handling:                                                          *
+ * ------------------------------------------------------------------------ */
 
 void UnicowsReportFatalError(const char *msg)
 {
@@ -27,7 +33,9 @@ void UnicowsReportFatalError(const char *msg)
 }
 
 
-/* Standard implementations: */
+/* ------------------------------------------------------------------------ *
+ * Standard implementations:                                                *
+ * ------------------------------------------------------------------------ */
 
 static HMODULE __stdcall StdLoadUnicows(void)
 {
@@ -56,14 +64,84 @@ static void __stdcall StdImportError(const char *dll, const char *symbol)
 }
 
 
-/* Hooks: */
+/* ------------------------------------------------------------------------ *
+ * ...and the hooks:                                                        *
+ * ------------------------------------------------------------------------ */
 
 HMODULE (__stdcall *_PfnLoadUnicows)(void) = StdLoadUnicows;
 const char *UnicowsDllName = "unicows.dll";
 void (__stdcall *UnicowsImportError)(const char *, const char *) = StdImportError;
 
 
-/* Implementation: */
+/* ------------------------------------------------------------------------ *
+ * GetProcAddress implementation:                                           *
+ * ------------------------------------------------------------------------ */
+
+/* NB: unicows.dll implements GetProcAddress, too, but since we need to use
+       the *real* GetProcAddress from kernel32.dll, we must load it
+       ourselves. And we can't use GetProcAddress for that because it's 
+       libunicows stub and not initialized at the time we need it. Therefore
+       a hack is done here: we use own reimplementation of GetProcAddress to
+       load the symbol from kernel32.dll and use this dynamically loaded
+       GetProcAddress from that point on to load all symbols. */
+
+static HMODULE dllHandleKernel32 = 0;
+static FARPROC WINAPI (*ptrGetProcAddress)(HINSTANCE,LPCSTR) = 0;
+    
+/* GetProcAddress reimplementation
+   (code by Alexey A. Popoff <pvax@mail.ru>): */
+
+static FARPROC InternalGetProcAddress(HMODULE hModule,
+                                      const char *szProcName)
+{
+    /* Helper macro - RVA to pointer */
+    #define PTR(baseAdr, RVA) ((UINT_PTR)(baseAdr) + (UINT_PTR)(RVA))
+
+    /* No error checking, no address by ordinal: use only for
+       the workaround's needs! */
+    unsigned i;
+    PIMAGE_DOS_HEADER pDosHeader;
+    PIMAGE_NT_HEADERS pNTHeaders;
+    PIMAGE_DATA_DIRECTORY pDataDir;
+    PIMAGE_EXPORT_DIRECTORY pExportDir;
+    WORD* prvaOrdinals;
+    DWORD* prvaNames;
+    DWORD* prvaFuncs;
+
+    pDosHeader = (PIMAGE_DOS_HEADER)hModule;
+    pNTHeaders = (PIMAGE_NT_HEADERS)PTR(hModule, pDosHeader->e_lfanew);
+
+    pDataDir = &(pNTHeaders->OptionalHeader.DataDirectory[
+                                    IMAGE_DIRECTORY_ENTRY_EXPORT]);
+    pExportDir = (PIMAGE_EXPORT_DIRECTORY)PTR(hModule,
+                                              pDataDir->VirtualAddress);
+    prvaOrdinals = (WORD*)PTR(hModule, pExportDir->AddressOfNameOrdinals);
+    prvaNames = (DWORD*)PTR(hModule, pExportDir->AddressOfNames);
+    prvaFuncs = (DWORD*)PTR(hModule, pExportDir->AddressOfFunctions);
+
+    for (i = 0; i < pExportDir->NumberOfNames; i++)
+    {
+        if (0 == lstrcmpA((LPCSTR)PTR(hModule, prvaNames[i]), szProcName))
+            return (FARPROC)PTR(hModule, prvaFuncs[prvaOrdinals[i]]);
+    }
+
+    return NULL;
+}
+
+static void LoadGetProcAddress()
+{
+    dllHandleKernel32 = LoadLibraryA("kernel32.dll");
+    if (!dllHandleKernel32)
+        UnicowsImportError("kernel32.dll", NULL);
+    ptrGetProcAddress = (FARPROC WINAPI (*)(HINSTANCE,LPCSTR))
+        InternalGetProcAddress(dllHandleKernel32, "GetProcAddress");
+    if (!ptrGetProcAddress)
+        UnicowsImportError("kernel32.dll", "GetProcAddress");
+}
+
+/* ------------------------------------------------------------------------ *
+ * Implementation of symbols redirection:                                   *
+ * ------------------------------------------------------------------------ */
 
 #define DLL_KERNEL32        0
 #define DLL_USER32          1
@@ -117,6 +195,12 @@ static void FreeDLLs(void)
         }
     }
 
+    if (dllHandleKernel32)
+    {
+        FreeLibrary(dllHandleKernel32);
+        dllHandleKernel32 = 0;
+    }
+
     dllsLoaded = 0;
 }
 
@@ -124,6 +208,8 @@ static void FreeDLLs(void)
 static void LoadDLLs(void)
 {
     size_t i;
+
+    LoadGetProcAddress();
 
     if (GetVersion() < 0x80000000)
     {
@@ -166,7 +252,7 @@ void __cdecl LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC 
     }
     else
     {
-        *output = GetProcAddress(dllHandles[dll], name);
+        *output = (*ptrGetProcAddress)(dllHandles[dll], name);
     }
 
     if (!(*output))
