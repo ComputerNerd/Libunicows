@@ -3,9 +3,10 @@ NASM=nasmw
 LIB=lcclib
 
 LIBPATH=..\lib\lcc
-LIBTARGET=$(LIBPATH)\unicows.lib
+LIBTARGET=$(LIBPATH)\libunicows.lib
+LIBTARGET_COMPAT=$(LIBPATH)\unicows.lib
 
-all: build\lcc $(LIBPATH) $(LIBTARGET)
+all: build\lcc $(LIBPATH) $(LIBTARGET) $(LIBTARGET_COMPAT)
 
 !include "makefile.lcc.nmake.include"
 
@@ -27,9 +28,14 @@ LIBOBJECTS = $(WRAPPERS) \
              build\lcc\unicows_import.obj \
              build\lcc\unicows_vars0.obj \
              build\lcc\unicows_mutex.obj
+
 $(LIBTARGET): $(LIBOBJECTS)
 	-del $(LIBTARGET)
 	$(LIB) -out:$(LIBTARGET) build\lcc\*.obj
+
+$(LIBTARGET_COMPAT): $(LIBTARGET)
+	copy $(LIBTARGET) $(LIBTARGET_COMPAT) 
+
 
 clean:
 	-del build\lcc\*.obj

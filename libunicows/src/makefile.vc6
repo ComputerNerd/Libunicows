@@ -7,9 +7,10 @@ NASM=nasmw
 LIB=lib
 LDFLAGS=$(MODEL)
 
-LIBTARGET=..\lib\msvc6\unicows.lib
+LIBTARGET=..\lib\msvc6\libunicows.lib
+LIBTARGET_COMPAT=..\lib\msvc6\unicows.lib
 
-all: build\msvc6 ..\lib\msvc6 $(LIBTARGET)
+all: build\msvc6 ..\lib\msvc6 $(LIBTARGET) $(LIBTARGET_COMPAT)
 
 !include "makefile.vc6.include"
 
@@ -32,9 +33,13 @@ LIBOBJECTS = $(WRAPPERS) \
 			 build\msvc6\unicows_import.obj \
              build\msvc6\unicows_vars0.obj \
 			 build\msvc6\unicows_mutex.obj
+
 $(LIBTARGET): $(LIBOBJECTS)
 	-erase $(LIBTARGET)
 	lib -out:$(LIBTARGET) $(LIBOBJECTS)
+
+$(LIBTARGET_COMPAT): $(LIBTARGET)
+	copy $(LIBTARGET) $(LIBTARGET_COMPAT) 
 
 clean:
 	-erase build\msvc6\*.obj

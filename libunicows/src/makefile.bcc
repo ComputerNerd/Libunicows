@@ -4,9 +4,10 @@ CFLAGS=-c -o$@
 NASM=nasmw
 LIB=tlib
 
-LIBTARGET=..\lib\bcc32\unicows.lib
+LIBTARGET=..\lib\bcc32\libunicows.lib
+LIBTARGET_COMPAT=..\lib\bcc32\unicows.lib
 
-all: build\bcc32 ..\lib\bcc32 $(LIBTARGET)
+all: build\bcc32 ..\lib\bcc32 $(LIBTARGET) $(LIBTARGET_COMPAT)
 
 !include "makefile.bcc.include"
 
@@ -33,6 +34,10 @@ $(LIBTARGET): $(LIBOBJECTS)
         $(LIB) /c/e $(LIBTARGET) @&&|
         	+ $(LIBOBJECTS:.obj =.obj + )
 |
+
+$(LIBTARGET_COMPAT): $(LIBTARGET)
+        -copy $(LIBTARGET) $(LIBTARGET_COMPAT) 
+
 
 clean:
     -del build\bcc32\*.obj

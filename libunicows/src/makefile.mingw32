@@ -13,8 +13,9 @@ AROPTIONS = rcu
 
 PATHSEP   = \\
 
-LIBNAME     = ../lib/mingw32/libunicows.a
-WRAPPERNAME = ../lib/unicows_wrapper.dll
+LIBNAME        = ../lib/mingw32/liblibunicows.a
+LIBNAME_COMPAT = ../lib/mingw32/libunicows.a
+WRAPPERNAME    = ../lib/unicows_wrapper.dll
 
 OBJECTS = build/mingw32/unicows_import.o \
 		  build/mingw32/unicows_vars0.o \
@@ -28,7 +29,7 @@ DLLOBJECTS = build/mingw32/dll_wrapper_main.o \
 
 include makefile.mingw32.include
 
-all: build/mingw32 ../lib/mingw32 $(LIBNAME)
+all: build/mingw32 ../lib/mingw32 $(LIBNAME) $(LIBNAME_COMPAT)
 
 build/mingw32:
 	mkdir build$(PATHSEP)mingw32
@@ -39,6 +40,9 @@ build/mingw32:
 $(LIBNAME): $(OBJECTS)
 	$(AR) $(AROPTIONS) $@ $(OBJECTS)
 	$(RANLIB) $@
+
+$(LIBNAME_COMPAT): $(LIBNAME)
+	cp -f $< $@
 
 wrapper: $(WRAPPERNAME)
 

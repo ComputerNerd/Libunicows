@@ -4,9 +4,10 @@ NASM=nasmw
 LIB=wlib
 
 LIBPATH=..\lib\watcom
-LIBTARGET=$(LIBPATH)\unicows.lib
+LIBTARGET=$(LIBPATH)\libunicows.lib
+LIBTARGET_COMPAT=$(LIBPATH)\unicows.lib
 
-all: build\watcom $(LIBPATH) $(LIBTARGET)
+all: build\watcom $(LIBPATH) $(LIBTARGET) $(LIBTARGET_COMPAT)
 
 !include "makefile.wat.include"
 
@@ -31,12 +32,16 @@ LIBOBJECTS = $(WRAPPERS) &
              build\watcom\unicows_mutex.obj
 
 RESPONSFILE= build\watcom\unicows.~ln
+
 $(LIBTARGET): $(LIBOBJECTS) build\watcom\unicows.~ln
         $(LIB) -b -c -n $(LIBTARGET) @$(RESPONSFILE)
 
 $(RESPONSFILE): $(LIBOBJECTS)
         %create $^@
         for %i in ($(LIBOBJECTS)) do %append $^@ + %i
+
+$(LIBTARGET_COMPAT): $(LIBTARGET)
+    copy $(LIBTARGET) $(LIBTARGET_COMPAT)
 
 clean:
     -del build\watcom\*.obj

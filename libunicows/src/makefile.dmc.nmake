@@ -7,9 +7,10 @@ CC=dmc -Pz -D_UNICODE
 NASM=nasmw
 LIB=lib
 
-LIBTARGET=..\lib\dmc\unicows.lib
+LIBTARGET=..\lib\dmc\libunicows.lib
+LIBTARGET_COMPAT=..\lib\dmc\unicows.lib
 
-all: build\dmc ..\lib\dmc $(LIBTARGET)
+all: build\dmc ..\lib\dmc $(LIBTARGET) $(LIBTARGET_COMPAT)
 
 !include "makefile.dmc.nmake.include"
 
@@ -37,6 +38,9 @@ LIBOBJECTS = $(WRAPPERS) \
 $(LIBTARGET): $(LIBOBJECTS) makefile.dmc.nmake
 	-del $(LIBTARGET)
 	$(LIB) -p32 -c $(LIBTARGET) $(LIBOBJECTS)
+
+$(LIBTARGET_COMPAT): $(LIBTARGET)
+	copy $(LIBTARGET) $(LIBTARGET_COMPAT) 
 
 #for BORLAND make
 #	$(LIB) -p32 -c $(LIBTARGET) @&&|
