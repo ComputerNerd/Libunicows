@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=0.5
+VERSION=0.6
 NAME=libunicows
 
 
@@ -12,6 +12,9 @@ make_zip()
 
   mkdir -p $D/$DIRNAME
   cp -f docs/*.txt docs/*.html lib/$1/* $D/$DIRNAME
+  if [ "x$2" == "xwrapper" ]; then
+      cp -f lib/unicows_wrapper.dll $D/$DIRNAME
+  fi
   crlf -d $D/$DIRNAME/*.txt
   rm -f $ZIP
   (cd $D ; zip -9 -r ../$ZIP $DIRNAME)
@@ -20,7 +23,7 @@ make_zip()
 
 make_src()
 {
-  mkdir -p _dist/$NAME-$VERSION/lib/{msvc6,mingw32}
+  mkdir -p _dist/$NAME-$VERSION/lib/{msvc6,mingw32,bcc32}
   cp -Rf docs src *.py *.sh *.txt  _dist/$NAME-$VERSION
 
   rm -f $NAME-$VERSION-src.tar.gz
@@ -32,4 +35,5 @@ make_src()
 
 make_zip mingw32
 make_zip msvc6
+make_zip bcc32 wrapper
 make_src
