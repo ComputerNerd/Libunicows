@@ -76,7 +76,7 @@ static HMODULE __stdcall StdLoadUnicows(void)
     //        modified accordingly to allow to override all names(?).
     if (lib == NULL)
     {
-        lib = LoadLibraryA("mzlu.dll");
+        lib = LoadLibraryA("opencow.dll");
     }
 
     return lib;
