@@ -26,6 +26,7 @@ build\bcc32:
 
 LIBOBJECTS = $(WRAPPERS) \
              build\bcc32\unicows_import.obj \
+             build\bcc32\unicows_vars0.obj \
              build\bcc32\unicows_mutex.obj
 $(LIBTARGET): $(LIBOBJECTS)
         -del $(LIBTARGET)

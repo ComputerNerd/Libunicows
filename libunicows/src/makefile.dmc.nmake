@@ -31,6 +31,7 @@ build\dmc:
 
 LIBOBJECTS = $(WRAPPERS) \
              build\dmc\unicows_import.obj \
+             build\dmc\unicows_vars0.obj \
              build\dmc\unicows_mutex.obj
 
 $(LIBTARGET): $(LIBOBJECTS) makefile.dmc.nmake

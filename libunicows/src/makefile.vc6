@@ -30,6 +30,7 @@ build\msvc6:
 
 LIBOBJECTS = $(WRAPPERS) \
 			 build\msvc6\unicows_import.obj \
+             build\msvc6\unicows_vars0.obj \
 			 build\msvc6\unicows_mutex.obj
 $(LIBTARGET): $(LIBOBJECTS)
 	-erase $(LIBTARGET)

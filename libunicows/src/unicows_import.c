@@ -84,7 +84,8 @@ static void __stdcall StdImportError(const char *dll, const char *symbol)
  * ...and the hooks:                                                        *
  * ------------------------------------------------------------------------ */
 
-HMODULE (__stdcall *_PfnLoadUnicows)(void) = StdLoadUnicows;
+extern HMODULE (__stdcall *_PfnLoadUnicows)(void);
+
 const char *UnicowsDllName = "unicows.dll";
 void (__stdcall *UnicowsImportError)(const char *, const char *) = StdImportError;
 
@@ -264,12 +265,21 @@ static void LoadDLLs(void)
     dllsLoaded = 1;
 }
 
+static void InitializeHooks()
+{
+    // _PfnLoadUnicows may be !=NULL if defined in app's object file, instead
+    // of in libunicows:
+    if (_PfnLoadUnicows == NULL)
+        _PfnLoadUnicows = StdLoadUnicows;
+}
+
 void __cdecl LoadUnicowsSymbol(const char *name, int dll, FARPROC stub, FARPROC *output)
 {
     _LockUnicowsMutex();
     
     if (!dllsLoaded)
     {
+        InitializeHooks();
         LoadDLLs();
     }
 

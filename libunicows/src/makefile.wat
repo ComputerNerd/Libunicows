@@ -27,6 +27,7 @@ $(LIBPATH):
 
 LIBOBJECTS = $(WRAPPERS) &
              build\watcom\unicows_import.obj &
+             build\watcom\unicows_vars0.obj &
              build\watcom\unicows_mutex.obj
 
 RESPONSFILE= build\watcom\unicows.~ln

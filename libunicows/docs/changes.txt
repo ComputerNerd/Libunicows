@@ -1,3 +1,7 @@
+Version 1.1.0
+-------------
+- added support for MZLU (Mozilla Layer for Unicode)
+
 Version 1.0.0
 -------------
 - implemented GetProcAddress wrapping (Alexey A. Popoff)

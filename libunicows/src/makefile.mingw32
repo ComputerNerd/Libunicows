@@ -17,6 +17,7 @@ LIBNAME     = ../lib/mingw32/libunicows.a
 WRAPPERNAME = ../lib/unicows_wrapper.dll
 
 OBJECTS = build/mingw32/unicows_import.o \
+		  build/mingw32/unicows_vars0.o \
 		  build/mingw32/unicows_mutex.o \
 		  $(WRAPPERS)
 
