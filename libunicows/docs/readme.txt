@@ -65,6 +65,13 @@ Note: This was tested only with MSVC++ 6.0, but should work with other versions
 
 Copy unicows.lib to %BORLAND%\lib where %BORLAND% is where you installed BC++
 (this directory should contain import32.lib).
+ 
+ 
+ Watcom C/C++
+-------------
+
+Copy unicows.lib to %WATCOM%\lib386\nt where %WATCOM% is where you installed
+the compiler.
 
 
  Usage

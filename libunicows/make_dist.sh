@@ -1,6 +1,6 @@
 #!/bin/sh
 
-VERSION=0.6.3
+VERSION=0.6.4
 NAME=libunicows
 
 
@@ -23,7 +23,7 @@ make_zip()
 
 make_src()
 {
-  mkdir -p _dist/$NAME-$VERSION/lib/{msvc6,mingw32,bcc32}
+  mkdir -p _dist/$NAME-$VERSION/lib/{msvc6,mingw32,bcc32,watcom}
   cp -Rf test docs src *.py *.sh *.txt  _dist/$NAME-$VERSION
 
   rm -f $NAME-$VERSION-src.tar.gz
@@ -36,4 +36,5 @@ make_src()
 make_zip mingw32
 make_zip msvc6
 make_zip bcc32
+make_zip watcom
 make_src
