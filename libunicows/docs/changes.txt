@@ -1,6 +1,8 @@
 Version 1.1.0
 -------------
 - added support for MZLU (Mozilla Layer for Unicode)
+- fixed _PfnLoadUnicows to work in exactly same manner as in Microsoft
+  version
 
 Version 1.0.0
 -------------
