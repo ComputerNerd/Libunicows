@@ -2,14 +2,6 @@
 #include <windows.h>
 #include "unicows_import.h"
 
-
-/* Standard implementations: */
-
-static HMODULE __stdcall StdLoadUnicows(void)
-{
-    return LoadLibraryA(UnicowsDllName);
-}
-
 // avoid using CRT
 static void my_strcat(char *dst, const char *src)
 {
@@ -19,6 +11,27 @@ static void my_strcat(char *dst, const char *src)
 	for (cd = dst; *cd; cd++) {}
 	for (cs = src; *cs; ) *(cd++) = *(cs++);
 	*cd = 0;
+}
+
+/* Error handling: */
+
+void UnicowsReportFatalError(const char *msg)
+{
+    char buffer[4096];
+	buffer[0] = 0;
+    my_strcat(buffer, msg);
+	my_strcat(buffer, "\nThe application will terminate now.");
+    
+    MessageBoxA(NULL, buffer, "Fatal error", MB_ICONSTOP);
+    ExitProcess(1);
+}
+
+
+/* Standard implementations: */
+
+static HMODULE __stdcall StdLoadUnicows(void)
+{
+    return LoadLibraryA(UnicowsDllName);
 }
 
 static void __stdcall StdImportError(const char *dll, const char *symbol)
@@ -38,9 +51,8 @@ static void __stdcall StdImportError(const char *dll, const char *symbol)
         my_strcat(buffer, "Error while loading DLL '");
 		my_strcat(buffer, dll);
 	}
-	my_strcat(buffer, "'!\nThe application will terminate now.");
-    MessageBoxA(NULL, buffer, "Fatal error", MB_ICONSTOP);
-    ExitProcess(1);
+	my_strcat(buffer, "'!");
+    UnicowsReportFatalError(buffer);
 }
 
 

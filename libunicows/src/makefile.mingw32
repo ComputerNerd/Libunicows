@@ -5,14 +5,20 @@ LD        = ld
 RANLIB    = ranlib
 AR        = ar
 NASM      = nasm
+STRIP     = strip
 
 CFLAGS    = 
 ASMFLAGS  = -f win32
 AROPTIONS = rcu
 
-LIBNAME   = ../lib/mingw32/libunicows.a
+LIBNAME     = ../lib/mingw32/libunicows.a
+WRAPPERNAME = ../lib/unicows_wrapper.dll
 
 OBJECTS = build/mingw32/unicows_import.o $(WRAPPERS)
+DLLOBJECTS = build/mingw32/dll_wrapper_main.o \
+			 build/mingw32/dll_wrapper.o \
+			 build/mingw32/dll_wrapper_alloca_stub.o
+
 
 include makefile.mingw32.include
 
@@ -28,11 +34,20 @@ $(LIBNAME): $(OBJECTS)
 	$(AR) $(AROPTIONS) $@ $(OBJECTS)
 	$(RANLIB) $@
 
+wrapper: $(WRAPPERNAME)
+
+$(WRAPPERNAME): $(LIBNAME) $(DLLOBJECTS)
+	$(CC) -o $@ -shared -nodefaultlibs -nostartfiles \
+	       $(DLLOBJECTS) $(LIBNAME) -lkernel32 -luser32
+	$(STRIP) $@
+
 clean:
-	rm -f build/mingw32/*.o $(LIBNAME)
+	rm -f build/mingw32/*.o $(LIBNAME) $(WRAPPERNAME)
 
 build/mingw32/%.o : %.c
 	$(CC) -c $(CFLAGS) -o $@ $<
 
 build/mingw32/%.o : gen_asm/%.asm
+	$(NASM) $(ASMFLAGS) -o $@ $<
+build/mingw32/%.o : %.asm
 	$(NASM) $(ASMFLAGS) -o $@ $<
