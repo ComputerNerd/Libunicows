@@ -7,7 +7,7 @@ LIBTARGET=$(LIBPATH)\unicows.lib
 
 all: build\lcc $(LIBPATH) $(LIBTARGET)
 
-!include "makefile.lcc.include"
+!include "makefile.lcc.nmake.include"
 
 {}.c{build\lcc}.obj:
 	$(CC) -c -Fo$@ $<
