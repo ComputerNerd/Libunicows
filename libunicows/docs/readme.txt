@@ -159,4 +159,4 @@ NT/2k/XP:  unicows_wrapper.dll
  Contacting the author
 =======================
 
-I can be reached at this email address: vaclav.slavik@matfyz.cz
+I can be reached at this email address: vslavik@fastmail.fm
