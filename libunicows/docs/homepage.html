@@ -74,6 +74,23 @@ to Unicode API functions will go through the wrapper DLL. Unlike when
 creating such import library for <tt>unicows.dll</tt>, <tt>unicows.dll</tt>
 is <em>not</em> used on NT/2000/XP systems when using the wrapper.
 
+<h3>Alternatives to MSLU</h3>
+
+MSLU comes with licensing terms that are highly unfriendly to Open Source
+applications: although you can freely distribute unicows.dll with your
+application, your licensing terms must meet certain conditions that no
+Open Source license can. Namely, you must forbid further redistribution
+and the license must be an EULA accepted by the user either in writing or using
+click-through or shrink-wrap mechanism.
+<p>
+To overcome this obstancle, the <a href="http://www.mozilla.org">Mozilla</a>
+project began reimplementing similar solution under Open Source terms:
+<a href="http://bugzilla.mozilla.org/show_bug.cgi?id=239279">Mozilla Layer for Unicode</a>.
+Althought it's nowhere need MSLU's API coverage yet, it already implements
+some functions that MSLU doesn't.
+<p>
+Latest CVS version of libunicows supports both unicows.dll and mzlu.dll.
+
 
 <h3>Download</h3>
 
