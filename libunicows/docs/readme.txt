@@ -93,11 +93,8 @@ or
     
 Extract unicows.dll from the package and distribute it with your application. 
 Do *not* install it to Windows system directory, always copy the DLL to your 
-application's directory! (Nobody wants any more of DLL hell...) Make sure that
-the installer does *not* install unicows.dll on Windows NT/2000/XP, Microsoft's
-license agreement only allows you to deploy unicows.dll on 95/98/ME systems! 
-(Yes, it is braindead...)
-
+application's directory! (Nobody wants any more of DLL hell...).
+ 
 If your application uses Common Controls DLL (very likely) or Rich Edit control,
 make sure the installer installs new enough versions that fully support Unicode
 (Common Controls DLL version 5.80 and RichEdit 4.0).
