@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__SetFileAttributesW@8
-                    global _SetFileAttributesW@8
-                    global _Unicows_SetFileAttributesW
+                    global __imp__SetConsoleTitleW@4
+                    global _SetConsoleTitleW@4
+                    global _Unicows_SetConsoleTitleW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_SetFileAttributesW:
+unicows_initial_stub_SetConsoleTitleW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetFileAttributesW@8     ; place to save the pointer
-                    push dword [_Unicows_SetFileAttributesW]      ; default proc, if any
+                    push dword __imp__SetConsoleTitleW@4     ; place to save the pointer
+                    push dword [_Unicows_SetConsoleTitleW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_SetFileAttributesW      ; name of the function
+                    push dword namestring_SetConsoleTitleW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__SetFileAttributesW@8]
+                    jmp [__imp__SetConsoleTitleW@4]
 
-_SetFileAttributesW@8:
-                    jmp [__imp__SetFileAttributesW@8]
+_SetConsoleTitleW@4:
+                    jmp [__imp__SetConsoleTitleW@4]
 
 
                     section .data
 
-__imp__SetFileAttributesW@8:   dd unicows_initial_stub_SetFileAttributesW
-_Unicows_SetFileAttributesW:      dd 0
-namestring_SetFileAttributesW:    db 'SetFileAttributesW',0
+__imp__SetConsoleTitleW@4:   dd unicows_initial_stub_SetConsoleTitleW
+_Unicows_SetConsoleTitleW:      dd 0
+namestring_SetConsoleTitleW:    db 'SetConsoleTitleW',0

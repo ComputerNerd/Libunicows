@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__DdeInitializeW@16
-                    global _DdeInitializeW@16
-                    global _Unicows_DdeInitializeW
+                    global __imp__DdeConnectList@20
+                    global _DdeConnectList@20
+                    global _Unicows_DdeConnectList
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_DdeInitializeW:
+unicows_initial_stub_DdeConnectList:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DdeInitializeW@16     ; place to save the pointer
-                    push dword [_Unicows_DdeInitializeW]      ; default proc, if any
+                    push dword __imp__DdeConnectList@20     ; place to save the pointer
+                    push dword [_Unicows_DdeConnectList]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DdeInitializeW      ; name of the function
+                    push dword namestring_DdeConnectList      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__DdeInitializeW@16]
+                    jmp [__imp__DdeConnectList@20]
 
-_DdeInitializeW@16:
-                    jmp [__imp__DdeInitializeW@16]
+_DdeConnectList@20:
+                    jmp [__imp__DdeConnectList@20]
 
 
                     section .data
 
-__imp__DdeInitializeW@16:   dd unicows_initial_stub_DdeInitializeW
-_Unicows_DdeInitializeW:      dd 0
-namestring_DdeInitializeW:    db 'DdeInitializeW',0
+__imp__DdeConnectList@20:   dd unicows_initial_stub_DdeConnectList
+_Unicows_DdeConnectList:      dd 0
+namestring_DdeConnectList:    db 'DdeConnectList',0

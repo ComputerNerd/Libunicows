@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetCurrentHwProfileW@4
-                    global _GetCurrentHwProfileW@4
-                    global _Unicows_GetCurrentHwProfileW
+                    global __imp__VerInstallFileW@32
+                    global _VerInstallFileW@32
+                    global _Unicows_VerInstallFileW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetCurrentHwProfileW:
+unicows_initial_stub_VerInstallFileW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetCurrentHwProfileW@4     ; place to save the pointer
-                    push dword [_Unicows_GetCurrentHwProfileW]      ; default proc, if any
-                    push dword ADVAPI32                  ; dll id
-                    push dword namestring_GetCurrentHwProfileW      ; name of the function
+                    push dword __imp__VerInstallFileW@32     ; place to save the pointer
+                    push dword [_Unicows_VerInstallFileW]      ; default proc, if any
+                    push dword VERSION                  ; dll id
+                    push dword namestring_VerInstallFileW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetCurrentHwProfileW@4]
+                    jmp [__imp__VerInstallFileW@32]
 
-_GetCurrentHwProfileW@4:
-                    jmp [__imp__GetCurrentHwProfileW@4]
+_VerInstallFileW@32:
+                    jmp [__imp__VerInstallFileW@32]
 
 
                     section .data
 
-__imp__GetCurrentHwProfileW@4:   dd unicows_initial_stub_GetCurrentHwProfileW
-_Unicows_GetCurrentHwProfileW:      dd 0
-namestring_GetCurrentHwProfileW:    db 'GetCurrentHwProfileW',0
+__imp__VerInstallFileW@32:   dd unicows_initial_stub_VerInstallFileW
+_Unicows_VerInstallFileW:      dd 0
+namestring_VerInstallFileW:    db 'VerInstallFileW',0

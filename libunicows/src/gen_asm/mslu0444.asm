@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__AddPrintProvidorW@12
-                    global _AddPrintProvidorW@12
-                    global _Unicows_AddPrintProvidorW
+                    global __imp__RasValidateEntryNameW@8
+                    global _RasValidateEntryNameW@8
+                    global _Unicows_RasValidateEntryNameW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_AddPrintProvidorW:
+unicows_initial_stub_RasValidateEntryNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AddPrintProvidorW@12     ; place to save the pointer
-                    push dword [_Unicows_AddPrintProvidorW]      ; default proc, if any
-                    push dword WINSPOOL                  ; dll id
-                    push dword namestring_AddPrintProvidorW      ; name of the function
+                    push dword __imp__RasValidateEntryNameW@8     ; place to save the pointer
+                    push dword [_Unicows_RasValidateEntryNameW]      ; default proc, if any
+                    push dword RASAPI32                  ; dll id
+                    push dword namestring_RasValidateEntryNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__AddPrintProvidorW@12]
+                    jmp [__imp__RasValidateEntryNameW@8]
 
-_AddPrintProvidorW@12:
-                    jmp [__imp__AddPrintProvidorW@12]
+_RasValidateEntryNameW@8:
+                    jmp [__imp__RasValidateEntryNameW@8]
 
 
                     section .data
 
-__imp__AddPrintProvidorW@12:   dd unicows_initial_stub_AddPrintProvidorW
-_Unicows_AddPrintProvidorW:      dd 0
-namestring_AddPrintProvidorW:    db 'AddPrintProvidorW',0
+__imp__RasValidateEntryNameW@8:   dd unicows_initial_stub_RasValidateEntryNameW
+_Unicows_RasValidateEntryNameW:      dd 0
+namestring_RasValidateEntryNameW:    db 'RasValidateEntryNameW',0

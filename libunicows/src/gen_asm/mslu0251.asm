@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__VerInstallFileW@32
-                    global _VerInstallFileW@32
-                    global _Unicows_VerInstallFileW
+                    global __imp__GetFileVersionInfoSizeW@8
+                    global _GetFileVersionInfoSizeW@8
+                    global _Unicows_GetFileVersionInfoSizeW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_VerInstallFileW:
+unicows_initial_stub_GetFileVersionInfoSizeW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__VerInstallFileW@32     ; place to save the pointer
-                    push dword [_Unicows_VerInstallFileW]      ; default proc, if any
+                    push dword __imp__GetFileVersionInfoSizeW@8     ; place to save the pointer
+                    push dword [_Unicows_GetFileVersionInfoSizeW]      ; default proc, if any
                     push dword VERSION                  ; dll id
-                    push dword namestring_VerInstallFileW      ; name of the function
+                    push dword namestring_GetFileVersionInfoSizeW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__VerInstallFileW@32]
+                    jmp [__imp__GetFileVersionInfoSizeW@8]
 
-_VerInstallFileW@32:
-                    jmp [__imp__VerInstallFileW@32]
+_GetFileVersionInfoSizeW@8:
+                    jmp [__imp__GetFileVersionInfoSizeW@8]
 
 
                     section .data
 
-__imp__VerInstallFileW@32:   dd unicows_initial_stub_VerInstallFileW
-_Unicows_VerInstallFileW:      dd 0
-namestring_VerInstallFileW:    db 'VerInstallFileW',0
+__imp__GetFileVersionInfoSizeW@8:   dd unicows_initial_stub_GetFileVersionInfoSizeW
+_Unicows_GetFileVersionInfoSizeW:      dd 0
+namestring_GetFileVersionInfoSizeW:    db 'GetFileVersionInfoSizeW',0

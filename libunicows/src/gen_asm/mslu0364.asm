@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetTempFileNameW@16
-                    global _GetTempFileNameW@16
-                    global _Unicows_GetTempFileNameW
+                    global __imp__GetStringTypeExW@20
+                    global _GetStringTypeExW@20
+                    global _Unicows_GetStringTypeExW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetTempFileNameW:
+unicows_initial_stub_GetStringTypeExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetTempFileNameW@16     ; place to save the pointer
-                    push dword [_Unicows_GetTempFileNameW]      ; default proc, if any
+                    push dword __imp__GetStringTypeExW@20     ; place to save the pointer
+                    push dword [_Unicows_GetStringTypeExW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetTempFileNameW      ; name of the function
+                    push dword namestring_GetStringTypeExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetTempFileNameW@16]
+                    jmp [__imp__GetStringTypeExW@20]
 
-_GetTempFileNameW@16:
-                    jmp [__imp__GetTempFileNameW@16]
+_GetStringTypeExW@20:
+                    jmp [__imp__GetStringTypeExW@20]
 
 
                     section .data
 
-__imp__GetTempFileNameW@16:   dd unicows_initial_stub_GetTempFileNameW
-_Unicows_GetTempFileNameW:      dd 0
-namestring_GetTempFileNameW:    db 'GetTempFileNameW',0
+__imp__GetStringTypeExW@20:   dd unicows_initial_stub_GetStringTypeExW
+_Unicows_GetStringTypeExW:      dd 0
+namestring_GetStringTypeExW:    db 'GetStringTypeExW',0

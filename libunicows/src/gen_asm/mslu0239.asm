@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__SHChangeNotify@16
-                    global _SHChangeNotify@16
-                    global _Unicows_SHChangeNotify
+                    global __imp__ExtractIconW@12
+                    global _ExtractIconW@12
+                    global _Unicows_ExtractIconW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_SHChangeNotify:
+unicows_initial_stub_ExtractIconW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SHChangeNotify@16     ; place to save the pointer
-                    push dword [_Unicows_SHChangeNotify]      ; default proc, if any
+                    push dword __imp__ExtractIconW@12     ; place to save the pointer
+                    push dword [_Unicows_ExtractIconW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_SHChangeNotify      ; name of the function
+                    push dword namestring_ExtractIconW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__SHChangeNotify@16]
+                    jmp [__imp__ExtractIconW@12]
 
-_SHChangeNotify@16:
-                    jmp [__imp__SHChangeNotify@16]
+_ExtractIconW@12:
+                    jmp [__imp__ExtractIconW@12]
 
 
                     section .data
 
-__imp__SHChangeNotify@16:   dd unicows_initial_stub_SHChangeNotify
-_Unicows_SHChangeNotify:      dd 0
-namestring_SHChangeNotify:    db 'SHChangeNotify',0
+__imp__ExtractIconW@12:   dd unicows_initial_stub_ExtractIconW
+_Unicows_ExtractIconW:      dd 0
+namestring_ExtractIconW:    db 'ExtractIconW',0

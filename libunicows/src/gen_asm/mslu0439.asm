@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__RasValidateEntryNameW@8
-                    global _RasValidateEntryNameW@8
-                    global _Unicows_RasValidateEntryNameW
+                    global __imp__RasHangUpW@4
+                    global _RasHangUpW@4
+                    global _Unicows_RasHangUpW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_RasValidateEntryNameW:
+unicows_initial_stub_RasHangUpW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasValidateEntryNameW@8     ; place to save the pointer
-                    push dword [_Unicows_RasValidateEntryNameW]      ; default proc, if any
+                    push dword __imp__RasHangUpW@4     ; place to save the pointer
+                    push dword [_Unicows_RasHangUpW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasValidateEntryNameW      ; name of the function
+                    push dword namestring_RasHangUpW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__RasValidateEntryNameW@8]
+                    jmp [__imp__RasHangUpW@4]
 
-_RasValidateEntryNameW@8:
-                    jmp [__imp__RasValidateEntryNameW@8]
+_RasHangUpW@4:
+                    jmp [__imp__RasHangUpW@4]
 
 
                     section .data
 
-__imp__RasValidateEntryNameW@8:   dd unicows_initial_stub_RasValidateEntryNameW
-_Unicows_RasValidateEntryNameW:      dd 0
-namestring_RasValidateEntryNameW:    db 'RasValidateEntryNameW',0
+__imp__RasHangUpW@4:   dd unicows_initial_stub_RasHangUpW
+_Unicows_RasHangUpW:      dd 0
+namestring_RasHangUpW:    db 'RasHangUpW',0

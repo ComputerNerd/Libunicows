@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__wvsprintfW@12
-                    global _wvsprintfW@12
-                    global _Unicows_wvsprintfW
+                    global __imp__VkKeyScanW@4
+                    global _VkKeyScanW@4
+                    global _Unicows_VkKeyScanW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_wvsprintfW:
+unicows_initial_stub_VkKeyScanW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__wvsprintfW@12     ; place to save the pointer
-                    push dword [_Unicows_wvsprintfW]      ; default proc, if any
+                    push dword __imp__VkKeyScanW@4     ; place to save the pointer
+                    push dword [_Unicows_VkKeyScanW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_wvsprintfW      ; name of the function
+                    push dword namestring_VkKeyScanW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__wvsprintfW@12]
+                    jmp [__imp__VkKeyScanW@4]
 
-_wvsprintfW@12:
-                    jmp [__imp__wvsprintfW@12]
+_VkKeyScanW@4:
+                    jmp [__imp__VkKeyScanW@4]
 
 
                     section .data
 
-__imp__wvsprintfW@12:   dd unicows_initial_stub_wvsprintfW
-_Unicows_wvsprintfW:      dd 0
-namestring_wvsprintfW:    db 'wvsprintfW',0
+__imp__VkKeyScanW@4:   dd unicows_initial_stub_VkKeyScanW
+_Unicows_VkKeyScanW:      dd 0
+namestring_VkKeyScanW:    db 'VkKeyScanW',0

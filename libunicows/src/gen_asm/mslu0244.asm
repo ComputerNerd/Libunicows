@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__ShellAboutW@16
-                    global _ShellAboutW@16
-                    global _Unicows_ShellAboutW
+                    global __imp__SHGetFileInfoW@20
+                    global _SHGetFileInfoW@20
+                    global _Unicows_SHGetFileInfoW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_ShellAboutW:
+unicows_initial_stub_SHGetFileInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ShellAboutW@16     ; place to save the pointer
-                    push dword [_Unicows_ShellAboutW]      ; default proc, if any
+                    push dword __imp__SHGetFileInfoW@20     ; place to save the pointer
+                    push dword [_Unicows_SHGetFileInfoW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_ShellAboutW      ; name of the function
+                    push dword namestring_SHGetFileInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__ShellAboutW@16]
+                    jmp [__imp__SHGetFileInfoW@20]
 
-_ShellAboutW@16:
-                    jmp [__imp__ShellAboutW@16]
+_SHGetFileInfoW@20:
+                    jmp [__imp__SHGetFileInfoW@20]
 
 
                     section .data
 
-__imp__ShellAboutW@16:   dd unicows_initial_stub_ShellAboutW
-_Unicows_ShellAboutW:      dd 0
-namestring_ShellAboutW:    db 'ShellAboutW',0
+__imp__SHGetFileInfoW@20:   dd unicows_initial_stub_SHGetFileInfoW
+_Unicows_SHGetFileInfoW:      dd 0
+namestring_SHGetFileInfoW:    db 'SHGetFileInfoW',0

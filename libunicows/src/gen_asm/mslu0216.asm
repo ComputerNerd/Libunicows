@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__SetDlgItemTextW@12
-                    global _SetDlgItemTextW@12
-                    global _Unicows_SetDlgItemTextW
+                    global __imp__SendMessageW@16
+                    global _SendMessageW@16
+                    global _Unicows_SendMessageW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_SetDlgItemTextW:
+unicows_initial_stub_SendMessageW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetDlgItemTextW@12     ; place to save the pointer
-                    push dword [_Unicows_SetDlgItemTextW]      ; default proc, if any
+                    push dword __imp__SendMessageW@16     ; place to save the pointer
+                    push dword [_Unicows_SendMessageW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_SetDlgItemTextW      ; name of the function
+                    push dword namestring_SendMessageW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__SetDlgItemTextW@12]
+                    jmp [__imp__SendMessageW@16]
 
-_SetDlgItemTextW@12:
-                    jmp [__imp__SetDlgItemTextW@12]
+_SendMessageW@16:
+                    jmp [__imp__SendMessageW@16]
 
 
                     section .data
 
-__imp__SetDlgItemTextW@12:   dd unicows_initial_stub_SetDlgItemTextW
-_Unicows_SetDlgItemTextW:      dd 0
-namestring_SetDlgItemTextW:    db 'SetDlgItemTextW',0
+__imp__SendMessageW@16:   dd unicows_initial_stub_SendMessageW
+_Unicows_SendMessageW:      dd 0
+namestring_SendMessageW:    db 'SendMessageW',0

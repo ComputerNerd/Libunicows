@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__RasGetEntryPropertiesW@24
-                    global _RasGetEntryPropertiesW@24
-                    global _Unicows_RasGetEntryPropertiesW
+                    global __imp__RasEnumConnectionsW@12
+                    global _RasEnumConnectionsW@12
+                    global _Unicows_RasEnumConnectionsW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_RasGetEntryPropertiesW:
+unicows_initial_stub_RasEnumConnectionsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasGetEntryPropertiesW@24     ; place to save the pointer
-                    push dword [_Unicows_RasGetEntryPropertiesW]      ; default proc, if any
+                    push dword __imp__RasEnumConnectionsW@12     ; place to save the pointer
+                    push dword [_Unicows_RasEnumConnectionsW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasGetEntryPropertiesW      ; name of the function
+                    push dword namestring_RasEnumConnectionsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__RasGetEntryPropertiesW@24]
+                    jmp [__imp__RasEnumConnectionsW@12]
 
-_RasGetEntryPropertiesW@24:
-                    jmp [__imp__RasGetEntryPropertiesW@24]
+_RasEnumConnectionsW@12:
+                    jmp [__imp__RasEnumConnectionsW@12]
 
 
                     section .data
 
-__imp__RasGetEntryPropertiesW@24:   dd unicows_initial_stub_RasGetEntryPropertiesW
-_Unicows_RasGetEntryPropertiesW:      dd 0
-namestring_RasGetEntryPropertiesW:    db 'RasGetEntryPropertiesW',0
+__imp__RasEnumConnectionsW@12:   dd unicows_initial_stub_RasEnumConnectionsW
+_Unicows_RasEnumConnectionsW:      dd 0
+namestring_RasEnumConnectionsW:    db 'RasEnumConnectionsW',0

@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__WriteConsoleOutputW@20
-                    global _WriteConsoleOutputW@20
-                    global _Unicows_WriteConsoleOutputW
+                    global __imp__WaitNamedPipeW@8
+                    global _WaitNamedPipeW@8
+                    global _Unicows_WaitNamedPipeW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_WriteConsoleOutputW:
+unicows_initial_stub_WaitNamedPipeW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WriteConsoleOutputW@20     ; place to save the pointer
-                    push dword [_Unicows_WriteConsoleOutputW]      ; default proc, if any
+                    push dword __imp__WaitNamedPipeW@8     ; place to save the pointer
+                    push dword [_Unicows_WaitNamedPipeW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WriteConsoleOutputW      ; name of the function
+                    push dword namestring_WaitNamedPipeW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__WriteConsoleOutputW@20]
+                    jmp [__imp__WaitNamedPipeW@8]
 
-_WriteConsoleOutputW@20:
-                    jmp [__imp__WriteConsoleOutputW@20]
+_WaitNamedPipeW@8:
+                    jmp [__imp__WaitNamedPipeW@8]
 
 
                     section .data
 
-__imp__WriteConsoleOutputW@20:   dd unicows_initial_stub_WriteConsoleOutputW
-_Unicows_WriteConsoleOutputW:      dd 0
-namestring_WriteConsoleOutputW:    db 'WriteConsoleOutputW',0
+__imp__WaitNamedPipeW@8:   dd unicows_initial_stub_WaitNamedPipeW
+_Unicows_WaitNamedPipeW:      dd 0
+namestring_WaitNamedPipeW:    db 'WaitNamedPipeW',0

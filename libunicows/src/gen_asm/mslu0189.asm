@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__LoadMenuIndirectW@4
-                    global _LoadMenuIndirectW@4
-                    global _Unicows_LoadMenuIndirectW
+                    global __imp__LoadIconW@8
+                    global _LoadIconW@8
+                    global _Unicows_LoadIconW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_LoadMenuIndirectW:
+unicows_initial_stub_LoadIconW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__LoadMenuIndirectW@4     ; place to save the pointer
-                    push dword [_Unicows_LoadMenuIndirectW]      ; default proc, if any
+                    push dword __imp__LoadIconW@8     ; place to save the pointer
+                    push dword [_Unicows_LoadIconW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_LoadMenuIndirectW      ; name of the function
+                    push dword namestring_LoadIconW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__LoadMenuIndirectW@4]
+                    jmp [__imp__LoadIconW@8]
 
-_LoadMenuIndirectW@4:
-                    jmp [__imp__LoadMenuIndirectW@4]
+_LoadIconW@8:
+                    jmp [__imp__LoadIconW@8]
 
 
                     section .data
 
-__imp__LoadMenuIndirectW@4:   dd unicows_initial_stub_LoadMenuIndirectW
-_Unicows_LoadMenuIndirectW:      dd 0
-namestring_LoadMenuIndirectW:    db 'LoadMenuIndirectW',0
+__imp__LoadIconW@8:   dd unicows_initial_stub_LoadIconW
+_Unicows_LoadIconW:      dd 0
+namestring_LoadIconW:    db 'LoadIconW',0

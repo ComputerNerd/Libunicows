@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__RasDialW@24
-                    global _RasDialW@24
-                    global _Unicows_RasDialW
+                    global __imp__lstrlenW@4
+                    global _lstrlenW@4
+                    global _Unicows_lstrlenW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_RasDialW:
+unicows_initial_stub_lstrlenW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasDialW@24     ; place to save the pointer
-                    push dword [_Unicows_RasDialW]      ; default proc, if any
-                    push dword RASAPI32                  ; dll id
-                    push dword namestring_RasDialW      ; name of the function
+                    push dword __imp__lstrlenW@4     ; place to save the pointer
+                    push dword [_Unicows_lstrlenW]      ; default proc, if any
+                    push dword KERNEL32                  ; dll id
+                    push dword namestring_lstrlenW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__RasDialW@24]
+                    jmp [__imp__lstrlenW@4]
 
-_RasDialW@24:
-                    jmp [__imp__RasDialW@24]
+_lstrlenW@4:
+                    jmp [__imp__lstrlenW@4]
 
 
                     section .data
 
-__imp__RasDialW@24:   dd unicows_initial_stub_RasDialW
-_Unicows_RasDialW:      dd 0
-namestring_RasDialW:    db 'RasDialW',0
+__imp__lstrlenW@4:   dd unicows_initial_stub_lstrlenW
+_Unicows_lstrlenW:      dd 0
+namestring_lstrlenW:    db 'lstrlenW',0

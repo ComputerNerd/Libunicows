@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__RegQueryInfoKeyW@48
-                    global _RegQueryInfoKeyW@48
-                    global _Unicows_RegQueryInfoKeyW
+                    global __imp__RegLoadKeyW@12
+                    global _RegLoadKeyW@12
+                    global _Unicows_RegLoadKeyW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_RegQueryInfoKeyW:
+unicows_initial_stub_RegLoadKeyW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegQueryInfoKeyW@48     ; place to save the pointer
-                    push dword [_Unicows_RegQueryInfoKeyW]      ; default proc, if any
+                    push dword __imp__RegLoadKeyW@12     ; place to save the pointer
+                    push dword [_Unicows_RegLoadKeyW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegQueryInfoKeyW      ; name of the function
+                    push dword namestring_RegLoadKeyW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__RegQueryInfoKeyW@48]
+                    jmp [__imp__RegLoadKeyW@12]
 
-_RegQueryInfoKeyW@48:
-                    jmp [__imp__RegQueryInfoKeyW@48]
+_RegLoadKeyW@12:
+                    jmp [__imp__RegLoadKeyW@12]
 
 
                     section .data
 
-__imp__RegQueryInfoKeyW@48:   dd unicows_initial_stub_RegQueryInfoKeyW
-_Unicows_RegQueryInfoKeyW:      dd 0
-namestring_RegQueryInfoKeyW:    db 'RegQueryInfoKeyW',0
+__imp__RegLoadKeyW@12:   dd unicows_initial_stub_RegLoadKeyW
+_Unicows_RegLoadKeyW:      dd 0
+namestring_RegLoadKeyW:    db 'RegLoadKeyW',0

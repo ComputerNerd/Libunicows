@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__FatalAppExitW@8
-                    global _FatalAppExitW@8
-                    global _Unicows_FatalAppExitW
+                    global __imp__EnumSystemLocalesW@8
+                    global _EnumSystemLocalesW@8
+                    global _Unicows_EnumSystemLocalesW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_FatalAppExitW:
+unicows_initial_stub_EnumSystemLocalesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__FatalAppExitW@8     ; place to save the pointer
-                    push dword [_Unicows_FatalAppExitW]      ; default proc, if any
+                    push dword __imp__EnumSystemLocalesW@8     ; place to save the pointer
+                    push dword [_Unicows_EnumSystemLocalesW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_FatalAppExitW      ; name of the function
+                    push dword namestring_EnumSystemLocalesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__FatalAppExitW@8]
+                    jmp [__imp__EnumSystemLocalesW@8]
 
-_FatalAppExitW@8:
-                    jmp [__imp__FatalAppExitW@8]
+_EnumSystemLocalesW@8:
+                    jmp [__imp__EnumSystemLocalesW@8]
 
 
                     section .data
 
-__imp__FatalAppExitW@8:   dd unicows_initial_stub_FatalAppExitW
-_Unicows_FatalAppExitW:      dd 0
-namestring_FatalAppExitW:    db 'FatalAppExitW',0
+__imp__EnumSystemLocalesW@8:   dd unicows_initial_stub_EnumSystemLocalesW
+_Unicows_EnumSystemLocalesW:      dd 0
+namestring_EnumSystemLocalesW:    db 'EnumSystemLocalesW',0

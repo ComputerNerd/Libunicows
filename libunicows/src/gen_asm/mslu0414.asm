@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__WriteProfileSectionW@8
-                    global _WriteProfileSectionW@8
-                    global _Unicows_WriteProfileSectionW
+                    global __imp__WriteConsoleW@20
+                    global _WriteConsoleW@20
+                    global _Unicows_WriteConsoleW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_WriteProfileSectionW:
+unicows_initial_stub_WriteConsoleW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WriteProfileSectionW@8     ; place to save the pointer
-                    push dword [_Unicows_WriteProfileSectionW]      ; default proc, if any
+                    push dword __imp__WriteConsoleW@20     ; place to save the pointer
+                    push dword [_Unicows_WriteConsoleW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WriteProfileSectionW      ; name of the function
+                    push dword namestring_WriteConsoleW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__WriteProfileSectionW@8]
+                    jmp [__imp__WriteConsoleW@20]
 
-_WriteProfileSectionW@8:
-                    jmp [__imp__WriteProfileSectionW@8]
+_WriteConsoleW@20:
+                    jmp [__imp__WriteConsoleW@20]
 
 
                     section .data
 
-__imp__WriteProfileSectionW@8:   dd unicows_initial_stub_WriteProfileSectionW
-_Unicows_WriteProfileSectionW:      dd 0
-namestring_WriteProfileSectionW:    db 'WriteProfileSectionW',0
+__imp__WriteConsoleW@20:   dd unicows_initial_stub_WriteConsoleW
+_Unicows_WriteConsoleW:      dd 0
+namestring_WriteConsoleW:    db 'WriteConsoleW',0

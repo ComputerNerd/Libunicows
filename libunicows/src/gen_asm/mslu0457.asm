@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__EnumPortsW@24
-                    global _EnumPortsW@24
-                    global _Unicows_EnumPortsW
+                    global __imp__DeletePrintProvidorW@12
+                    global _DeletePrintProvidorW@12
+                    global _Unicows_DeletePrintProvidorW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_EnumPortsW:
+unicows_initial_stub_DeletePrintProvidorW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumPortsW@24     ; place to save the pointer
-                    push dword [_Unicows_EnumPortsW]      ; default proc, if any
+                    push dword __imp__DeletePrintProvidorW@12     ; place to save the pointer
+                    push dword [_Unicows_DeletePrintProvidorW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_EnumPortsW      ; name of the function
+                    push dword namestring_DeletePrintProvidorW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__EnumPortsW@24]
+                    jmp [__imp__DeletePrintProvidorW@12]
 
-_EnumPortsW@24:
-                    jmp [__imp__EnumPortsW@24]
+_DeletePrintProvidorW@12:
+                    jmp [__imp__DeletePrintProvidorW@12]
 
 
                     section .data
 
-__imp__EnumPortsW@24:   dd unicows_initial_stub_EnumPortsW
-_Unicows_EnumPortsW:      dd 0
-namestring_EnumPortsW:    db 'EnumPortsW',0
+__imp__DeletePrintProvidorW@12:   dd unicows_initial_stub_DeletePrintProvidorW
+_Unicows_DeletePrintProvidorW:      dd 0
+namestring_DeletePrintProvidorW:    db 'DeletePrintProvidorW',0

@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetEnvironmentStringsW@0
-                    global _GetEnvironmentStringsW@0
-                    global _Unicows_GetEnvironmentStringsW
+                    global __imp__GetDiskFreeSpaceExW@16
+                    global _GetDiskFreeSpaceExW@16
+                    global _Unicows_GetDiskFreeSpaceExW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetEnvironmentStringsW:
+unicows_initial_stub_GetDiskFreeSpaceExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetEnvironmentStringsW@0     ; place to save the pointer
-                    push dword [_Unicows_GetEnvironmentStringsW]      ; default proc, if any
+                    push dword __imp__GetDiskFreeSpaceExW@16     ; place to save the pointer
+                    push dword [_Unicows_GetDiskFreeSpaceExW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetEnvironmentStringsW      ; name of the function
+                    push dword namestring_GetDiskFreeSpaceExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetEnvironmentStringsW@0]
+                    jmp [__imp__GetDiskFreeSpaceExW@16]
 
-_GetEnvironmentStringsW@0:
-                    jmp [__imp__GetEnvironmentStringsW@0]
+_GetDiskFreeSpaceExW@16:
+                    jmp [__imp__GetDiskFreeSpaceExW@16]
 
 
                     section .data
 
-__imp__GetEnvironmentStringsW@0:   dd unicows_initial_stub_GetEnvironmentStringsW
-_Unicows_GetEnvironmentStringsW:      dd 0
-namestring_GetEnvironmentStringsW:    db 'GetEnvironmentStringsW',0
+__imp__GetDiskFreeSpaceExW@16:   dd unicows_initial_stub_GetDiskFreeSpaceExW
+_Unicows_GetDiskFreeSpaceExW:      dd 0
+namestring_GetDiskFreeSpaceExW:    db 'GetDiskFreeSpaceExW',0

@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__ShellExecuteW@24
-                    global _ShellExecuteW@24
-                    global _Unicows_ShellExecuteW
+                    global __imp__SHGetPathFromIDListW@8
+                    global _SHGetPathFromIDListW@8
+                    global _Unicows_SHGetPathFromIDListW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_ShellExecuteW:
+unicows_initial_stub_SHGetPathFromIDListW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ShellExecuteW@24     ; place to save the pointer
-                    push dword [_Unicows_ShellExecuteW]      ; default proc, if any
+                    push dword __imp__SHGetPathFromIDListW@8     ; place to save the pointer
+                    push dword [_Unicows_SHGetPathFromIDListW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_ShellExecuteW      ; name of the function
+                    push dword namestring_SHGetPathFromIDListW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__ShellExecuteW@24]
+                    jmp [__imp__SHGetPathFromIDListW@8]
 
-_ShellExecuteW@24:
-                    jmp [__imp__ShellExecuteW@24]
+_SHGetPathFromIDListW@8:
+                    jmp [__imp__SHGetPathFromIDListW@8]
 
 
                     section .data
 
-__imp__ShellExecuteW@24:   dd unicows_initial_stub_ShellExecuteW
-_Unicows_ShellExecuteW:      dd 0
-namestring_ShellExecuteW:    db 'ShellExecuteW',0
+__imp__SHGetPathFromIDListW@8:   dd unicows_initial_stub_SHGetPathFromIDListW
+_Unicows_SHGetPathFromIDListW:      dd 0
+namestring_SHGetPathFromIDListW:    db 'SHGetPathFromIDListW',0

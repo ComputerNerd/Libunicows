@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetPrinterDataW@24
-                    global _GetPrinterDataW@24
-                    global _Unicows_GetPrinterDataW
+                    global __imp__EnumPrintProcessorsW@28
+                    global _EnumPrintProcessorsW@28
+                    global _Unicows_EnumPrintProcessorsW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetPrinterDataW:
+unicows_initial_stub_EnumPrintProcessorsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetPrinterDataW@24     ; place to save the pointer
-                    push dword [_Unicows_GetPrinterDataW]      ; default proc, if any
+                    push dword __imp__EnumPrintProcessorsW@28     ; place to save the pointer
+                    push dword [_Unicows_EnumPrintProcessorsW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_GetPrinterDataW      ; name of the function
+                    push dword namestring_EnumPrintProcessorsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetPrinterDataW@24]
+                    jmp [__imp__EnumPrintProcessorsW@28]
 
-_GetPrinterDataW@24:
-                    jmp [__imp__GetPrinterDataW@24]
+_EnumPrintProcessorsW@28:
+                    jmp [__imp__EnumPrintProcessorsW@28]
 
 
                     section .data
 
-__imp__GetPrinterDataW@24:   dd unicows_initial_stub_GetPrinterDataW
-_Unicows_GetPrinterDataW:      dd 0
-namestring_GetPrinterDataW:    db 'GetPrinterDataW',0
+__imp__EnumPrintProcessorsW@28:   dd unicows_initial_stub_EnumPrintProcessorsW
+_Unicows_EnumPrintProcessorsW:      dd 0
+namestring_EnumPrintProcessorsW:    db 'EnumPrintProcessorsW',0

@@ -473,4 +473,23 @@ WRAPPERS = \
            build\msvc6\mslu0470.obj \
            build\msvc6\mslu0471.obj \
            build\msvc6\mslu0472.obj \
-           build\msvc6\mslu0473.obj 
+           build\msvc6\mslu0473.obj \
+           build\msvc6\mslu0474.obj \
+           build\msvc6\mslu0475.obj \
+           build\msvc6\mslu0476.obj \
+           build\msvc6\mslu0477.obj \
+           build\msvc6\mslu0478.obj \
+           build\msvc6\mslu0479.obj \
+           build\msvc6\mslu0480.obj \
+           build\msvc6\mslu0481.obj \
+           build\msvc6\mslu0482.obj \
+           build\msvc6\mslu0483.obj \
+           build\msvc6\mslu0484.obj \
+           build\msvc6\mslu0485.obj \
+           build\msvc6\mslu0486.obj \
+           build\msvc6\mslu0487.obj \
+           build\msvc6\mslu0488.obj \
+           build\msvc6\mslu0489.obj \
+           build\msvc6\mslu0490.obj \
+           build\msvc6\mslu0491.obj \
+           build\msvc6\mslu0492.obj 

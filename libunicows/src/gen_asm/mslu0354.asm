@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetPrivateProfileStringW@24
-                    global _GetPrivateProfileStringW@24
-                    global _Unicows_GetPrivateProfileStringW
+                    global __imp__GetPrivateProfileIntW@16
+                    global _GetPrivateProfileIntW@16
+                    global _Unicows_GetPrivateProfileIntW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetPrivateProfileStringW:
+unicows_initial_stub_GetPrivateProfileIntW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetPrivateProfileStringW@24     ; place to save the pointer
-                    push dword [_Unicows_GetPrivateProfileStringW]      ; default proc, if any
+                    push dword __imp__GetPrivateProfileIntW@16     ; place to save the pointer
+                    push dword [_Unicows_GetPrivateProfileIntW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetPrivateProfileStringW      ; name of the function
+                    push dword namestring_GetPrivateProfileIntW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetPrivateProfileStringW@24]
+                    jmp [__imp__GetPrivateProfileIntW@16]
 
-_GetPrivateProfileStringW@24:
-                    jmp [__imp__GetPrivateProfileStringW@24]
+_GetPrivateProfileIntW@16:
+                    jmp [__imp__GetPrivateProfileIntW@16]
 
 
                     section .data
 
-__imp__GetPrivateProfileStringW@24:   dd unicows_initial_stub_GetPrivateProfileStringW
-_Unicows_GetPrivateProfileStringW:      dd 0
-namestring_GetPrivateProfileStringW:    db 'GetPrivateProfileStringW',0
+__imp__GetPrivateProfileIntW@16:   dd unicows_initial_stub_GetPrivateProfileIntW
+_Unicows_GetPrivateProfileIntW:      dd 0
+namestring_GetPrivateProfileIntW:    db 'GetPrivateProfileIntW',0

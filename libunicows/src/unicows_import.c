@@ -78,15 +78,22 @@ void (__stdcall *UnicowsImportError)(const char *, const char *) = StdImportErro
 #define DLL_OLEACC         10
 #define DLL_OLEDLG         11
 #define DLL_RASAPI32       12
+#define DLL_MSVFW32        13
+#define DLL_SENSAPI        14
+#define DLL_AVICAP32       15
+#define DLL_SECUR32        16
 
-#define DLLS_COUNT         13
+#define DLLS_COUNT         17
 
 static HMODULE dllHandles[DLLS_COUNT] = {0};
 static HMODULE dllUnicowsHandle = 0;
 static const char *dllNames[DLLS_COUNT] =
-    { "kernel32.dll", "user32.dll", "gdi32.dll", "comdlg32.dll", "winspool.dll",
-      "shell32.dll", "winmm.dll", "advapi32.dll", "version.dll", "mpr.dll",
-      "oleacc.dll", "oledlg.dll", "rasapi32.dll" };
+    { 
+      "kernel32.dll", "user32.dll", "gdi32.dll", "comdlg32.dll",
+      "winspool.dll", "shell32.dll", "winmm.dll", "advapi32.dll",
+      "version.dll", "mpr.dll", "oleacc.dll", "oledlg.dll", "rasapi32.dll",
+      "msvfw32.dll", "sensapi.dll", "avicap32.dll", "secur32.dll"
+    };
 static int dllsLoaded = 0;
 static int useUnicows = 0;
 

@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetLongPathNameW@12
-                    global _GetLongPathNameW@12
-                    global _Unicows_GetLongPathNameW
+                    global __imp__GetFullPathNameW@16
+                    global _GetFullPathNameW@16
+                    global _Unicows_GetFullPathNameW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetLongPathNameW:
+unicows_initial_stub_GetFullPathNameW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetLongPathNameW@12     ; place to save the pointer
-                    push dword [_Unicows_GetLongPathNameW]      ; default proc, if any
+                    push dword __imp__GetFullPathNameW@16     ; place to save the pointer
+                    push dword [_Unicows_GetFullPathNameW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetLongPathNameW      ; name of the function
+                    push dword namestring_GetFullPathNameW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetLongPathNameW@12]
+                    jmp [__imp__GetFullPathNameW@16]
 
-_GetLongPathNameW@12:
-                    jmp [__imp__GetLongPathNameW@12]
+_GetFullPathNameW@16:
+                    jmp [__imp__GetFullPathNameW@16]
 
 
                     section .data
 
-__imp__GetLongPathNameW@12:   dd unicows_initial_stub_GetLongPathNameW
-_Unicows_GetLongPathNameW:      dd 0
-namestring_GetLongPathNameW:    db 'GetLongPathNameW',0
+__imp__GetFullPathNameW@16:   dd unicows_initial_stub_GetFullPathNameW
+_Unicows_GetFullPathNameW:      dd 0
+namestring_GetFullPathNameW:    db 'GetFullPathNameW',0

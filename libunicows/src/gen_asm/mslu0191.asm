@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__LoadStringW@16
-                    global _LoadStringW@16
-                    global _Unicows_LoadStringW
+                    global __imp__LoadKeyboardLayoutW@8
+                    global _LoadKeyboardLayoutW@8
+                    global _Unicows_LoadKeyboardLayoutW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_LoadStringW:
+unicows_initial_stub_LoadKeyboardLayoutW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__LoadStringW@16     ; place to save the pointer
-                    push dword [_Unicows_LoadStringW]      ; default proc, if any
+                    push dword __imp__LoadKeyboardLayoutW@8     ; place to save the pointer
+                    push dword [_Unicows_LoadKeyboardLayoutW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_LoadStringW      ; name of the function
+                    push dword namestring_LoadKeyboardLayoutW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__LoadStringW@16]
+                    jmp [__imp__LoadKeyboardLayoutW@8]
 
-_LoadStringW@16:
-                    jmp [__imp__LoadStringW@16]
+_LoadKeyboardLayoutW@8:
+                    jmp [__imp__LoadKeyboardLayoutW@8]
 
 
                     section .data
 
-__imp__LoadStringW@16:   dd unicows_initial_stub_LoadStringW
-_Unicows_LoadStringW:      dd 0
-namestring_LoadStringW:    db 'LoadStringW',0
+__imp__LoadKeyboardLayoutW@8:   dd unicows_initial_stub_LoadKeyboardLayoutW
+_Unicows_LoadKeyboardLayoutW:      dd 0
+namestring_LoadKeyboardLayoutW:    db 'LoadKeyboardLayoutW',0

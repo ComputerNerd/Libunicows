@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__ExtractIconExW@20
-                    global _ExtractIconExW@20
-                    global _Unicows_ExtractIconExW
+                    global __imp__wsprintfW
+                    global _wsprintfW
+                    global _Unicows_wsprintfW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_ExtractIconExW:
+unicows_initial_stub_wsprintfW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ExtractIconExW@20     ; place to save the pointer
-                    push dword [_Unicows_ExtractIconExW]      ; default proc, if any
-                    push dword SHELL32                  ; dll id
-                    push dword namestring_ExtractIconExW      ; name of the function
+                    push dword __imp__wsprintfW     ; place to save the pointer
+                    push dword [_Unicows_wsprintfW]      ; default proc, if any
+                    push dword USER32                  ; dll id
+                    push dword namestring_wsprintfW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__ExtractIconExW@20]
+                    jmp [__imp__wsprintfW]
 
-_ExtractIconExW@20:
-                    jmp [__imp__ExtractIconExW@20]
+_wsprintfW:
+                    jmp [__imp__wsprintfW]
 
 
                     section .data
 
-__imp__ExtractIconExW@20:   dd unicows_initial_stub_ExtractIconExW
-_Unicows_ExtractIconExW:      dd 0
-namestring_ExtractIconExW:    db 'ExtractIconExW',0
+__imp__wsprintfW:   dd unicows_initial_stub_wsprintfW
+_Unicows_wsprintfW:      dd 0
+namestring_wsprintfW:    db 'wsprintfW',0

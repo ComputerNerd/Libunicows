@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetDefaultCommConfigW@12
-                    global _GetDefaultCommConfigW@12
-                    global _Unicows_GetDefaultCommConfigW
+                    global __imp__GetCurrencyFormatW@24
+                    global _GetCurrencyFormatW@24
+                    global _Unicows_GetCurrencyFormatW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetDefaultCommConfigW:
+unicows_initial_stub_GetCurrencyFormatW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetDefaultCommConfigW@12     ; place to save the pointer
-                    push dword [_Unicows_GetDefaultCommConfigW]      ; default proc, if any
+                    push dword __imp__GetCurrencyFormatW@24     ; place to save the pointer
+                    push dword [_Unicows_GetCurrencyFormatW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetDefaultCommConfigW      ; name of the function
+                    push dword namestring_GetCurrencyFormatW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetDefaultCommConfigW@12]
+                    jmp [__imp__GetCurrencyFormatW@24]
 
-_GetDefaultCommConfigW@12:
-                    jmp [__imp__GetDefaultCommConfigW@12]
+_GetCurrencyFormatW@24:
+                    jmp [__imp__GetCurrencyFormatW@24]
 
 
                     section .data
 
-__imp__GetDefaultCommConfigW@12:   dd unicows_initial_stub_GetDefaultCommConfigW
-_Unicows_GetDefaultCommConfigW:      dd 0
-namestring_GetDefaultCommConfigW:    db 'GetDefaultCommConfigW',0
+__imp__GetCurrencyFormatW@24:   dd unicows_initial_stub_GetCurrencyFormatW
+_Unicows_GetCurrencyFormatW:      dd 0
+namestring_GetCurrencyFormatW:    db 'GetCurrencyFormatW',0

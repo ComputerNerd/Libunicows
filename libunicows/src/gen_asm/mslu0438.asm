@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__RasSetSubEntryPropertiesW@28
-                    global _RasSetSubEntryPropertiesW@28
-                    global _Unicows_RasSetSubEntryPropertiesW
+                    global __imp__RasGetErrorStringW@12
+                    global _RasGetErrorStringW@12
+                    global _Unicows_RasGetErrorStringW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_RasSetSubEntryPropertiesW:
+unicows_initial_stub_RasGetErrorStringW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasSetSubEntryPropertiesW@28     ; place to save the pointer
-                    push dword [_Unicows_RasSetSubEntryPropertiesW]      ; default proc, if any
+                    push dword __imp__RasGetErrorStringW@12     ; place to save the pointer
+                    push dword [_Unicows_RasGetErrorStringW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasSetSubEntryPropertiesW      ; name of the function
+                    push dword namestring_RasGetErrorStringW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__RasSetSubEntryPropertiesW@28]
+                    jmp [__imp__RasGetErrorStringW@12]
 
-_RasSetSubEntryPropertiesW@28:
-                    jmp [__imp__RasSetSubEntryPropertiesW@28]
+_RasGetErrorStringW@12:
+                    jmp [__imp__RasGetErrorStringW@12]
 
 
                     section .data
 
-__imp__RasSetSubEntryPropertiesW@28:   dd unicows_initial_stub_RasSetSubEntryPropertiesW
-_Unicows_RasSetSubEntryPropertiesW:      dd 0
-namestring_RasSetSubEntryPropertiesW:    db 'RasSetSubEntryPropertiesW',0
+__imp__RasGetErrorStringW@12:   dd unicows_initial_stub_RasGetErrorStringW
+_Unicows_RasGetErrorStringW:      dd 0
+namestring_RasGetErrorStringW:    db 'RasGetErrorStringW',0

@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetTimeFormatW@24
-                    global _GetTimeFormatW@24
-                    global _Unicows_GetTimeFormatW
+                    global __imp__GetSystemDirectoryW@8
+                    global _GetSystemDirectoryW@8
+                    global _Unicows_GetSystemDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetTimeFormatW:
+unicows_initial_stub_GetSystemDirectoryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetTimeFormatW@24     ; place to save the pointer
-                    push dword [_Unicows_GetTimeFormatW]      ; default proc, if any
+                    push dword __imp__GetSystemDirectoryW@8     ; place to save the pointer
+                    push dword [_Unicows_GetSystemDirectoryW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetTimeFormatW      ; name of the function
+                    push dword namestring_GetSystemDirectoryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetTimeFormatW@24]
+                    jmp [__imp__GetSystemDirectoryW@8]
 
-_GetTimeFormatW@24:
-                    jmp [__imp__GetTimeFormatW@24]
+_GetSystemDirectoryW@8:
+                    jmp [__imp__GetSystemDirectoryW@8]
 
 
                     section .data
 
-__imp__GetTimeFormatW@24:   dd unicows_initial_stub_GetTimeFormatW
-_Unicows_GetTimeFormatW:      dd 0
-namestring_GetTimeFormatW:    db 'GetTimeFormatW',0
+__imp__GetSystemDirectoryW@8:   dd unicows_initial_stub_GetSystemDirectoryW
+_Unicows_GetSystemDirectoryW:      dd 0
+namestring_GetSystemDirectoryW:    db 'GetSystemDirectoryW',0

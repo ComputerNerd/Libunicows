@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__DlgDirSelectExW@16
-                    global _DlgDirSelectExW@16
-                    global _Unicows_DlgDirSelectExW
+                    global __imp__DlgDirListW@20
+                    global _DlgDirListW@20
+                    global _Unicows_DlgDirListW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_DlgDirSelectExW:
+unicows_initial_stub_DlgDirListW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DlgDirSelectExW@16     ; place to save the pointer
-                    push dword [_Unicows_DlgDirSelectExW]      ; default proc, if any
+                    push dword __imp__DlgDirListW@20     ; place to save the pointer
+                    push dword [_Unicows_DlgDirListW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DlgDirSelectExW      ; name of the function
+                    push dword namestring_DlgDirListW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__DlgDirSelectExW@16]
+                    jmp [__imp__DlgDirListW@20]
 
-_DlgDirSelectExW@16:
-                    jmp [__imp__DlgDirSelectExW@16]
+_DlgDirListW@20:
+                    jmp [__imp__DlgDirListW@20]
 
 
                     section .data
 
-__imp__DlgDirSelectExW@16:   dd unicows_initial_stub_DlgDirSelectExW
-_Unicows_DlgDirSelectExW:      dd 0
-namestring_DlgDirSelectExW:    db 'DlgDirSelectExW',0
+__imp__DlgDirListW@20:   dd unicows_initial_stub_DlgDirListW
+_Unicows_DlgDirListW:      dd 0
+namestring_DlgDirListW:    db 'DlgDirListW',0

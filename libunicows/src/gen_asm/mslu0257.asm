@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__RegConnectRegistryW@12
-                    global _RegConnectRegistryW@12
-                    global _Unicows_RegConnectRegistryW
+                    global __imp__GetCurrentHwProfileW@4
+                    global _GetCurrentHwProfileW@4
+                    global _Unicows_GetCurrentHwProfileW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_RegConnectRegistryW:
+unicows_initial_stub_GetCurrentHwProfileW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RegConnectRegistryW@12     ; place to save the pointer
-                    push dword [_Unicows_RegConnectRegistryW]      ; default proc, if any
+                    push dword __imp__GetCurrentHwProfileW@4     ; place to save the pointer
+                    push dword [_Unicows_GetCurrentHwProfileW]      ; default proc, if any
                     push dword ADVAPI32                  ; dll id
-                    push dword namestring_RegConnectRegistryW      ; name of the function
+                    push dword namestring_GetCurrentHwProfileW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__RegConnectRegistryW@12]
+                    jmp [__imp__GetCurrentHwProfileW@4]
 
-_RegConnectRegistryW@12:
-                    jmp [__imp__RegConnectRegistryW@12]
+_GetCurrentHwProfileW@4:
+                    jmp [__imp__GetCurrentHwProfileW@4]
 
 
                     section .data
 
-__imp__RegConnectRegistryW@12:   dd unicows_initial_stub_RegConnectRegistryW
-_Unicows_RegConnectRegistryW:      dd 0
-namestring_RegConnectRegistryW:    db 'RegConnectRegistryW',0
+__imp__GetCurrentHwProfileW@4:   dd unicows_initial_stub_GetCurrentHwProfileW
+_Unicows_GetCurrentHwProfileW:      dd 0
+namestring_GetCurrentHwProfileW:    db 'GetCurrentHwProfileW',0

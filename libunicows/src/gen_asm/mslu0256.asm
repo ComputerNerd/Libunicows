@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__IsTextUnicode@12
-                    global _IsTextUnicode@12
-                    global _Unicows_IsTextUnicode
+                    global __imp__VerQueryValueW@16
+                    global _VerQueryValueW@16
+                    global _Unicows_VerQueryValueW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_IsTextUnicode:
+unicows_initial_stub_VerQueryValueW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__IsTextUnicode@12     ; place to save the pointer
-                    push dword [_Unicows_IsTextUnicode]      ; default proc, if any
-                    push dword ADVAPI32                  ; dll id
-                    push dword namestring_IsTextUnicode      ; name of the function
+                    push dword __imp__VerQueryValueW@16     ; place to save the pointer
+                    push dword [_Unicows_VerQueryValueW]      ; default proc, if any
+                    push dword VERSION                  ; dll id
+                    push dword namestring_VerQueryValueW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__IsTextUnicode@12]
+                    jmp [__imp__VerQueryValueW@16]
 
-_IsTextUnicode@12:
-                    jmp [__imp__IsTextUnicode@12]
+_VerQueryValueW@16:
+                    jmp [__imp__VerQueryValueW@16]
 
 
                     section .data
 
-__imp__IsTextUnicode@12:   dd unicows_initial_stub_IsTextUnicode
-_Unicows_IsTextUnicode:      dd 0
-namestring_IsTextUnicode:    db 'IsTextUnicode',0
+__imp__VerQueryValueW@16:   dd unicows_initial_stub_VerQueryValueW
+_Unicows_VerQueryValueW:      dd 0
+namestring_VerQueryValueW:    db 'VerQueryValueW',0

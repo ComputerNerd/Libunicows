@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__DdeQueryStringW@20
-                    global _DdeQueryStringW@20
-                    global _Unicows_DdeQueryStringW
+                    global __imp__DdeInitializeW@16
+                    global _DdeInitializeW@16
+                    global _Unicows_DdeInitializeW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_DdeQueryStringW:
+unicows_initial_stub_DdeInitializeW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DdeQueryStringW@20     ; place to save the pointer
-                    push dword [_Unicows_DdeQueryStringW]      ; default proc, if any
+                    push dword __imp__DdeInitializeW@16     ; place to save the pointer
+                    push dword [_Unicows_DdeInitializeW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_DdeQueryStringW      ; name of the function
+                    push dword namestring_DdeInitializeW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__DdeQueryStringW@20]
+                    jmp [__imp__DdeInitializeW@16]
 
-_DdeQueryStringW@20:
-                    jmp [__imp__DdeQueryStringW@20]
+_DdeInitializeW@16:
+                    jmp [__imp__DdeInitializeW@16]
 
 
                     section .data
 
-__imp__DdeQueryStringW@20:   dd unicows_initial_stub_DdeQueryStringW
-_Unicows_DdeQueryStringW:      dd 0
-namestring_DdeQueryStringW:    db 'DdeQueryStringW',0
+__imp__DdeInitializeW@16:   dd unicows_initial_stub_DdeInitializeW
+_Unicows_DdeInitializeW:      dd 0
+namestring_DdeInitializeW:    db 'DdeInitializeW',0

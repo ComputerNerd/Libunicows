@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetFileVersionInfoW@16
-                    global _GetFileVersionInfoW@16
-                    global _Unicows_GetFileVersionInfoW
+                    global __imp__ShellExecuteW@24
+                    global _ShellExecuteW@24
+                    global _Unicows_ShellExecuteW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetFileVersionInfoW:
+unicows_initial_stub_ShellExecuteW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetFileVersionInfoW@16     ; place to save the pointer
-                    push dword [_Unicows_GetFileVersionInfoW]      ; default proc, if any
-                    push dword VERSION                  ; dll id
-                    push dword namestring_GetFileVersionInfoW      ; name of the function
+                    push dword __imp__ShellExecuteW@24     ; place to save the pointer
+                    push dword [_Unicows_ShellExecuteW]      ; default proc, if any
+                    push dword SHELL32                  ; dll id
+                    push dword namestring_ShellExecuteW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetFileVersionInfoW@16]
+                    jmp [__imp__ShellExecuteW@24]
 
-_GetFileVersionInfoW@16:
-                    jmp [__imp__GetFileVersionInfoW@16]
+_ShellExecuteW@24:
+                    jmp [__imp__ShellExecuteW@24]
 
 
                     section .data
 
-__imp__GetFileVersionInfoW@16:   dd unicows_initial_stub_GetFileVersionInfoW
-_Unicows_GetFileVersionInfoW:      dd 0
-namestring_GetFileVersionInfoW:    db 'GetFileVersionInfoW',0
+__imp__ShellExecuteW@24:   dd unicows_initial_stub_ShellExecuteW
+_Unicows_ShellExecuteW:      dd 0
+namestring_ShellExecuteW:    db 'ShellExecuteW',0

@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__InsertMenuW@20
-                    global _InsertMenuW@20
-                    global _Unicows_InsertMenuW
+                    global __imp__GetWindowTextW@12
+                    global _GetWindowTextW@12
+                    global _Unicows_GetWindowTextW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_InsertMenuW:
+unicows_initial_stub_GetWindowTextW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__InsertMenuW@20     ; place to save the pointer
-                    push dword [_Unicows_InsertMenuW]      ; default proc, if any
+                    push dword __imp__GetWindowTextW@12     ; place to save the pointer
+                    push dword [_Unicows_GetWindowTextW]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_InsertMenuW      ; name of the function
+                    push dword namestring_GetWindowTextW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__InsertMenuW@20]
+                    jmp [__imp__GetWindowTextW@12]
 
-_InsertMenuW@20:
-                    jmp [__imp__InsertMenuW@20]
+_GetWindowTextW@12:
+                    jmp [__imp__GetWindowTextW@12]
 
 
                     section .data
 
-__imp__InsertMenuW@20:   dd unicows_initial_stub_InsertMenuW
-_Unicows_InsertMenuW:      dd 0
-namestring_InsertMenuW:    db 'InsertMenuW',0
+__imp__GetWindowTextW@12:   dd unicows_initial_stub_GetWindowTextW
+_Unicows_GetWindowTextW:      dd 0
+namestring_GetWindowTextW:    db 'GetWindowTextW',0

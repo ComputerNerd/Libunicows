@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__SHGetFileInfoW@20
-                    global _SHGetFileInfoW@20
-                    global _Unicows_SHGetFileInfoW
+                    global __imp__SHBrowseForFolderW@4
+                    global _SHBrowseForFolderW@4
+                    global _Unicows_SHBrowseForFolderW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_SHGetFileInfoW:
+unicows_initial_stub_SHBrowseForFolderW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SHGetFileInfoW@20     ; place to save the pointer
-                    push dword [_Unicows_SHGetFileInfoW]      ; default proc, if any
+                    push dword __imp__SHBrowseForFolderW@4     ; place to save the pointer
+                    push dword [_Unicows_SHBrowseForFolderW]      ; default proc, if any
                     push dword SHELL32                  ; dll id
-                    push dword namestring_SHGetFileInfoW      ; name of the function
+                    push dword namestring_SHBrowseForFolderW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__SHGetFileInfoW@20]
+                    jmp [__imp__SHBrowseForFolderW@4]
 
-_SHGetFileInfoW@20:
-                    jmp [__imp__SHGetFileInfoW@20]
+_SHBrowseForFolderW@4:
+                    jmp [__imp__SHBrowseForFolderW@4]
 
 
                     section .data
 
-__imp__SHGetFileInfoW@20:   dd unicows_initial_stub_SHGetFileInfoW
-_Unicows_SHGetFileInfoW:      dd 0
-namestring_SHGetFileInfoW:    db 'SHGetFileInfoW',0
+__imp__SHBrowseForFolderW@4:   dd unicows_initial_stub_SHBrowseForFolderW
+_Unicows_SHBrowseForFolderW:      dd 0
+namestring_SHBrowseForFolderW:    db 'SHBrowseForFolderW',0

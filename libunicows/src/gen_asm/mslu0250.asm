@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__VerFindFileW@32
-                    global _VerFindFileW@32
-                    global _Unicows_VerFindFileW
+                    global __imp__Shell_NotifyIconW@8
+                    global _Shell_NotifyIconW@8
+                    global _Unicows_Shell_NotifyIconW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_VerFindFileW:
+unicows_initial_stub_Shell_NotifyIconW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__VerFindFileW@32     ; place to save the pointer
-                    push dword [_Unicows_VerFindFileW]      ; default proc, if any
-                    push dword VERSION                  ; dll id
-                    push dword namestring_VerFindFileW      ; name of the function
+                    push dword __imp__Shell_NotifyIconW@8     ; place to save the pointer
+                    push dword [_Unicows_Shell_NotifyIconW]      ; default proc, if any
+                    push dword SHELL32                  ; dll id
+                    push dword namestring_Shell_NotifyIconW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__VerFindFileW@32]
+                    jmp [__imp__Shell_NotifyIconW@8]
 
-_VerFindFileW@32:
-                    jmp [__imp__VerFindFileW@32]
+_Shell_NotifyIconW@8:
+                    jmp [__imp__Shell_NotifyIconW@8]
 
 
                     section .data
 
-__imp__VerFindFileW@32:   dd unicows_initial_stub_VerFindFileW
-_Unicows_VerFindFileW:      dd 0
-namestring_VerFindFileW:    db 'VerFindFileW',0
+__imp__Shell_NotifyIconW@8:   dd unicows_initial_stub_Shell_NotifyIconW
+_Unicows_Shell_NotifyIconW:      dd 0
+namestring_Shell_NotifyIconW:    db 'Shell_NotifyIconW',0

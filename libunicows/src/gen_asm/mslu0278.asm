@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__ChooseFontW@4
-                    global _ChooseFontW@4
-                    global _Unicows_ChooseFontW
+                    global __imp__RegSetValueW@20
+                    global _RegSetValueW@20
+                    global _Unicows_RegSetValueW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_ChooseFontW:
+unicows_initial_stub_RegSetValueW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ChooseFontW@4     ; place to save the pointer
-                    push dword [_Unicows_ChooseFontW]      ; default proc, if any
-                    push dword COMDLG32                  ; dll id
-                    push dword namestring_ChooseFontW      ; name of the function
+                    push dword __imp__RegSetValueW@20     ; place to save the pointer
+                    push dword [_Unicows_RegSetValueW]      ; default proc, if any
+                    push dword ADVAPI32                  ; dll id
+                    push dword namestring_RegSetValueW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__ChooseFontW@4]
+                    jmp [__imp__RegSetValueW@20]
 
-_ChooseFontW@4:
-                    jmp [__imp__ChooseFontW@4]
+_RegSetValueW@20:
+                    jmp [__imp__RegSetValueW@20]
 
 
                     section .data
 
-__imp__ChooseFontW@4:   dd unicows_initial_stub_ChooseFontW
-_Unicows_ChooseFontW:      dd 0
-namestring_ChooseFontW:    db 'ChooseFontW',0
+__imp__RegSetValueW@20:   dd unicows_initial_stub_RegSetValueW
+_Unicows_RegSetValueW:      dd 0
+namestring_RegSetValueW:    db 'RegSetValueW',0

@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__GetLocaleInfoW@16
-                    global _GetLocaleInfoW@16
-                    global _Unicows_GetLocaleInfoW
+                    global __imp__GetFileAttributesExW@12
+                    global _GetFileAttributesExW@12
+                    global _Unicows_GetFileAttributesExW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_GetLocaleInfoW:
+unicows_initial_stub_GetFileAttributesExW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetLocaleInfoW@16     ; place to save the pointer
-                    push dword [_Unicows_GetLocaleInfoW]      ; default proc, if any
+                    push dword __imp__GetFileAttributesExW@12     ; place to save the pointer
+                    push dword [_Unicows_GetFileAttributesExW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetLocaleInfoW      ; name of the function
+                    push dword namestring_GetFileAttributesExW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__GetLocaleInfoW@16]
+                    jmp [__imp__GetFileAttributesExW@12]
 
-_GetLocaleInfoW@16:
-                    jmp [__imp__GetLocaleInfoW@16]
+_GetFileAttributesExW@12:
+                    jmp [__imp__GetFileAttributesExW@12]
 
 
                     section .data
 
-__imp__GetLocaleInfoW@16:   dd unicows_initial_stub_GetLocaleInfoW
-_Unicows_GetLocaleInfoW:      dd 0
-namestring_GetLocaleInfoW:    db 'GetLocaleInfoW',0
+__imp__GetFileAttributesExW@12:   dd unicows_initial_stub_GetFileAttributesExW
+_Unicows_GetFileAttributesExW:      dd 0
+namestring_GetFileAttributesExW:    db 'GetFileAttributesExW',0

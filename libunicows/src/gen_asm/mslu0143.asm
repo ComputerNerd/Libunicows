@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__EnumDisplaySettingsW@12
-                    global _EnumDisplaySettingsW@12
-                    global _Unicows_EnumDisplaySettingsW
+                    global __imp__EnumClipboardFormats@4
+                    global _EnumClipboardFormats@4
+                    global _Unicows_EnumClipboardFormats
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_EnumDisplaySettingsW:
+unicows_initial_stub_EnumClipboardFormats:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumDisplaySettingsW@12     ; place to save the pointer
-                    push dword [_Unicows_EnumDisplaySettingsW]      ; default proc, if any
+                    push dword __imp__EnumClipboardFormats@4     ; place to save the pointer
+                    push dword [_Unicows_EnumClipboardFormats]      ; default proc, if any
                     push dword USER32                  ; dll id
-                    push dword namestring_EnumDisplaySettingsW      ; name of the function
+                    push dword namestring_EnumClipboardFormats      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__EnumDisplaySettingsW@12]
+                    jmp [__imp__EnumClipboardFormats@4]
 
-_EnumDisplaySettingsW@12:
-                    jmp [__imp__EnumDisplaySettingsW@12]
+_EnumClipboardFormats@4:
+                    jmp [__imp__EnumClipboardFormats@4]
 
 
                     section .data
 
-__imp__EnumDisplaySettingsW@12:   dd unicows_initial_stub_EnumDisplaySettingsW
-_Unicows_EnumDisplaySettingsW:      dd 0
-namestring_EnumDisplaySettingsW:    db 'EnumDisplaySettingsW',0
+__imp__EnumClipboardFormats@4:   dd unicows_initial_stub_EnumClipboardFormats
+_Unicows_EnumClipboardFormats:      dd 0
+namestring_EnumClipboardFormats:    db 'EnumClipboardFormats',0

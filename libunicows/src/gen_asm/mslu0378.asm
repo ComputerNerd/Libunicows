@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__MoveFileW@8
-                    global _MoveFileW@8
-                    global _Unicows_MoveFileW
+                    global __imp__IsValidCodePage@4
+                    global _IsValidCodePage@4
+                    global _Unicows_IsValidCodePage
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_MoveFileW:
+unicows_initial_stub_IsValidCodePage:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__MoveFileW@8     ; place to save the pointer
-                    push dword [_Unicows_MoveFileW]      ; default proc, if any
+                    push dword __imp__IsValidCodePage@4     ; place to save the pointer
+                    push dword [_Unicows_IsValidCodePage]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_MoveFileW      ; name of the function
+                    push dword namestring_IsValidCodePage      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__MoveFileW@8]
+                    jmp [__imp__IsValidCodePage@4]
 
-_MoveFileW@8:
-                    jmp [__imp__MoveFileW@8]
+_IsValidCodePage@4:
+                    jmp [__imp__IsValidCodePage@4]
 
 
                     section .data
 
-__imp__MoveFileW@8:   dd unicows_initial_stub_MoveFileW
-_Unicows_MoveFileW:      dd 0
-namestring_MoveFileW:    db 'MoveFileW',0
+__imp__IsValidCodePage@4:   dd unicows_initial_stub_IsValidCodePage
+_Unicows_IsValidCodePage:      dd 0
+namestring_IsValidCodePage:    db 'IsValidCodePage',0

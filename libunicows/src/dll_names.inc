@@ -11,3 +11,7 @@
 %define OLEACC         10
 %define OLEDLG         11
 %define RASAPI32       12
+%define MSVFW32        13
+%define SENSAPI        14
+%define AVICAP32       15
+%define SECUR32        16

@@ -1,33 +1,33 @@
 %include "dll_names.inc"
 
-                    global __imp__AddJobW@20
-                    global _AddJobW@20
-                    global _Unicows_AddJobW
+                    global __imp__RasRenameEntryW@12
+                    global _RasRenameEntryW@12
+                    global _Unicows_RasRenameEntryW
                   
                     extern _LoadUnicowsSymbol
 
                     section .text
 
-unicows_initial_stub_AddJobW:
+unicows_initial_stub_RasRenameEntryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AddJobW@20     ; place to save the pointer
-                    push dword [_Unicows_AddJobW]      ; default proc, if any
-                    push dword WINSPOOL                  ; dll id
-                    push dword namestring_AddJobW      ; name of the function
+                    push dword __imp__RasRenameEntryW@12     ; place to save the pointer
+                    push dword [_Unicows_RasRenameEntryW]      ; default proc, if any
+                    push dword RASAPI32                  ; dll id
+                    push dword namestring_RasRenameEntryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it
-                    jmp [__imp__AddJobW@20]
+                    jmp [__imp__RasRenameEntryW@12]
 
-_AddJobW@20:
-                    jmp [__imp__AddJobW@20]
+_RasRenameEntryW@12:
+                    jmp [__imp__RasRenameEntryW@12]
 
 
                     section .data
 
-__imp__AddJobW@20:   dd unicows_initial_stub_AddJobW
-_Unicows_AddJobW:      dd 0
-namestring_AddJobW:    db 'AddJobW',0
+__imp__RasRenameEntryW@12:   dd unicows_initial_stub_RasRenameEntryW
+_Unicows_RasRenameEntryW:      dd 0
+namestring_RasRenameEntryW:    db 'RasRenameEntryW',0
