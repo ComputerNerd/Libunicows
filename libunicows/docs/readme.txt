@@ -13,9 +13,11 @@
  About
 =======
 
-Traditionally, win32 Unicode API was only available on Windows NT or 2000. If you wanted
-to take advantage of Unicode in your application and support Windows 95/98 at the same
-time, your only option was to deploy two executables, one for NT and one for 9X. 
+Traditionally, win32 Unicode API was only available on Windows NT or 2000. If
+you wanted to take advantage of Unicode in your application and support Windows
+95/98 at the same time, your only option was to deploy two executables, one for
+NT and one for 9X. 
+
 Fortunately, this changed in 2001 when MS (finally!) released MSLU runtime that
 allows Unicode applications to run under Windows 9X.
 
@@ -24,15 +26,16 @@ See these pages for details:
     http://www.microsoft.com/globaldev/Articles/mslu_announce.asp
     http://msdn.microsoft.com/msdnmag/nettop.asp?page=/msdnmag/issues/01/10/MSLU/MSLU.asp&ad=ads.ddj.com/msdnmag/premium.htm
 
-Less fortunately, this solution requires that you use a special statically linked
-import library that decides at runtime whether to load symbols from system libraries
-like kernel32.dll or user32.dll (in case of Windows NT) or from unicows.dll (which
-provides Unicode emulation layer under 9X). This import library is only available
-for Microsoft Visual C++ and is only part of the new Platform SDK, which is rather
-huge package.
+Less fortunately, this solution requires that you use a special statically
+linked import library that decides at runtime whether to load symbols from
+system libraries like kernel32.dll or user32.dll (in case of Windows NT) or
+from unicows.dll (which provides Unicode emulation layer under 9X). This import
+library is only available for Microsoft Visual C++ and is only part of the new
+Platform SDK, which is rather huge package.
 
-This library contains independent implementation of the import library. It can be
-used with any C compiler (although it was only tested with Mingw32 and MSVC so far).
+This library contains independent implementation of the import library. It can
+be used with any C compiler (although it was only tested with Mingw32 and MSVC
+so far).
 
 
 
@@ -61,8 +64,8 @@ Note: This was tested only with MSVC++ 6.0, but should work with other versions
  Usage
 =======
 
-1) Add the unicows import library BEFORE other win32 libraries on your command line.
-For example, if your command line for Mingw32 was
+1) Add the unicows import library BEFORE other win32 libraries on your command
+line. For example, if your command line for Mingw32 was
 
     c++ foo.o bar.o -o foo -lkernel32 -luser32 -lgdi32 -lcomdlg32
 
@@ -112,8 +115,8 @@ make sure the installer installs new enough versions that fully support Unicode
 
    If your compiler is not supported, you will have to create a makefile/project
    file for it. You can gen inspiration from existing makefiles. If you do so,
-   please send the makefile (and if possible, compiled unicows.lib) to me, so that
-   I can include it in the next release of libunicows. Thanks!
+   please send the makefile (and if possible, compiled unicows.lib) to me,
+   so that I can include it in the next release of libunicows. Thanks!
 
 
 
