@@ -1,0 +1,84 @@
+<html>
+
+<head>
+  <title>libunicows</title>
+</head>
+
+<body>
+<center>
+<A href="http://sourceforge.net"> <IMG src="http://sourceforge.net/sflogo.php?group_id=57088" width="88" height="31" border="0" alt="SourceForge Logo"></A>
+<h1>libunicows</h1>
+</center>
+
+
+<i>Latest version is 0.5, released on 2002/07/28</i>
+
+<h3>What is libunicows?</h3>
+
+Traditionally, win32 Unicode API was only available on Windows NT or 2000. If you wanted
+to take advantage of Unicode in your application and support Windows 95/98 at the same
+time, your only option was to deploy two executables, one for NT and one for 9X. 
+Fortunately, this changed in 2001 when MS (finally!) released MSLU runtime that
+allows Unicode applications to run under Windows 9X.
+<p>
+
+See these pages for details:
+<ul>
+<li>
+<a href="http://www.microsoft.com/globaldev/Articles/mslu_announce.asp">
+MSLU announcement
+</a>
+<li>
+<a href="http://msdn.microsoft.com/msdnmag/nettop.asp?page=/msdnmag/issues/01/10/MSLU/MSLU.asp&ad=ads.ddj.com/msdnmag/premium.htm">
+MSLU runtime download
+</a>
+</ul>
+
+<p>
+Less fortunately, this solution requires that you use a special statically linked
+import library that decides at runtime whether to load symbols from system libraries
+like kernel32.dll or user32.dll (in case of Windows NT) or from unicows.dll (which
+provides Unicode emulation layer under 9X). This import library is only available
+for Microsoft Visual C++ and is only part of the new Platform SDK, which is rather
+huge package.
+
+<p>
+libunicows contains independent implementation of the import library. It can be
+used with any C compiler (although it was only tested with Mingw32 and MSVC so far)
+and is released under the Open Source
+<a href="http://www.opensource.org/licenses/mit-license.html">MIT license</a>.
+
+
+
+<h3>Help needed!</h3>
+
+Currently only Mingw32 and MSVC are supported. 
+
+
+
+<h3>Download</h3>
+
+<table border="1" cellpadding="5">
+
+<tr>
+    <td><a href="http://www.mingw.org">Mingw32</a></td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.5-mingw32.zip">libunicows-0.5-mingw32.zip</td>
+</tr>
+
+<tr>
+    <td>Microsoft&nbsp;Visual&nbsp;C++&nbsp;6</td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.5-msvc6.zip">libunicows-0.5-msvc6.zip</td>
+</tr>
+
+<tr>
+    <td>Source code</td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-0.5-src.tar.gz">libunicows-0.5-src.tar.gz</td>
+</tr>
+
+</table>
+
+<p>
+See also the SF.net <a href="http://sourceforge.net/projects/libunicows">project page</a>
+
+</body>
+</html>

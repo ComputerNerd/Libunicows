@@ -1,0 +1,22 @@
+GetSaveFileNamePreviewW
+GetSystemWindowsDirectoryW
+InitSecurityInterfaceW
+InitializeSecurityContextW
+IsDestinationReachableW
+MCIWndCreateW
+OleUIPromptUser
+OleUIPromptUserW
+QueryContextAttributesW
+QueryCredentialsAttributesW
+QuerySecurityPackageInfoW
+RasDeleteSubEntryW
+capCreateCaptureWindowW
+capGetDriverDescriptionW
+wsprintfW
+AcquireCredentialsHandleW
+CreateStdAccessibleProxyW
+EnumDisplayDevicesW
+EnumerateSecurityPackagesW
+FreeContextBuffer
+GetOpenFileNamePreviewW
+GetProcAddress (can't do this one!)
