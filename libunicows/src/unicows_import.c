@@ -189,6 +189,7 @@ static const char *dllNames[DLLS_COUNT] =
 static int dllsLoaded = 0;
 static int useUnicows = 0;
 
+#if 0 /* we can't call it from anywhere */
 static void FreeDLLs(void)
 {
     size_t i;
@@ -217,6 +218,7 @@ static void FreeDLLs(void)
 
     dllsLoaded = 0;
 }
+#endif
 
 
 static void LoadDLLs(void)
