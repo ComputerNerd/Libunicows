@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__WriteConsoleOutputCharacterW@20
-                    global WriteConsoleOutputCharacterW
-                    global _WriteConsoleOutputCharacterW@20
-                    global _Unicows_WriteConsoleOutputCharacterW
+                    global __imp__WriteConsoleInputW@16
+                    global WriteConsoleInputW
+                    global _WriteConsoleInputW@16
+                    global _Unicows_WriteConsoleInputW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_WriteConsoleOutputCharacterW:
+unicows_initial_stub_WriteConsoleInputW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WriteConsoleOutputCharacterW@20     ; place to save the pointer
-                    push dword [_Unicows_WriteConsoleOutputCharacterW]      ; default proc, if any
+                    push dword __imp__WriteConsoleInputW@16     ; place to save the pointer
+                    push dword [_Unicows_WriteConsoleInputW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WriteConsoleOutputCharacterW      ; name of the function
+                    push dword namestring_WriteConsoleInputW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-WriteConsoleOutputCharacterW:
-_WriteConsoleOutputCharacterW@20:
-                    jmp [__imp__WriteConsoleOutputCharacterW@20]
+WriteConsoleInputW:
+_WriteConsoleInputW@16:
+                    jmp [__imp__WriteConsoleInputW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _WriteConsoleOutputCharacterW@20:
                     section .data
 %endif
 
-__imp__WriteConsoleOutputCharacterW@20:   dd unicows_initial_stub_WriteConsoleOutputCharacterW
-_Unicows_WriteConsoleOutputCharacterW:      dd 0
-namestring_WriteConsoleOutputCharacterW:    db 'WriteConsoleOutputCharacterW',0
+__imp__WriteConsoleInputW@16:   dd unicows_initial_stub_WriteConsoleInputW
+_Unicows_WriteConsoleInputW:      dd 0
+namestring_WriteConsoleInputW:    db 'WriteConsoleInputW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__AddPrinterW@12
-                    global AddPrinterW
-                    global _AddPrinterW@12
-                    global _Unicows_AddPrinterW
+                    global __imp__AddPrinterDriverW@12
+                    global AddPrinterDriverW
+                    global _AddPrinterDriverW@12
+                    global _Unicows_AddPrinterDriverW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_AddPrinterW:
+unicows_initial_stub_AddPrinterDriverW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AddPrinterW@12     ; place to save the pointer
-                    push dword [_Unicows_AddPrinterW]      ; default proc, if any
+                    push dword __imp__AddPrinterDriverW@12     ; place to save the pointer
+                    push dword [_Unicows_AddPrinterDriverW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_AddPrinterW      ; name of the function
+                    push dword namestring_AddPrinterDriverW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddPrinterW:
-_AddPrinterW@12:
-                    jmp [__imp__AddPrinterW@12]
+AddPrinterDriverW:
+_AddPrinterDriverW@12:
+                    jmp [__imp__AddPrinterDriverW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _AddPrinterW@12:
                     section .data
 %endif
 
-__imp__AddPrinterW@12:   dd unicows_initial_stub_AddPrinterW
-_Unicows_AddPrinterW:      dd 0
-namestring_AddPrinterW:    db 'AddPrinterW',0
+__imp__AddPrinterDriverW@12:   dd unicows_initial_stub_AddPrinterDriverW
+_Unicows_AddPrinterDriverW:      dd 0
+namestring_AddPrinterDriverW:    db 'AddPrinterDriverW',0

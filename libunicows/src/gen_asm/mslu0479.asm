@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumPrintersW@28
-                    global EnumPrintersW
-                    global _EnumPrintersW@28
-                    global _Unicows_EnumPrintersW
+                    global __imp__EnumPrinterDriversW@28
+                    global EnumPrinterDriversW
+                    global _EnumPrinterDriversW@28
+                    global _Unicows_EnumPrinterDriversW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumPrintersW:
+unicows_initial_stub_EnumPrinterDriversW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumPrintersW@28     ; place to save the pointer
-                    push dword [_Unicows_EnumPrintersW]      ; default proc, if any
+                    push dword __imp__EnumPrinterDriversW@28     ; place to save the pointer
+                    push dword [_Unicows_EnumPrinterDriversW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_EnumPrintersW      ; name of the function
+                    push dword namestring_EnumPrinterDriversW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumPrintersW:
-_EnumPrintersW@28:
-                    jmp [__imp__EnumPrintersW@28]
+EnumPrinterDriversW:
+_EnumPrinterDriversW@28:
+                    jmp [__imp__EnumPrinterDriversW@28]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumPrintersW@28:
                     section .data
 %endif
 
-__imp__EnumPrintersW@28:   dd unicows_initial_stub_EnumPrintersW
-_Unicows_EnumPrintersW:      dd 0
-namestring_EnumPrintersW:    db 'EnumPrintersW',0
+__imp__EnumPrinterDriversW@28:   dd unicows_initial_stub_EnumPrinterDriversW
+_Unicows_EnumPrinterDriversW:      dd 0
+namestring_EnumPrinterDriversW:    db 'EnumPrinterDriversW',0

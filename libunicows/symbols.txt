@@ -367,6 +367,7 @@
   kernel32 GetPrivateProfileSectionW@16
   kernel32 GetPrivateProfileStringW@24
   kernel32 GetPrivateProfileStructW@20
+  kernel32 GetProcAddress@8
   kernel32 GetProfileIntW@12
   kernel32 GetProfileSectionW@12
   kernel32 GetProfileStringW@20

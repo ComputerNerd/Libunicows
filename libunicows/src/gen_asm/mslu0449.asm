@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasGetEntryPropertiesW@24
-                    global RasGetEntryPropertiesW
-                    global _RasGetEntryPropertiesW@24
-                    global _Unicows_RasGetEntryPropertiesW
+                    global __imp__RasGetEntryDialParamsW@12
+                    global RasGetEntryDialParamsW
+                    global _RasGetEntryDialParamsW@12
+                    global _Unicows_RasGetEntryDialParamsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasGetEntryPropertiesW:
+unicows_initial_stub_RasGetEntryDialParamsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasGetEntryPropertiesW@24     ; place to save the pointer
-                    push dword [_Unicows_RasGetEntryPropertiesW]      ; default proc, if any
+                    push dword __imp__RasGetEntryDialParamsW@12     ; place to save the pointer
+                    push dword [_Unicows_RasGetEntryDialParamsW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasGetEntryPropertiesW      ; name of the function
+                    push dword namestring_RasGetEntryDialParamsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasGetEntryPropertiesW:
-_RasGetEntryPropertiesW@24:
-                    jmp [__imp__RasGetEntryPropertiesW@24]
+RasGetEntryDialParamsW:
+_RasGetEntryDialParamsW@12:
+                    jmp [__imp__RasGetEntryDialParamsW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasGetEntryPropertiesW@24:
                     section .data
 %endif
 
-__imp__RasGetEntryPropertiesW@24:   dd unicows_initial_stub_RasGetEntryPropertiesW
-_Unicows_RasGetEntryPropertiesW:      dd 0
-namestring_RasGetEntryPropertiesW:    db 'RasGetEntryPropertiesW',0
+__imp__RasGetEntryDialParamsW@12:   dd unicows_initial_stub_RasGetEntryDialParamsW
+_Unicows_RasGetEntryDialParamsW:      dd 0
+namestring_RasGetEntryDialParamsW:    db 'RasGetEntryDialParamsW',0

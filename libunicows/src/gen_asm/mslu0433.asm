@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__lstrcmpW@8
-                    global lstrcmpW
-                    global _lstrcmpW@8
-                    global _Unicows_lstrcmpW
+                    global __imp__lstrcatW@8
+                    global lstrcatW
+                    global _lstrcatW@8
+                    global _Unicows_lstrcatW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_lstrcmpW:
+unicows_initial_stub_lstrcatW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__lstrcmpW@8     ; place to save the pointer
-                    push dword [_Unicows_lstrcmpW]      ; default proc, if any
+                    push dword __imp__lstrcatW@8     ; place to save the pointer
+                    push dword [_Unicows_lstrcatW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_lstrcmpW      ; name of the function
+                    push dword namestring_lstrcatW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-lstrcmpW:
-_lstrcmpW@8:
-                    jmp [__imp__lstrcmpW@8]
+lstrcatW:
+_lstrcatW@8:
+                    jmp [__imp__lstrcatW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _lstrcmpW@8:
                     section .data
 %endif
 
-__imp__lstrcmpW@8:   dd unicows_initial_stub_lstrcmpW
-_Unicows_lstrcmpW:      dd 0
-namestring_lstrcmpW:    db 'lstrcmpW',0
+__imp__lstrcatW@8:   dd unicows_initial_stub_lstrcatW
+_Unicows_lstrcatW:      dd 0
+namestring_lstrcatW:    db 'lstrcatW',0

@@ -505,4 +505,5 @@ WRAPPERS = \
            build/mingw32/mslu0502.o \
            build/mingw32/mslu0503.o \
            build/mingw32/mslu0504.o \
-           build/mingw32/mslu0505.o 
+           build/mingw32/mslu0505.o \
+           build/mingw32/mslu0506.o 

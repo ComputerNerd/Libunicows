@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ScrollConsoleScreenBufferW@20
-                    global ScrollConsoleScreenBufferW
-                    global _ScrollConsoleScreenBufferW@20
-                    global _Unicows_ScrollConsoleScreenBufferW
+                    global __imp__RemoveDirectoryW@4
+                    global RemoveDirectoryW
+                    global _RemoveDirectoryW@4
+                    global _Unicows_RemoveDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ScrollConsoleScreenBufferW:
+unicows_initial_stub_RemoveDirectoryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ScrollConsoleScreenBufferW@20     ; place to save the pointer
-                    push dword [_Unicows_ScrollConsoleScreenBufferW]      ; default proc, if any
+                    push dword __imp__RemoveDirectoryW@4     ; place to save the pointer
+                    push dword [_Unicows_RemoveDirectoryW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_ScrollConsoleScreenBufferW      ; name of the function
+                    push dword namestring_RemoveDirectoryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ScrollConsoleScreenBufferW:
-_ScrollConsoleScreenBufferW@20:
-                    jmp [__imp__ScrollConsoleScreenBufferW@20]
+RemoveDirectoryW:
+_RemoveDirectoryW@4:
+                    jmp [__imp__RemoveDirectoryW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ScrollConsoleScreenBufferW@20:
                     section .data
 %endif
 
-__imp__ScrollConsoleScreenBufferW@20:   dd unicows_initial_stub_ScrollConsoleScreenBufferW
-_Unicows_ScrollConsoleScreenBufferW:      dd 0
-namestring_ScrollConsoleScreenBufferW:    db 'ScrollConsoleScreenBufferW',0
+__imp__RemoveDirectoryW@4:   dd unicows_initial_stub_RemoveDirectoryW
+_Unicows_RemoveDirectoryW:      dd 0
+namestring_RemoveDirectoryW:    db 'RemoveDirectoryW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ReadConsoleOutputW@20
-                    global ReadConsoleOutputW
-                    global _ReadConsoleOutputW@20
-                    global _Unicows_ReadConsoleOutputW
+                    global __imp__ReadConsoleOutputCharacterW@20
+                    global ReadConsoleOutputCharacterW
+                    global _ReadConsoleOutputCharacterW@20
+                    global _Unicows_ReadConsoleOutputCharacterW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ReadConsoleOutputW:
+unicows_initial_stub_ReadConsoleOutputCharacterW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ReadConsoleOutputW@20     ; place to save the pointer
-                    push dword [_Unicows_ReadConsoleOutputW]      ; default proc, if any
+                    push dword __imp__ReadConsoleOutputCharacterW@20     ; place to save the pointer
+                    push dword [_Unicows_ReadConsoleOutputCharacterW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_ReadConsoleOutputW      ; name of the function
+                    push dword namestring_ReadConsoleOutputCharacterW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ReadConsoleOutputW:
-_ReadConsoleOutputW@20:
-                    jmp [__imp__ReadConsoleOutputW@20]
+ReadConsoleOutputCharacterW:
+_ReadConsoleOutputCharacterW@20:
+                    jmp [__imp__ReadConsoleOutputCharacterW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ReadConsoleOutputW@20:
                     section .data
 %endif
 
-__imp__ReadConsoleOutputW@20:   dd unicows_initial_stub_ReadConsoleOutputW
-_Unicows_ReadConsoleOutputW:      dd 0
-namestring_ReadConsoleOutputW:    db 'ReadConsoleOutputW',0
+__imp__ReadConsoleOutputCharacterW@20:   dd unicows_initial_stub_ReadConsoleOutputCharacterW
+_Unicows_ReadConsoleOutputCharacterW:      dd 0
+namestring_ReadConsoleOutputCharacterW:    db 'ReadConsoleOutputCharacterW',0

@@ -736,6 +736,8 @@ extern _GetPrivateProfileStringW@24
 export GetPrivateProfileStringW@24
 extern _GetPrivateProfileStructW@20
 export GetPrivateProfileStructW@20
+extern _GetProcAddress@8
+export GetProcAddress@8
 extern _GetProfileIntW@12
 export GetProfileIntW@12
 extern _GetProfileSectionW@12

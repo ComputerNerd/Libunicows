@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__WideCharToMultiByte@32
-                    global WideCharToMultiByte
-                    global _WideCharToMultiByte@32
-                    global _Unicows_WideCharToMultiByte
+                    global __imp__WaitNamedPipeW@8
+                    global WaitNamedPipeW
+                    global _WaitNamedPipeW@8
+                    global _Unicows_WaitNamedPipeW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_WideCharToMultiByte:
+unicows_initial_stub_WaitNamedPipeW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WideCharToMultiByte@32     ; place to save the pointer
-                    push dword [_Unicows_WideCharToMultiByte]      ; default proc, if any
+                    push dword __imp__WaitNamedPipeW@8     ; place to save the pointer
+                    push dword [_Unicows_WaitNamedPipeW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WideCharToMultiByte      ; name of the function
+                    push dword namestring_WaitNamedPipeW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-WideCharToMultiByte:
-_WideCharToMultiByte@32:
-                    jmp [__imp__WideCharToMultiByte@32]
+WaitNamedPipeW:
+_WaitNamedPipeW@8:
+                    jmp [__imp__WaitNamedPipeW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _WideCharToMultiByte@32:
                     section .data
 %endif
 
-__imp__WideCharToMultiByte@32:   dd unicows_initial_stub_WideCharToMultiByte
-_Unicows_WideCharToMultiByte:      dd 0
-namestring_WideCharToMultiByte:    db 'WideCharToMultiByte',0
+__imp__WaitNamedPipeW@8:   dd unicows_initial_stub_WaitNamedPipeW
+_Unicows_WaitNamedPipeW:      dd 0
+namestring_WaitNamedPipeW:    db 'WaitNamedPipeW',0

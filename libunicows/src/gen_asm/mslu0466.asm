@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ConfigurePortW@12
-                    global ConfigurePortW
-                    global _ConfigurePortW@12
-                    global _Unicows_ConfigurePortW
+                    global __imp__AdvancedDocumentPropertiesW@20
+                    global AdvancedDocumentPropertiesW
+                    global _AdvancedDocumentPropertiesW@20
+                    global _Unicows_AdvancedDocumentPropertiesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ConfigurePortW:
+unicows_initial_stub_AdvancedDocumentPropertiesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ConfigurePortW@12     ; place to save the pointer
-                    push dword [_Unicows_ConfigurePortW]      ; default proc, if any
+                    push dword __imp__AdvancedDocumentPropertiesW@20     ; place to save the pointer
+                    push dword [_Unicows_AdvancedDocumentPropertiesW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_ConfigurePortW      ; name of the function
+                    push dword namestring_AdvancedDocumentPropertiesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ConfigurePortW:
-_ConfigurePortW@12:
-                    jmp [__imp__ConfigurePortW@12]
+AdvancedDocumentPropertiesW:
+_AdvancedDocumentPropertiesW@20:
+                    jmp [__imp__AdvancedDocumentPropertiesW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ConfigurePortW@12:
                     section .data
 %endif
 
-__imp__ConfigurePortW@12:   dd unicows_initial_stub_ConfigurePortW
-_Unicows_ConfigurePortW:      dd 0
-namestring_ConfigurePortW:    db 'ConfigurePortW',0
+__imp__AdvancedDocumentPropertiesW@20:   dd unicows_initial_stub_AdvancedDocumentPropertiesW
+_Unicows_AdvancedDocumentPropertiesW:      dd 0
+namestring_AdvancedDocumentPropertiesW:    db 'AdvancedDocumentPropertiesW',0

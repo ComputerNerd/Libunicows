@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__MultiByteToWideChar@24
-                    global MultiByteToWideChar
-                    global _MultiByteToWideChar@24
-                    global _Unicows_MultiByteToWideChar
+                    global __imp__MoveFileW@8
+                    global MoveFileW
+                    global _MoveFileW@8
+                    global _Unicows_MoveFileW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_MultiByteToWideChar:
+unicows_initial_stub_MoveFileW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__MultiByteToWideChar@24     ; place to save the pointer
-                    push dword [_Unicows_MultiByteToWideChar]      ; default proc, if any
+                    push dword __imp__MoveFileW@8     ; place to save the pointer
+                    push dword [_Unicows_MoveFileW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_MultiByteToWideChar      ; name of the function
+                    push dword namestring_MoveFileW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-MultiByteToWideChar:
-_MultiByteToWideChar@24:
-                    jmp [__imp__MultiByteToWideChar@24]
+MoveFileW:
+_MoveFileW@8:
+                    jmp [__imp__MoveFileW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _MultiByteToWideChar@24:
                     section .data
 %endif
 
-__imp__MultiByteToWideChar@24:   dd unicows_initial_stub_MultiByteToWideChar
-_Unicows_MultiByteToWideChar:      dd 0
-namestring_MultiByteToWideChar:    db 'MultiByteToWideChar',0
+__imp__MoveFileW@8:   dd unicows_initial_stub_MoveFileW
+_Unicows_MoveFileW:      dd 0
+namestring_MoveFileW:    db 'MoveFileW',0

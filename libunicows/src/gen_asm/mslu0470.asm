@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DeletePrintProvidorW@12
-                    global DeletePrintProvidorW
-                    global _DeletePrintProvidorW@12
-                    global _Unicows_DeletePrintProvidorW
+                    global __imp__DeletePrintProcessorW@12
+                    global DeletePrintProcessorW
+                    global _DeletePrintProcessorW@12
+                    global _Unicows_DeletePrintProcessorW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DeletePrintProvidorW:
+unicows_initial_stub_DeletePrintProcessorW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DeletePrintProvidorW@12     ; place to save the pointer
-                    push dword [_Unicows_DeletePrintProvidorW]      ; default proc, if any
+                    push dword __imp__DeletePrintProcessorW@12     ; place to save the pointer
+                    push dword [_Unicows_DeletePrintProcessorW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_DeletePrintProvidorW      ; name of the function
+                    push dword namestring_DeletePrintProcessorW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeletePrintProvidorW:
-_DeletePrintProvidorW@12:
-                    jmp [__imp__DeletePrintProvidorW@12]
+DeletePrintProcessorW:
+_DeletePrintProcessorW@12:
+                    jmp [__imp__DeletePrintProcessorW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DeletePrintProvidorW@12:
                     section .data
 %endif
 
-__imp__DeletePrintProvidorW@12:   dd unicows_initial_stub_DeletePrintProvidorW
-_Unicows_DeletePrintProvidorW:      dd 0
-namestring_DeletePrintProvidorW:    db 'DeletePrintProvidorW',0
+__imp__DeletePrintProcessorW@12:   dd unicows_initial_stub_DeletePrintProcessorW
+_Unicows_DeletePrintProcessorW:      dd 0
+namestring_DeletePrintProcessorW:    db 'DeletePrintProcessorW',0

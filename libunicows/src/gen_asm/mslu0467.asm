@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DeleteMonitorW@12
-                    global DeleteMonitorW
-                    global _DeleteMonitorW@12
-                    global _Unicows_DeleteMonitorW
+                    global __imp__ConfigurePortW@12
+                    global ConfigurePortW
+                    global _ConfigurePortW@12
+                    global _Unicows_ConfigurePortW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DeleteMonitorW:
+unicows_initial_stub_ConfigurePortW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DeleteMonitorW@12     ; place to save the pointer
-                    push dword [_Unicows_DeleteMonitorW]      ; default proc, if any
+                    push dword __imp__ConfigurePortW@12     ; place to save the pointer
+                    push dword [_Unicows_ConfigurePortW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_DeleteMonitorW      ; name of the function
+                    push dword namestring_ConfigurePortW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeleteMonitorW:
-_DeleteMonitorW@12:
-                    jmp [__imp__DeleteMonitorW@12]
+ConfigurePortW:
+_ConfigurePortW@12:
+                    jmp [__imp__ConfigurePortW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DeleteMonitorW@12:
                     section .data
 %endif
 
-__imp__DeleteMonitorW@12:   dd unicows_initial_stub_DeleteMonitorW
-_Unicows_DeleteMonitorW:      dd 0
-namestring_DeleteMonitorW:    db 'DeleteMonitorW',0
+__imp__ConfigurePortW@12:   dd unicows_initial_stub_ConfigurePortW
+_Unicows_ConfigurePortW:      dd 0
+namestring_ConfigurePortW:    db 'ConfigurePortW',0

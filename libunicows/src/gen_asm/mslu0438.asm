@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasConnectionNotificationW@12
-                    global RasConnectionNotificationW
-                    global _RasConnectionNotificationW@12
-                    global _Unicows_RasConnectionNotificationW
+                    global __imp__lstrlenW@4
+                    global lstrlenW
+                    global _lstrlenW@4
+                    global _Unicows_lstrlenW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasConnectionNotificationW:
+unicows_initial_stub_lstrlenW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasConnectionNotificationW@12     ; place to save the pointer
-                    push dword [_Unicows_RasConnectionNotificationW]      ; default proc, if any
-                    push dword RASAPI32                  ; dll id
-                    push dword namestring_RasConnectionNotificationW      ; name of the function
+                    push dword __imp__lstrlenW@4     ; place to save the pointer
+                    push dword [_Unicows_lstrlenW]      ; default proc, if any
+                    push dword KERNEL32                  ; dll id
+                    push dword namestring_lstrlenW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasConnectionNotificationW:
-_RasConnectionNotificationW@12:
-                    jmp [__imp__RasConnectionNotificationW@12]
+lstrlenW:
+_lstrlenW@4:
+                    jmp [__imp__lstrlenW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasConnectionNotificationW@12:
                     section .data
 %endif
 
-__imp__RasConnectionNotificationW@12:   dd unicows_initial_stub_RasConnectionNotificationW
-_Unicows_RasConnectionNotificationW:      dd 0
-namestring_RasConnectionNotificationW:    db 'RasConnectionNotificationW',0
+__imp__lstrlenW@4:   dd unicows_initial_stub_lstrlenW
+_Unicows_lstrlenW:      dd 0
+namestring_lstrlenW:    db 'lstrlenW',0

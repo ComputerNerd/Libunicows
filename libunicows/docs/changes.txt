@@ -1,3 +1,5 @@
+- implemented GetProcAddress wrapping (Alexey A. Popoff)
+
 Version 0.7.0
 -------------
 - added 13 more symbols found in latest unicows.dll

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__WaitNamedPipeW@8
-                    global WaitNamedPipeW
-                    global _WaitNamedPipeW@8
-                    global _Unicows_WaitNamedPipeW
+                    global __imp__UpdateResourceW@24
+                    global UpdateResourceW
+                    global _UpdateResourceW@24
+                    global _Unicows_UpdateResourceW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_WaitNamedPipeW:
+unicows_initial_stub_UpdateResourceW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WaitNamedPipeW@8     ; place to save the pointer
-                    push dword [_Unicows_WaitNamedPipeW]      ; default proc, if any
+                    push dword __imp__UpdateResourceW@24     ; place to save the pointer
+                    push dword [_Unicows_UpdateResourceW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WaitNamedPipeW      ; name of the function
+                    push dword namestring_UpdateResourceW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-WaitNamedPipeW:
-_WaitNamedPipeW@8:
-                    jmp [__imp__WaitNamedPipeW@8]
+UpdateResourceW:
+_UpdateResourceW@24:
+                    jmp [__imp__UpdateResourceW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _WaitNamedPipeW@8:
                     section .data
 %endif
 
-__imp__WaitNamedPipeW@8:   dd unicows_initial_stub_WaitNamedPipeW
-_Unicows_WaitNamedPipeW:      dd 0
-namestring_WaitNamedPipeW:    db 'WaitNamedPipeW',0
+__imp__UpdateResourceW@24:   dd unicows_initial_stub_UpdateResourceW
+_Unicows_UpdateResourceW:      dd 0
+namestring_UpdateResourceW:    db 'UpdateResourceW',0

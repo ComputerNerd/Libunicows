@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__ReadConsoleInputW@16
-                    global ReadConsoleInputW
-                    global _ReadConsoleInputW@16
-                    global _Unicows_ReadConsoleInputW
+                    global __imp__QueryDosDeviceW@12
+                    global QueryDosDeviceW
+                    global _QueryDosDeviceW@12
+                    global _Unicows_QueryDosDeviceW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_ReadConsoleInputW:
+unicows_initial_stub_QueryDosDeviceW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__ReadConsoleInputW@16     ; place to save the pointer
-                    push dword [_Unicows_ReadConsoleInputW]      ; default proc, if any
+                    push dword __imp__QueryDosDeviceW@12     ; place to save the pointer
+                    push dword [_Unicows_QueryDosDeviceW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_ReadConsoleInputW      ; name of the function
+                    push dword namestring_QueryDosDeviceW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-ReadConsoleInputW:
-_ReadConsoleInputW@16:
-                    jmp [__imp__ReadConsoleInputW@16]
+QueryDosDeviceW:
+_QueryDosDeviceW@12:
+                    jmp [__imp__QueryDosDeviceW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _ReadConsoleInputW@16:
                     section .data
 %endif
 
-__imp__ReadConsoleInputW@16:   dd unicows_initial_stub_ReadConsoleInputW
-_Unicows_ReadConsoleInputW:      dd 0
-namestring_ReadConsoleInputW:    db 'ReadConsoleInputW',0
+__imp__QueryDosDeviceW@12:   dd unicows_initial_stub_QueryDosDeviceW
+_Unicows_QueryDosDeviceW:      dd 0
+namestring_QueryDosDeviceW:    db 'QueryDosDeviceW',0

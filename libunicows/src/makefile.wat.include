@@ -505,4 +505,5 @@ WRAPPERS = &
            build\watcom\mslu0502.obj &
            build\watcom\mslu0503.obj &
            build\watcom\mslu0504.obj &
-           build\watcom\mslu0505.obj 
+           build\watcom\mslu0505.obj &
+           build\watcom\mslu0506.obj 

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumMonitorsW@24
-                    global EnumMonitorsW
-                    global _EnumMonitorsW@24
-                    global _Unicows_EnumMonitorsW
+                    global __imp__DocumentPropertiesW@24
+                    global DocumentPropertiesW
+                    global _DocumentPropertiesW@24
+                    global _Unicows_DocumentPropertiesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumMonitorsW:
+unicows_initial_stub_DocumentPropertiesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumMonitorsW@24     ; place to save the pointer
-                    push dword [_Unicows_EnumMonitorsW]      ; default proc, if any
+                    push dword __imp__DocumentPropertiesW@24     ; place to save the pointer
+                    push dword [_Unicows_DocumentPropertiesW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_EnumMonitorsW      ; name of the function
+                    push dword namestring_DocumentPropertiesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumMonitorsW:
-_EnumMonitorsW@24:
-                    jmp [__imp__EnumMonitorsW@24]
+DocumentPropertiesW:
+_DocumentPropertiesW@24:
+                    jmp [__imp__DocumentPropertiesW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumMonitorsW@24:
                     section .data
 %endif
 
-__imp__EnumMonitorsW@24:   dd unicows_initial_stub_EnumMonitorsW
-_Unicows_EnumMonitorsW:      dd 0
-namestring_EnumMonitorsW:    db 'EnumMonitorsW',0
+__imp__DocumentPropertiesW@24:   dd unicows_initial_stub_DocumentPropertiesW
+_Unicows_DocumentPropertiesW:      dd 0
+namestring_DocumentPropertiesW:    db 'DocumentPropertiesW',0

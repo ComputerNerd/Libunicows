@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__AddPrintProvidorW@12
-                    global AddPrintProvidorW
-                    global _AddPrintProvidorW@12
-                    global _Unicows_AddPrintProvidorW
+                    global __imp__AddPrintProcessorW@16
+                    global AddPrintProcessorW
+                    global _AddPrintProcessorW@16
+                    global _Unicows_AddPrintProcessorW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_AddPrintProvidorW:
+unicows_initial_stub_AddPrintProcessorW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__AddPrintProvidorW@12     ; place to save the pointer
-                    push dword [_Unicows_AddPrintProvidorW]      ; default proc, if any
+                    push dword __imp__AddPrintProcessorW@16     ; place to save the pointer
+                    push dword [_Unicows_AddPrintProcessorW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_AddPrintProvidorW      ; name of the function
+                    push dword namestring_AddPrintProcessorW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddPrintProvidorW:
-_AddPrintProvidorW@12:
-                    jmp [__imp__AddPrintProvidorW@12]
+AddPrintProcessorW:
+_AddPrintProcessorW@16:
+                    jmp [__imp__AddPrintProcessorW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _AddPrintProvidorW@12:
                     section .data
 %endif
 
-__imp__AddPrintProvidorW@12:   dd unicows_initial_stub_AddPrintProvidorW
-_Unicows_AddPrintProvidorW:      dd 0
-namestring_AddPrintProvidorW:    db 'AddPrintProvidorW',0
+__imp__AddPrintProcessorW@16:   dd unicows_initial_stub_AddPrintProcessorW
+_Unicows_AddPrintProcessorW:      dd 0
+namestring_AddPrintProcessorW:    db 'AddPrintProcessorW',0

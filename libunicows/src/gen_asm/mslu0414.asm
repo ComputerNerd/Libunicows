@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__SetDefaultCommConfigW@12
-                    global SetDefaultCommConfigW
-                    global _SetDefaultCommConfigW@12
-                    global _Unicows_SetDefaultCommConfigW
+                    global __imp__SetCurrentDirectoryW@4
+                    global SetCurrentDirectoryW
+                    global _SetCurrentDirectoryW@4
+                    global _Unicows_SetCurrentDirectoryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_SetDefaultCommConfigW:
+unicows_initial_stub_SetCurrentDirectoryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__SetDefaultCommConfigW@12     ; place to save the pointer
-                    push dword [_Unicows_SetDefaultCommConfigW]      ; default proc, if any
+                    push dword __imp__SetCurrentDirectoryW@4     ; place to save the pointer
+                    push dword [_Unicows_SetCurrentDirectoryW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_SetDefaultCommConfigW      ; name of the function
+                    push dword namestring_SetCurrentDirectoryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetDefaultCommConfigW:
-_SetDefaultCommConfigW@12:
-                    jmp [__imp__SetDefaultCommConfigW@12]
+SetCurrentDirectoryW:
+_SetCurrentDirectoryW@4:
+                    jmp [__imp__SetCurrentDirectoryW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _SetDefaultCommConfigW@12:
                     section .data
 %endif
 
-__imp__SetDefaultCommConfigW@12:   dd unicows_initial_stub_SetDefaultCommConfigW
-_Unicows_SetDefaultCommConfigW:      dd 0
-namestring_SetDefaultCommConfigW:    db 'SetDefaultCommConfigW',0
+__imp__SetCurrentDirectoryW@4:   dd unicows_initial_stub_SetCurrentDirectoryW
+_Unicows_SetCurrentDirectoryW:      dd 0
+namestring_SetCurrentDirectoryW:    db 'SetCurrentDirectoryW',0

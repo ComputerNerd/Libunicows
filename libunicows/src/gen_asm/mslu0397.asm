@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__OpenMutexW@12
-                    global OpenMutexW
-                    global _OpenMutexW@12
-                    global _Unicows_OpenMutexW
+                    global __imp__OpenFileMappingW@12
+                    global OpenFileMappingW
+                    global _OpenFileMappingW@12
+                    global _Unicows_OpenFileMappingW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_OpenMutexW:
+unicows_initial_stub_OpenFileMappingW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__OpenMutexW@12     ; place to save the pointer
-                    push dword [_Unicows_OpenMutexW]      ; default proc, if any
+                    push dword __imp__OpenFileMappingW@12     ; place to save the pointer
+                    push dword [_Unicows_OpenFileMappingW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_OpenMutexW      ; name of the function
+                    push dword namestring_OpenFileMappingW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenMutexW:
-_OpenMutexW@12:
-                    jmp [__imp__OpenMutexW@12]
+OpenFileMappingW:
+_OpenFileMappingW@12:
+                    jmp [__imp__OpenFileMappingW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _OpenMutexW@12:
                     section .data
 %endif
 
-__imp__OpenMutexW@12:   dd unicows_initial_stub_OpenMutexW
-_Unicows_OpenMutexW:      dd 0
-namestring_OpenMutexW:    db 'OpenMutexW',0
+__imp__OpenFileMappingW@12:   dd unicows_initial_stub_OpenFileMappingW
+_Unicows_OpenFileMappingW:      dd 0
+namestring_OpenFileMappingW:    db 'OpenFileMappingW',0

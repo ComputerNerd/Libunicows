@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__QueryDosDeviceW@12
-                    global QueryDosDeviceW
-                    global _QueryDosDeviceW@12
-                    global _Unicows_QueryDosDeviceW
+                    global __imp__PeekConsoleInputW@16
+                    global PeekConsoleInputW
+                    global _PeekConsoleInputW@16
+                    global _Unicows_PeekConsoleInputW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_QueryDosDeviceW:
+unicows_initial_stub_PeekConsoleInputW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__QueryDosDeviceW@12     ; place to save the pointer
-                    push dword [_Unicows_QueryDosDeviceW]      ; default proc, if any
+                    push dword __imp__PeekConsoleInputW@16     ; place to save the pointer
+                    push dword [_Unicows_PeekConsoleInputW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_QueryDosDeviceW      ; name of the function
+                    push dword namestring_PeekConsoleInputW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-QueryDosDeviceW:
-_QueryDosDeviceW@12:
-                    jmp [__imp__QueryDosDeviceW@12]
+PeekConsoleInputW:
+_PeekConsoleInputW@16:
+                    jmp [__imp__PeekConsoleInputW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _QueryDosDeviceW@12:
                     section .data
 %endif
 
-__imp__QueryDosDeviceW@12:   dd unicows_initial_stub_QueryDosDeviceW
-_Unicows_QueryDosDeviceW:      dd 0
-namestring_QueryDosDeviceW:    db 'QueryDosDeviceW',0
+__imp__PeekConsoleInputW@16:   dd unicows_initial_stub_PeekConsoleInputW
+_Unicows_PeekConsoleInputW:      dd 0
+namestring_PeekConsoleInputW:    db 'PeekConsoleInputW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__capGetDriverDescriptionW@20
-                    global capGetDriverDescriptionW
-                    global _capGetDriverDescriptionW@20
-                    global _Unicows_capGetDriverDescriptionW
+                    global __imp__capCreateCaptureWindowW
+                    global capCreateCaptureWindowW
+                    global _capCreateCaptureWindowW
+                    global _Unicows_capCreateCaptureWindowW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_capGetDriverDescriptionW:
+unicows_initial_stub_capCreateCaptureWindowW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__capGetDriverDescriptionW@20     ; place to save the pointer
-                    push dword [_Unicows_capGetDriverDescriptionW]      ; default proc, if any
+                    push dword __imp__capCreateCaptureWindowW     ; place to save the pointer
+                    push dword [_Unicows_capCreateCaptureWindowW]      ; default proc, if any
                     push dword AVICAP32                  ; dll id
-                    push dword namestring_capGetDriverDescriptionW      ; name of the function
+                    push dword namestring_capCreateCaptureWindowW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-capGetDriverDescriptionW:
-_capGetDriverDescriptionW@20:
-                    jmp [__imp__capGetDriverDescriptionW@20]
+capCreateCaptureWindowW:
+_capCreateCaptureWindowW:
+                    jmp [__imp__capCreateCaptureWindowW]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _capGetDriverDescriptionW@20:
                     section .data
 %endif
 
-__imp__capGetDriverDescriptionW@20:   dd unicows_initial_stub_capGetDriverDescriptionW
-_Unicows_capGetDriverDescriptionW:      dd 0
-namestring_capGetDriverDescriptionW:    db 'capGetDriverDescriptionW',0
+__imp__capCreateCaptureWindowW:   dd unicows_initial_stub_capCreateCaptureWindowW
+_Unicows_capCreateCaptureWindowW:      dd 0
+namestring_capCreateCaptureWindowW:    db 'capCreateCaptureWindowW',0

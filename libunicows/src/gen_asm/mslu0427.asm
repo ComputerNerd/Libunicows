@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__WritePrivateProfileSectionW@12
-                    global WritePrivateProfileSectionW
-                    global _WritePrivateProfileSectionW@12
-                    global _Unicows_WritePrivateProfileSectionW
+                    global __imp__WriteConsoleW@20
+                    global WriteConsoleW
+                    global _WriteConsoleW@20
+                    global _Unicows_WriteConsoleW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_WritePrivateProfileSectionW:
+unicows_initial_stub_WriteConsoleW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__WritePrivateProfileSectionW@12     ; place to save the pointer
-                    push dword [_Unicows_WritePrivateProfileSectionW]      ; default proc, if any
+                    push dword __imp__WriteConsoleW@20     ; place to save the pointer
+                    push dword [_Unicows_WriteConsoleW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_WritePrivateProfileSectionW      ; name of the function
+                    push dword namestring_WriteConsoleW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-WritePrivateProfileSectionW:
-_WritePrivateProfileSectionW@12:
-                    jmp [__imp__WritePrivateProfileSectionW@12]
+WriteConsoleW:
+_WriteConsoleW@20:
+                    jmp [__imp__WriteConsoleW@20]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _WritePrivateProfileSectionW@12:
                     section .data
 %endif
 
-__imp__WritePrivateProfileSectionW@12:   dd unicows_initial_stub_WritePrivateProfileSectionW
-_Unicows_WritePrivateProfileSectionW:      dd 0
-namestring_WritePrivateProfileSectionW:    db 'WritePrivateProfileSectionW',0
+__imp__WriteConsoleW@20:   dd unicows_initial_stub_WriteConsoleW
+_Unicows_WriteConsoleW:      dd 0
+namestring_WriteConsoleW:    db 'WriteConsoleW',0

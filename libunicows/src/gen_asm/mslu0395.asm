@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__OpenEventW@12
-                    global OpenEventW
-                    global _OpenEventW@12
-                    global _Unicows_OpenEventW
+                    global __imp__MultiByteToWideChar@24
+                    global MultiByteToWideChar
+                    global _MultiByteToWideChar@24
+                    global _Unicows_MultiByteToWideChar
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_OpenEventW:
+unicows_initial_stub_MultiByteToWideChar:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__OpenEventW@12     ; place to save the pointer
-                    push dword [_Unicows_OpenEventW]      ; default proc, if any
+                    push dword __imp__MultiByteToWideChar@24     ; place to save the pointer
+                    push dword [_Unicows_MultiByteToWideChar]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_OpenEventW      ; name of the function
+                    push dword namestring_MultiByteToWideChar      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenEventW:
-_OpenEventW@12:
-                    jmp [__imp__OpenEventW@12]
+MultiByteToWideChar:
+_MultiByteToWideChar@24:
+                    jmp [__imp__MultiByteToWideChar@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _OpenEventW@12:
                     section .data
 %endif
 
-__imp__OpenEventW@12:   dd unicows_initial_stub_OpenEventW
-_Unicows_OpenEventW:      dd 0
-namestring_OpenEventW:    db 'OpenEventW',0
+__imp__MultiByteToWideChar@24:   dd unicows_initial_stub_MultiByteToWideChar
+_Unicows_MultiByteToWideChar:      dd 0
+namestring_MultiByteToWideChar:    db 'MultiByteToWideChar',0

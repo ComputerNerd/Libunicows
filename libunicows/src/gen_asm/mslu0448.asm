@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasGetEntryDialParamsW@12
-                    global RasGetEntryDialParamsW
-                    global _RasGetEntryDialParamsW@12
-                    global _Unicows_RasGetEntryDialParamsW
+                    global __imp__RasGetConnectStatusW@8
+                    global RasGetConnectStatusW
+                    global _RasGetConnectStatusW@8
+                    global _Unicows_RasGetConnectStatusW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasGetEntryDialParamsW:
+unicows_initial_stub_RasGetConnectStatusW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasGetEntryDialParamsW@12     ; place to save the pointer
-                    push dword [_Unicows_RasGetEntryDialParamsW]      ; default proc, if any
+                    push dword __imp__RasGetConnectStatusW@8     ; place to save the pointer
+                    push dword [_Unicows_RasGetConnectStatusW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasGetEntryDialParamsW      ; name of the function
+                    push dword namestring_RasGetConnectStatusW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasGetEntryDialParamsW:
-_RasGetEntryDialParamsW@12:
-                    jmp [__imp__RasGetEntryDialParamsW@12]
+RasGetConnectStatusW:
+_RasGetConnectStatusW@8:
+                    jmp [__imp__RasGetConnectStatusW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasGetEntryDialParamsW@12:
                     section .data
 %endif
 
-__imp__RasGetEntryDialParamsW@12:   dd unicows_initial_stub_RasGetEntryDialParamsW
-_Unicows_RasGetEntryDialParamsW:      dd 0
-namestring_RasGetEntryDialParamsW:    db 'RasGetEntryDialParamsW',0
+__imp__RasGetConnectStatusW@8:   dd unicows_initial_stub_RasGetConnectStatusW
+_Unicows_RasGetConnectStatusW:      dd 0
+namestring_RasGetConnectStatusW:    db 'RasGetConnectStatusW',0

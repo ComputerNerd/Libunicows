@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetJobW@24
-                    global GetJobW
-                    global _GetJobW@24
-                    global _Unicows_GetJobW
+                    global __imp__EnumPrintersW@28
+                    global EnumPrintersW
+                    global _EnumPrintersW@28
+                    global _Unicows_EnumPrintersW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetJobW:
+unicows_initial_stub_EnumPrintersW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetJobW@24     ; place to save the pointer
-                    push dword [_Unicows_GetJobW]      ; default proc, if any
+                    push dword __imp__EnumPrintersW@28     ; place to save the pointer
+                    push dword [_Unicows_EnumPrintersW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_GetJobW      ; name of the function
+                    push dword namestring_EnumPrintersW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetJobW:
-_GetJobW@24:
-                    jmp [__imp__GetJobW@24]
+EnumPrintersW:
+_EnumPrintersW@28:
+                    jmp [__imp__EnumPrintersW@28]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetJobW@24:
                     section .data
 %endif
 
-__imp__GetJobW@24:   dd unicows_initial_stub_GetJobW
-_Unicows_GetJobW:      dd 0
-namestring_GetJobW:    db 'GetJobW',0
+__imp__EnumPrintersW@28:   dd unicows_initial_stub_EnumPrintersW
+_Unicows_EnumPrintersW:      dd 0
+namestring_EnumPrintersW:    db 'EnumPrintersW',0

@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GetStringTypeExW@20
-                    global GetStringTypeExW
-                    global _GetStringTypeExW@20
-                    global _Unicows_GetStringTypeExW
+                    global __imp__GetStartupInfoW@4
+                    global GetStartupInfoW
+                    global _GetStartupInfoW@4
+                    global _Unicows_GetStartupInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GetStringTypeExW:
+unicows_initial_stub_GetStartupInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GetStringTypeExW@20     ; place to save the pointer
-                    push dword [_Unicows_GetStringTypeExW]      ; default proc, if any
+                    push dword __imp__GetStartupInfoW@4     ; place to save the pointer
+                    push dword [_Unicows_GetStartupInfoW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GetStringTypeExW      ; name of the function
+                    push dword namestring_GetStartupInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetStringTypeExW:
-_GetStringTypeExW@20:
-                    jmp [__imp__GetStringTypeExW@20]
+GetStartupInfoW:
+_GetStartupInfoW@4:
+                    jmp [__imp__GetStartupInfoW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GetStringTypeExW@20:
                     section .data
 %endif
 
-__imp__GetStringTypeExW@20:   dd unicows_initial_stub_GetStringTypeExW
-_Unicows_GetStringTypeExW:      dd 0
-namestring_GetStringTypeExW:    db 'GetStringTypeExW',0
+__imp__GetStartupInfoW@4:   dd unicows_initial_stub_GetStartupInfoW
+_Unicows_GetStartupInfoW:      dd 0
+namestring_GetStartupInfoW:    db 'GetStartupInfoW',0

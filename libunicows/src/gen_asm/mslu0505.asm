@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__QuerySecurityPackageInfoW@8
-                    global QuerySecurityPackageInfoW
-                    global _QuerySecurityPackageInfoW@8
-                    global _Unicows_QuerySecurityPackageInfoW
+                    global __imp__QueryCredentialsAttributesW@12
+                    global QueryCredentialsAttributesW
+                    global _QueryCredentialsAttributesW@12
+                    global _Unicows_QueryCredentialsAttributesW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_QuerySecurityPackageInfoW:
+unicows_initial_stub_QueryCredentialsAttributesW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__QuerySecurityPackageInfoW@8     ; place to save the pointer
-                    push dword [_Unicows_QuerySecurityPackageInfoW]      ; default proc, if any
+                    push dword __imp__QueryCredentialsAttributesW@12     ; place to save the pointer
+                    push dword [_Unicows_QueryCredentialsAttributesW]      ; default proc, if any
                     push dword SECUR32                  ; dll id
-                    push dword namestring_QuerySecurityPackageInfoW      ; name of the function
+                    push dword namestring_QueryCredentialsAttributesW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-QuerySecurityPackageInfoW:
-_QuerySecurityPackageInfoW@8:
-                    jmp [__imp__QuerySecurityPackageInfoW@8]
+QueryCredentialsAttributesW:
+_QueryCredentialsAttributesW@12:
+                    jmp [__imp__QueryCredentialsAttributesW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _QuerySecurityPackageInfoW@8:
                     section .data
 %endif
 
-__imp__QuerySecurityPackageInfoW@8:   dd unicows_initial_stub_QuerySecurityPackageInfoW
-_Unicows_QuerySecurityPackageInfoW:      dd 0
-namestring_QuerySecurityPackageInfoW:    db 'QuerySecurityPackageInfoW',0
+__imp__QueryCredentialsAttributesW@12:   dd unicows_initial_stub_QueryCredentialsAttributesW
+_Unicows_QueryCredentialsAttributesW:      dd 0
+namestring_QueryCredentialsAttributesW:    db 'QueryCredentialsAttributesW',0

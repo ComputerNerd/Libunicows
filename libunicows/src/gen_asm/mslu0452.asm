@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasHangUpW@4
-                    global RasHangUpW
-                    global _RasHangUpW@4
-                    global _Unicows_RasHangUpW
+                    global __imp__RasGetProjectionInfoW@16
+                    global RasGetProjectionInfoW
+                    global _RasGetProjectionInfoW@16
+                    global _Unicows_RasGetProjectionInfoW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasHangUpW:
+unicows_initial_stub_RasGetProjectionInfoW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasHangUpW@4     ; place to save the pointer
-                    push dword [_Unicows_RasHangUpW]      ; default proc, if any
+                    push dword __imp__RasGetProjectionInfoW@16     ; place to save the pointer
+                    push dword [_Unicows_RasGetProjectionInfoW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasHangUpW      ; name of the function
+                    push dword namestring_RasGetProjectionInfoW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasHangUpW:
-_RasHangUpW@4:
-                    jmp [__imp__RasHangUpW@4]
+RasGetProjectionInfoW:
+_RasGetProjectionInfoW@16:
+                    jmp [__imp__RasGetProjectionInfoW@16]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasHangUpW@4:
                     section .data
 %endif
 
-__imp__RasHangUpW@4:   dd unicows_initial_stub_RasHangUpW
-_Unicows_RasHangUpW:      dd 0
-namestring_RasHangUpW:    db 'RasHangUpW',0
+__imp__RasGetProjectionInfoW@16:   dd unicows_initial_stub_RasGetProjectionInfoW
+_Unicows_RasGetProjectionInfoW:      dd 0
+namestring_RasGetProjectionInfoW:    db 'RasGetProjectionInfoW',0

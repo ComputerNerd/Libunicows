@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__GlobalGetAtomNameW@12
-                    global GlobalGetAtomNameW
-                    global _GlobalGetAtomNameW@12
-                    global _Unicows_GlobalGetAtomNameW
+                    global __imp__GlobalFindAtomW@4
+                    global GlobalFindAtomW
+                    global _GlobalFindAtomW@4
+                    global _Unicows_GlobalFindAtomW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_GlobalGetAtomNameW:
+unicows_initial_stub_GlobalFindAtomW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__GlobalGetAtomNameW@12     ; place to save the pointer
-                    push dword [_Unicows_GlobalGetAtomNameW]      ; default proc, if any
+                    push dword __imp__GlobalFindAtomW@4     ; place to save the pointer
+                    push dword [_Unicows_GlobalFindAtomW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_GlobalGetAtomNameW      ; name of the function
+                    push dword namestring_GlobalFindAtomW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-GlobalGetAtomNameW:
-_GlobalGetAtomNameW@12:
-                    jmp [__imp__GlobalGetAtomNameW@12]
+GlobalFindAtomW:
+_GlobalFindAtomW@4:
+                    jmp [__imp__GlobalFindAtomW@4]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _GlobalGetAtomNameW@12:
                     section .data
 %endif
 
-__imp__GlobalGetAtomNameW@12:   dd unicows_initial_stub_GlobalGetAtomNameW
-_Unicows_GlobalGetAtomNameW:      dd 0
-namestring_GlobalGetAtomNameW:    db 'GlobalGetAtomNameW',0
+__imp__GlobalFindAtomW@4:   dd unicows_initial_stub_GlobalFindAtomW
+_Unicows_GlobalFindAtomW:      dd 0
+namestring_GlobalFindAtomW:    db 'GlobalFindAtomW',0

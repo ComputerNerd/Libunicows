@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__DeletePrinterDriverW@12
-                    global DeletePrinterDriverW
-                    global _DeletePrinterDriverW@12
-                    global _Unicows_DeletePrinterDriverW
+                    global __imp__DeletePrintProvidorW@12
+                    global DeletePrintProvidorW
+                    global _DeletePrintProvidorW@12
+                    global _Unicows_DeletePrintProvidorW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_DeletePrinterDriverW:
+unicows_initial_stub_DeletePrintProvidorW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__DeletePrinterDriverW@12     ; place to save the pointer
-                    push dword [_Unicows_DeletePrinterDriverW]      ; default proc, if any
+                    push dword __imp__DeletePrintProvidorW@12     ; place to save the pointer
+                    push dword [_Unicows_DeletePrintProvidorW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_DeletePrinterDriverW      ; name of the function
+                    push dword namestring_DeletePrintProvidorW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeletePrinterDriverW:
-_DeletePrinterDriverW@12:
-                    jmp [__imp__DeletePrinterDriverW@12]
+DeletePrintProvidorW:
+_DeletePrintProvidorW@12:
+                    jmp [__imp__DeletePrintProvidorW@12]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _DeletePrinterDriverW@12:
                     section .data
 %endif
 
-__imp__DeletePrinterDriverW@12:   dd unicows_initial_stub_DeletePrinterDriverW
-_Unicows_DeletePrinterDriverW:      dd 0
-namestring_DeletePrinterDriverW:    db 'DeletePrinterDriverW',0
+__imp__DeletePrintProvidorW@12:   dd unicows_initial_stub_DeletePrintProvidorW
+_Unicows_DeletePrintProvidorW:      dd 0
+namestring_DeletePrintProvidorW:    db 'DeletePrintProvidorW',0

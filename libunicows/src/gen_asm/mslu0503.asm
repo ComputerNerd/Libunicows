@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__QueryContextAttributesW@12
-                    global QueryContextAttributesW
-                    global _QueryContextAttributesW@12
-                    global _Unicows_QueryContextAttributesW
+                    global __imp__InitSecurityInterfaceW@0
+                    global InitSecurityInterfaceW
+                    global _InitSecurityInterfaceW@0
+                    global _Unicows_InitSecurityInterfaceW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_QueryContextAttributesW:
+unicows_initial_stub_InitSecurityInterfaceW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__QueryContextAttributesW@12     ; place to save the pointer
-                    push dword [_Unicows_QueryContextAttributesW]      ; default proc, if any
+                    push dword __imp__InitSecurityInterfaceW@0     ; place to save the pointer
+                    push dword [_Unicows_InitSecurityInterfaceW]      ; default proc, if any
                     push dword SECUR32                  ; dll id
-                    push dword namestring_QueryContextAttributesW      ; name of the function
+                    push dword namestring_InitSecurityInterfaceW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-QueryContextAttributesW:
-_QueryContextAttributesW@12:
-                    jmp [__imp__QueryContextAttributesW@12]
+InitSecurityInterfaceW:
+_InitSecurityInterfaceW@0:
+                    jmp [__imp__InitSecurityInterfaceW@0]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _QueryContextAttributesW@12:
                     section .data
 %endif
 
-__imp__QueryContextAttributesW@12:   dd unicows_initial_stub_QueryContextAttributesW
-_Unicows_QueryContextAttributesW:      dd 0
-namestring_QueryContextAttributesW:    db 'QueryContextAttributesW',0
+__imp__InitSecurityInterfaceW@0:   dd unicows_initial_stub_InitSecurityInterfaceW
+_Unicows_InitSecurityInterfaceW:      dd 0
+namestring_InitSecurityInterfaceW:    db 'InitSecurityInterfaceW',0

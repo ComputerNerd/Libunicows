@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__EnumPortsW@24
-                    global EnumPortsW
-                    global _EnumPortsW@24
-                    global _Unicows_EnumPortsW
+                    global __imp__EnumMonitorsW@24
+                    global EnumMonitorsW
+                    global _EnumMonitorsW@24
+                    global _Unicows_EnumMonitorsW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_EnumPortsW:
+unicows_initial_stub_EnumMonitorsW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__EnumPortsW@24     ; place to save the pointer
-                    push dword [_Unicows_EnumPortsW]      ; default proc, if any
+                    push dword __imp__EnumMonitorsW@24     ; place to save the pointer
+                    push dword [_Unicows_EnumMonitorsW]      ; default proc, if any
                     push dword WINSPOOL                  ; dll id
-                    push dword namestring_EnumPortsW      ; name of the function
+                    push dword namestring_EnumMonitorsW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumPortsW:
-_EnumPortsW@24:
-                    jmp [__imp__EnumPortsW@24]
+EnumMonitorsW:
+_EnumMonitorsW@24:
+                    jmp [__imp__EnumMonitorsW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _EnumPortsW@24:
                     section .data
 %endif
 
-__imp__EnumPortsW@24:   dd unicows_initial_stub_EnumPortsW
-_Unicows_EnumPortsW:      dd 0
-namestring_EnumPortsW:    db 'EnumPortsW',0
+__imp__EnumMonitorsW@24:   dd unicows_initial_stub_EnumMonitorsW
+_Unicows_EnumMonitorsW:      dd 0
+namestring_EnumMonitorsW:    db 'EnumMonitorsW',0

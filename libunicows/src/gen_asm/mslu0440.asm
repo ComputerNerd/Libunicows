@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__RasDeleteEntryW@8
-                    global RasDeleteEntryW
-                    global _RasDeleteEntryW@8
-                    global _Unicows_RasDeleteEntryW
+                    global __imp__RasCreatePhonebookEntryW@8
+                    global RasCreatePhonebookEntryW
+                    global _RasCreatePhonebookEntryW@8
+                    global _Unicows_RasCreatePhonebookEntryW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_RasDeleteEntryW:
+unicows_initial_stub_RasCreatePhonebookEntryW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__RasDeleteEntryW@8     ; place to save the pointer
-                    push dword [_Unicows_RasDeleteEntryW]      ; default proc, if any
+                    push dword __imp__RasCreatePhonebookEntryW@8     ; place to save the pointer
+                    push dword [_Unicows_RasCreatePhonebookEntryW]      ; default proc, if any
                     push dword RASAPI32                  ; dll id
-                    push dword namestring_RasDeleteEntryW      ; name of the function
+                    push dword namestring_RasCreatePhonebookEntryW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasDeleteEntryW:
-_RasDeleteEntryW@8:
-                    jmp [__imp__RasDeleteEntryW@8]
+RasCreatePhonebookEntryW:
+_RasCreatePhonebookEntryW@8:
+                    jmp [__imp__RasCreatePhonebookEntryW@8]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _RasDeleteEntryW@8:
                     section .data
 %endif
 
-__imp__RasDeleteEntryW@8:   dd unicows_initial_stub_RasDeleteEntryW
-_Unicows_RasDeleteEntryW:      dd 0
-namestring_RasDeleteEntryW:    db 'RasDeleteEntryW',0
+__imp__RasCreatePhonebookEntryW@8:   dd unicows_initial_stub_RasCreatePhonebookEntryW
+_Unicows_RasCreatePhonebookEntryW:      dd 0
+namestring_RasCreatePhonebookEntryW:    db 'RasCreatePhonebookEntryW',0

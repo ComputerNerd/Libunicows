@@ -505,4 +505,5 @@ WRAPPERS = \
            build\msvc6\mslu0502.obj \
            build\msvc6\mslu0503.obj \
            build\msvc6\mslu0504.obj \
-           build\msvc6\mslu0505.obj 
+           build\msvc6\mslu0505.obj \
+           build\msvc6\mslu0506.obj 

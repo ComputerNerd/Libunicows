@@ -6,10 +6,10 @@
     %define BORLAND 1
 %endif
 
-                    global __imp__LoadLibraryExW@12
-                    global LoadLibraryExW
-                    global _LoadLibraryExW@12
-                    global _Unicows_LoadLibraryExW
+                    global __imp__LCMapStringW@24
+                    global LCMapStringW
+                    global _LCMapStringW@24
+                    global _Unicows_LCMapStringW
                   
                     extern _LoadUnicowsSymbol
 
@@ -19,22 +19,22 @@
                     section .text
 %endif
 
-unicows_initial_stub_LoadLibraryExW:
+unicows_initial_stub_LCMapStringW:
                     ; Load the symbol...
                     pusha
-                    push dword __imp__LoadLibraryExW@12     ; place to save the pointer
-                    push dword [_Unicows_LoadLibraryExW]      ; default proc, if any
+                    push dword __imp__LCMapStringW@24     ; place to save the pointer
+                    push dword [_Unicows_LCMapStringW]      ; default proc, if any
                     push dword KERNEL32                  ; dll id
-                    push dword namestring_LoadLibraryExW      ; name of the function
+                    push dword namestring_LCMapStringW      ; name of the function
                     call _LoadUnicowsSymbol
                     add  esp,byte 16
                     popa
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadLibraryExW:
-_LoadLibraryExW@12:
-                    jmp [__imp__LoadLibraryExW@12]
+LCMapStringW:
+_LCMapStringW@24:
+                    jmp [__imp__LCMapStringW@24]
 
 %ifdef BORLAND
                     section  _DATA class=DATA data use32
@@ -42,6 +42,6 @@ _LoadLibraryExW@12:
                     section .data
 %endif
 
-__imp__LoadLibraryExW@12:   dd unicows_initial_stub_LoadLibraryExW
-_Unicows_LoadLibraryExW:      dd 0
-namestring_LoadLibraryExW:    db 'LoadLibraryExW',0
+__imp__LCMapStringW@24:   dd unicows_initial_stub_LCMapStringW
+_Unicows_LCMapStringW:      dd 0
+namestring_LCMapStringW:    db 'LCMapStringW',0
