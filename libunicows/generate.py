@@ -19,8 +19,11 @@ def writeStub(template, name, size, dll, number):
 # ------------------------------------------------------------
 def writeDllWrapper(symbols):
     f = open('src/gen_asm/dll_wrapper.asm', 'wt');
+    template = 'extern _NAME@SIZE\nexport NAME@SIZE\n'
     for name,size,dll in symbols:
-        f.write('extern _%s@%s\nexport %s@%s\n' % (name,size,name,size))
+        if size == '': asize = ''
+        else: asize = '@' + size
+        f.write(template.replace('NAME',name).replace('@SIZE',asize))
     f.close()
 
 

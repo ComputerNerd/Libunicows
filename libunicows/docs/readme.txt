@@ -23,7 +23,7 @@ allows Unicode applications to run under Windows 9X.
 
 See these pages for details:
 
-    http://www.microsoft.com/globaldev/Articles/mslu_announce.asp
+    http://www.microsoft.com/globaldev/handson/dev/mslu_announce.mspx
     http://msdn.microsoft.com/msdnmag/nettop.asp?page=/msdnmag/issues/01/10/MSLU/MSLU.asp&ad=ads.ddj.com/msdnmag/premium.htm
 
 Less fortunately, this solution requires that you use a special statically

@@ -1,3 +1,8 @@
+Version 0.6.1
+-------------
+- unicows_wrapper.dll was made almost twice smaller
+- 0.6 binaries had some wrong symbols, this is now fixed
+
 Version 0.6
 -----------
 - added unicows_wrapper.dll, which is a helper that makes it possible to

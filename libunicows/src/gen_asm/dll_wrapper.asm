@@ -460,8 +460,8 @@ extern _VkKeyScanW@4
 export VkKeyScanW@4
 extern _WinHelpW@16
 export WinHelpW@16
-extern _wsprintfW@
-export wsprintfW@
+extern _wsprintfW
+export wsprintfW
 extern _wvsprintfW@12
 export wvsprintfW@12
 extern _DragQueryFileW@16
