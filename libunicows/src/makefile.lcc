@@ -1,0 +1,31 @@
+CC=lcc
+NASM=nasmw
+LIB=lcclib
+
+LIBPATH=..\lib\lcc
+LIBTARGET=$(LIBPATH)\unicows.lib
+
+all: build\lcc $(LIBPATH) $(LIBTARGET)
+
+!include "makefile.lcc.include"
+
+{}.c{build\lcc}.obj:
+	$(CC) -c -Fo$@ $<
+
+{gen_asm}.asm{build\lcc}.obj:
+	$(NASM) -f win32 -o $@ $<
+
+build\lcc:
+	if not exist .\build\lcc mkdir .\build\lcc
+
+$(LIBPATH):
+	if not exist .\$(LIBPATH) mkdir .\$(LIBPATH)
+
+LIBOBJECTS = $(WRAPPERS) build\lcc\unicows_import.obj
+$(LIBTARGET): $(LIBOBJECTS)
+	-del $(LIBTARGET)
+	$(LIB) -out:$(LIBTARGET) build\lcc\*.obj
+
+clean:
+	-del build\lcc\*.obj
+	-del $(LIBTARGET)
