@@ -1,13 +1,13 @@
 # Makefile for GCC/Mingw32 cross-compiled from linux
 
 all:
-	make -f makefile.mingw32  \
+	make -f makefile.mingw32 PATHSEP=/ \
             AR=i586-mingw32-ar RANLIB=i586-mingw32-ranlib \
 		    STRIP=i586-mingw32-strip \
             LD=i586-mingw32-ld CC=i586-mingw32-gcc all
 
 wrapper:
-	make -f makefile.mingw32  \
+	make -f makefile.mingw32 PATHSEP=/ \
             AR=i586-mingw32-ar RANLIB=i586-mingw32-ranlib \
 		    STRIP=i586-mingw32-strip \
             LD=i586-mingw32-ld CC=i586-mingw32-gcc wrapper
