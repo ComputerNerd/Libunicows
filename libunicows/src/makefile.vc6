@@ -19,17 +19,22 @@ all: build\msvc6 ..\lib\msvc6 $(LIBTARGET)
 {gen_asm}.asm{build\msvc6}.obj:
 	nasmw -f win32 -o $@ $<
 
+{}.asm{build\msvc6}.obj:
+	nasmw -f win32 -o $@ $<
+
 build\msvc6:
-    mkdir .\build\msvc6
+	mkdir .\build\msvc6
 
 ..\lib\msvc6:
-    mkdir .\..\lib\msvc6
+	mkdir .\..\lib\msvc6
 
-LIBOBJECTS = $(WRAPPERS) build\msvc6\unicows_import.obj
+LIBOBJECTS = $(WRAPPERS) \
+			 build\msvc6\unicows_import.obj \
+			 build\msvc6\unicows_mutex.obj
 $(LIBTARGET): $(LIBOBJECTS)
-        -erase $(LIBTARGET)
-        lib -out:$(LIBTARGET) $(LIBOBJECTS)
+	-erase $(LIBTARGET)
+	lib -out:$(LIBTARGET) $(LIBOBJECTS)
 
 clean:
-    -erase build\msvc6\*.obj
-    -erase $(LIBTARGET)
+	-erase build\msvc6\*.obj
+	-erase $(LIBTARGET)
