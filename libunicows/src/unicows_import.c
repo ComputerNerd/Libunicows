@@ -39,7 +39,23 @@ void UnicowsReportFatalError(const char *msg)
 
 static HMODULE __stdcall StdLoadUnicows(void)
 {
-    return LoadLibraryA(UnicowsDllName);
+    HMODULE lib = LoadLibraryA(UnicowsDllName);
+
+    // MZLU is Mozilla's attempt to reimplement unicows.dll under more
+    // OpenSource-friendly licensing terms (see
+    // http://bugzilla.mozilla.org/show_bug.cgi?id=239279). If unicows.dll is
+    // not available, try to load mzlu.dll instead.
+    //
+    // FIXME: this code should be modified so that both unicows.dll and
+    //        mzlu.dll can be used since the latter implements some functions
+    //        that the former doesn't. Also, UnicowsDllName API should be
+    //        modified accordingly to allow to override all names(?).
+    if (lib == NULL)
+    {
+        lib = LoadLibraryA("mzlu.dll");
+    }
+
+    return lib;
 }
 
 static void __stdcall StdImportError(const char *dll, const char *symbol)
