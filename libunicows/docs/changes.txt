@@ -1,6 +1,7 @@
 Version 0.6.5
 -------------
 - native DigitalMars import library (Masashi Ktamura)
+- native LCC-Win32 import library (Thiadmer Riemersma)
 
 Version 0.6.4
 -------------

@@ -38,4 +38,5 @@ make_zip msvc6
 make_zip bcc32
 make_zip watcom
 make_zip dmc
+make_zip lcc
 make_src
