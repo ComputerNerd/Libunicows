@@ -1,3 +1,7 @@
+Version 0.6.3
+-------------
+- fixed winspool.drv loading (Tom Bishop)
+
 Version 0.6.2
 -------------
 - added more symbols

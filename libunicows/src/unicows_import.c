@@ -90,7 +90,7 @@ static HMODULE dllUnicowsHandle = 0;
 static const char *dllNames[DLLS_COUNT] =
     { 
       "kernel32.dll", "user32.dll", "gdi32.dll", "comdlg32.dll",
-      "winspool.dll", "shell32.dll", "winmm.dll", "advapi32.dll",
+      "winspool.drv", "shell32.dll", "winmm.dll", "advapi32.dll",
       "version.dll", "mpr.dll", "oleacc.dll", "oledlg.dll", "rasapi32.dll",
       "msvfw32.dll", "sensapi.dll", "avicap32.dll", "secur32.dll"
     };
