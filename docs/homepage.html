@@ -14,7 +14,7 @@
 
 
 <i>
-    Latest version is 1.1.1, released on 2005/01/06
+    Latest version is 1.1.2, released on 2008-07-30
     (<a href="#changes">see changes</a>)
 </i>
 
@@ -105,13 +105,13 @@ Latest version of libunicows supports both <tt>unicows.dll</tt> and
 <table border="1" cellpadding="5">
 
 <tr>
-    <td><a href="http://www.mingw.org">Mingw32</a></td>
+    <td>Mingw32</td>
     <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-1.1.1-mingw32.zip">libunicows-1.1.1-mingw32.zip</a></td>
 </tr>
 
 <tr>
     <td>Microsoft&nbsp;Visual&nbsp;C++&nbsp;6</td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-1.1.1-msvc6.zip">libunicows-1.1.1-msvc6.zip</a></td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-1.1.2-msvc6.zip">libunicows-1.1.2-msvc6.zip</a></td>
 </tr>
 
 <tr>
@@ -138,7 +138,7 @@ Latest version of libunicows supports both <tt>unicows.dll</tt> and
 
 <tr>
     <td>Source code</td>
-    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-1.1.1-src.tar.gz">libunicows-1.1.1-src.tar.gz</a></td>
+    <td><a href="http://prdownloads.sourceforge.net/libunicows/libunicows-1.1.2-src.tar.gz">libunicows-1.1.2-src.tar.gz</a></td>
 </tr>
 
 </table>
@@ -150,7 +150,12 @@ See also the SF.net <a href="http://sourceforge.net/projects/libunicows">project
 <h3>Changes</h3>
 <a name="changes"></a>
 
-<b>version 1.1.1</b>
+<b>version 1.1.2</b>
+<ul>
+<li>VC++: removed dependency on <tt>__chkstk()</tt> symbol from CRT (Henrik Haftmann)</li>
+</ul>
+
+<b>version 1.1.2</b>
 <ul>
 <li>MZLU was renamted to Opencow and the DLL is now opencow.dll</li>
 <li>the library now exists under two names: <tt>libunicows.lib</tt> and <tt>unicows.lib</tt>;
@@ -224,7 +229,7 @@ See also the SF.net <a href="http://sourceforge.net/projects/libunicows">project
 work or if you have problems with some software <em>using</em> unicows.dll,
 <b>don't</b> write to me! I can't and won't do anything about it.
 On the other hand, feedback from developers about
-the import library from this site is most welcome and some are bug reports
+the import library from this site is most welcome and so are bug reports
 for bugs in the import library itself (e.g. when MSLU doesn't work because
 libunicows' dynamic loading code malfunctions).
 </p>
