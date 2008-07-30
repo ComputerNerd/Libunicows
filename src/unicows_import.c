@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2001-2004 Vaclav Slavik
+ * Copyright (c) 2001-2008 Vaclav Slavik
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to
@@ -22,6 +22,16 @@
  * $Id$
  * 
  */
+
+
+/*
+Disable VC++'s stack corruption checks, because they use __chkstk() symbol
+from CRT and we don't want any CRT dependencies (so that libunicows.lib is,
+among other things, usable for CRT-less code too):
+*/
+#ifdef _MSC_VER
+#pragma check_stack(off)
+#endif
 
 #include <windows.h>
 #include "unicows_import.h"
@@ -47,7 +57,7 @@ static void my_strcat(char *dst, const char *src)
 
 void UnicowsReportFatalError(const char *msg)
 {
-    char buffer[4096];
+    char buffer[2048];
 	buffer[0] = 0;
     my_strcat(buffer, msg);
 	my_strcat(buffer, "\nThe application will terminate now.");
@@ -84,7 +94,7 @@ static HMODULE __stdcall StdLoadUnicows(void)
 
 static void __stdcall StdImportError(const char *dll, const char *symbol)
 {
-    char buffer[4096];
+    char buffer[2048];
 	buffer[0] = 0;
 
     if (symbol)

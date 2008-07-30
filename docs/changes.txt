@@ -1,6 +1,10 @@
+Version 1.1.2
+-------------
+- VC++: removed dependency on __chkstk() symbol from CRT (Henrik Haftmann)
+
 Version 1.1.1
 -------------
-- MZLU was renamted to Opencow and the DLL is now opencow.dll
+- MZLU was renamed to Opencow and the DLL is now opencow.dll
 - the library now exists under two names: libunicows.lib and unicows.lib;
   this makes it possible to force use of libunicows even on systems that
   have MS version of unicows.lib installed
