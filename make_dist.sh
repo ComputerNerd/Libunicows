@@ -25,6 +25,7 @@ make_src()
 {
   mkdir -p _dist/$NAME-$VERSION/lib/{msvc6,mingw32,bcc32,watcom,dmc,lcc}
   cp -Rf test docs src *.py *.sh *.txt  _dist/$NAME-$VERSION
+  rm -rf `find _dist/$NAME-$VERSION -name .svn`
 
   rm -f $NAME-$VERSION-src.tar.gz
   (cd _dist ; tar czvf ../$NAME-$VERSION-src.tar.gz $NAME-$VERSION)
