@@ -44,3 +44,4 @@ $(LIBTARGET_COMPAT): $(LIBTARGET)
 clean:
 	-erase build\msvc6\*.obj
 	-erase $(LIBTARGET)
+	-erase $(LIBTARGET_COMPAT)

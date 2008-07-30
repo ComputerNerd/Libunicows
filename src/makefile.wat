@@ -47,3 +47,4 @@ clean:
     -del build\watcom\*.obj
     -del $(RESPONSFILE)
     -del $(LIBTARGET)
+    -del $(LIBTARGET_COMPAT)

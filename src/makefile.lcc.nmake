@@ -40,3 +40,4 @@ $(LIBTARGET_COMPAT): $(LIBTARGET)
 clean:
 	-del build\lcc\*.obj
 	-del $(LIBTARGET)
+	-del $(LIBTARGET_COMPAT)

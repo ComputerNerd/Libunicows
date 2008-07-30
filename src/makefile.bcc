@@ -42,3 +42,4 @@ $(LIBTARGET_COMPAT): $(LIBTARGET)
 clean:
     -del build\bcc32\*.obj
     -del $(LIBTARGET)
+    -del $(LIBTARGET_COMPAT)
