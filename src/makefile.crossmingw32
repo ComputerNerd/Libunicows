@@ -1,6 +1,6 @@
 # Makefile for GCC/Mingw32 cross-compiled from linux
 
-PREFIX=i686-w64-mingw32-
+PREFIX=i586-w64-mingw32-
 
 all:
 	make -f makefile.mingw32 PATHSEP=/ \
