@@ -32,10 +32,10 @@ include makefile.mingw32.include
 all: build/mingw32 ../lib/mingw32 $(LIBNAME) $(LIBNAME_COMPAT)
 
 build/mingw32:
-	mkdir build$(PATHSEP)mingw32
+	mkdir -p build$(PATHSEP)mingw32
 
 ../lib/mingw32:
-	mkdir ..$(PATHSEP)lib$(PATHSEP)mingw32
+	mkdir -p ..$(PATHSEP)lib$(PATHSEP)mingw32
 
 $(LIBNAME): $(OBJECTS)
 	$(AR) $(AROPTIONS) $@ $(OBJECTS)
