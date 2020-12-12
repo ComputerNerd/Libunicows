@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DialogBoxParamW@20
-                    global DialogBoxParamW
                     global _DialogBoxParamW@20
                     global _Unicows_DialogBoxParamW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DialogBoxParamW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DialogBoxParamW:
 _DialogBoxParamW@20:
                     jmp [__imp__DialogBoxParamW@20]
 

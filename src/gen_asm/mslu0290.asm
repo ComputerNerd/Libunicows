@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ChooseFontW@4
-                    global ChooseFontW
                     global _ChooseFontW@4
                     global _Unicows_ChooseFontW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ChooseFontW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ChooseFontW:
 _ChooseFontW@4:
                     jmp [__imp__ChooseFontW@4]
 

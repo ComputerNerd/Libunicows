@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ReadConsoleInputW@16
-                    global ReadConsoleInputW
                     global _ReadConsoleInputW@16
                     global _Unicows_ReadConsoleInputW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ReadConsoleInputW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ReadConsoleInputW:
 _ReadConsoleInputW@16:
                     jmp [__imp__ReadConsoleInputW@16]
 

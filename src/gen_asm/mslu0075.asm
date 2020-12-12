@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mixerGetDevCapsW@12
-                    global mixerGetDevCapsW
                     global _mixerGetDevCapsW@12
                     global _Unicows_mixerGetDevCapsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mixerGetDevCapsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mixerGetDevCapsW:
 _mixerGetDevCapsW@12:
                     jmp [__imp__mixerGetDevCapsW@12]
 

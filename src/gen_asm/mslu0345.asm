@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetConsoleTitleW@8
-                    global GetConsoleTitleW
                     global _GetConsoleTitleW@8
                     global _Unicows_GetConsoleTitleW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetConsoleTitleW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetConsoleTitleW:
 _GetConsoleTitleW@8:
                     jmp [__imp__GetConsoleTitleW@8]
 

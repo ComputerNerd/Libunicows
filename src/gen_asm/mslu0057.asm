@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RemoveFontResourceW@4
-                    global RemoveFontResourceW
                     global _RemoveFontResourceW@4
                     global _Unicows_RemoveFontResourceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RemoveFontResourceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RemoveFontResourceW:
 _RemoveFontResourceW@4:
                     jmp [__imp__RemoveFontResourceW@4]
 

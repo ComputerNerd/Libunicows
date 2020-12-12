@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetFileVersionInfoSizeW@8
-                    global GetFileVersionInfoSizeW
                     global _GetFileVersionInfoSizeW@8
                     global _Unicows_GetFileVersionInfoSizeW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetFileVersionInfoSizeW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFileVersionInfoSizeW:
 _GetFileVersionInfoSizeW@8:
                     jmp [__imp__GetFileVersionInfoSizeW@8]
 

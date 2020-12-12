@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__AdvancedDocumentPropertiesW@20
-                    global AdvancedDocumentPropertiesW
                     global _AdvancedDocumentPropertiesW@20
                     global _Unicows_AdvancedDocumentPropertiesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_AdvancedDocumentPropertiesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-AdvancedDocumentPropertiesW:
 _AdvancedDocumentPropertiesW@20:
                     jmp [__imp__AdvancedDocumentPropertiesW@20]
 

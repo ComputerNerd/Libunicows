@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CryptGetDefaultProviderW@20
-                    global CryptGetDefaultProviderW
                     global _CryptGetDefaultProviderW@20
                     global _Unicows_CryptGetDefaultProviderW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CryptGetDefaultProviderW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CryptGetDefaultProviderW:
 _CryptGetDefaultProviderW@20:
                     jmp [__imp__CryptGetDefaultProviderW@20]
 

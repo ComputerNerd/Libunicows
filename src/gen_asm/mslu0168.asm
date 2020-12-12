@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetPropA@8
-                    global GetPropA
                     global _GetPropA@8
                     global _Unicows_GetPropA
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetPropA:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetPropA:
 _GetPropA@8:
                     jmp [__imp__GetPropA@8]
 

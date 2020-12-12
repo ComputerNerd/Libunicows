@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FreeContextBuffer@4
-                    global FreeContextBuffer
                     global _FreeContextBuffer@4
                     global _Unicows_FreeContextBuffer
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FreeContextBuffer:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FreeContextBuffer:
 _FreeContextBuffer@4:
                     jmp [__imp__FreeContextBuffer@4]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__TranslateAcceleratorW@12
-                    global TranslateAcceleratorW
                     global _TranslateAcceleratorW@12
                     global _Unicows_TranslateAcceleratorW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_TranslateAcceleratorW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-TranslateAcceleratorW:
 _TranslateAcceleratorW@12:
                     jmp [__imp__TranslateAcceleratorW@12]
 

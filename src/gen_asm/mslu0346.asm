@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetCurrencyFormatW@24
-                    global GetCurrencyFormatW
                     global _GetCurrencyFormatW@24
                     global _Unicows_GetCurrencyFormatW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetCurrencyFormatW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCurrencyFormatW:
 _GetCurrencyFormatW@24:
                     jmp [__imp__GetCurrencyFormatW@24]
 

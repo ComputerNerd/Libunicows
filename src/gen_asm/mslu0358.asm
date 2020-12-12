@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetLocaleInfoW@16
-                    global GetLocaleInfoW
                     global _GetLocaleInfoW@16
                     global _Unicows_GetLocaleInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetLocaleInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetLocaleInfoW:
 _GetLocaleInfoW@16:
                     jmp [__imp__GetLocaleInfoW@16]
 

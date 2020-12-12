@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DlgDirSelectExW@16
-                    global DlgDirSelectExW
                     global _DlgDirSelectExW@16
                     global _Unicows_DlgDirSelectExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DlgDirSelectExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DlgDirSelectExW:
 _DlgDirSelectExW@16:
                     jmp [__imp__DlgDirSelectExW@16]
 

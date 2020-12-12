@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsWindowUnicode@4
-                    global IsWindowUnicode
                     global _IsWindowUnicode@4
                     global _Unicows_IsWindowUnicode
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsWindowUnicode:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsWindowUnicode:
 _IsWindowUnicode@4:
                     jmp [__imp__IsWindowUnicode@4]
 

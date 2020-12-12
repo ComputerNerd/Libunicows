@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasGetErrorStringW@12
-                    global RasGetErrorStringW
                     global _RasGetErrorStringW@12
                     global _Unicows_RasGetErrorStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasGetErrorStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasGetErrorStringW:
 _RasGetErrorStringW@12:
                     jmp [__imp__RasGetErrorStringW@12]
 

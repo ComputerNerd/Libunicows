@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetGetUniversalNameW@16
-                    global WNetGetUniversalNameW
                     global _WNetGetUniversalNameW@16
                     global _Unicows_WNetGetUniversalNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetGetUniversalNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetGetUniversalNameW:
 _WNetGetUniversalNameW@16:
                     jmp [__imp__WNetGetUniversalNameW@16]
 

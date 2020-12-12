@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetDlgItemTextW@16
-                    global GetDlgItemTextW
                     global _GetDlgItemTextW@16
                     global _Unicows_GetDlgItemTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetDlgItemTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetDlgItemTextW:
 _GetDlgItemTextW@16:
                     jmp [__imp__GetDlgItemTextW@16]
 

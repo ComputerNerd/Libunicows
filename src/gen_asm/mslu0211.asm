@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegisterWindowMessageW@4
-                    global RegisterWindowMessageW
                     global _RegisterWindowMessageW@4
                     global _Unicows_RegisterWindowMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegisterWindowMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegisterWindowMessageW:
 _RegisterWindowMessageW@4:
                     jmp [__imp__RegisterWindowMessageW@4]
 

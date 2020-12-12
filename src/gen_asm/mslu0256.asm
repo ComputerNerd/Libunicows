@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__VerLanguageNameW@12
-                    global VerLanguageNameW
                     global _VerLanguageNameW@12
                     global _Unicows_VerLanguageNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_VerLanguageNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-VerLanguageNameW:
 _VerLanguageNameW@12:
                     jmp [__imp__VerLanguageNameW@12]
 

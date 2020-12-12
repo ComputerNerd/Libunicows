@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__AddAtomW@4
-                    global AddAtomW
                     global _AddAtomW@4
                     global _Unicows_AddAtomW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_AddAtomW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddAtomW:
 _AddAtomW@4:
                     jmp [__imp__AddAtomW@4]
 

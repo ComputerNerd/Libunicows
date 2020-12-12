@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DdeQueryStringW@20
-                    global DdeQueryStringW
                     global _DdeQueryStringW@20
                     global _Unicows_DdeQueryStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DdeQueryStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DdeQueryStringW:
 _DdeQueryStringW@20:
                     jmp [__imp__DdeQueryStringW@20]
 

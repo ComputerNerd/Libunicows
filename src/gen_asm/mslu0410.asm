@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SearchPathW@24
-                    global SearchPathW
                     global _SearchPathW@24
                     global _Unicows_SearchPathW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SearchPathW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SearchPathW:
 _SearchPathW@24:
                     jmp [__imp__SearchPathW@24]
 

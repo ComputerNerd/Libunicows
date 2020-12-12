@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DlgDirListW@20
-                    global DlgDirListW
                     global _DlgDirListW@20
                     global _Unicows_DlgDirListW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DlgDirListW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DlgDirListW:
 _DlgDirListW@20:
                     jmp [__imp__DlgDirListW@20]
 

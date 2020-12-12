@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsCharLowerW@4
-                    global IsCharLowerW
                     global _IsCharLowerW@4
                     global _Unicows_IsCharLowerW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsCharLowerW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsCharLowerW:
 _IsCharLowerW@4:
                     jmp [__imp__IsCharLowerW@4]
 

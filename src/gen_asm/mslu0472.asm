@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DeletePrinterDriverW@12
-                    global DeletePrinterDriverW
                     global _DeletePrinterDriverW@12
                     global _Unicows_DeletePrinterDriverW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DeletePrinterDriverW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeletePrinterDriverW:
 _DeletePrinterDriverW@12:
                     jmp [__imp__DeletePrinterDriverW@12]
 

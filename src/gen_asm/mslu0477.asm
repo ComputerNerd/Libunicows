@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumPrintProcessorDatatypesW@28
-                    global EnumPrintProcessorDatatypesW
                     global _EnumPrintProcessorDatatypesW@28
                     global _Unicows_EnumPrintProcessorDatatypesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumPrintProcessorDatatypesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumPrintProcessorDatatypesW:
 _EnumPrintProcessorDatatypesW@28:
                     jmp [__imp__EnumPrintProcessorDatatypesW@28]
 

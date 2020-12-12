@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetConnectionDialog1W@4
-                    global WNetConnectionDialog1W
                     global _WNetConnectionDialog1W@4
                     global _Unicows_WNetConnectionDialog1W
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetConnectionDialog1W:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetConnectionDialog1W:
 _WNetConnectionDialog1W@4:
                     jmp [__imp__WNetConnectionDialog1W@4]
 

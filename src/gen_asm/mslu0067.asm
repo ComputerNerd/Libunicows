@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mciGetErrorStringW@12
-                    global mciGetErrorStringW
                     global _mciGetErrorStringW@12
                     global _Unicows_mciGetErrorStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mciGetErrorStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mciGetErrorStringW:
 _mciGetErrorStringW@12:
                     jmp [__imp__mciGetErrorStringW@12]
 

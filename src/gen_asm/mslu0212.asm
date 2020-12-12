@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RemovePropA@8
-                    global RemovePropA
                     global _RemovePropA@8
                     global _Unicows_RemovePropA
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RemovePropA:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RemovePropA:
 _RemovePropA@8:
                     jmp [__imp__RemovePropA@8]
 

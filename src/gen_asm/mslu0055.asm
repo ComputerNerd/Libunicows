@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetTextMetricsW@8
-                    global GetTextMetricsW
                     global _GetTextMetricsW@8
                     global _Unicows_GetTextMetricsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetTextMetricsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTextMetricsW:
 _GetTextMetricsW@8:
                     jmp [__imp__GetTextMetricsW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__BeginUpdateResourceW@8
-                    global BeginUpdateResourceW
                     global _BeginUpdateResourceW@8
                     global _Unicows_BeginUpdateResourceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_BeginUpdateResourceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-BeginUpdateResourceW:
 _BeginUpdateResourceW@8:
                     jmp [__imp__BeginUpdateResourceW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetCharABCWidthsFloatW@16
-                    global GetCharABCWidthsFloatW
                     global _GetCharABCWidthsFloatW@16
                     global _Unicows_GetCharABCWidthsFloatW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetCharABCWidthsFloatW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCharABCWidthsFloatW:
 _GetCharABCWidthsFloatW@16:
                     jmp [__imp__GetCharABCWidthsFloatW@16]
 

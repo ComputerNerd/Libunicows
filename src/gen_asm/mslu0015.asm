@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetGetResourceParentW@12
-                    global WNetGetResourceParentW
                     global _WNetGetResourceParentW@12
                     global _Unicows_WNetGetResourceParentW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetGetResourceParentW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetGetResourceParentW:
 _WNetGetResourceParentW@12:
                     jmp [__imp__WNetGetResourceParentW@12]
 

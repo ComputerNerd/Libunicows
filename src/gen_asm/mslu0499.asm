@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__AcquireCredentialsHandleW@36
-                    global AcquireCredentialsHandleW
                     global _AcquireCredentialsHandleW@36
                     global _Unicows_AcquireCredentialsHandleW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_AcquireCredentialsHandleW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-AcquireCredentialsHandleW:
 _AcquireCredentialsHandleW@36:
                     jmp [__imp__AcquireCredentialsHandleW@36]
 

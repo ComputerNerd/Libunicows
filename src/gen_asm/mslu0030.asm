@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateScalableFontResourceW@16
-                    global CreateScalableFontResourceW
                     global _CreateScalableFontResourceW@16
                     global _Unicows_CreateScalableFontResourceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateScalableFontResourceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateScalableFontResourceW:
 _CreateScalableFontResourceW@16:
                     jmp [__imp__CreateScalableFontResourceW@16]
 

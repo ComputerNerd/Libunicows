@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OpenMutexW@12
-                    global OpenMutexW
                     global _OpenMutexW@12
                     global _Unicows_OpenMutexW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OpenMutexW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenMutexW:
 _OpenMutexW@12:
                     jmp [__imp__OpenMutexW@12]
 

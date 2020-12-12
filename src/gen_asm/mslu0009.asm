@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetEnumResourceW@16
-                    global WNetEnumResourceW
                     global _WNetEnumResourceW@16
                     global _Unicows_WNetEnumResourceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetEnumResourceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetEnumResourceW:
 _WNetEnumResourceW@16:
                     jmp [__imp__WNetEnumResourceW@16]
 

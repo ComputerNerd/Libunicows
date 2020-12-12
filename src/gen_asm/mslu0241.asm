@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FindExecutableW@12
-                    global FindExecutableW
                     global _FindExecutableW@12
                     global _Unicows_FindExecutableW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FindExecutableW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindExecutableW:
 _FindExecutableW@12:
                     jmp [__imp__FindExecutableW@12]
 

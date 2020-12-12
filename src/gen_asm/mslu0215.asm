@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SendMessageCallbackW@24
-                    global SendMessageCallbackW
                     global _SendMessageCallbackW@24
                     global _Unicows_SendMessageCallbackW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SendMessageCallbackW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SendMessageCallbackW:
 _SendMessageCallbackW@24:
                     jmp [__imp__SendMessageCallbackW@24]
 

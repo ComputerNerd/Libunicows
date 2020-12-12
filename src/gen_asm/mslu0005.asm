@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetCancelConnection2W@12
-                    global WNetCancelConnection2W
                     global _WNetCancelConnection2W@12
                     global _Unicows_WNetCancelConnection2W
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetCancelConnection2W:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetCancelConnection2W:
 _WNetCancelConnection2W@12:
                     jmp [__imp__WNetCancelConnection2W@12]
 

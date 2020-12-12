@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetGetResourceInformationW@16
-                    global WNetGetResourceInformationW
                     global _WNetGetResourceInformationW@16
                     global _Unicows_WNetGetResourceInformationW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetGetResourceInformationW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetGetResourceInformationW:
 _WNetGetResourceInformationW@16:
                     jmp [__imp__WNetGetResourceInformationW@16]
 

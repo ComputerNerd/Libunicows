@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasEnumConnectionsW@12
-                    global RasEnumConnectionsW
                     global _RasEnumConnectionsW@12
                     global _Unicows_RasEnumConnectionsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasEnumConnectionsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasEnumConnectionsW:
 _RasEnumConnectionsW@12:
                     jmp [__imp__RasEnumConnectionsW@12]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIPasteSpecialW@4
-                    global OleUIPasteSpecialW
                     global _OleUIPasteSpecialW@4
                     global _Unicows_OleUIPasteSpecialW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIPasteSpecialW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIPasteSpecialW:
 _OleUIPasteSpecialW@4:
                     jmp [__imp__OleUIPasteSpecialW@4]
 

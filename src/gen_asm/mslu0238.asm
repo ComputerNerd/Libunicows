@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DragQueryFileW@16
-                    global DragQueryFileW
                     global _DragQueryFileW@16
                     global _Unicows_DragQueryFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DragQueryFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DragQueryFileW:
 _DragQueryFileW@16:
                     jmp [__imp__DragQueryFileW@16]
 

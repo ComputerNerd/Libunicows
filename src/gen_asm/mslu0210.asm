@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegisterDeviceNotificationW@12
-                    global RegisterDeviceNotificationW
                     global _RegisterDeviceNotificationW@12
                     global _Unicows_RegisterDeviceNotificationW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegisterDeviceNotificationW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegisterDeviceNotificationW:
 _RegisterDeviceNotificationW@12:
                     jmp [__imp__RegisterDeviceNotificationW@12]
 

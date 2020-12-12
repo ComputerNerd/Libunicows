@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetStringTypeW@16
-                    global GetStringTypeW
                     global _GetStringTypeW@16
                     global _Unicows_GetStringTypeW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetStringTypeW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetStringTypeW:
 _GetStringTypeW@16:
                     jmp [__imp__GetStringTypeW@16]
 

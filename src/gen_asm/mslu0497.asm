@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__capCreateCaptureWindowW
-                    global capCreateCaptureWindowW
                     global _capCreateCaptureWindowW
                     global _Unicows_capCreateCaptureWindowW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_capCreateCaptureWindowW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-capCreateCaptureWindowW:
 _capCreateCaptureWindowW:
                     jmp [__imp__capCreateCaptureWindowW]
 

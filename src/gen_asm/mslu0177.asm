@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__InsertMenuItemW@16
-                    global InsertMenuItemW
                     global _InsertMenuItemW@16
                     global _Unicows_InsertMenuItemW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_InsertMenuItemW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-InsertMenuItemW:
 _InsertMenuItemW@16:
                     jmp [__imp__InsertMenuItemW@16]
 

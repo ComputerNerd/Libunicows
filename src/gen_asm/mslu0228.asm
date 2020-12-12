@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetWindowsHookW@8
-                    global SetWindowsHookW
                     global _SetWindowsHookW@8
                     global _Unicows_SetWindowsHookW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetWindowsHookW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetWindowsHookW:
 _SetWindowsHookW@8:
                     jmp [__imp__SetWindowsHookW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetModuleHandleW@4
-                    global GetModuleHandleW
                     global _GetModuleHandleW@4
                     global _Unicows_GetModuleHandleW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetModuleHandleW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetModuleHandleW:
 _GetModuleHandleW@4:
                     jmp [__imp__GetModuleHandleW@4]
 

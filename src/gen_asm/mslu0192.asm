@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadKeyboardLayoutW@8
-                    global LoadKeyboardLayoutW
                     global _LoadKeyboardLayoutW@8
                     global _Unicows_LoadKeyboardLayoutW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadKeyboardLayoutW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadKeyboardLayoutW:
 _LoadKeyboardLayoutW@8:
                     jmp [__imp__LoadKeyboardLayoutW@8]
 

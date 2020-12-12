@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CryptVerifySignatureW@24
-                    global CryptVerifySignatureW
                     global _CryptVerifySignatureW@24
                     global _Unicows_CryptVerifySignatureW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CryptVerifySignatureW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CryptVerifySignatureW:
 _CryptVerifySignatureW@24:
                     jmp [__imp__CryptVerifySignatureW@24]
 

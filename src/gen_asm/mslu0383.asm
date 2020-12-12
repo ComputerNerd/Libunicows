@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetVersionExW@4
-                    global GetVersionExW
                     global _GetVersionExW@4
                     global _Unicows_GetVersionExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetVersionExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetVersionExW:
 _GetVersionExW@4:
                     jmp [__imp__GetVersionExW@4]
 

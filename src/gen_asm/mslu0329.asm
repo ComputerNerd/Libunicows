@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ExpandEnvironmentStringsW@12
-                    global ExpandEnvironmentStringsW
                     global _ExpandEnvironmentStringsW@12
                     global _Unicows_ExpandEnvironmentStringsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ExpandEnvironmentStringsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ExpandEnvironmentStringsW:
 _ExpandEnvironmentStringsW@12:
                     jmp [__imp__ExpandEnvironmentStringsW@12]
 

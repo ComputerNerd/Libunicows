@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RemoveDirectoryW@4
-                    global RemoveDirectoryW
                     global _RemoveDirectoryW@4
                     global _Unicows_RemoveDirectoryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RemoveDirectoryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RemoveDirectoryW:
 _RemoveDirectoryW@4:
                     jmp [__imp__RemoveDirectoryW@4]
 

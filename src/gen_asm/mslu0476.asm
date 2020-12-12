@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumPortsW@24
-                    global EnumPortsW
                     global _EnumPortsW@24
                     global _Unicows_EnumPortsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumPortsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumPortsW:
 _EnumPortsW@24:
                     jmp [__imp__EnumPortsW@24]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ScrollConsoleScreenBufferW@20
-                    global ScrollConsoleScreenBufferW
                     global _ScrollConsoleScreenBufferW@20
                     global _Unicows_ScrollConsoleScreenBufferW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ScrollConsoleScreenBufferW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ScrollConsoleScreenBufferW:
 _ScrollConsoleScreenBufferW@20:
                     jmp [__imp__ScrollConsoleScreenBufferW@20]
 

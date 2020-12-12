@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__lstrlenW@4
-                    global lstrlenW
                     global _lstrlenW@4
                     global _Unicows_lstrlenW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_lstrlenW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-lstrlenW:
 _lstrlenW@4:
                     jmp [__imp__lstrlenW@4]
 

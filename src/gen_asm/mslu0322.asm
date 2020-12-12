@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumCalendarInfoExW@16
-                    global EnumCalendarInfoExW
                     global _EnumCalendarInfoExW@16
                     global _Unicows_EnumCalendarInfoExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumCalendarInfoExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumCalendarInfoExW:
 _EnumCalendarInfoExW@16:
                     jmp [__imp__EnumCalendarInfoExW@16]
 

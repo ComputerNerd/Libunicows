@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateWaitableTimerW@12
-                    global CreateWaitableTimerW
                     global _CreateWaitableTimerW@12
                     global _Unicows_CreateWaitableTimerW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateWaitableTimerW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateWaitableTimerW:
 _CreateWaitableTimerW@12:
                     jmp [__imp__CreateWaitableTimerW@12]
 

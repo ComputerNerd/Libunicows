@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ExtTextOutW@32
-                    global ExtTextOutW
                     global _ExtTextOutW@32
                     global _Unicows_ExtTextOutW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ExtTextOutW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ExtTextOutW:
 _ExtTextOutW@32:
                     jmp [__imp__ExtTextOutW@32]
 

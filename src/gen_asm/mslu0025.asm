@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateEnhMetaFileW@16
-                    global CreateEnhMetaFileW
                     global _CreateEnhMetaFileW@16
                     global _Unicows_CreateEnhMetaFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateEnhMetaFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateEnhMetaFileW:
 _CreateEnhMetaFileW@16:
                     jmp [__imp__CreateEnhMetaFileW@16]
 

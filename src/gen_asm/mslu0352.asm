@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetDriveTypeW@4
-                    global GetDriveTypeW
                     global _GetDriveTypeW@4
                     global _Unicows_GetDriveTypeW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetDriveTypeW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetDriveTypeW:
 _GetDriveTypeW@4:
                     jmp [__imp__GetDriveTypeW@4]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadCursorFromFileW@4
-                    global LoadCursorFromFileW
                     global _LoadCursorFromFileW@4
                     global _Unicows_LoadCursorFromFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadCursorFromFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadCursorFromFileW:
 _LoadCursorFromFileW@4:
                     jmp [__imp__LoadCursorFromFileW@4]
 

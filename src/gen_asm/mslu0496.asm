@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsDestinationReachableW@8
-                    global IsDestinationReachableW
                     global _IsDestinationReachableW@8
                     global _Unicows_IsDestinationReachableW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsDestinationReachableW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsDestinationReachableW:
 _IsDestinationReachableW@8:
                     jmp [__imp__IsDestinationReachableW@8]
 

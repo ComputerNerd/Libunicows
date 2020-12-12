@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__InitializeSecurityContextW@48
-                    global InitializeSecurityContextW
                     global _InitializeSecurityContextW@48
                     global _Unicows_InitializeSecurityContextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_InitializeSecurityContextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-InitializeSecurityContextW:
 _InitializeSecurityContextW@48:
                     jmp [__imp__InitializeSecurityContextW@48]
 

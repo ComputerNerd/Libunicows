@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetPrinterDataW@24
-                    global GetPrinterDataW
                     global _GetPrinterDataW@24
                     global _Unicows_GetPrinterDataW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetPrinterDataW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetPrinterDataW:
 _GetPrinterDataW@24:
                     jmp [__imp__GetPrinterDataW@24]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasGetEntryDialParamsW@12
-                    global RasGetEntryDialParamsW
                     global _RasGetEntryDialParamsW@12
                     global _Unicows_RasGetEntryDialParamsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasGetEntryDialParamsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasGetEntryDialParamsW:
 _RasGetEntryDialParamsW@12:
                     jmp [__imp__RasGetEntryDialParamsW@12]
 

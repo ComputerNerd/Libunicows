@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__StartDocW@8
-                    global StartDocW
                     global _StartDocW@8
                     global _Unicows_StartDocW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_StartDocW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-StartDocW:
 _StartDocW@8:
                     jmp [__imp__StartDocW@8]
 

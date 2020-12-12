@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WritePrivateProfileSectionW@12
-                    global WritePrivateProfileSectionW
                     global _WritePrivateProfileSectionW@12
                     global _Unicows_WritePrivateProfileSectionW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WritePrivateProfileSectionW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WritePrivateProfileSectionW:
 _WritePrivateProfileSectionW@12:
                     jmp [__imp__WritePrivateProfileSectionW@12]
 

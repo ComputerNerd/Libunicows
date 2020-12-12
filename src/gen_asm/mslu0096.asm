@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIInsertObjectW@4
-                    global OleUIInsertObjectW
                     global _OleUIInsertObjectW@4
                     global _Unicows_OleUIInsertObjectW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIInsertObjectW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIInsertObjectW:
 _OleUIInsertObjectW@4:
                     jmp [__imp__OleUIInsertObjectW@4]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__PostThreadMessageW@16
-                    global PostThreadMessageW
                     global _PostThreadMessageW@16
                     global _Unicows_PostThreadMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_PostThreadMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-PostThreadMessageW:
 _PostThreadMessageW@16:
                     jmp [__imp__PostThreadMessageW@16]
 

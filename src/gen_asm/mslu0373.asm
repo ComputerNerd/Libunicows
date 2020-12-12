@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetProfileStringW@20
-                    global GetProfileStringW
                     global _GetProfileStringW@20
                     global _Unicows_GetProfileStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetProfileStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetProfileStringW:
 _GetProfileStringW@20:
                     jmp [__imp__GetProfileStringW@20]
 

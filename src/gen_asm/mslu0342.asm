@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetCPInfoExW@12
-                    global GetCPInfoExW
                     global _GetCPInfoExW@12
                     global _Unicows_GetCPInfoExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetCPInfoExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCPInfoExW:
 _GetCPInfoExW@12:
                     jmp [__imp__GetCPInfoExW@12]
 

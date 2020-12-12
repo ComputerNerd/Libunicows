@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasRenameEntryW@12
-                    global RasRenameEntryW
                     global _RasRenameEntryW@12
                     global _Unicows_RasRenameEntryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasRenameEntryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasRenameEntryW:
 _RasRenameEntryW@12:
                     jmp [__imp__RasRenameEntryW@12]
 

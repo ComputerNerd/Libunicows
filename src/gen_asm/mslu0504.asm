@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__QueryContextAttributesW@12
-                    global QueryContextAttributesW
                     global _QueryContextAttributesW@12
                     global _Unicows_QueryContextAttributesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_QueryContextAttributesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-QueryContextAttributesW:
 _QueryContextAttributesW@12:
                     jmp [__imp__QueryContextAttributesW@12]
 

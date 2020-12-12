@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateMDIWindowW@40
-                    global CreateMDIWindowW
                     global _CreateMDIWindowW@40
                     global _Unicows_CreateMDIWindowW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateMDIWindowW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateMDIWindowW:
 _CreateMDIWindowW@40:
                     jmp [__imp__CreateMDIWindowW@40]
 

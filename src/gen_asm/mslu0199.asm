@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__MessageBoxIndirectW@4
-                    global MessageBoxIndirectW
                     global _MessageBoxIndirectW@4
                     global _Unicows_MessageBoxIndirectW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_MessageBoxIndirectW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-MessageBoxIndirectW:
 _MessageBoxIndirectW@4:
                     jmp [__imp__MessageBoxIndirectW@4]
 

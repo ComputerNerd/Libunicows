@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__BroadcastSystemMessageW@20
-                    global BroadcastSystemMessageW
                     global _BroadcastSystemMessageW@20
                     global _Unicows_BroadcastSystemMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_BroadcastSystemMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-BroadcastSystemMessageW:
 _BroadcastSystemMessageW@20:
                     jmp [__imp__BroadcastSystemMessageW@20]
 

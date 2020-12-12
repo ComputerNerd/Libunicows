@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetCharacterPlacementW@24
-                    global GetCharacterPlacementW
                     global _GetCharacterPlacementW@24
                     global _Unicows_GetCharacterPlacementW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetCharacterPlacementW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCharacterPlacementW:
 _GetCharacterPlacementW@24:
                     jmp [__imp__GetCharacterPlacementW@24]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetFileAttributesExW@12
-                    global GetFileAttributesExW
                     global _GetFileAttributesExW@12
                     global _Unicows_GetFileAttributesExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetFileAttributesExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFileAttributesExW:
 _GetFileAttributesExW@12:
                     jmp [__imp__GetFileAttributesExW@12]
 

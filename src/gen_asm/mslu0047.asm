@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetLogColorSpaceW@12
-                    global GetLogColorSpaceW
                     global _GetLogColorSpaceW@12
                     global _Unicows_GetLogColorSpaceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetLogColorSpaceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetLogColorSpaceW:
 _GetLogColorSpaceW@12:
                     jmp [__imp__GetLogColorSpaceW@12]
 

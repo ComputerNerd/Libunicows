@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateFontW@56
-                    global CreateFontW
                     global _CreateFontW@56
                     global _Unicows_CreateFontW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateFontW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateFontW:
 _CreateFontW@56:
                     jmp [__imp__CreateFontW@56]
 

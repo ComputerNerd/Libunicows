@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__MCIWndCreateW
-                    global MCIWndCreateW
                     global _MCIWndCreateW
                     global _Unicows_MCIWndCreateW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_MCIWndCreateW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-MCIWndCreateW:
 _MCIWndCreateW:
                     jmp [__imp__MCIWndCreateW]
 

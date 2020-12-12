@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIAddVerbMenuW@36
-                    global OleUIAddVerbMenuW
                     global _OleUIAddVerbMenuW@36
                     global _Unicows_OleUIAddVerbMenuW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIAddVerbMenuW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIAddVerbMenuW:
 _OleUIAddVerbMenuW@36:
                     jmp [__imp__OleUIAddVerbMenuW@36]
 

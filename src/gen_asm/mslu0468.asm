@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DeleteMonitorW@12
-                    global DeleteMonitorW
                     global _DeleteMonitorW@12
                     global _Unicows_DeleteMonitorW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DeleteMonitorW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeleteMonitorW:
 _DeleteMonitorW@12:
                     jmp [__imp__DeleteMonitorW@12]
 

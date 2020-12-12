@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetGlyphOutlineW@28
-                    global GetGlyphOutlineW
                     global _GetGlyphOutlineW@28
                     global _Unicows_GetGlyphOutlineW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetGlyphOutlineW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetGlyphOutlineW:
 _GetGlyphOutlineW@28:
                     jmp [__imp__GetGlyphOutlineW@28]
 

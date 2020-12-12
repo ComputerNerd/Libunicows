@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetPrinterDriverDirectoryW@24
-                    global GetPrinterDriverDirectoryW
                     global _GetPrinterDriverDirectoryW@24
                     global _Unicows_GetPrinterDriverDirectoryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetPrinterDriverDirectoryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetPrinterDriverDirectoryW:
 _GetPrinterDriverDirectoryW@24:
                     jmp [__imp__GetPrinterDriverDirectoryW@24]
 

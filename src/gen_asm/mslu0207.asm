@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegisterClassExW@4
-                    global RegisterClassExW
                     global _RegisterClassExW@4
                     global _Unicows_RegisterClassExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegisterClassExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegisterClassExW:
 _RegisterClassExW@4:
                     jmp [__imp__RegisterClassExW@4]
 

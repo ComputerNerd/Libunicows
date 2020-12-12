@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DdeQueryConvInfo@12
-                    global DdeQueryConvInfo
                     global _DdeQueryConvInfo@12
                     global _Unicows_DdeQueryConvInfo
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DdeQueryConvInfo:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DdeQueryConvInfo:
 _DdeQueryConvInfo@12:
                     jmp [__imp__DdeQueryConvInfo@12]
 

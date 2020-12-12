@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__AppendMenuW@16
-                    global AppendMenuW
                     global _AppendMenuW@16
                     global _Unicows_AppendMenuW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_AppendMenuW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-AppendMenuW:
 _AppendMenuW@16:
                     jmp [__imp__AppendMenuW@16]
 

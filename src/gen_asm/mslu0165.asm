@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetMenuStringW@20
-                    global GetMenuStringW
                     global _GetMenuStringW@20
                     global _Unicows_GetMenuStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetMenuStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetMenuStringW:
 _GetMenuStringW@20:
                     jmp [__imp__GetMenuStringW@20]
 

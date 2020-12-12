@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumPropsExW@12
-                    global EnumPropsExW
                     global _EnumPropsExW@12
                     global _Unicows_EnumPropsExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumPropsExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumPropsExW:
 _EnumPropsExW@12:
                     jmp [__imp__EnumPropsExW@12]
 

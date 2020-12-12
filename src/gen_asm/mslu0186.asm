@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadAcceleratorsW@8
-                    global LoadAcceleratorsW
                     global _LoadAcceleratorsW@8
                     global _Unicows_LoadAcceleratorsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadAcceleratorsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadAcceleratorsW:
 _LoadAcceleratorsW@8:
                     jmp [__imp__LoadAcceleratorsW@8]
 

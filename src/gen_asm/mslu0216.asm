@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SendMessageTimeoutW@28
-                    global SendMessageTimeoutW
                     global _SendMessageTimeoutW@28
                     global _Unicows_SendMessageTimeoutW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SendMessageTimeoutW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SendMessageTimeoutW:
 _SendMessageTimeoutW@28:
                     jmp [__imp__SendMessageTimeoutW@28]
 

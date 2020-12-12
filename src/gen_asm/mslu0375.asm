@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetStartupInfoW@4
-                    global GetStartupInfoW
                     global _GetStartupInfoW@4
                     global _Unicows_GetStartupInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetStartupInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetStartupInfoW:
 _GetStartupInfoW@4:
                     jmp [__imp__GetStartupInfoW@4]
 

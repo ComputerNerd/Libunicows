@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DefDlgProcW@16
-                    global DefDlgProcW
                     global _DefDlgProcW@16
                     global _Unicows_DefDlgProcW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DefDlgProcW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DefDlgProcW:
 _DefDlgProcW@16:
                     jmp [__imp__DefDlgProcW@16]
 

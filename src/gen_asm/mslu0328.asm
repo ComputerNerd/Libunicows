@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumTimeFormatsW@12
-                    global EnumTimeFormatsW
                     global _EnumTimeFormatsW@12
                     global _Unicows_EnumTimeFormatsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumTimeFormatsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumTimeFormatsW:
 _EnumTimeFormatsW@12:
                     jmp [__imp__EnumTimeFormatsW@12]
 

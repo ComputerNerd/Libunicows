@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateFileW@28
-                    global CreateFileW
                     global _CreateFileW@28
                     global _Unicows_CreateFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateFileW:
 _CreateFileW@28:
                     jmp [__imp__CreateFileW@28]
 

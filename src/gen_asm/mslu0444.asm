@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasEditPhonebookEntryW@12
-                    global RasEditPhonebookEntryW
                     global _RasEditPhonebookEntryW@12
                     global _Unicows_RasEditPhonebookEntryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasEditPhonebookEntryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasEditPhonebookEntryW:
 _RasEditPhonebookEntryW@12:
                     jmp [__imp__RasEditPhonebookEntryW@12]
 

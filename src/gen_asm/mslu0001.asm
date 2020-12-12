@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__MultinetGetConnectionPerformanceW@8
-                    global MultinetGetConnectionPerformanceW
                     global _MultinetGetConnectionPerformanceW@8
                     global _Unicows_MultinetGetConnectionPerformanceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_MultinetGetConnectionPerformanceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-MultinetGetConnectionPerformanceW:
 _MultinetGetConnectionPerformanceW@8:
                     jmp [__imp__MultinetGetConnectionPerformanceW@8]
 

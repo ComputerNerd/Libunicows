@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsBadStringPtrW@8
-                    global IsBadStringPtrW
                     global _IsBadStringPtrW@8
                     global _Unicows_IsBadStringPtrW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsBadStringPtrW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsBadStringPtrW:
 _IsBadStringPtrW@8:
                     jmp [__imp__IsBadStringPtrW@8]
 

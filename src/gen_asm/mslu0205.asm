@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__PostMessageW@16
-                    global PostMessageW
                     global _PostMessageW@16
                     global _Unicows_PostMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_PostMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-PostMessageW:
 _PostMessageW@16:
                     jmp [__imp__PostMessageW@16]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ReplaceTextW@4
-                    global ReplaceTextW
                     global _ReplaceTextW@4
                     global _Unicows_ReplaceTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ReplaceTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ReplaceTextW:
 _ReplaceTextW@4:
                     jmp [__imp__ReplaceTextW@4]
 

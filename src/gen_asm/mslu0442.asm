@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasDeleteSubEntryW@12
-                    global RasDeleteSubEntryW
                     global _RasDeleteSubEntryW@12
                     global _Unicows_RasDeleteSubEntryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasDeleteSubEntryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasDeleteSubEntryW:
 _RasDeleteSubEntryW@12:
                     jmp [__imp__RasDeleteSubEntryW@12]
 

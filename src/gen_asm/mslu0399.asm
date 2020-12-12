@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OpenSemaphoreW@12
-                    global OpenSemaphoreW
                     global _OpenSemaphoreW@12
                     global _Unicows_OpenSemaphoreW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OpenSemaphoreW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenSemaphoreW:
 _OpenSemaphoreW@12:
                     jmp [__imp__OpenSemaphoreW@12]
 

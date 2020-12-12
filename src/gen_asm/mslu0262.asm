@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CryptSetProviderExW@16
-                    global CryptSetProviderExW
                     global _CryptSetProviderExW@16
                     global _Unicows_CryptSetProviderExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CryptSetProviderExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CryptSetProviderExW:
 _CryptSetProviderExW@16:
                     jmp [__imp__CryptSetProviderExW@16]
 

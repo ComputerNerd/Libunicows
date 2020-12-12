@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CopyFileExW@24
-                    global CopyFileExW
                     global _CopyFileExW@24
                     global _Unicows_CopyFileExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CopyFileExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CopyFileExW:
 _CopyFileExW@24:
                     jmp [__imp__CopyFileExW@24]
 

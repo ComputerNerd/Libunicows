@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OpenEventW@12
-                    global OpenEventW
                     global _OpenEventW@12
                     global _Unicows_OpenEventW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OpenEventW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenEventW:
 _OpenEventW@12:
                     jmp [__imp__OpenEventW@12]
 

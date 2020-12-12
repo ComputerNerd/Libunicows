@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CommConfigDialogW@12
-                    global CommConfigDialogW
                     global _CommConfigDialogW@12
                     global _Unicows_CommConfigDialogW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CommConfigDialogW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CommConfigDialogW:
 _CommConfigDialogW@12:
                     jmp [__imp__CommConfigDialogW@12]
 

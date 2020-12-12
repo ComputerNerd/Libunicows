@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DdeCreateStringHandleW@12
-                    global DdeCreateStringHandleW
                     global _DdeCreateStringHandleW@12
                     global _Unicows_DdeCreateStringHandleW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DdeCreateStringHandleW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DdeCreateStringHandleW:
 _DdeCreateStringHandleW@12:
                     jmp [__imp__DdeCreateStringHandleW@12]
 

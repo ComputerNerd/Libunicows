@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetWindowsDirectoryW@8
-                    global GetWindowsDirectoryW
                     global _GetWindowsDirectoryW@8
                     global _Unicows_GetWindowsDirectoryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetWindowsDirectoryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetWindowsDirectoryW:
 _GetWindowsDirectoryW@8:
                     jmp [__imp__GetWindowsDirectoryW@8]
 

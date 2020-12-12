@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateMailslotW@16
-                    global CreateMailslotW
                     global _CreateMailslotW@16
                     global _Unicows_CreateMailslotW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateMailslotW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateMailslotW:
 _CreateMailslotW@16:
                     jmp [__imp__CreateMailslotW@16]
 

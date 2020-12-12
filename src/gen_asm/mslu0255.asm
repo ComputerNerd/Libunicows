@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__VerInstallFileW@32
-                    global VerInstallFileW
                     global _VerInstallFileW@32
                     global _Unicows_VerInstallFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_VerInstallFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-VerInstallFileW:
 _VerInstallFileW@32:
                     jmp [__imp__VerInstallFileW@32]
 

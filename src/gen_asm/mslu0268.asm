@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsTextUnicode@12
-                    global IsTextUnicode
                     global _IsTextUnicode@12
                     global _Unicows_IsTextUnicode
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsTextUnicode:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsTextUnicode:
 _IsTextUnicode@12:
                     jmp [__imp__IsTextUnicode@12]
 

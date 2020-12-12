@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetCurrentDirectoryW@8
-                    global GetCurrentDirectoryW
                     global _GetCurrentDirectoryW@8
                     global _Unicows_GetCurrentDirectoryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetCurrentDirectoryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCurrentDirectoryW:
 _GetCurrentDirectoryW@8:
                     jmp [__imp__GetCurrentDirectoryW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SendMessageW@16
-                    global SendMessageW
                     global _SendMessageW@16
                     global _Unicows_SendMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SendMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SendMessageW:
 _SendMessageW@16:
                     jmp [__imp__SendMessageW@16]
 

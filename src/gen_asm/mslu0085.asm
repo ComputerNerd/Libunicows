@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__waveOutGetDevCapsW@12
-                    global waveOutGetDevCapsW
                     global _waveOutGetDevCapsW@12
                     global _Unicows_waveOutGetDevCapsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_waveOutGetDevCapsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-waveOutGetDevCapsW:
 _waveOutGetDevCapsW@12:
                     jmp [__imp__waveOutGetDevCapsW@12]
 

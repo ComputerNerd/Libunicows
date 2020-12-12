@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetClipboardFormatNameW@12
-                    global GetClipboardFormatNameW
                     global _GetClipboardFormatNameW@12
                     global _Unicows_GetClipboardFormatNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetClipboardFormatNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetClipboardFormatNameW:
 _GetClipboardFormatNameW@12:
                     jmp [__imp__GetClipboardFormatNameW@12]
 

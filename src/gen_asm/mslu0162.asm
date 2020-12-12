@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetKeyNameTextW@12
-                    global GetKeyNameTextW
                     global _GetKeyNameTextW@12
                     global _Unicows_GetKeyNameTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetKeyNameTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetKeyNameTextW:
 _GetKeyNameTextW@12:
                     jmp [__imp__GetKeyNameTextW@12]
 

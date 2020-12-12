@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__midiOutGetErrorTextW@12
-                    global midiOutGetErrorTextW
                     global _midiOutGetErrorTextW@12
                     global _Unicows_midiOutGetErrorTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_midiOutGetErrorTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-midiOutGetErrorTextW:
 _midiOutGetErrorTextW@12:
                     jmp [__imp__midiOutGetErrorTextW@12]
 

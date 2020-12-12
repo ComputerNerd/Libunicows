@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetWindowLongW@8
-                    global GetWindowLongW
                     global _GetWindowLongW@8
                     global _Unicows_GetWindowLongW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetWindowLongW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetWindowLongW:
 _GetWindowLongW@8:
                     jmp [__imp__GetWindowLongW@8]
 

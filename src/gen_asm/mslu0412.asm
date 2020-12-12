@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetComputerNameW@4
-                    global SetComputerNameW
                     global _SetComputerNameW@4
                     global _Unicows_SetComputerNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetComputerNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetComputerNameW:
 _SetComputerNameW@4:
                     jmp [__imp__SetComputerNameW@4]
 

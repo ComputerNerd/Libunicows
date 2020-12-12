@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DlgDirListComboBoxW@20
-                    global DlgDirListComboBoxW
                     global _DlgDirListComboBoxW@20
                     global _Unicows_DlgDirListComboBoxW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DlgDirListComboBoxW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DlgDirListComboBoxW:
 _DlgDirListComboBoxW@20:
                     jmp [__imp__DlgDirListComboBoxW@20]
 

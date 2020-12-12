@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SHChangeNotify@16
-                    global SHChangeNotify
                     global _SHChangeNotify@16
                     global _Unicows_SHChangeNotify
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SHChangeNotify:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHChangeNotify:
 _SHChangeNotify@16:
                     jmp [__imp__SHChangeNotify@16]
 

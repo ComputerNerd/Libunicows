@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ChangeMenuW@20
-                    global ChangeMenuW
                     global _ChangeMenuW@20
                     global _Unicows_ChangeMenuW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ChangeMenuW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ChangeMenuW:
 _ChangeMenuW@20:
                     jmp [__imp__ChangeMenuW@20]
 

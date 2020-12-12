@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mmioRenameW@16
-                    global mmioRenameW
                     global _mmioRenameW@16
                     global _Unicows_mmioRenameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mmioRenameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mmioRenameW:
 _mmioRenameW@16:
                     jmp [__imp__mmioRenameW@16]
 

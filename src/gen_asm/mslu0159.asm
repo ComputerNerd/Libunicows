@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetClipboardData@4
-                    global GetClipboardData
                     global _GetClipboardData@4
                     global _Unicows_GetClipboardData
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetClipboardData:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetClipboardData:
 _GetClipboardData@4:
                     jmp [__imp__GetClipboardData@4]
 

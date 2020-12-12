@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CryptSignHashW@24
-                    global CryptSignHashW
                     global _CryptSignHashW@24
                     global _Unicows_CryptSignHashW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CryptSignHashW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CryptSignHashW:
 _CryptSignHashW@24:
                     jmp [__imp__CryptSignHashW@24]
 

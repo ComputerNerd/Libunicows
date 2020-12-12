@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__UpdateICMRegKeyW@16
-                    global UpdateICMRegKeyW
                     global _UpdateICMRegKeyW@16
                     global _Unicows_UpdateICMRegKeyW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_UpdateICMRegKeyW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-UpdateICMRegKeyW:
 _UpdateICMRegKeyW@16:
                     jmp [__imp__UpdateICMRegKeyW@16]
 

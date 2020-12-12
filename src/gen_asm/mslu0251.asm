@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__Shell_NotifyIconW@8
-                    global Shell_NotifyIconW
                     global _Shell_NotifyIconW@8
                     global _Unicows_Shell_NotifyIconW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_Shell_NotifyIconW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-Shell_NotifyIconW:
 _Shell_NotifyIconW@8:
                     jmp [__imp__Shell_NotifyIconW@8]
 

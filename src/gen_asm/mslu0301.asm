@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__BuildCommDCBAndTimeoutsW@12
-                    global BuildCommDCBAndTimeoutsW
                     global _BuildCommDCBAndTimeoutsW@12
                     global _Unicows_BuildCommDCBAndTimeoutsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_BuildCommDCBAndTimeoutsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-BuildCommDCBAndTimeoutsW:
 _BuildCommDCBAndTimeoutsW@12:
                     jmp [__imp__BuildCommDCBAndTimeoutsW@12]
 

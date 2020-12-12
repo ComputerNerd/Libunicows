@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegisterClipboardFormatW@4
-                    global RegisterClipboardFormatW
                     global _RegisterClipboardFormatW@4
                     global _Unicows_RegisterClipboardFormatW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegisterClipboardFormatW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegisterClipboardFormatW:
 _RegisterClipboardFormatW@4:
                     jmp [__imp__RegisterClipboardFormatW@4]
 

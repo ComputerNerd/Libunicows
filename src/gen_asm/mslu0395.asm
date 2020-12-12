@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__MultiByteToWideChar@24
-                    global MultiByteToWideChar
                     global _MultiByteToWideChar@24
                     global _Unicows_MultiByteToWideChar
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_MultiByteToWideChar:
 
                     ; ...and skip to it (see following jmp instruction):
 
-MultiByteToWideChar:
 _MultiByteToWideChar@24:
                     jmp [__imp__MultiByteToWideChar@24]
 

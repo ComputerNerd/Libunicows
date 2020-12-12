@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetStateTextW@12
-                    global GetStateTextW
                     global _GetStateTextW@12
                     global _Unicows_GetStateTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetStateTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetStateTextW:
 _GetStateTextW@12:
                     jmp [__imp__GetStateTextW@12]
 

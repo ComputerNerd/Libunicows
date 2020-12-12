@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegConnectRegistryW@12
-                    global RegConnectRegistryW
                     global _RegConnectRegistryW@12
                     global _Unicows_RegConnectRegistryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegConnectRegistryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegConnectRegistryW:
 _RegConnectRegistryW@12:
                     jmp [__imp__RegConnectRegistryW@12]
 

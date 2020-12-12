@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetUserNameW@8
-                    global GetUserNameW
                     global _GetUserNameW@8
                     global _Unicows_GetUserNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetUserNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetUserNameW:
 _GetUserNameW@8:
                     jmp [__imp__GetUserNameW@8]
 

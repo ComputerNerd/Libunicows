@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__NAME@SIZE
-                    global NAME
                     global _NAME@SIZE
                     global _Unicows_NAME
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_NAME:
 
                     ; ...and skip to it (see following jmp instruction):
 
-NAME:
 _NAME@SIZE:
                     jmp [__imp__NAME@SIZE]
 

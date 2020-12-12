@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__VerFindFileW@32
-                    global VerFindFileW
                     global _VerFindFileW@32
                     global _Unicows_VerFindFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_VerFindFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-VerFindFileW:
 _VerFindFileW@32:
                     jmp [__imp__VerFindFileW@32]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WideCharToMultiByte@32
-                    global WideCharToMultiByte
                     global _WideCharToMultiByte@32
                     global _Unicows_WideCharToMultiByte
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WideCharToMultiByte:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WideCharToMultiByte:
 _WideCharToMultiByte@32:
                     jmp [__imp__WideCharToMultiByte@32]
 

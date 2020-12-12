@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ShellExecuteW@24
-                    global ShellExecuteW
                     global _ShellExecuteW@24
                     global _Unicows_ShellExecuteW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ShellExecuteW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ShellExecuteW:
 _ShellExecuteW@24:
                     jmp [__imp__ShellExecuteW@24]
 

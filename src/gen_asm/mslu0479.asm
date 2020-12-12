@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumPrinterDriversW@28
-                    global EnumPrinterDriversW
                     global _EnumPrinterDriversW@28
                     global _Unicows_EnumPrinterDriversW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumPrinterDriversW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumPrinterDriversW:
 _EnumPrinterDriversW@28:
                     jmp [__imp__EnumPrinterDriversW@28]
 

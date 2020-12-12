@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__wvsprintfW@12
-                    global wvsprintfW
                     global _wvsprintfW@12
                     global _Unicows_wvsprintfW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_wvsprintfW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-wvsprintfW:
 _wvsprintfW@12:
                     jmp [__imp__wvsprintfW@12]
 

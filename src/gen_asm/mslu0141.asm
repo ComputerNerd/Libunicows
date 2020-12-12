@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DrawTextExW@24
-                    global DrawTextExW
                     global _DrawTextExW@24
                     global _Unicows_DrawTextExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DrawTextExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DrawTextExW:
 _DrawTextExW@24:
                     jmp [__imp__DrawTextExW@24]
 

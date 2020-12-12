@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetWindowTextLengthW@4
-                    global GetWindowTextLengthW
                     global _GetWindowTextLengthW@4
                     global _Unicows_GetWindowTextLengthW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetWindowTextLengthW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetWindowTextLengthW:
 _GetWindowTextLengthW@4:
                     jmp [__imp__GetWindowTextLengthW@4]
 

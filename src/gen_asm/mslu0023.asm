@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateColorSpaceW@4
-                    global CreateColorSpaceW
                     global _CreateColorSpaceW@4
                     global _Unicows_CreateColorSpaceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateColorSpaceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateColorSpaceW:
 _CreateColorSpaceW@4:
                     jmp [__imp__CreateColorSpaceW@4]
 

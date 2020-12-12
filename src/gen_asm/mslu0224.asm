@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetWindowLongA@12
-                    global SetWindowLongA
                     global _SetWindowLongA@12
                     global _Unicows_SetWindowLongA
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetWindowLongA:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetWindowLongA:
 _SetWindowLongA@12:
                     jmp [__imp__SetWindowLongA@12]
 

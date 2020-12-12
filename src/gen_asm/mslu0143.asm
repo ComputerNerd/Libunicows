@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnableWindow@8
-                    global EnableWindow
                     global _EnableWindow@8
                     global _Unicows_EnableWindow
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnableWindow:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnableWindow:
 _EnableWindow@8:
                     jmp [__imp__EnableWindow@8]
 

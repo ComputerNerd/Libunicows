@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__QueryDosDeviceW@12
-                    global QueryDosDeviceW
                     global _QueryDosDeviceW@12
                     global _Unicows_QueryDosDeviceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_QueryDosDeviceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-QueryDosDeviceW:
 _QueryDosDeviceW@12:
                     jmp [__imp__QueryDosDeviceW@12]
 

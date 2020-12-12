@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetRoleTextW@12
-                    global GetRoleTextW
                     global _GetRoleTextW@12
                     global _Unicows_GetRoleTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetRoleTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetRoleTextW:
 _GetRoleTextW@12:
                     jmp [__imp__GetRoleTextW@12]
 

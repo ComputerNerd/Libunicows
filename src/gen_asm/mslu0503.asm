@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__InitSecurityInterfaceW@0
-                    global InitSecurityInterfaceW
                     global _InitSecurityInterfaceW@0
                     global _Unicows_InitSecurityInterfaceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_InitSecurityInterfaceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-InitSecurityInterfaceW:
 _InitSecurityInterfaceW@0:
                     jmp [__imp__InitSecurityInterfaceW@0]
 

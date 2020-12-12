@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DdeConnectList@20
-                    global DdeConnectList
                     global _DdeConnectList@20
                     global _Unicows_DdeConnectList
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DdeConnectList:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DdeConnectList:
 _DdeConnectList@20:
                     jmp [__imp__DdeConnectList@20]
 

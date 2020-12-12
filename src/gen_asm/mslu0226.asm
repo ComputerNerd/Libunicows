@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetWindowTextW@8
-                    global SetWindowTextW
                     global _SetWindowTextW@8
                     global _Unicows_SetWindowTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetWindowTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetWindowTextW:
 _SetWindowTextW@8:
                     jmp [__imp__SetWindowTextW@8]
 

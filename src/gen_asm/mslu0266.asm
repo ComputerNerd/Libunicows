@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetCurrentHwProfileW@4
-                    global GetCurrentHwProfileW
                     global _GetCurrentHwProfileW@4
                     global _Unicows_GetCurrentHwProfileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetCurrentHwProfileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCurrentHwProfileW:
 _GetCurrentHwProfileW@4:
                     jmp [__imp__GetCurrentHwProfileW@4]
 

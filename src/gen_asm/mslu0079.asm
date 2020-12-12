@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mmioOpenW@12
-                    global mmioOpenW
                     global _mmioOpenW@12
                     global _Unicows_mmioOpenW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mmioOpenW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mmioOpenW:
 _mmioOpenW@12:
                     jmp [__imp__mmioOpenW@12]
 

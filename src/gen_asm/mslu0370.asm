@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetProcAddress@8
-                    global GetProcAddress
                     global _GetProcAddress@8
                     global _Unicows_GetProcAddress
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetProcAddress:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetProcAddress:
 _GetProcAddress@8:
                     jmp [__imp__GetProcAddress@8]
 

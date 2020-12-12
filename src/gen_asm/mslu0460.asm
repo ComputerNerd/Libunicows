@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__AddMonitorW@12
-                    global AddMonitorW
                     global _AddMonitorW@12
                     global _Unicows_AddMonitorW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_AddMonitorW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddMonitorW:
 _AddMonitorW@12:
                     jmp [__imp__AddMonitorW@12]
 

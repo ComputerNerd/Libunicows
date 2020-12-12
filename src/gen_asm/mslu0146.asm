@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumDisplaySettingsExW@16
-                    global EnumDisplaySettingsExW
                     global _EnumDisplaySettingsExW@16
                     global _Unicows_EnumDisplaySettingsExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumDisplaySettingsExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumDisplaySettingsExW:
 _EnumDisplaySettingsExW@16:
                     jmp [__imp__EnumDisplaySettingsExW@16]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetJobW@24
-                    global GetJobW
                     global _GetJobW@24
                     global _Unicows_GetJobW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetJobW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetJobW:
 _GetJobW@24:
                     jmp [__imp__GetJobW@24]
 

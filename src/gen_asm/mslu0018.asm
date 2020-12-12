@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetOpenEnumW@20
-                    global WNetOpenEnumW
                     global _WNetOpenEnumW@20
                     global _Unicows_WNetOpenEnumW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetOpenEnumW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetOpenEnumW:
 _WNetOpenEnumW@20:
                     jmp [__imp__WNetOpenEnumW@20]
 

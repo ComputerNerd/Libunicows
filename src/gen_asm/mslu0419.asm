@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetVolumeLabelW@8
-                    global SetVolumeLabelW
                     global _SetVolumeLabelW@8
                     global _Unicows_SetVolumeLabelW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetVolumeLabelW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetVolumeLabelW:
 _SetVolumeLabelW@8:
                     jmp [__imp__SetVolumeLabelW@8]
 

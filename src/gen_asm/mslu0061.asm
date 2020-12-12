@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__TextOutW@20
-                    global TextOutW
                     global _TextOutW@20
                     global _Unicows_TextOutW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_TextOutW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-TextOutW:
 _TextOutW@20:
                     jmp [__imp__TextOutW@20]
 

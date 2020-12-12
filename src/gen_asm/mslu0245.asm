@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SHGetFileInfoW@20
-                    global SHGetFileInfoW
                     global _SHGetFileInfoW@20
                     global _Unicows_SHGetFileInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SHGetFileInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHGetFileInfoW:
 _SHGetFileInfoW@20:
                     jmp [__imp__SHGetFileInfoW@20]
 

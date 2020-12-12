@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetShortPathNameW@12
-                    global GetShortPathNameW
                     global _GetShortPathNameW@12
                     global _Unicows_GetShortPathNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetShortPathNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetShortPathNameW:
 _GetShortPathNameW@12:
                     jmp [__imp__GetShortPathNameW@12]
 

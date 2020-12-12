@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__PeekConsoleInputW@16
-                    global PeekConsoleInputW
                     global _PeekConsoleInputW@16
                     global _Unicows_PeekConsoleInputW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_PeekConsoleInputW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-PeekConsoleInputW:
 _PeekConsoleInputW@16:
                     jmp [__imp__PeekConsoleInputW@16]
 

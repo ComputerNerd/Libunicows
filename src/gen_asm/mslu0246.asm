@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SHGetNewLinkInfoW@20
-                    global SHGetNewLinkInfoW
                     global _SHGetNewLinkInfoW@20
                     global _Unicows_SHGetNewLinkInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SHGetNewLinkInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHGetNewLinkInfoW:
 _SHGetNewLinkInfoW@20:
                     jmp [__imp__SHGetNewLinkInfoW@20]
 

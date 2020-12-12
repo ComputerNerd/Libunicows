@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EndUpdateResourceA@8
-                    global EndUpdateResourceA
                     global _EndUpdateResourceA@8
                     global _Unicows_EndUpdateResourceA
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EndUpdateResourceA:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EndUpdateResourceA:
 _EndUpdateResourceA@8:
                     jmp [__imp__EndUpdateResourceA@8]
 

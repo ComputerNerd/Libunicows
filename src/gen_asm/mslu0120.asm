@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateDialogParamW@20
-                    global CreateDialogParamW
                     global _CreateDialogParamW@20
                     global _Unicows_CreateDialogParamW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateDialogParamW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateDialogParamW:
 _CreateDialogParamW@20:
                     jmp [__imp__CreateDialogParamW@20]
 

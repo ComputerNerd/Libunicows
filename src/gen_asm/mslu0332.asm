@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FindAtomW@4
-                    global FindAtomW
                     global _FindAtomW@4
                     global _Unicows_FindAtomW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FindAtomW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindAtomW:
 _FindAtomW@4:
                     jmp [__imp__FindAtomW@4]
 

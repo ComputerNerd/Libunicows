@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetAltTabInfoW@20
-                    global GetAltTabInfoW
                     global _GetAltTabInfoW@20
                     global _Unicows_GetAltTabInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetAltTabInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetAltTabInfoW:
 _GetAltTabInfoW@20:
                     jmp [__imp__GetAltTabInfoW@20]
 

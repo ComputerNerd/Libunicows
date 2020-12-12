@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateFileMappingW@24
-                    global CreateFileMappingW
                     global _CreateFileMappingW@24
                     global _Unicows_CreateFileMappingW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateFileMappingW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateFileMappingW:
 _CreateFileMappingW@24:
                     jmp [__imp__CreateFileMappingW@24]
 

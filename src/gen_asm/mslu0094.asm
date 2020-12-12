@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIConvertW@4
-                    global OleUIConvertW
                     global _OleUIConvertW@4
                     global _Unicows_OleUIConvertW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIConvertW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIConvertW:
 _OleUIConvertW@4:
                     jmp [__imp__OleUIConvertW@4]
 

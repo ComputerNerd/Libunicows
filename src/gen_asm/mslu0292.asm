@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetFileTitleW@12
-                    global GetFileTitleW
                     global _GetFileTitleW@12
                     global _Unicows_GetFileTitleW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetFileTitleW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFileTitleW:
 _GetFileTitleW@12:
                     jmp [__imp__GetFileTitleW@12]
 

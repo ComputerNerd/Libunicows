@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FindFirstChangeNotificationW@12
-                    global FindFirstChangeNotificationW
                     global _FindFirstChangeNotificationW@12
                     global _Unicows_FindFirstChangeNotificationW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FindFirstChangeNotificationW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindFirstChangeNotificationW:
 _FindFirstChangeNotificationW@12:
                     jmp [__imp__FindFirstChangeNotificationW@12]
 

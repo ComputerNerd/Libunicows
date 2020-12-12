@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WritePrivateProfileStructW@20
-                    global WritePrivateProfileStructW
                     global _WritePrivateProfileStructW@20
                     global _Unicows_WritePrivateProfileStructW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WritePrivateProfileStructW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WritePrivateProfileStructW:
 _WritePrivateProfileStructW@20:
                     jmp [__imp__WritePrivateProfileStructW@20]
 

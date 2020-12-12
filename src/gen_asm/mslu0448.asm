@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasGetConnectStatusW@8
-                    global RasGetConnectStatusW
                     global _RasGetConnectStatusW@8
                     global _Unicows_RasGetConnectStatusW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasGetConnectStatusW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasGetConnectStatusW:
 _RasGetConnectStatusW@8:
                     jmp [__imp__RasGetConnectStatusW@8]
 

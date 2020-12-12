@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FindTextW@4
-                    global FindTextW
                     global _FindTextW@4
                     global _Unicows_FindTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FindTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindTextW:
 _FindTextW@4:
                     jmp [__imp__FindTextW@4]
 

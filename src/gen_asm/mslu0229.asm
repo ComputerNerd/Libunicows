@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SystemParametersInfoW@16
-                    global SystemParametersInfoW
                     global _SystemParametersInfoW@16
                     global _Unicows_SystemParametersInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SystemParametersInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SystemParametersInfoW:
 _SystemParametersInfoW@16:
                     jmp [__imp__SystemParametersInfoW@16]
 

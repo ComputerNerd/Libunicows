@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CharPrevW@8
-                    global CharPrevW
                     global _CharPrevW@8
                     global _Unicows_CharPrevW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CharPrevW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CharPrevW:
 _CharPrevW@8:
                     jmp [__imp__CharPrevW@8]
 

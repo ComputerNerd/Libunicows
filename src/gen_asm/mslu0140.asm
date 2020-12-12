@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DrawStateW@40
-                    global DrawStateW
                     global _DrawStateW@40
                     global _Unicows_DrawStateW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DrawStateW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DrawStateW:
 _DrawStateW@40:
                     jmp [__imp__DrawStateW@40]
 

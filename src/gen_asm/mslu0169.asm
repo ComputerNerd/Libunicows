@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetPropW@8
-                    global GetPropW
                     global _GetPropW@8
                     global _Unicows_GetPropW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetPropW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetPropW:
 _GetPropW@8:
                     jmp [__imp__GetPropW@8]
 

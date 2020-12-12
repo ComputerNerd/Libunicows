@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegQueryMultipleValuesW@20
-                    global RegQueryMultipleValuesW
                     global _RegQueryMultipleValuesW@20
                     global _Unicows_RegQueryMultipleValuesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegQueryMultipleValuesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegQueryMultipleValuesW:
 _RegQueryMultipleValuesW@20:
                     jmp [__imp__RegQueryMultipleValuesW@20]
 

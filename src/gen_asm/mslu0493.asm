@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetOpenFileNamePreviewW@4
-                    global GetOpenFileNamePreviewW
                     global _GetOpenFileNamePreviewW@4
                     global _Unicows_GetOpenFileNamePreviewW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetOpenFileNamePreviewW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetOpenFileNamePreviewW:
 _GetOpenFileNamePreviewW@4:
                     jmp [__imp__GetOpenFileNamePreviewW@4]
 

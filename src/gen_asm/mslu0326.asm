@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumSystemCodePagesW@8
-                    global EnumSystemCodePagesW
                     global _EnumSystemCodePagesW@8
                     global _Unicows_EnumSystemCodePagesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumSystemCodePagesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumSystemCodePagesW:
 _EnumSystemCodePagesW@8:
                     jmp [__imp__EnumSystemCodePagesW@8]
 

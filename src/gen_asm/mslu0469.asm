@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DeletePortW@12
-                    global DeletePortW
                     global _DeletePortW@12
                     global _Unicows_DeletePortW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DeletePortW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeletePortW:
 _DeletePortW@12:
                     jmp [__imp__DeletePortW@12]
 

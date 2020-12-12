@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DefMDIChildProcW@16
-                    global DefMDIChildProcW
                     global _DefMDIChildProcW@16
                     global _Unicows_DefMDIChildProcW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DefMDIChildProcW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DefMDIChildProcW:
 _DefMDIChildProcW@16:
                     jmp [__imp__DefMDIChildProcW@16]
 

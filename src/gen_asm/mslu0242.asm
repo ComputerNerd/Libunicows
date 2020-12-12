@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SHBrowseForFolderW@4
-                    global SHBrowseForFolderW
                     global _SHBrowseForFolderW@4
                     global _Unicows_SHBrowseForFolderW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SHBrowseForFolderW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHBrowseForFolderW:
 _SHBrowseForFolderW@4:
                     jmp [__imp__SHBrowseForFolderW@4]
 

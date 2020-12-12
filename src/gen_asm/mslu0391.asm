@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LCMapStringW@24
-                    global LCMapStringW
                     global _LCMapStringW@24
                     global _Unicows_LCMapStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LCMapStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LCMapStringW:
 _LCMapStringW@24:
                     jmp [__imp__LCMapStringW@24]
 

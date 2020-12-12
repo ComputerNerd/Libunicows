@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumClipboardFormats@4
-                    global EnumClipboardFormats
                     global _EnumClipboardFormats@4
                     global _Unicows_EnumClipboardFormats
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumClipboardFormats:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumClipboardFormats:
 _EnumClipboardFormats@4:
                     jmp [__imp__EnumClipboardFormats@4]
 

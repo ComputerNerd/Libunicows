@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CopyEnhMetaFileW@8
-                    global CopyEnhMetaFileW
                     global _CopyEnhMetaFileW@8
                     global _Unicows_CopyEnhMetaFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CopyEnhMetaFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CopyEnhMetaFileW:
 _CopyEnhMetaFileW@8:
                     jmp [__imp__CopyEnhMetaFileW@8]
 

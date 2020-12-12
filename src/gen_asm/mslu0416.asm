@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetEnvironmentVariableW@8
-                    global SetEnvironmentVariableW
                     global _SetEnvironmentVariableW@8
                     global _Unicows_SetEnvironmentVariableW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetEnvironmentVariableW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetEnvironmentVariableW:
 _SetEnvironmentVariableW@8:
                     jmp [__imp__SetEnvironmentVariableW@8]
 

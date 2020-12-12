@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FatalAppExitW@8
-                    global FatalAppExitW
                     global _FatalAppExitW@8
                     global _Unicows_FatalAppExitW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FatalAppExitW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FatalAppExitW:
 _FatalAppExitW@8:
                     jmp [__imp__FatalAppExitW@8]
 

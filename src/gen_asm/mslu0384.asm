@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetVolumeInformationW@32
-                    global GetVolumeInformationW
                     global _GetVolumeInformationW@32
                     global _Unicows_GetVolumeInformationW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetVolumeInformationW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetVolumeInformationW:
 _GetVolumeInformationW@32:
                     jmp [__imp__GetVolumeInformationW@32]
 

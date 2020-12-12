@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetLogicalDriveStringsW@8
-                    global GetLogicalDriveStringsW
                     global _GetLogicalDriveStringsW@8
                     global _Unicows_GetLogicalDriveStringsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetLogicalDriveStringsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetLogicalDriveStringsW:
 _GetLogicalDriveStringsW@8:
                     jmp [__imp__GetLogicalDriveStringsW@8]
 

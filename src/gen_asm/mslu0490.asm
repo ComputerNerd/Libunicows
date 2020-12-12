@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetPrinterDataW@20
-                    global SetPrinterDataW
                     global _SetPrinterDataW@20
                     global _Unicows_SetPrinterDataW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetPrinterDataW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetPrinterDataW:
 _SetPrinterDataW@20:
                     jmp [__imp__SetPrinterDataW@20]
 

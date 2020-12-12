@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumerateSecurityPackagesW@8
-                    global EnumerateSecurityPackagesW
                     global _EnumerateSecurityPackagesW@8
                     global _Unicows_EnumerateSecurityPackagesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumerateSecurityPackagesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumerateSecurityPackagesW:
 _EnumerateSecurityPackagesW@8:
                     jmp [__imp__EnumerateSecurityPackagesW@8]
 

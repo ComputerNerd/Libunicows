@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIBusyW@4
-                    global OleUIBusyW
                     global _OleUIBusyW@4
                     global _Unicows_OleUIBusyW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIBusyW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIBusyW:
 _OleUIBusyW@4:
                     jmp [__imp__OleUIBusyW@4]
 

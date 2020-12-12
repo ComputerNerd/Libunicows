@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetTextFaceW@12
-                    global GetTextFaceW
                     global _GetTextFaceW@12
                     global _Unicows_GetTextFaceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetTextFaceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTextFaceW:
 _GetTextFaceW@12:
                     jmp [__imp__GetTextFaceW@12]
 

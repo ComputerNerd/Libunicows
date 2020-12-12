@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FindFirstFileW@8
-                    global FindFirstFileW
                     global _FindFirstFileW@8
                     global _Unicows_FindFirstFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FindFirstFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindFirstFileW:
 _FindFirstFileW@8:
                     jmp [__imp__FindFirstFileW@8]
 

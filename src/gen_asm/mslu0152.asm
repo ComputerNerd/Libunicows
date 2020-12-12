@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FindWindowExW@16
-                    global FindWindowExW
                     global _FindWindowExW@16
                     global _Unicows_FindWindowExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FindWindowExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindWindowExW:
 _FindWindowExW@16:
                     jmp [__imp__FindWindowExW@16]
 

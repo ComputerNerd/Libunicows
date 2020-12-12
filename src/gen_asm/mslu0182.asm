@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsCharUpperW@4
-                    global IsCharUpperW
                     global _IsCharUpperW@4
                     global _Unicows_IsCharUpperW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsCharUpperW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsCharUpperW:
 _IsCharUpperW@4:
                     jmp [__imp__IsCharUpperW@4]
 

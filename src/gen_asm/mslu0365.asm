@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetPrivateProfileIntW@16
-                    global GetPrivateProfileIntW
                     global _GetPrivateProfileIntW@16
                     global _Unicows_GetPrivateProfileIntW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetPrivateProfileIntW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetPrivateProfileIntW:
 _GetPrivateProfileIntW@16:
                     jmp [__imp__GetPrivateProfileIntW@16]
 

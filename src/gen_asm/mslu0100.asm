@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIUpdateLinksW@16
-                    global OleUIUpdateLinksW
                     global _OleUIUpdateLinksW@16
                     global _Unicows_OleUIUpdateLinksW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIUpdateLinksW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIUpdateLinksW:
 _OleUIUpdateLinksW@16:
                     jmp [__imp__OleUIUpdateLinksW@16]
 

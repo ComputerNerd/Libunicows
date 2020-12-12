@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ResetDCW@8
-                    global ResetDCW
                     global _ResetDCW@8
                     global _Unicows_ResetDCW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ResetDCW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ResetDCW:
 _ResetDCW@8:
                     jmp [__imp__ResetDCW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__PeekMessageW@20
-                    global PeekMessageW
                     global _PeekMessageW@20
                     global _Unicows_PeekMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_PeekMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-PeekMessageW:
 _PeekMessageW@20:
                     jmp [__imp__PeekMessageW@20]
 

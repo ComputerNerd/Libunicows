@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OutputDebugStringW@4
-                    global OutputDebugStringW
                     global _OutputDebugStringW@4
                     global _Unicows_OutputDebugStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OutputDebugStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OutputDebugStringW:
 _OutputDebugStringW@4:
                     jmp [__imp__OutputDebugStringW@4]
 

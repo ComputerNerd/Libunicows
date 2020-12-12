@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__capGetDriverDescriptionW@20
-                    global capGetDriverDescriptionW
                     global _capGetDriverDescriptionW@20
                     global _Unicows_capGetDriverDescriptionW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_capGetDriverDescriptionW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-capGetDriverDescriptionW:
 _capGetDriverDescriptionW@20:
                     jmp [__imp__capGetDriverDescriptionW@20]
 

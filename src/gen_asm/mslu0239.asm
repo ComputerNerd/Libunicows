@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ExtractIconExW@20
-                    global ExtractIconExW
                     global _ExtractIconExW@20
                     global _Unicows_ExtractIconExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ExtractIconExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ExtractIconExW:
 _ExtractIconExW@20:
                     jmp [__imp__ExtractIconExW@20]
 

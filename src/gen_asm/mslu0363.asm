@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetNamedPipeHandleStateW@28
-                    global GetNamedPipeHandleStateW
                     global _GetNamedPipeHandleStateW@28
                     global _Unicows_GetNamedPipeHandleStateW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetNamedPipeHandleStateW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetNamedPipeHandleStateW:
 _GetNamedPipeHandleStateW@28:
                     jmp [__imp__GetNamedPipeHandleStateW@28]
 

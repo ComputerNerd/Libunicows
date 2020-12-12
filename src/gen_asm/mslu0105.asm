@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CallWindowProcW@20
-                    global CallWindowProcW
                     global _CallWindowProcW@20
                     global _Unicows_CallWindowProcW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CallWindowProcW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CallWindowProcW:
 _CallWindowProcW@20:
                     jmp [__imp__CallWindowProcW@20]
 

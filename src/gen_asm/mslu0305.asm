@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CompareStringW@24
-                    global CompareStringW
                     global _CompareStringW@24
                     global _Unicows_CompareStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CompareStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CompareStringW:
 _CompareStringW@24:
                     jmp [__imp__CompareStringW@24]
 

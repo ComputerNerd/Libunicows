@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DefWindowProcW@16
-                    global DefWindowProcW
                     global _DefWindowProcW@16
                     global _Unicows_DefWindowProcW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DefWindowProcW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DefWindowProcW:
 _DefWindowProcW@16:
                     jmp [__imp__DefWindowProcW@16]
 

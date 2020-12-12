@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegCreateKeyExW@36
-                    global RegCreateKeyExW
                     global _RegCreateKeyExW@36
                     global _Unicows_RegCreateKeyExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegCreateKeyExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegCreateKeyExW:
 _RegCreateKeyExW@36:
                     jmp [__imp__RegCreateKeyExW@36]
 

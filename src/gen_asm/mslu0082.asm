@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__sndPlaySoundW@8
-                    global sndPlaySoundW
                     global _sndPlaySoundW@8
                     global _Unicows_sndPlaySoundW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_sndPlaySoundW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-sndPlaySoundW:
 _sndPlaySoundW@8:
                     jmp [__imp__sndPlaySoundW@8]
 

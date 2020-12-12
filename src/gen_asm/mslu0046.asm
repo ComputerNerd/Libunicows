@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetKerningPairsW@12
-                    global GetKerningPairsW
                     global _GetKerningPairsW@12
                     global _Unicows_GetKerningPairsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetKerningPairsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetKerningPairsW:
 _GetKerningPairsW@12:
                     jmp [__imp__GetKerningPairsW@12]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DocumentPropertiesW@24
-                    global DocumentPropertiesW
                     global _DocumentPropertiesW@24
                     global _Unicows_DocumentPropertiesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DocumentPropertiesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DocumentPropertiesW:
 _DocumentPropertiesW@24:
                     jmp [__imp__DocumentPropertiesW@24]
 

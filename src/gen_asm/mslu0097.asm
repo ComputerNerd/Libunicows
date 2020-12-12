@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIObjectPropertiesW@4
-                    global OleUIObjectPropertiesW
                     global _OleUIObjectPropertiesW@4
                     global _Unicows_OleUIObjectPropertiesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIObjectPropertiesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIObjectPropertiesW:
 _OleUIObjectPropertiesW@4:
                     jmp [__imp__OleUIObjectPropertiesW@4]
 

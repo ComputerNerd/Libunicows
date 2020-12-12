@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__UnregisterClassW@8
-                    global UnregisterClassW
                     global _UnregisterClassW@8
                     global _Unicows_UnregisterClassW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_UnregisterClassW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-UnregisterClassW:
 _UnregisterClassW@8:
                     jmp [__imp__UnregisterClassW@8]
 

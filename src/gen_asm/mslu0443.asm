@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasDialW@24
-                    global RasDialW
                     global _RasDialW@24
                     global _Unicows_RasDialW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasDialW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasDialW:
 _RasDialW@24:
                     jmp [__imp__RasDialW@24]
 

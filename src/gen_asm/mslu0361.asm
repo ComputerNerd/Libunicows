@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetModuleFileNameW@12
-                    global GetModuleFileNameW
                     global _GetModuleFileNameW@12
                     global _Unicows_GetModuleFileNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetModuleFileNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetModuleFileNameW:
 _GetModuleFileNameW@12:
                     jmp [__imp__GetModuleFileNameW@12]
 

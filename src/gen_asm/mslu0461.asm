@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__AddPortW@12
-                    global AddPortW
                     global _AddPortW@12
                     global _Unicows_AddPortW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_AddPortW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddPortW:
 _AddPortW@12:
                     jmp [__imp__AddPortW@12]
 

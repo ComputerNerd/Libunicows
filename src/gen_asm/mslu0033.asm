@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumFontsW@16
-                    global EnumFontsW
                     global _EnumFontsW@16
                     global _Unicows_EnumFontsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumFontsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumFontsW:
 _EnumFontsW@16:
                     jmp [__imp__EnumFontsW@16]
 

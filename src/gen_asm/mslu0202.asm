@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OemToCharBuffW@12
-                    global OemToCharBuffW
                     global _OemToCharBuffW@12
                     global _Unicows_OemToCharBuffW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OemToCharBuffW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OemToCharBuffW:
 _OemToCharBuffW@12:
                     jmp [__imp__OemToCharBuffW@12]
 

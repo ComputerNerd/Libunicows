@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ReadConsoleOutputCharacterW@20
-                    global ReadConsoleOutputCharacterW
                     global _ReadConsoleOutputCharacterW@20
                     global _Unicows_ReadConsoleOutputCharacterW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ReadConsoleOutputCharacterW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ReadConsoleOutputCharacterW:
 _ReadConsoleOutputCharacterW@20:
                     jmp [__imp__ReadConsoleOutputCharacterW@20]
 

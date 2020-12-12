@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SendDlgItemMessageW@20
-                    global SendDlgItemMessageW
                     global _SendDlgItemMessageW@20
                     global _Unicows_SendDlgItemMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SendDlgItemMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SendDlgItemMessageW:
 _SendDlgItemMessageW@20:
                     jmp [__imp__SendDlgItemMessageW@20]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegSaveKeyW@12
-                    global RegSaveKeyW
                     global _RegSaveKeyW@12
                     global _Unicows_RegSaveKeyW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegSaveKeyW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegSaveKeyW:
 _RegSaveKeyW@12:
                     jmp [__imp__RegSaveKeyW@12]
 

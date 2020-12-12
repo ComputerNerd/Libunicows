@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WriteConsoleW@20
-                    global WriteConsoleW
                     global _WriteConsoleW@20
                     global _Unicows_WriteConsoleW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WriteConsoleW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WriteConsoleW:
 _WriteConsoleW@20:
                     jmp [__imp__WriteConsoleW@20]
 

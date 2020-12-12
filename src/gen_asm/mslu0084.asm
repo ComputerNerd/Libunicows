@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__waveInGetErrorTextW@12
-                    global waveInGetErrorTextW
                     global _waveInGetErrorTextW@12
                     global _Unicows_waveInGetErrorTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_waveInGetErrorTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-waveInGetErrorTextW:
 _waveInGetErrorTextW@12:
                     jmp [__imp__waveInGetErrorTextW@12]
 

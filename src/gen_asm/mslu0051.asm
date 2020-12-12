@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetTextExtentExPointW@28
-                    global GetTextExtentExPointW
                     global _GetTextExtentExPointW@28
                     global _Unicows_GetTextExtentExPointW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetTextExtentExPointW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTextExtentExPointW:
 _GetTextExtentExPointW@28:
                     jmp [__imp__GetTextExtentExPointW@28]
 

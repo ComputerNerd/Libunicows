@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetPrintProcessorDirectoryW@24
-                    global GetPrintProcessorDirectoryW
                     global _GetPrintProcessorDirectoryW@24
                     global _Unicows_GetPrintProcessorDirectoryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetPrintProcessorDirectoryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetPrintProcessorDirectoryW:
 _GetPrintProcessorDirectoryW@24:
                     jmp [__imp__GetPrintProcessorDirectoryW@24]
 

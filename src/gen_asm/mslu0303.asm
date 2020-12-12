@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CallNamedPipeW@28
-                    global CallNamedPipeW
                     global _CallNamedPipeW@28
                     global _Unicows_CallNamedPipeW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CallNamedPipeW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CallNamedPipeW:
 _CallNamedPipeW@28:
                     jmp [__imp__CallNamedPipeW@28]
 

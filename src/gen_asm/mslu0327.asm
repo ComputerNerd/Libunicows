@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumSystemLocalesW@8
-                    global EnumSystemLocalesW
                     global _EnumSystemLocalesW@8
                     global _Unicows_EnumSystemLocalesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumSystemLocalesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumSystemLocalesW:
 _EnumSystemLocalesW@8:
                     jmp [__imp__EnumSystemLocalesW@8]
 

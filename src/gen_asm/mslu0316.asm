@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateProcessW@40
-                    global CreateProcessW
                     global _CreateProcessW@40
                     global _Unicows_CreateProcessW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateProcessW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateProcessW:
 _CreateProcessW@40:
                     jmp [__imp__CreateProcessW@40]
 

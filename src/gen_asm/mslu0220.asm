@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetDlgItemTextW@12
-                    global SetDlgItemTextW
                     global _SetDlgItemTextW@12
                     global _Unicows_SetDlgItemTextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetDlgItemTextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetDlgItemTextW:
 _SetDlgItemTextW@12:
                     jmp [__imp__SetDlgItemTextW@12]
 

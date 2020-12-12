@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SHFileOperationW@4
-                    global SHFileOperationW
                     global _SHFileOperationW@4
                     global _Unicows_SHFileOperationW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SHFileOperationW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHFileOperationW:
 _SHFileOperationW@4:
                     jmp [__imp__SHFileOperationW@4]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsCharAlphaNumericW@4
-                    global IsCharAlphaNumericW
                     global _IsCharAlphaNumericW@4
                     global _Unicows_IsCharAlphaNumericW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsCharAlphaNumericW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsCharAlphaNumericW:
 _IsCharAlphaNumericW@4:
                     jmp [__imp__IsCharAlphaNumericW@4]
 

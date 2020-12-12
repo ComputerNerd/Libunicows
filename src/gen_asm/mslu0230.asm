@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__TabbedTextOutW@32
-                    global TabbedTextOutW
                     global _TabbedTextOutW@32
                     global _Unicows_TabbedTextOutW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_TabbedTextOutW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-TabbedTextOutW:
 _TabbedTextOutW@32:
                     jmp [__imp__TabbedTextOutW@32]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CryptEnumProvidersW@24
-                    global CryptEnumProvidersW
                     global _CryptEnumProvidersW@24
                     global _Unicows_CryptEnumProvidersW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CryptEnumProvidersW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CryptEnumProvidersW:
 _CryptEnumProvidersW@24:
                     jmp [__imp__CryptEnumProvidersW@24]
 

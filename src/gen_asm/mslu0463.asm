@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__AddPrintProvidorW@12
-                    global AddPrintProvidorW
                     global _AddPrintProvidorW@12
                     global _Unicows_AddPrintProvidorW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_AddPrintProvidorW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddPrintProvidorW:
 _AddPrintProvidorW@12:
                     jmp [__imp__AddPrintProvidorW@12]
 

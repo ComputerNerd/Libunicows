@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetDateFormatW@24
-                    global GetDateFormatW
                     global _GetDateFormatW@24
                     global _Unicows_GetDateFormatW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetDateFormatW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetDateFormatW:
 _GetDateFormatW@24:
                     jmp [__imp__GetDateFormatW@24]
 

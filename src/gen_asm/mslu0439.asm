@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasConnectionNotificationW@12
-                    global RasConnectionNotificationW
                     global _RasConnectionNotificationW@12
                     global _Unicows_RasConnectionNotificationW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasConnectionNotificationW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasConnectionNotificationW:
 _RasConnectionNotificationW@12:
                     jmp [__imp__RasConnectionNotificationW@12]
 

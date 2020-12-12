@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetGetUserW@12
-                    global WNetGetUserW
                     global _WNetGetUserW@12
                     global _Unicows_WNetGetUserW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetGetUserW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetGetUserW:
 _WNetGetUserW@12:
                     jmp [__imp__WNetGetUserW@12]
 

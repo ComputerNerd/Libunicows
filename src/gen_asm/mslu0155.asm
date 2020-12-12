@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetClassInfoExW@12
-                    global GetClassInfoExW
                     global _GetClassInfoExW@12
                     global _Unicows_GetClassInfoExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetClassInfoExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetClassInfoExW:
 _GetClassInfoExW@12:
                     jmp [__imp__GetClassInfoExW@12]
 

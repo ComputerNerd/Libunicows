@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__VerQueryValueW@16
-                    global VerQueryValueW
                     global _VerQueryValueW@16
                     global _Unicows_VerQueryValueW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_VerQueryValueW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-VerQueryValueW:
 _VerQueryValueW@16:
                     jmp [__imp__VerQueryValueW@16]
 

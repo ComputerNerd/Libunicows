@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasGetEntryPropertiesW@24
-                    global RasGetEntryPropertiesW
                     global _RasGetEntryPropertiesW@24
                     global _Unicows_RasGetEntryPropertiesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasGetEntryPropertiesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasGetEntryPropertiesW:
 _RasGetEntryPropertiesW@24:
                     jmp [__imp__RasGetEntryPropertiesW@24]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegQueryValueW@16
-                    global RegQueryValueW
                     global _RegQueryValueW@16
                     global _Unicows_RegQueryValueW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegQueryValueW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegQueryValueW:
 _RegQueryValueW@16:
                     jmp [__imp__RegQueryValueW@16]
 

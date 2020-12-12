@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__PageSetupDlgW@4
-                    global PageSetupDlgW
                     global _PageSetupDlgW@4
                     global _Unicows_PageSetupDlgW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_PageSetupDlgW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-PageSetupDlgW:
 _PageSetupDlgW@4:
                     jmp [__imp__PageSetupDlgW@4]
 

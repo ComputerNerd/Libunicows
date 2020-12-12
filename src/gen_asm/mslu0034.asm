@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumICMProfilesW@12
-                    global EnumICMProfilesW
                     global _EnumICMProfilesW@12
                     global _Unicows_EnumICMProfilesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumICMProfilesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumICMProfilesW:
 _EnumICMProfilesW@12:
                     jmp [__imp__EnumICMProfilesW@12]
 

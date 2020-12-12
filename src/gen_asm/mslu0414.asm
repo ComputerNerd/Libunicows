@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetCurrentDirectoryW@4
-                    global SetCurrentDirectoryW
                     global _SetCurrentDirectoryW@4
                     global _Unicows_SetCurrentDirectoryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetCurrentDirectoryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetCurrentDirectoryW:
 _SetCurrentDirectoryW@4:
                     jmp [__imp__SetCurrentDirectoryW@4]
 

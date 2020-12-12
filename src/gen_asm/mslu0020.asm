@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__AddFontResourceW@4
-                    global AddFontResourceW
                     global _AddFontResourceW@4
                     global _Unicows_AddFontResourceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_AddFontResourceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-AddFontResourceW:
 _AddFontResourceW@4:
                     jmp [__imp__AddFontResourceW@4]
 

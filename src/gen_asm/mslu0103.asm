@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CallMsgFilterW@8
-                    global CallMsgFilterW
                     global _CallMsgFilterW@8
                     global _Unicows_CallMsgFilterW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CallMsgFilterW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CallMsgFilterW:
 _CallMsgFilterW@8:
                     jmp [__imp__CallMsgFilterW@8]
 

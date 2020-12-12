@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasGetProjectionInfoW@16
-                    global RasGetProjectionInfoW
                     global _RasGetProjectionInfoW@16
                     global _Unicows_RasGetProjectionInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasGetProjectionInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasGetProjectionInfoW:
 _RasGetProjectionInfoW@16:
                     jmp [__imp__RasGetProjectionInfoW@16]
 

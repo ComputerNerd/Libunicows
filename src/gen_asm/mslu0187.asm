@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadBitmapW@8
-                    global LoadBitmapW
                     global _LoadBitmapW@8
                     global _Unicows_LoadBitmapW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadBitmapW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadBitmapW:
 _LoadBitmapW@8:
                     jmp [__imp__LoadBitmapW@8]
 

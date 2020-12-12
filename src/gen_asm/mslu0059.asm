@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetICMProfileW@8
-                    global SetICMProfileW
                     global _SetICMProfileW@8
                     global _Unicows_SetICMProfileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetICMProfileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetICMProfileW:
 _SetICMProfileW@8:
                     jmp [__imp__SetICMProfileW@8]
 

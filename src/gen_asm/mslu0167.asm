@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetMonitorInfoW@8
-                    global GetMonitorInfoW
                     global _GetMonitorInfoW@8
                     global _Unicows_GetMonitorInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetMonitorInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetMonitorInfoW:
 _GetMonitorInfoW@8:
                     jmp [__imp__GetMonitorInfoW@8]
 

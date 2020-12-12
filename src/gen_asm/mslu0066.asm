@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mciGetDeviceIDW@4
-                    global mciGetDeviceIDW
                     global _mciGetDeviceIDW@4
                     global _Unicows_mciGetDeviceIDW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mciGetDeviceIDW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mciGetDeviceIDW:
 _mciGetDeviceIDW@4:
                     jmp [__imp__mciGetDeviceIDW@4]
 

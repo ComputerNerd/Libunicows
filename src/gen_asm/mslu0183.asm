@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsClipboardFormatAvailable@4
-                    global IsClipboardFormatAvailable
                     global _IsClipboardFormatAvailable@4
                     global _Unicows_IsClipboardFormatAvailable
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsClipboardFormatAvailable:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsClipboardFormatAvailable:
 _IsClipboardFormatAvailable@4:
                     jmp [__imp__IsClipboardFormatAvailable@4]
 

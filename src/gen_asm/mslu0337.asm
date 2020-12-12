@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FindResourceW@12
-                    global FindResourceW
                     global _FindResourceW@12
                     global _Unicows_FindResourceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FindResourceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FindResourceW:
 _FindResourceW@12:
                     jmp [__imp__FindResourceW@12]
 

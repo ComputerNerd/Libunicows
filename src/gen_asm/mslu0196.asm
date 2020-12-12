@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__MapVirtualKeyExW@12
-                    global MapVirtualKeyExW
                     global _MapVirtualKeyExW@12
                     global _Unicows_MapVirtualKeyExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_MapVirtualKeyExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-MapVirtualKeyExW:
 _MapVirtualKeyExW@12:
                     jmp [__imp__MapVirtualKeyExW@12]
 

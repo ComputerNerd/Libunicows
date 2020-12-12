@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetCalendarInfoW@24
-                    global GetCalendarInfoW
                     global _GetCalendarInfoW@24
                     global _Unicows_GetCalendarInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetCalendarInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCalendarInfoW:
 _GetCalendarInfoW@24:
                     jmp [__imp__GetCalendarInfoW@24]
 

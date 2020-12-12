@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumDateFormatsW@12
-                    global EnumDateFormatsW
                     global _EnumDateFormatsW@12
                     global _Unicows_EnumDateFormatsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumDateFormatsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumDateFormatsW:
 _EnumDateFormatsW@12:
                     jmp [__imp__EnumDateFormatsW@12]
 

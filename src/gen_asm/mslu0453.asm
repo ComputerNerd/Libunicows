@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasHangUpW@4
-                    global RasHangUpW
                     global _RasHangUpW@4
                     global _Unicows_RasHangUpW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasHangUpW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasHangUpW:
 _RasHangUpW@4:
                     jmp [__imp__RasHangUpW@4]
 

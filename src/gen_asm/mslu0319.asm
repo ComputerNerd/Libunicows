@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DeleteFileW@4
-                    global DeleteFileW
                     global _DeleteFileW@4
                     global _Unicows_DeleteFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DeleteFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeleteFileW:
 _DeleteFileW@4:
                     jmp [__imp__DeleteFileW@4]
 

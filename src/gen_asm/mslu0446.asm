@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasEnumDevicesW@12
-                    global RasEnumDevicesW
                     global _RasEnumDevicesW@12
                     global _Unicows_RasEnumDevicesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasEnumDevicesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasEnumDevicesW:
 _RasEnumDevicesW@12:
                     jmp [__imp__RasEnumDevicesW@12]
 

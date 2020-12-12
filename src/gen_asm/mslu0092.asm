@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIChangeIconW@4
-                    global OleUIChangeIconW
                     global _OleUIChangeIconW@4
                     global _Unicows_OleUIChangeIconW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIChangeIconW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIChangeIconW:
 _OleUIChangeIconW@4:
                     jmp [__imp__OleUIChangeIconW@4]
 

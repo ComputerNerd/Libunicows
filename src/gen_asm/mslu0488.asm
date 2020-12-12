@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ResetPrinterW@8
-                    global ResetPrinterW
                     global _ResetPrinterW@8
                     global _Unicows_ResetPrinterW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ResetPrinterW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ResetPrinterW:
 _ResetPrinterW@8:
                     jmp [__imp__ResetPrinterW@8]
 

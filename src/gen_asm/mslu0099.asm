@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIPromptUserW
-                    global OleUIPromptUserW
                     global _OleUIPromptUserW
                     global _Unicows_OleUIPromptUserW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIPromptUserW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIPromptUserW:
 _OleUIPromptUserW:
                     jmp [__imp__OleUIPromptUserW]
 

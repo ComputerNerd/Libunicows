@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateWindowExW@48
-                    global CreateWindowExW
                     global _CreateWindowExW@48
                     global _Unicows_CreateWindowExW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateWindowExW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateWindowExW:
 _CreateWindowExW@48:
                     jmp [__imp__CreateWindowExW@48]
 

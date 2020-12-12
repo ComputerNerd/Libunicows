@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ShellAboutW@16
-                    global ShellAboutW
                     global _ShellAboutW@16
                     global _Unicows_ShellAboutW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ShellAboutW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ShellAboutW:
 _ShellAboutW@16:
                     jmp [__imp__ShellAboutW@16]
 

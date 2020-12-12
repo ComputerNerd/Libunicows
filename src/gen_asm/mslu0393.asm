@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadLibraryW@4
-                    global LoadLibraryW
                     global _LoadLibraryW@4
                     global _Unicows_LoadLibraryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadLibraryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadLibraryW:
 _LoadLibraryW@4:
                     jmp [__imp__LoadLibraryW@4]
 

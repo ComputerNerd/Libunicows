@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetTabbedTextExtentW@20
-                    global GetTabbedTextExtentW
                     global _GetTabbedTextExtentW@20
                     global _Unicows_GetTabbedTextExtentW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetTabbedTextExtentW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTabbedTextExtentW:
 _GetTabbedTextExtentW@20:
                     jmp [__imp__GetTabbedTextExtentW@20]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mmioStringToFOURCCW@8
-                    global mmioStringToFOURCCW
                     global _mmioStringToFOURCCW@8
                     global _Unicows_mmioStringToFOURCCW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mmioStringToFOURCCW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mmioStringToFOURCCW:
 _mmioStringToFOURCCW@8:
                     jmp [__imp__mmioStringToFOURCCW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsDialogMessageW@8
-                    global IsDialogMessageW
                     global _IsDialogMessageW@8
                     global _Unicows_IsDialogMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsDialogMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsDialogMessageW:
 _IsDialogMessageW@8:
                     jmp [__imp__IsDialogMessageW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__PolyTextOutW@12
-                    global PolyTextOutW
                     global _PolyTextOutW@12
                     global _Unicows_PolyTextOutW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_PolyTextOutW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-PolyTextOutW:
 _PolyTextOutW@12:
                     jmp [__imp__PolyTextOutW@12]
 

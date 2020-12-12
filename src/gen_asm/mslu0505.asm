@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__QueryCredentialsAttributesW@12
-                    global QueryCredentialsAttributesW
                     global _QueryCredentialsAttributesW@12
                     global _Unicows_QueryCredentialsAttributesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_QueryCredentialsAttributesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-QueryCredentialsAttributesW:
 _QueryCredentialsAttributesW@12:
                     jmp [__imp__QueryCredentialsAttributesW@12]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasSetEntryPropertiesW@24
-                    global RasSetEntryPropertiesW
                     global _RasSetEntryPropertiesW@24
                     global _Unicows_RasSetEntryPropertiesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasSetEntryPropertiesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasSetEntryPropertiesW:
 _RasSetEntryPropertiesW@24:
                     jmp [__imp__RasSetEntryPropertiesW@24]
 

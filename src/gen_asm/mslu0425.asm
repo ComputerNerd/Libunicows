@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WriteConsoleOutputCharacterW@20
-                    global WriteConsoleOutputCharacterW
                     global _WriteConsoleOutputCharacterW@20
                     global _Unicows_WriteConsoleOutputCharacterW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WriteConsoleOutputCharacterW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WriteConsoleOutputCharacterW:
 _WriteConsoleOutputCharacterW@20:
                     jmp [__imp__WriteConsoleOutputCharacterW@20]
 

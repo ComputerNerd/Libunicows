@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetEnhMetaFileW@4
-                    global GetEnhMetaFileW
                     global _GetEnhMetaFileW@4
                     global _Unicows_GetEnhMetaFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetEnhMetaFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetEnhMetaFileW:
 _GetEnhMetaFileW@4:
                     jmp [__imp__GetEnhMetaFileW@4]
 

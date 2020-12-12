@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CopyAcceleratorTableW@12
-                    global CopyAcceleratorTableW
                     global _CopyAcceleratorTableW@12
                     global _Unicows_CopyAcceleratorTableW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CopyAcceleratorTableW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CopyAcceleratorTableW:
 _CopyAcceleratorTableW@12:
                     jmp [__imp__CopyAcceleratorTableW@12]
 

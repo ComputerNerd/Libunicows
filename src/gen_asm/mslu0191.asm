@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadImageW@24
-                    global LoadImageW
                     global _LoadImageW@24
                     global _Unicows_LoadImageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadImageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadImageW:
 _LoadImageW@24:
                     jmp [__imp__LoadImageW@24]
 

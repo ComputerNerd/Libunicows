@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetClassLongW@8
-                    global GetClassLongW
                     global _GetClassLongW@8
                     global _Unicows_GetClassLongW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetClassLongW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetClassLongW:
 _GetClassLongW@8:
                     jmp [__imp__GetClassLongW@8]
 

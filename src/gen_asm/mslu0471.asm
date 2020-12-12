@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DeletePrintProvidorW@12
-                    global DeletePrintProvidorW
                     global _DeletePrintProvidorW@12
                     global _Unicows_DeletePrintProvidorW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DeletePrintProvidorW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeletePrintProvidorW:
 _DeletePrintProvidorW@12:
                     jmp [__imp__DeletePrintProvidorW@12]
 

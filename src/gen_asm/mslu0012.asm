@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetGetNetworkInformationW@8
-                    global WNetGetNetworkInformationW
                     global _WNetGetNetworkInformationW@8
                     global _Unicows_WNetGetNetworkInformationW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetGetNetworkInformationW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetGetNetworkInformationW:
 _WNetGetNetworkInformationW@8:
                     jmp [__imp__WNetGetNetworkInformationW@8]
 

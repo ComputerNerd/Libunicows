@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetPropW@12
-                    global SetPropW
                     global _SetPropW@12
                     global _Unicows_SetPropW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetPropW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetPropW:
 _SetPropW@12:
                     jmp [__imp__SetPropW@12]
 

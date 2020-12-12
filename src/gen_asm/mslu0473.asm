@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DeviceCapabilitiesW@20
-                    global DeviceCapabilitiesW
                     global _DeviceCapabilitiesW@20
                     global _Unicows_DeviceCapabilitiesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DeviceCapabilitiesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DeviceCapabilitiesW:
 _DeviceCapabilitiesW@20:
                     jmp [__imp__DeviceCapabilitiesW@20]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ChangeDisplaySettingsW@8
-                    global ChangeDisplaySettingsW
                     global _ChangeDisplaySettingsW@8
                     global _Unicows_ChangeDisplaySettingsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ChangeDisplaySettingsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ChangeDisplaySettingsW:
 _ChangeDisplaySettingsW@8:
                     jmp [__imp__ChangeDisplaySettingsW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mmioInstallIOProcW@12
-                    global mmioInstallIOProcW
                     global _mmioInstallIOProcW@12
                     global _Unicows_mmioInstallIOProcW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mmioInstallIOProcW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mmioInstallIOProcW:
 _mmioInstallIOProcW@12:
                     jmp [__imp__mmioInstallIOProcW@12]
 

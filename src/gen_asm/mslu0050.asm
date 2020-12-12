@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetOutlineTextMetricsW@12
-                    global GetOutlineTextMetricsW
                     global _GetOutlineTextMetricsW@12
                     global _Unicows_GetOutlineTextMetricsW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetOutlineTextMetricsW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetOutlineTextMetricsW:
 _GetOutlineTextMetricsW@12:
                     jmp [__imp__GetOutlineTextMetricsW@12]
 

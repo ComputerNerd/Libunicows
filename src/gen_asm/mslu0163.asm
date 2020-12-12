@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetKeyboardLayoutNameW@4
-                    global GetKeyboardLayoutNameW
                     global _GetKeyboardLayoutNameW@4
                     global _Unicows_GetKeyboardLayoutNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetKeyboardLayoutNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetKeyboardLayoutNameW:
 _GetKeyboardLayoutNameW@4:
                     jmp [__imp__GetKeyboardLayoutNameW@4]
 

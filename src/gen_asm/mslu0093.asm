@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OleUIChangeSourceW@4
-                    global OleUIChangeSourceW
                     global _OleUIChangeSourceW@4
                     global _Unicows_OleUIChangeSourceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OleUIChangeSourceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OleUIChangeSourceW:
 _OleUIChangeSourceW@4:
                     jmp [__imp__OleUIChangeSourceW@4]
 

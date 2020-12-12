@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__wsprintfW
-                    global wsprintfW
                     global _wsprintfW
                     global _Unicows_wsprintfW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_wsprintfW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-wsprintfW:
 _wsprintfW:
                     jmp [__imp__wsprintfW]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mciSendStringW@16
-                    global mciSendStringW
                     global _mciSendStringW@16
                     global _Unicows_mciSendStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mciSendStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mciSendStringW:
 _mciSendStringW@16:
                     jmp [__imp__mciSendStringW@16]
 

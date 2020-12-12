@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetDiskFreeSpaceW@20
-                    global GetDiskFreeSpaceW
                     global _GetDiskFreeSpaceW@20
                     global _Unicows_GetDiskFreeSpaceW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetDiskFreeSpaceW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetDiskFreeSpaceW:
 _GetDiskFreeSpaceW@20:
                     jmp [__imp__GetDiskFreeSpaceW@20]
 

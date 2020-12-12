@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OpenFileMappingW@12
-                    global OpenFileMappingW
                     global _OpenFileMappingW@12
                     global _Unicows_OpenFileMappingW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OpenFileMappingW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenFileMappingW:
 _OpenFileMappingW@12:
                     jmp [__imp__OpenFileMappingW@12]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadStringW@16
-                    global LoadStringW
                     global _LoadStringW@16
                     global _Unicows_LoadStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadStringW:
 _LoadStringW@16:
                     jmp [__imp__LoadStringW@16]
 

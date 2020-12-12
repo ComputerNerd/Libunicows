@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__FormatMessageW@28
-                    global FormatMessageW
                     global _FormatMessageW@28
                     global _Unicows_FormatMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_FormatMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-FormatMessageW:
 _FormatMessageW@28:
                     jmp [__imp__FormatMessageW@28]
 

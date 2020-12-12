@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__OpenPrinterW@12
-                    global OpenPrinterW
                     global _OpenPrinterW@12
                     global _Unicows_OpenPrinterW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_OpenPrinterW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-OpenPrinterW:
 _OpenPrinterW@12:
                     jmp [__imp__OpenPrinterW@12]
 

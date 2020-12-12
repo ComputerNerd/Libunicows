@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetFullPathNameW@16
-                    global GetFullPathNameW
                     global _GetFullPathNameW@16
                     global _Unicows_GetFullPathNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetFullPathNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetFullPathNameW:
 _GetFullPathNameW@16:
                     jmp [__imp__GetFullPathNameW@16]
 

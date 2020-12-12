@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetJobW@20
-                    global SetJobW
                     global _SetJobW@20
                     global _Unicows_SetJobW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetJobW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetJobW:
 _SetJobW@20:
                     jmp [__imp__SetJobW@20]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__QuerySecurityPackageInfoW@8
-                    global QuerySecurityPackageInfoW
                     global _QuerySecurityPackageInfoW@8
                     global _Unicows_QuerySecurityPackageInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_QuerySecurityPackageInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-QuerySecurityPackageInfoW:
 _QuerySecurityPackageInfoW@8:
                     jmp [__imp__QuerySecurityPackageInfoW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__lstrcatW@8
-                    global lstrcatW
                     global _lstrcatW@8
                     global _Unicows_lstrcatW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_lstrcatW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-lstrcatW:
 _lstrcatW@8:
                     jmp [__imp__lstrcatW@8]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__PrintDlgW@4
-                    global PrintDlgW
                     global _PrintDlgW@4
                     global _Unicows_PrintDlgW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_PrintDlgW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-PrintDlgW:
 _PrintDlgW@4:
                     jmp [__imp__PrintDlgW@4]
 

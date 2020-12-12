@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DispatchMessageW@4
-                    global DispatchMessageW
                     global _DispatchMessageW@4
                     global _Unicows_DispatchMessageW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DispatchMessageW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DispatchMessageW:
 _DispatchMessageW@4:
                     jmp [__imp__DispatchMessageW@4]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetWindowModuleFileNameW@12
-                    global GetWindowModuleFileNameW
                     global _GetWindowModuleFileNameW@12
                     global _Unicows_GetWindowModuleFileNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetWindowModuleFileNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetWindowModuleFileNameW:
 _GetWindowModuleFileNameW@12:
                     jmp [__imp__GetWindowModuleFileNameW@12]
 

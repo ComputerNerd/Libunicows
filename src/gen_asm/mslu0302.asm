@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__BuildCommDCBW@8
-                    global BuildCommDCBW
                     global _BuildCommDCBW@8
                     global _Unicows_BuildCommDCBW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_BuildCommDCBW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-BuildCommDCBW:
 _BuildCommDCBW@8:
                     jmp [__imp__BuildCommDCBW@8]
 

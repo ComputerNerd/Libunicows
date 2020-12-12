@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WinHelpW@16
-                    global WinHelpW
                     global _WinHelpW@16
                     global _Unicows_WinHelpW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WinHelpW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WinHelpW:
 _WinHelpW@16:
                     jmp [__imp__WinHelpW@16]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RasValidateEntryNameW@8
-                    global RasValidateEntryNameW
                     global _RasValidateEntryNameW@8
                     global _Unicows_RasValidateEntryNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RasValidateEntryNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RasValidateEntryNameW:
 _RasValidateEntryNameW@8:
                     jmp [__imp__RasValidateEntryNameW@8]
 

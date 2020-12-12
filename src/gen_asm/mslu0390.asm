@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__IsValidCodePage@4
-                    global IsValidCodePage
                     global _IsValidCodePage@4
                     global _Unicows_IsValidCodePage
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_IsValidCodePage:
 
                     ; ...and skip to it (see following jmp instruction):
 
-IsValidCodePage:
 _IsValidCodePage@4:
                     jmp [__imp__IsValidCodePage@4]
 

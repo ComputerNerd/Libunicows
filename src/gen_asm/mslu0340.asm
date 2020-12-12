@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetAtomNameW@12
-                    global GetAtomNameW
                     global _GetAtomNameW@12
                     global _Unicows_GetAtomNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetAtomNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetAtomNameW:
 _GetAtomNameW@12:
                     jmp [__imp__GetAtomNameW@12]
 

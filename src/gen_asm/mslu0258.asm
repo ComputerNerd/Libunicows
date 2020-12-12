@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CryptAcquireContextW@20
-                    global CryptAcquireContextW
                     global _CryptAcquireContextW@20
                     global _Unicows_CryptAcquireContextW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CryptAcquireContextW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CryptAcquireContextW:
 _CryptAcquireContextW@20:
                     jmp [__imp__CryptAcquireContextW@20]
 

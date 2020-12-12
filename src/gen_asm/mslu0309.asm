@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateDirectoryW@8
-                    global CreateDirectoryW
                     global _CreateDirectoryW@8
                     global _Unicows_CreateDirectoryW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateDirectoryW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateDirectoryW:
 _CreateDirectoryW@8:
                     jmp [__imp__CreateDirectoryW@8]
 

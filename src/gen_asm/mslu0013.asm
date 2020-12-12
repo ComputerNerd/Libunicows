@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetGetProviderNameW@12
-                    global WNetGetProviderNameW
                     global _WNetGetProviderNameW@12
                     global _Unicows_WNetGetProviderNameW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetGetProviderNameW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetGetProviderNameW:
 _WNetGetProviderNameW@12:
                     jmp [__imp__WNetGetProviderNameW@12]
 

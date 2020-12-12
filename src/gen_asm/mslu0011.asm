@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetGetLastErrorW@20
-                    global WNetGetLastErrorW
                     global _WNetGetLastErrorW@20
                     global _Unicows_WNetGetLastErrorW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetGetLastErrorW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetGetLastErrorW:
 _WNetGetLastErrorW@20:
                     jmp [__imp__WNetGetLastErrorW@20]
 

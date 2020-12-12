@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__VkKeyScanW@4
-                    global VkKeyScanW
                     global _VkKeyScanW@4
                     global _Unicows_VkKeyScanW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_VkKeyScanW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-VkKeyScanW:
 _VkKeyScanW@4:
                     jmp [__imp__VkKeyScanW@4]
 

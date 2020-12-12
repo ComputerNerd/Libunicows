@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__mixerGetLineInfoW@12
-                    global mixerGetLineInfoW
                     global _mixerGetLineInfoW@12
                     global _Unicows_mixerGetLineInfoW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_mixerGetLineInfoW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-mixerGetLineInfoW:
 _mixerGetLineInfoW@12:
                     jmp [__imp__mixerGetLineInfoW@12]
 

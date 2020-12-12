@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__WNetUseConnectionW@32
-                    global WNetUseConnectionW
                     global _WNetUseConnectionW@32
                     global _Unicows_WNetUseConnectionW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_WNetUseConnectionW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-WNetUseConnectionW:
 _WNetUseConnectionW@32:
                     jmp [__imp__WNetUseConnectionW@32]
 

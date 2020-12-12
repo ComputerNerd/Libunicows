@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetDefaultCommConfigW@12
-                    global GetDefaultCommConfigW
                     global _GetDefaultCommConfigW@12
                     global _Unicows_GetDefaultCommConfigW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetDefaultCommConfigW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetDefaultCommConfigW:
 _GetDefaultCommConfigW@12:
                     jmp [__imp__GetDefaultCommConfigW@12]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SetFileAttributesW@8
-                    global SetFileAttributesW
                     global _SetFileAttributesW@8
                     global _Unicows_SetFileAttributesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SetFileAttributesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SetFileAttributesW:
 _SetFileAttributesW@8:
                     jmp [__imp__SetFileAttributesW@8]
 

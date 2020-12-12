@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__EnumDisplayDevicesW@16
-                    global EnumDisplayDevicesW
                     global _EnumDisplayDevicesW@16
                     global _Unicows_EnumDisplayDevicesW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_EnumDisplayDevicesW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-EnumDisplayDevicesW:
 _EnumDisplayDevicesW@16:
                     jmp [__imp__EnumDisplayDevicesW@16]
 

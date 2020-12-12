@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DdeInitializeW@16
-                    global DdeInitializeW
                     global _DdeInitializeW@16
                     global _Unicows_DdeInitializeW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DdeInitializeW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DdeInitializeW:
 _DdeInitializeW@16:
                     jmp [__imp__DdeInitializeW@16]
 

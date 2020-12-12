@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetTempPathW@8
-                    global GetTempPathW
                     global _GetTempPathW@8
                     global _Unicows_GetTempPathW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetTempPathW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetTempPathW:
 _GetTempPathW@8:
                     jmp [__imp__GetTempPathW@8]
 

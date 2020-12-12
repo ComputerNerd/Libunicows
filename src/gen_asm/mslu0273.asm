@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__RegDeleteValueW@8
-                    global RegDeleteValueW
                     global _RegDeleteValueW@8
                     global _Unicows_RegDeleteValueW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_RegDeleteValueW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-RegDeleteValueW:
 _RegDeleteValueW@8:
                     jmp [__imp__RegDeleteValueW@8]
 

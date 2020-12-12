@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GrayStringW@36
-                    global GrayStringW
                     global _GrayStringW@36
                     global _Unicows_GrayStringW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GrayStringW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GrayStringW:
 _GrayStringW@36:
                     jmp [__imp__GrayStringW@36]
 

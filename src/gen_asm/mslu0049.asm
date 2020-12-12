@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetObjectW@12
-                    global GetObjectW
                     global _GetObjectW@12
                     global _Unicows_GetObjectW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetObjectW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetObjectW:
 _GetObjectW@12:
                     jmp [__imp__GetObjectW@12]
 

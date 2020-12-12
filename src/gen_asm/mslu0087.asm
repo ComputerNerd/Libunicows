@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateStdAccessibleProxyW@20
-                    global CreateStdAccessibleProxyW
                     global _CreateStdAccessibleProxyW@20
                     global _Unicows_CreateStdAccessibleProxyW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateStdAccessibleProxyW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateStdAccessibleProxyW:
 _CreateStdAccessibleProxyW@20:
                     jmp [__imp__CreateStdAccessibleProxyW@20]
 

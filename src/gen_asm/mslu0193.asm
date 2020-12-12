@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadMenuIndirectW@4
-                    global LoadMenuIndirectW
                     global _LoadMenuIndirectW@4
                     global _Unicows_LoadMenuIndirectW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadMenuIndirectW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadMenuIndirectW:
 _LoadMenuIndirectW@4:
                     jmp [__imp__LoadMenuIndirectW@4]
 

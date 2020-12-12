@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__GetCharWidthW@16
-                    global GetCharWidthW
                     global _GetCharWidthW@16
                     global _Unicows_GetCharWidthW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_GetCharWidthW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-GetCharWidthW:
 _GetCharWidthW@16:
                     jmp [__imp__GetCharWidthW@16]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__SHGetPathFromIDListW@8
-                    global SHGetPathFromIDListW
                     global _SHGetPathFromIDListW@8
                     global _Unicows_SHGetPathFromIDListW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_SHGetPathFromIDListW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-SHGetPathFromIDListW:
 _SHGetPathFromIDListW@8:
                     jmp [__imp__SHGetPathFromIDListW@8]
 

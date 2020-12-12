@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateDCW@16
-                    global CreateDCW
                     global _CreateDCW@16
                     global _Unicows_CreateDCW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateDCW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateDCW:
 _CreateDCW@16:
                     jmp [__imp__CreateDCW@16]
 

@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CreateAcceleratorTableW@8
-                    global CreateAcceleratorTableW
                     global _CreateAcceleratorTableW@8
                     global _Unicows_CreateAcceleratorTableW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CreateAcceleratorTableW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CreateAcceleratorTableW:
 _CreateAcceleratorTableW@8:
                     jmp [__imp__CreateAcceleratorTableW@8]
 

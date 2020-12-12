@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__CopyFileW@12
-                    global CopyFileW
                     global _CopyFileW@12
                     global _Unicows_CopyFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_CopyFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-CopyFileW:
 _CopyFileW@12:
                     jmp [__imp__CopyFileW@12]
 

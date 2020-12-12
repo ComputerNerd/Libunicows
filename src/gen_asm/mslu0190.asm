@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__LoadIconW@8
-                    global LoadIconW
                     global _LoadIconW@8
                     global _Unicows_LoadIconW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_LoadIconW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-LoadIconW:
 _LoadIconW@8:
                     jmp [__imp__LoadIconW@8]
 

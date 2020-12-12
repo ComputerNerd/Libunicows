@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__DefFrameProcW@20
-                    global DefFrameProcW
                     global _DefFrameProcW@20
                     global _Unicows_DefFrameProcW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_DefFrameProcW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-DefFrameProcW:
 _DefFrameProcW@20:
                     jmp [__imp__DefFrameProcW@20]
 

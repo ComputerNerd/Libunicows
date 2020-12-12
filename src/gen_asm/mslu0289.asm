@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__ChooseColorW@4
-                    global ChooseColorW
                     global _ChooseColorW@4
                     global _Unicows_ChooseColorW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_ChooseColorW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-ChooseColorW:
 _ChooseColorW@4:
                     jmp [__imp__ChooseColorW@4]
 

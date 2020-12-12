@@ -30,7 +30,6 @@
 %endif
 
                     global __imp__MoveFileW@8
-                    global MoveFileW
                     global _MoveFileW@8
                     global _Unicows_MoveFileW
                   
@@ -55,7 +54,6 @@ unicows_initial_stub_MoveFileW:
 
                     ; ...and skip to it (see following jmp instruction):
 
-MoveFileW:
 _MoveFileW@8:
                     jmp [__imp__MoveFileW@8]
 
